@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GO Network</title>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+    <link rel='stylesheet' href='js/foundation.css'/>
+    <link rel='stylesheet' href='js/custom.css'/>
+
+    <!-- For loading external data files -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script>
+
+  <script src="js/cytoscape.min.js"></script>
+
+    <!-- <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/basic/jquery.qtip.css" /> -->
+  <style type="text/css">
+    body {background-color: transparent; font-family: 'PT Sans', sans-serif;}
+    .info {
+      font-size: 16px;
+      margin: 5px;
+      text-align: center;
+    }
+    .title {
+      text-align: center;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+<br>
+<br>
+<div class="row columns">
+    <div class="columns small-10 small-centered textrow ">
+  
+        <h3 class="title">Go Enrichment Network</h3>
+  
+    </div>
+  </div>
+
+<div class="row columns">
+    <div class="columns small-10 small-centered">
+        <div class="btn-group">
+            <button id="layout1" title="Dynamic Node Cluster" class="button button1">CoSE</button>
+            <button id="layout2" title="D3 Force Graph" class="button button2">Cola</button>
+            <button id="layout3" title="Circluar Pattern" class="button button3">Circle</button>
+            <button id="layout4" title="Symetric" class="button button4">Concentric</button>
+            <button id="layout5" title="Balanced Circular Pattern" class="button button5">Avsdf</button>
+        </div>
+        <br>
+        <div id="filter-box">
+            Entity Identifier:<br>
+            <input id="entity-identifier-textbox" type="text" name="entity-name" placeholder="Gene/RefSeq_id/mRna_id">
+            <button id="entity-identifier-submit" class="button">Filter</button>
+        </div>
+    </div>
+</div>
+
+<div class="row columns">
+
+    <div class=" text-center" id="loading" style="margin-top: 35px">
+        <h5><i class="fas fa-spinner fa-spin fa-1.5x"></i>&nbsp;Loading network...</h5>
+    </div>
+
+</div>
+
+<div class="row columns">
+
+    <div class="columns small-10 small-centered" id="cy">
+
+
+    </div>
+
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.5.3/cytoscape.umd.js" type="text/javascript"></script>
+<script src="https://marvl.infotech.monash.edu/webcola/cola.min.js"></script>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/what-input.js"></script>
+<script src="js/vendor/foundation.min.js"></script>
+
+<!--test. you could change this latter-->
+<script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+<script src="https://unpkg.com/numeric/numeric-1.2.6.js"></script>
+<script src="https://unpkg.com/layout-base/layout-base.js"></script>
+<script src="https://unpkg.com/cose-base/cose-base.js"></script>
+
+<script src="https://unpkg.com/webcola/WebCola/cola.min.js"></script>
+<script src="js/cytoscape-cola.js"></script>
+<!--change-->
+<script src="js/cytoscape-cola.js"></script>
+<!-- <script src="/static/js/fcose.js"></script> -->
+<script src="js/custom.js"></script>
+<script src="js/go.js"></script>
+
+
+<script src="https://unpkg.com/layout-base/layout-base.js"></script>
+<script src="https://unpkg.com/avsdf-base/avsdf-base.js"></script>
+<script src="js/cytoscape-avsdf.js"></script>
+<script src="https://unpkg.com/popper.js@1.14.7/dist/umd/popper.js"></script>
+<script src="js/cytoscape-popper.js"></script>
+<script src="https://unpkg.com/tippy.js@4.0.1/umd/index.all.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@4.0.1/index.css" />
+<script src='js/networkVisualizer.js'></script>
+
+<div class="row columns">
+    <div class="columns small-10 small-centered textrow ">
+
+        <p class="info">The GO Enrichment Network shows all terms of fatty acid related genes. Each node indicates a type of GO term, and each edge signifies the similarity between two terms.
+        </p>
+
+    </div>
+</div>
+</body>
+</html>

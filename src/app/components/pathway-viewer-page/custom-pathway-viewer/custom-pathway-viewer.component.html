@@ -1,0 +1,73 @@
+<mat-card>
+    <div style="margin-left:2%">
+        <h2>Custom Pathway Viewer</h2>
+        <p>View and upload custom pathways.</p>
+        <p>Select a pathway from the table below, or submit JSON and image files to add a pathway to the database.</p>
+    </div>
+    <mat-expansion-panel *ngIf="user !== null" (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Add a custom pathway
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form class="form" [formGroup]="addPathwayForm">
+            <mat-form-field class="formitem" appearance="fill">
+                <mat-label>Pathway Title</mat-label>
+                <input [attr.disabled]="loading ? '' : null" formControlName="title" matInput placeholder="Custom Pathway" required>
+            </mat-form-field>
+            <mat-form-field class="formitem" appearance="fill">
+                <mat-label>Pathway Paper</mat-label>
+                <input [attr.disabled]="loading ? '' : null" formControlName="paper" matInput placeholder="Paper Name" required>
+            </mat-form-field>
+
+            <div class="formitem">
+                <mat-label>Pathway Coordinate File</mat-label>
+                <input [attr.disabled]="loading ? '' : null" formControlName="coordsFile" accept=".json" type="file" (change)="onCoordFileChange($event)" required>
+            </div>
+
+            <div class="formitem">
+                <mat-label>Pathway Image File</mat-label>
+                <input [attr.disabled]="loading ? '' : null" formControlName="imgFile" accept="image/*" type="file" (change)="onImageFileChange($event)" required>
+            </div>
+        </form>
+        <p class="error-text">{{ error }}</p>
+        <!-- <button class="submit" mat-raised-button color="primary" (click)="submitFiles()" [disabled]="!addPathwayForm.valid || loading">Submit</button> -->
+    </mat-expansion-panel>
+    
+    <mat-table [dataSource]='dataSource' id='table' *ngIf="!loading">
+        
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+            <mat-cell *matCellDef="let pathway">{{ pathway.title }}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="paper">
+            <mat-header-cell *matHeaderCellDef>Paper</mat-header-cell>
+            <mat-cell class="paper"
+                        *matCellDef="let pathway">{{ pathway.paper }}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="link">
+            <mat-header-cell *matHeaderCellDef>Link</mat-header-cell>
+            <mat-cell class="link"
+                        *matCellDef="let pathway">
+                        <a href="{{pathway.link}}" target="_blank">Go to Pathway</a>
+                    </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions" *ngIf="user !== null">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell
+                        *matCellDef="let pathway">
+                        <button mat-button (click)="deleteButton(pathway.id, pathway.imgPath)"><mat-icon>delete</mat-icon></button>
+                    </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+  <mat-progress-bar mode="indeterminate" *ngIf='loading'></mat-progress-bar>
+</mat-card>

@@ -1,0 +1,105 @@
+<mat-card id="protein-page">
+    <button mat-button routerLink='/datasets/arabidopsis'>
+        <mat-icon>keyboard_arrow_left</mat-icon><span class='back-text'>Back</span>
+    </button>
+    <div *ngIf='this.proteinData !== undefined && !this.isLoadingProtein' id="mainContainer">
+        <p *ngIf='proteinData.status === "reviewed"' class='status reviewed'>
+            <mat-icon class='info-icon' [matTooltip]='"This entry has been reviewed by the UniProtKB curators."'>info</mat-icon>
+            Reviewed
+        </p>
+        <p *ngIf='proteinData.status === "unreviewed"' class='status unreviewed'>
+            <mat-icon class='info-icon' [matTooltip]='"This entry has not been reviewed by the UniProtKB curators, and may not have complete data."'>info</mat-icon>
+            Unreviewed
+        </p>
+        <h2 class='title'>
+            <span *ngIf='arapidopsisData.recommendedName !== undefined'>
+                {{ arapidopsisData.recommendedName }}
+            </span>
+            <span *ngIf='arapidopsisData.recommendedName === undefined'>
+                {{ arapidopsisData.protein_name }}
+            </span>
+        </h2>
+        <p class='alt-names'>
+            {{ arapidopsisData.gene_names }}
+        </p>
+
+        <br>
+        <h2 *ngIf="translationObject[0]" class='title'>Homeologs</h2>
+        <div style="margin-left: 15px;" *ngIf="translationObject[0]">
+            <a  *ngIf="translationObject[0].camelina" [routerLink]="['/camelina_prot', translationObject[0].camelina]">Camelina</a> | <a *ngIf="translationObject[0].glymine_max" [routerLink]="['/soybean_prot', translationObject[0].glymine_max]">Soybean</a>
+        </div>
+
+        <!-- <p class='status'> Created {{arapidopsisData.created}} | Modified {{arapidopsisData.modified}}</p>
+        <p class='status'>Version {{arapidopsisData.version}}</p> -->
+        <div class='card-wrapper'>
+        <mat-card class='protein-info-card'>
+            <h3 class='protein-subtitle'>Identification</h3>
+            <div class='protein-info-wrapper'>
+                <p class='protein-info'>Gene: {{ arapidopsisData.gene_names }}</p>
+                <p class='protein-info protein-subtitle'>Protein Names: {{ arapidopsisData.protein_name }} </p>
+                <p class='protein-info'>RefSeq ID: {{ arapidopsisData.refseq_id }}</p>
+                <p class='protein-info'>Tair ID: {{ arapidopsisData.tair_id }}</p>
+                <p class='protein-info protein-subtitle'>Uniprot ID: {{ arapidopsisData.uniprot_id }}</p>
+                <p class='protein-info'>Organism ID: {{ proteinData.organism_id }}</p>
+            </div>
+        </mat-card>
+        <mat-card class='protein-function-card'>
+            <div class="function-header">
+                <h3 class='protein-subtitle'>Protein Function</h3>
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>GPT Query</mat-label>
+                <mat-select [value]="selectedGPTQuery" (selectionChange)="selectGPTOption($event)">
+                    <mat-option [value]="splitGeneNames[0]">
+                    {{splitGeneNames[0]}}
+                    </mat-option>
+                    <mat-option *ngIf="splitGeneNames[1]" [value]="splitGeneNames[1]">
+                    {{splitGeneNames[1]}}
+                    </mat-option>
+                    <mat-option [value]="arapidopsisData.protein_name">
+                    {{arapidopsisData.protein_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button style="margin-left: 1%;" mat-raised-button color="primary" (click)="openGptDialog()">Ask ChatGPT</button>
+            <p class='protein-function' *ngIf='proteinData.function.length > 0'>{{ proteinData.function.substr(10) }}</p>
+            <p class='protein-function' *ngIf='proteinData.function.length === 0'>No function specified for this entry.</p>
+            <b class='protein-subtitle'>Keywords:</b>
+            <p>
+                {{parseKeywords(proteinData.keywords)}}
+            </p>
+        </mat-card>
+        </div>
+        <mat-card class='domain-function-card'>
+            <h3 class='protein-subtitle'>Gene Ontology</h3>
+            <div *ngIf="proteinData.gene_ontology_go">
+                <b class='protein-subtitle'>Gene Ontology - GO</b>
+                <p class='protein-info'>&emsp; {{ proteinData.gene_ontology_go }}</p>
+            </div>
+            <div *ngIf="proteinData.gene_ontology_biological">
+                <b class='protein-subtitle'>Gene Ontology - Biological Process</b>
+                <p class='protein-info'>&emsp; {{ proteinData.gene_ontology_biological }}</p>
+            </div>
+            <div *ngIf="proteinData.gene_ontology_cellular">
+                <b class='protein-subtitle'>Gene Ontology - Cellular Component</b>
+                <p class='protein-info'>&emsp; {{ proteinData.gene_ontology_cellular }}</p>
+            </div>
+            <div *ngIf="proteinData.gene_ontology_molecular">
+                <b class='protein-subtitle'>Gene Ontology - Molecular Function</b>
+                <p class='protein-info'>&emsp; {{ proteinData.gene_ontology_molecular }}</p>
+            </div>
+        </mat-card>
+        <mat-card class='sequence-card'>
+            <h2>Sequence <button mat-raised-button ngxClipboard id="sequence-button" color="primary" [cbContent]="this.proteinData.sequence"
+                (click)="this.notificationService.popup('Copied to Clipboard!')">Copy Sequence</button></h2>
+            <div id="sequence-display">{{this.proteinData.sequence}}</div>
+        </mat-card>
+    </div>
+    <mat-progress-bar id="loading-bar" mode="indeterminate" *ngIf="this.isLoadingProtein"></mat-progress-bar>
+    <div class='no-data-message' *ngIf='this.arapidopsisData === undefined && !this.isLoadingArapidopsis'>
+        <h3 class='error-message'>No uniprot entry found matching '{{this.uniprotId}}'</h3>
+    </div>
+    <div class='no-data-message' *ngIf='this.arapidopsisData !== undefined && this.proteinData === undefined && !this.isLoadingProtein'>
+        <h3 class='error-message'>No protein details found matching '{{this.proteinEntry}}'</h3>
+    </div>
+</mat-card>

@@ -1,0 +1,3 @@
+<p matDialogTitle id="title" >3D Model - <strong>{{this.pdbId}}</strong></p>
+<div id="wrapper"><iframe id="viewer" [src]="pdbLink"></iframe></div>
+<button id="close" color="warn" mat-raised-button (click)="close()" [disableRipple]="true">Close</button>

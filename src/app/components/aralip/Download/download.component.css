@@ -1,0 +1,41 @@
+
+.container {
+    width: 90%;
+    margin: 2%;
+}
+
+.highlight-note {
+    color: red; /* Text color */
+    text-decoration: underline; /* Underline the text */
+    text-decoration-color: red; /* Set the underline color to red */
+}
+
+.download-icon {
+    cursor: pointer; /* Changes the cursor to a hand when hovering */
+    user-select: none; /* Prevents text/image selection when clicked */
+    width:20px; 
+    height:20px;
+}
+
+.download-icon:active {
+    cursor: progress; /* Optional: changes cursor to a progress indicator when clicking */
+}
+
+.citation {
+    font-weight: bold; /* Makes the text bold */
+    font-style: italic; /* Makes the text italic */
+    color: #2c3e50; /* Changes the text color to a darker shade */
+    background-color: #f0f9f0; /* Adds a light green background */
+    padding: 2px 4px; /* Adds padding for spacing around the text */
+    border-radius: 5px; /* Adds slightly rounded corners */
+}
+
+p{
+    line-height: 2; 
+}
+header h1 {
+    text-align: center;
+}
+
+
+

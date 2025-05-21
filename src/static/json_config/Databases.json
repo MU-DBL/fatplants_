@@ -1,0 +1,76 @@
+{   
+    "Arabidopsis":  { 
+                        "database" : "Arabidopsis", 
+                        "collection" : "/New_Lmpd_Arabidopsis_Details",
+                        "fullSearchSpecies": "lmpd",
+                        "uniprot2kegg" : "/Arabidopsis_Uniprot2Kegg",
+                        "kegg2path" : "/Arabidopsis_Kegg2Path",
+                        "tabs" : ["Full Search", "Uniprot ID", "Tair ID"], 
+                        "query" :   {
+                            "Uniprot ID" : "uniprot_id", 
+                            "Tair ID" : "tair_id",
+                            "Full Search": "fullSearch",
+                            "Gene Name" : "geneName",
+                            "Protein Name" : "proteinNames"
+                        },
+                        "defaultUniprot" : "Q09152",
+                        "tabIndex" : 0,
+                        "displayDetails" : [    
+                                                { "field" : "Full Search" ,
+                                                    "tag" : "gene_names"}, 
+                                                { "field" : "Protein Names" , 
+                                                    "tag" : "protein_names"}, 
+                                                { "field" : "Uniprot ID" , 
+                                                    "tag" : "uniprot_id"},
+                                                { "field" : "Tair ID" , 
+                                                    "tag" : "tair_id"},
+                                                { "field" : "RefSeq ID" , 
+                                                    "tag" : "refseq_id"},
+                                                { "field" : "Portein Sequence Length" , 
+                                                    "tag" : "species_long"}, 
+                                                { "field" : "protein Tax ID" , 
+                                                    "tag" : "taxid"}, 
+                                                { "field" : "Protein Uniprot ID" , 
+                                                    "tag" : "uniprot_id"},
+                                                { "field" : "Tair ID" , 
+                                                    "tag" : "tair_id"},
+                                                { "field" : "RefSeq ID" , 
+                                                    "tag" : "refseq_id"},
+                                                { "field" : "Organism ID" , 
+                                                    "tag" : "organism_id"}
+                        ],
+                        "items" : []
+                    },
+    "Soybean" :     { 
+                        "database" : "Soybean", 
+                        "tabs" : ["Full Search", "Uniprot ID"], 
+                        "collection" : "/New_Soybean_Detail",
+                        "fullSearchSpecies": "soya",
+                        "uniprot2kegg" : "",
+                        "kegg2path" : "",
+                        "defaultUniprot" : "A0A0R0KFD7",
+                        "tabIndex" : 0,
+                        "query" : {
+                            "Uniprot ID" : "uniprot_id", 
+                            "USDA-ARS ID" : "GeneID",
+                            "Full Search" : "fullSearch",
+                            "Protein Name" : "proteinNames"
+                        },
+                        "items" : [],
+                        "displayDetails" : [
+                            {}
+                        ]
+                    },
+    "Camelina":     { 
+                        "database" : "Camelina",
+                        "tabs" : ["Full Search", "Uniprot ID", "Tair ID"],
+                        "collection" : "/Camelina",
+                        "fullSearchSpecies": "camelina",
+                        "uniprot2kegg" : "",
+                        "kegg2path" : "",
+                        "tabIndex" : 0,
+                        "query" : {"Uniprot ID" : "uniprot_id", "Tair ID" : "tair_id", "Full Search": "fullSearch"},
+                        "items" : [],
+                        "displayDetails" : {}  
+                    }
+}

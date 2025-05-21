@@ -1,0 +1,19 @@
+.user-display {
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px lightgrey;
+  padding: 1rem 1rem 1rem 1rem;
+  border-radius: 1rem;
+}
+
+.username {
+  text-align: center;
+}
+
+.email {
+  text-align: center;
+}
+
+.permission {
+  text-align: center;
+}

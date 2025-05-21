@@ -1,0 +1,180 @@
+/* General Styles */
+
+  .comments-page {
+    width: 90%;
+    margin: 2%;
+  }
+  
+  .header h2 {
+    font-size: 18px;
+    margin: 10px 0 20px;
+  }
+  
+  p {
+    text-align: justify;
+  }
+  
+  .comments-container {
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  /* Label and Input Styles */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="url"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 2px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    box-sizing: border-box;
+    transition: border-bottom 0.3s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="url"]:focus {
+    border-bottom: 2px solid #666;
+    outline: none;
+  }
+  
+  /* Error Message Box Styles */
+  .alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+  }
+  
+  .alert ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+  
+  .alert li {
+    list-style-type: disc;
+    margin-left: 15px;
+  }
+  
+  /* Individual Field Error Styles */
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  
+  /* Highlight Invalid Fields */
+  .form-group.invalid input,
+  .form-group.invalid select {
+    border-bottom: 2px solid red;
+    background-color: #ffe6e6;
+  }
+  
+  .form-group.invalid input:focus,
+  .form-group.invalid select:focus {
+    border-bottom: 2px solid darkred;
+  }
+  
+  /* Example Text */
+  .example {
+    font-size: 0.85em;
+    color: #555;
+  }
+  
+  .required {
+    color: red;
+    font-weight: bold;
+  }
+  
+  
+  .example-url,
+  a.example-url {
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  a.example-url:focus {
+    text-decoration: none;
+    color: darkblue;
+  }
+  
+  /* Select field styling */
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 2px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  select.ng-invalid.ng-touched {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+  }
+  
+  /* Form Buttons */
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .submit-button {
+    height: 35px;
+    border: 10px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #629B07;
+    color: #ffffff;
+  }
+  
+  /* Clear Button Styling */
+  .clear-button {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ddd;    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Error Animations */
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+    75% {
+      transform: translateX(-5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  input.ng-invalid.ng-touched {
+    animation: shake 0.3s;
+  }

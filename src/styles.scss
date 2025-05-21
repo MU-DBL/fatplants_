@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url('https://fonts.googleapis.com/css?family=Catamaran:200&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow|PT+Serif&display=swap');
+@import './variables';
+
+.background {
+  background: url("app/assets/homepageAssets/plantParalax.JPG") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.pointer {
+  cursor: pointer;
+}
+.pointer:hover {
+  color: $lime-green;
+  transition: color 0.2s;
+}
+
+.mat-tooltip {
+  font-size: 14px !important;
+  white-space: pre-line !important;
+}
+

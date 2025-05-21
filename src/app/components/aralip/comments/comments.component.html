@@ -1,0 +1,285 @@
+
+  <div class="comments-page">
+    <div class="comments-container">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+        <div class="form-group">
+          <h2>Arabidopsis Acyl-Lipid Metabolism Form <br><br></h2>
+          <p>
+            Dear colleagues,<br><br>
+            We need your support to keep this website accurate and up-to-date.<br>
+            Please help us by updating or adding new records. Be sure to fill each text box if applicable.<br>
+            Each time you submit the form, you'll be given a choice to go back and submit a second record.<br>
+            We very much appreciate your support,<br><br>
+            THANK YOU
+          </p><hr> <br><br>
+        </div>
+  
+        <div class="form-group">
+          <p>Submitter Information</p>
+        </div>
+        
+      <!-- Error Message Section -->
+      <div #errorMessage *ngIf="showFormError" class="alert alert-danger">
+        <strong>Error:</strong> Please correct the following issues:
+        <ul>
+          <li *ngFor="let error of errorMessages">{{ error }}</li>
+        </ul>
+      </div>
+
+      <!-- Name Field -->
+      <div class="form-group" [class.invalid]="!formData.name.trim() && showFormError">
+        <label for="name">Name: <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="name" 
+          name="name" 
+          [(ngModel)]="formData.name" 
+          required 
+          placeholder="Enter your name" />
+      </div>
+
+      <!-- Affiliation Field -->
+      <div class="form-group" [class.invalid]="!formData.affiliation.trim() && showFormError">
+        <label for="affiliation">Affiliation: <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="affiliation" 
+          name="affiliation" 
+          [(ngModel)]="formData.affiliation" 
+          required 
+          placeholder="Enter your affiliation" />
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group" 
+           [class.invalid]="(!formData.email_address.trim() || !isValidEmail(formData.email_address)) && showFormError">
+        <label for="email">Email Address: <span class="required">*</span></label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email_address" 
+          [(ngModel)]="formData.email_address" 
+          required 
+          placeholder="Enter your email address" />
+      </div>
+
+      <!-- Record Type Selection -->
+<div class="form-group" [class.invalid]="!formData.record_type && showFormError">
+  <p>Please Select The Type Of Record You Want To Submit: <span class="required">*</span></p>
+  <label>
+    <input 
+      type="radio" 
+      name="record_type" 
+      [(ngModel)]="formData.record_type" 
+      value="new" 
+      required /> 
+    New
+  </label>
+  <label>
+    <input 
+      type="radio" 
+      name="record_type" 
+      [(ngModel)]="formData.record_type" 
+      value="update" 
+      required /> 
+    Update
+  </label>
+  <div *ngIf="!formData.record_type && showFormError" class="error">
+    <small>Please select a record type.</small>
+  </div>
+</div>
+  
+        <div class="form-group">
+          <label for="url1">Record: If Updating, Please Paste The URL For The Target Record. <br>
+            <span class="example">Example: 
+              <a href="http://www.ArabidopsisAcylLipidMetabolism/enzymes/2" class="example-url">
+                http://www.ArabidopsisAcylLipidMetabolism/enzymes/2
+              </a>
+            </span>
+          </label>
+          <input type="url" id="recordUrl" name="record_url" placeholder="Your answer" [(ngModel)]="formData.record_url">
+        </div>
+
+       
+
+        <div class="form-group">
+          <label for="url2">Figure: If Updating, Please Paste The URL For The Target Figure And Describe The Changes. <br>
+            <span class="example">Example: 
+              <a href="http://www.ArabidopsisAcylLipidMetabolism/pathways/triacylglycerol_biosynthesis" class="example-url">
+                http://www.ArabidopsisAcylLipidMetabolism/pathways/triacylglycerol_biosynthesis
+              </a>. Under the regulatory proteins, change PKL1 to PKL.
+            </span>
+          </label>
+          <input type="url" id="url" name="figure_url" placeholder="Your answer" [(ngModel)]="formData.figure_url">
+        </div>
+        
+
+
+        <div class="form-group">
+          <label for="pathway">Pathway: Please Select The Pathway From This List. <br> 
+            <span class="example">Example: Fatty Acid Synthesis</span>
+          </label>
+          
+          <select [(ngModel)]="formData.pathway" name="pathway">
+            <option value="" disabled selected hidden>Choose</option>
+            <option *ngFor="let path of pathways" [value]="path">{{ path }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="protein-family">Protein Family Name - Common: <br> 
+            <span class="example">Example: BAHD Acyltransferase Family</span>
+          </label>
+          <input type="text" id="protein-family" name="protein_family_name_common" placeholder="Your answer" [(ngModel)]="formData.protein_family_name_common">
+        </div>
+
+        <div class="form-group">
+          <label for="protein-abbreviation">Protein Family Abbreviation - Common: <br> 
+            <span class="example">Example: BAHD</span>
+          </label>
+          <input type="text" id="protein-abbreviation" name="protein_family_abbreviation_common" placeholder="Your answer" [(ngModel)]="formData.protein_family_abbreviation_common">
+        </div>
+
+        <div class="form-group">
+          <label for="isoform-name">Isoform/Gene Specific Name: <br> 
+            <span class="example">Example: Aliphatic Suberin Feruloyl Transferase</span>
+          </label>
+          <input type="text" id="isoform-name" name="isoform_gene_name" placeholder="Your answer" [(ngModel)]="formData.isoform_gene_name">
+        </div>
+
+        <div class="form-group">
+          <label for="isoform">Isoform/Gene Specific Abbreviation: <br>
+            <span class="example">Example: ASFT1</span>
+          </label>
+          <input type="text" id="isoform" name="isoform_gene_abbreviation" placeholder="Your answer" [(ngModel)]="formData.isoform_gene_abbreviation">
+        </div>
+
+        <div class="form-group">
+          <label for="gene-locus">Gene Locus: <br>
+            <span class="example">Example: At5g41040</span>
+          </label>
+          <input type="text" id="gene-locus" name="gene_locus" placeholder="Your answer" [(ngModel)]="formData.gene_locus">
+        </div>
+
+        <div class="form-group">
+          <label for="ec-number">E.C. Number: <br>
+            <span class="example">Example: 2.3.1.*</span>
+          </label>
+          <input type="text" id="ec-number" name="ec_number" placeholder="Your answer" [(ngModel)]="formData.ec_number">
+        </div>
+
+        <div class="form-group">
+          <label>A) Subcellular Location: Please Select If Listed; Otherwise, Fill The Next Text Box Below.
+              <br><span class="example">Example: Endomembrane (GFP)</span>
+          </label>
+          <select [(ngModel)]="formData.subcellular_location_listed" name="subcellular_location_listed">
+            <option value="" disabled selected hidden>Choose</option>
+            <option *ngFor="let location of subcellularLocations" [value]="location">{{ location }}</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label>B) Subcellular Location: Fill If Not Listed Above.
+              <br><span class="example">Example: Endomembrane (luciferase)</span>
+          </label>
+          <input type="text" [(ngModel)]="formData.subcellular_location_filled" name="subcellular_location_filled" placeholder="Your answer">
+      </div>
+
+
+      <div class="form-group">
+          <label>Mutant Name:
+              <br><span class="example">Example: asft</span>
+          </label>
+          <input type="text" id="mutant-name" name="mutant_name" placeholder="Your answer" [(ngModel)]="formData.mutant_name">
+      </div>
+      
+      <div class="form-group">
+          <label>A) Evidence For Function: Select If Listed; Otherwise, Fill The Next Text Box Below.
+              <br><span class="example">Example: Mutant Char., Heterol Exp'n.; in-planta Overexp'n.</span>
+          </label>
+          <select [(ngModel)]="formData.evidence_for_function_listed" name="evidence_for_function_listed">
+            <option value="" disabled selected hidden>Choose</option>
+            <option *ngFor="let evidence of evidenceForFunction" [value]="evidence">{{ evidence }}</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label>B) Evidence For Function: Fill If Not Listed Above.
+              <br><span class="example">Example: Comple. of yeast mutant; in-planta Overexp'n.</span>
+          </label>
+          <input type="text" [(ngModel)]="formData.evidence_for_function_filled" name="evidence_for_function_filled" placeholder="Your answer">
+      </div>
+
+      <div class="form-group">
+          <label>Specific Comments On This Locus:
+              <br><span class="example">Example: Catalyzes acyl transfer from feruloyl-CoA to ω-hydroxyfatty acids and fatty alcohols; belongs to BAHD superfamily (61 proteins). Function in providing ferulate to suberin synthesis</span>
+          </label>
+          <input type="text" [(ngModel)]="formData.specific_comments_on_locus" name="specific_comments_on_locus" placeholder="Your answer">
+      </div>
+      <div class="form-group">
+          <label>Other Comments:
+              <br><span class="example">Example: Strong homolog in brassica with strong activity; see AuthorName et al (2010; <a href="http://www.pubmed.com/article" class="example-url">http://www.pubmed.com/article)</a></span>
+          </label>
+          <input type="text" [(ngModel)]="formData.other_comments" name="other_comments" placeholder="Your answer">
+      </div>
+      <div class="form-group">
+          <p>References <br>Reference must specifically add new information about the Arabidopsis gene described on this page. <br><br><span class="example">'Reference 1' corresponds to 'Link To Pubmed 1';  'Reference 2' corresponds to 'Link To Pubmed 2' ;  'Reference 3' corresponds to 'Link To Pubmed 3.'</span>
+          </p> 
+      </div>
+      <div class="form-group">
+        <label>Reference 1: First author (date). Please Enter Only One Reference.
+            <br><span class="example">Example: AuthorName et al 2007</span>
+        </label>
+        <input type="text" [(ngModel)]="formData.reference_1" name="reference_1" placeholder="Reference 1">
+    </div>
+      <div class="form-group">
+          <label>Link to Pubmed 1. Please Enter Only One URL For The Reference Above.
+              <br><span class="example">Paste the URL from Pubmed for the reference you have added above. <br>Example:
+                <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=17259262" class="example-url">
+                  http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=17259262
+                </a>
+              </span>
+          </label>
+          <input type="url" [(ngModel)]="formData.pubmed_link_1" name="pubmed_link_1" placeholder="Your answer">
+      </div>
+
+      <div class="form-group">
+        <label>Reference 2: First author (date). Please Enter Only One Reference.
+            <br><span class="example">Example: AuthorName et al 2007</span>
+        </label>
+        <input type="text" [(ngModel)]="formData.reference_2" name="pubmed_link_2" placeholder="Reference 2">
+    </div>
+      <div class="form-group">
+          <label>Link to Pubmed 2. Please Enter Only One URL For The Reference Above.
+              <br><span class="example">Paste the URL from Pubmed for the reference you have added above. <br>Example:
+                <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=17496107" class="example-url">
+                  http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=17496107
+                </a>
+              </span>
+          </label>
+          <input type="url" id="url" name="pubmed_link_2" placeholder="Your answer" [(ngModel)]="formData.pubmed_link_2">
+      </div>
+
+
+
+    <div class="form-group">
+      <label>Reference 3: First author (date). Please Enter Only One Reference.
+          <br><span class="example">Example: AuthorName et al 2007</span>
+      </label>
+      <input type="text" placeholder="Your answer" [(ngModel)]="formData.reference_3" name="reference_3">
+  </div>
+    <div class="form-group">
+        <label>Link to Pubmed 3. Please Enter Only One URL For The Reference Above.
+            <br><span class="example">Paste the URL from Pubmed for the reference you have added above. <br>Example:
+              <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=12897259" class="example-url">
+                http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=12897259
+              </a>
+            </span>
+        </label>
+        <input type="url" id="url" name="pubmed_link_3" placeholder="Your answer" [(ngModel)]="formData.pubmed_link_3">
+    </div>
+    
+    <div class="form-buttons">
+      <input type="submit" value="Submit" class="submit-button" />
+      <input type="reset" #clearButton value="Clear Form" class="clear-button" />
+    </div>
+      </form>  
+    </div>
+  </div>

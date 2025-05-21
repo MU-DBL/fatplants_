@@ -1,0 +1,573 @@
+<mat-card>
+    <div style="margin:2%">
+        <h3>{{name}}</h3>
+        <div style="margin-right: 2%;">
+            <div class="toggle-container">
+                <button (click)="toggleCollapse()" class="toggle-btn">
+                    {{ isCollapsed ? '+' : '-' }}
+                </button>
+                <p>Click + to expand and view the legend, abbreviations, and contributors of the pathway, or - to collapse</p>
+            </div>
+              <div *ngIf="!isCollapsed" class="collapsible-div">
+                <div *ngIf="!legend.includes('Beisson et al'); else beisson">
+                    <P> <b>Legend:</b> {{legend}} </P>
+                </div>
+                <ng-template #beisson>
+                    <P> <b>Legend:</b> This pathway has not been updated in the current project. For more up-to-date information, please see: Iván F. Acosta   and   Edward E. Farmer <a href="http://www.bioone.org/doi/full/10.1199/tab.0129" target="_blank">Jasmonates</a> in "The Arabidopsis Book", <a href="http://www.oxylipins.uni-goettingen.de/" target="_blank">Oxylipin Profiling Database</a> website, and <a href="http://www.springer.com/life+sciences/biochemistry+%26+biophysics/book/978-3-642-03872-3?changeHeader" target="_blank">Lipid Signaling in Plants</a>. Series: Plant Cell Monographs, Vol. 16,  Munnik, T (Ed.) 2010 </P>
+                    <P> <b>Reference:</b> Based on <a href="http://www.plantphysiol.org/cgi/content/abstract/132/2/681" target="_blank">Beisson et al (2003)</a> </P>
+                </ng-template>
+                <div *ngIf="abbreviation != 'Unknown'">
+                    <p> <b>Abbreviations: </b> {{abbreviation}}</p>
+                </div>
+                <div *ngIf="contributor">
+                    <p> <b>Contributors:</b> {{contributor}}</p>
+                </div>
+              </div>
+        </div>
+        <p><span style="color: red;">Note:</span> Click on red or purple text or colored circle for further information.</p>
+        <p>Update 2015: Information on mutants has been <a href="/aralip-menu/mutant">updated and expanded</a></p>
+        <p><span *ngIf="tabTitle[0]">Acyl-Lipid Chapter link: {{tabTitle.length}}</span><!--Tried to use *ngIf="tabTitle.length!=0", but the length is 1 even no tabTitle exist. Use *ngIf="tabTitle[0]" to fix it.-->
+            <span *ngFor="let title of tabTitle; let i = index">
+                <a href="{{tabLink[i]}}"><i>{{title}}</i></a>&nbsp;
+            </span>
+        </p>
+        <div id="pathway_image" style="height:900px;">
+            <img src="/static/aralip/{{path}}.GIF" border="0" [attr.usemap]="'#' + path">
+            <map name="fatty_acid_synthesis">
+                <area shape="RECT" href="/enzymes/300" coords="742,331,765,344" oldtitle="PII/AtGLB1.  Binds BCCP subunits of HtACCase in a 2-oxoglutarate-dependent manner and decreases V(max) of the enzyme." title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/1" coords="742,454,817,468" oldtitle="Homomeric Acetyl-CoA Carboxylase.  Has very little role in plastid FAS" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/18" coords="106,95,157,109" oldtitle="Pyruvate Dehydrogenase β subunit, E1b component of Pyruvate Dehydrogenase Complex " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/18" coords="106,95,157,109" oldtitle="Pyruvate Dehydrogenase β subunit, E1b component of Pyruvate Dehydrogenase Complex " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/252" coords="743,310,789,323" oldtitle="AP2/ERWEBP Transcription Factors" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/19" coords="104,113,151,122" oldtitle="Dihydrolipoamide Acetyltransferase, E2 component of Pyruvate Dehydrogenase Complex" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/20" coords="154,113,181,122" oldtitle="Dihydrolipoamide Dehydrogenase, E3 component of Pyruvate Dehydrogenase Complex" title="" data-hasqtip="true">
+                <area shape="RECT" nohref="" coords="235,249,330,287" oldtitle="FAS" title="" data-hasqtip="true" aria-describedby="qtip-8">
+                <area shape="RECT" href="/enzymes/2" coords="307,78,342,88" oldtitle="α-Carboxyltransferase" title="" data-hasqtip="true" aria-describedby="qtip-9">
+                <area shape="RECT" href="/enzymes/3" coords="345,78,379,91" oldtitle="β-Carboxyltransferase" title="" data-hasqtip="true" aria-describedby="qtip-10">
+                <area shape="RECT" href="/enzymes/4" coords="332,92,369,102" oldtitle="Biotin Carboxyl Carrier Protein" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/3" coords="535,376, 536,376, 537,376, 537,375, 538,375, 539,375, 539,374, 540,373, 540,372, 541,371, 541,370, 541,369, 540,368, 540,367, 539,367, 539,366, 538,365, 537,365, 536,365, 536,364, 535,364, 534,364, 534,365, 533,365, 532,365, 531,366, 531,367, 530,367, 530,368, 529,368, 529,369, 529,370, 529,371, 529,372, 530,372, 530,373, 531,374, 531,375, 532,375, 533,375, 533,376, 534,376, 535,376" oldtitle="Fatty Acid Elongation, Desaturation &amp; Export From Plastid" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/5" coords="306,92,325,102" oldtitle="Biotin Carboxylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/14" coords="463,486,505,500" oldtitle="Acyl Carrier Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/22" coords="421,525,444,539" oldtitle="Lipoyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/21" coords="326,466,350,488" oldtitle="Lipoate Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/23" coords="553,138,619,173" oldtitle="Holo-ACP Synthase " title="" data-hasqtip="true" aria-describedby="qtip-17">
+                <area shape="RECT" href="/enzymes/17" coords="105,79,162,91" oldtitle="Pyruvate Dehydrogenase α subunit, E1a component of Pyruvate Dehydrogenase Complex " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/6" coords="376,84,426,125" oldtitle="Malonyl-CoA : ACP Malonyltransferase" title="" data-hasqtip="true" aria-describedby="qtip-19">
+                <area shape="RECT" href="/enzymes/14" coords="492,127,534,141" oldtitle="Acyl Carrier Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/7" coords="300,181,354,207" oldtitle="Ketoacyl-ACP Synthase I " title="" data-hasqtip="true" aria-describedby="qtip-21">
+                <area shape="RECT" href="/enzymes/11" coords="330,386,363,418" oldtitle="Hydroxyacyl-ACP Dehydrase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/12" coords="383,283,399,308" oldtitle="Enoyl-ACP Reductase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/10" coords="134,320,156,356" oldtitle="Ketoacyl-ACP Reductase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/9" coords="155,156,205,205" oldtitle="Ketoacyl-ACP Synthase III" title="" data-hasqtip="true">
+               </map>
+               <map name="fatty_acid_elongation_desaturation_export_from_plastid">
+                <area shape="POLYGON" href="/aralip-menu/pathway/8" coords="563,573, 564,573, 565,573, 566,572, 567,572, 567,571, 568,571, 568,570, 569,569, 569,568, 569,567, 569,566, 569,565, 568,564, 567,563, 567,562, 566,562, 565,562, 564,561, 563,561, 562,562, 561,562, 560,562, 560,563, 559,563, 559,564, 558,564, 558,565, 558,566, 558,567, 558,568, 558,569, 558,570, 559,570, 559,571, 560,572, 561,572, 562,573, 563,573" oldtitle="Eukaryotic Phospholipid Synthesis &amp; Editing" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/16" coords="637,172,676,184" oldtitle="Acyl-ACP Thioesterase B" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/15" coords="637,192,678,204" oldtitle="Acyl-ACP Thioesterase A" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/16" coords="441,172,480,184" oldtitle="Acyl-ACP Thioesterase B" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/15" coords="441,192,482,204" oldtitle="Acyl-ACP Thioesterase A" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/16" coords="235,172,276,184" oldtitle="Acyl-ACP Thioesterase B" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/15" coords="235,192,274,204" oldtitle="Acyl-ACP Thioesterase A" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/4" coords="680,95, 681,95, 682,95, 682,94, 683,94, 684,94, 684,93, 685,92, 685,91, 686,90, 686,89, 686,88, 685,88, 685,87, 685,86, 684,86, 684,85, 683,84, 682,84, 681,84, 680,83, 679,84, 678,84, 677,84, 676,85, 676,86, 675,86, 675,87, 674,88, 674,89, 674,90, 674,91, 675,91, 675,92, 676,93, 676,94, 677,94, 678,94, 678,95, 679,95, 680,95" oldtitle="Prokaryotic Glycerolipid, Galactolipid, &amp; Sulfolipid Synthesis (1 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/4" coords="279,95, 280,95, 281,95, 281,94, 282,94, 283,94, 283,93, 284,93, 284,92, 285,91, 285,90, 285,89, 285,88, 285,87, 284,86, 284,85, 283,85, 283,84, 282,84, 281,83, 280,83, 279,83, 278,83, 277,84, 276,84, 276,85, 275,85, 275,86, 274,86, 274,87, 274,88, 274,89, 274,90, 274,91, 274,92, 275,92, 275,93, 276,93, 276,94, 277,94, 278,94, 278,95, 279,95" oldtitle="Prokaryotic Glycerolipid, Galactolipid, &amp; Sulfolipid Synthesis (1 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/2" coords="121,139, 122,138, 123,138, 124,138, 124,137, 125,137, 125,136, 126,136, 126,135, 126,134, 126,133, 126,132, 126,131, 126,130, 125,130, 125,129, 124,129, 124,128, 123,128, 122,127, 121,127, 120,127, 119,127, 118,128, 117,128, 117,129, 116,129, 116,130, 115,131, 115,132, 115,133, 115,134, 115,135, 116,136, 116,137, 117,137, 117,138, 118,138, 119,138, 120,138, 120,139, 121,139" oldtitle="Fatty Acid Synthesis" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/277" coords="551,460,597,472" oldtitle="Acyl-CoA Binding Protein" title="" data-hasqtip="true"> <!--basil-->
+                <area shape="RECT" href="/enzymes/124" coords="430,377,474,394" oldtitle="plastidial Long-Chain Acyl-CoA Synthetase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/213" coords="497,393,561,406" oldtitle="plastidial ABC Acyl Transporter" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/8" coords="359,137,406,149" oldtitle="Ketoacyl-ACP Synthase II" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/13" coords="556,136,591,149" oldtitle="Stearoyl-ACP Desaturase" title="" data-hasqtip="true">
+               </map>
+               <map name="prokaryotic_galactolipid_sulfolipid_phospholipid_synthesis">
+                <area shape="RECT" href="/enzymes/29" coords="460,407,504,418" oldtitle="plastidial Phosphatidylglycerol-Phosphate Synthase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/3" coords="457,42, 458,42, 459,42, 459,41, 460,41, 461,40, 462,39, 462,38, 463,38, 463,37, 463,36, 463,35, 463,34, 462,34, 462,33, 461,32, 460,31, 459,31, 458,30, 457,30, 456,30, 455,31, 454,31, 453,32, 452,33, 452,34, 451,35, 451,36, 451,37, 452,38, 452,39, 453,40, 454,41, 455,41, 455,42, 456,42, 457,42" oldtitle="Fatty Acid Elongation, Desaturation &amp; Export From Plastid" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/26" coords="262,100,304,112" oldtitle="plastidial Glycerol-3-Phosphate Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/27" coords="467,100,517,112" oldtitle="1-acylglycerol-3-phosphate acyltransferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/3" coords="270,42, 271,42, 272,41, 273,41, 273,40, 274,40, 274,39, 275,39, 275,38, 275,37, 275,36, 275,35, 275,34, 275,33, 274,33, 274,32, 273,32, 273,31, 272,31, 271,31, 271,30, 270,30, 269,30, 268,30, 268,31, 267,31, 266,31, 266,32, 265,32, 265,33, 264,34, 264,35, 264,36, 264,37, 264,38, 265,39, 265,40, 266,40, 266,41, 267,41, 268,42, 269,42, 270,42" oldtitle="Fatty Acid Elongation, Desaturation &amp; Export From Plastid" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/34" coords="608,155,630,166" oldtitle="Phosphatidate Phosphatase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/5" coords="302,410, 303,410, 304,410, 305,410, 305,409, 306,409, 306,408, 307,408, 307,407, 307,406, 308,405, 308,404, 307,403, 307,402, 307,401, 306,401, 305,400, 304,399, 303,399, 302,399, 301,399, 300,399, 299,400, 298,400, 298,401, 297,401, 297,402, 296,403, 296,404, 296,405, 296,406, 297,407, 297,408, 298,409, 299,409, 299,410, 300,410, 301,410, 302,410" oldtitle="Prokaryotic Glycerolipid, Galactolipid, &amp; Sulfolipid Synthesis ( 2 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/5" coords="760,164, 761,164, 762,164, 763,163, 764,163, 764,162, 765,161, 765,160, 765,159, 765,158, 765,157, 765,156, 764,156, 764,155, 763,154, 762,154, 761,153, 760,153, 759,153, 758,153, 757,154, 756,154, 756,155, 755,155, 755,156, 754,157, 754,158, 754,159, 754,160, 754,161, 755,161, 755,162, 756,163, 757,164, 758,164, 759,164, 760,164" oldtitle="Prokaryotic Glycerolipid, Galactolipid, &amp; Sulfolipid Synthesis ( 2 of 2)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/25" coords="95,101,142,113" oldtitle="plastidial NAD-dependent Glycerol-3-Phosphate Dehydrogenase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/5" coords="760,151, 761,151, 762,150, 763,150, 763,149, 764,149, 764,148, 765,148, 765,147, 765,146, 765,145, 765,144, 765,143, 765,142, 764,142, 764,141, 763,141, 763,140, 762,140, 761,140, 760,139, 759,139, 759,140, 758,140, 757,140, 756,140, 756,141, 755,141, 755,142, 754,143, 754,144, 754,145, 754,146, 754,147, 755,148, 755,149, 756,149, 756,150, 757,150, 758,151, 759,151, 760,151" oldtitle="Prokaryotic Glycerolipid, Galactolipid, &amp; Sulfolipid Synthesis ( 2 of 2)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/28" coords="532,208,545,282" oldtitle="plastidial CDP-DAG Synthase" title="" data-hasqtip="true">
+               </map>
+               <map name="prokaryotic_galactolipid_sulfolipid_phospholipid_synthesis_2">
+                <area shape="RECT" href="/enzymes/251" coords="256,500,291,512" oldtitle="UDP-Glucose Pyrophosphorylase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/4" coords="61,85, 62,85, 63,85, 64,85, 65,84, 65,83, 66,83, 66,82, 67,81, 67,80, 67,79, 67,78, 66,78, 66,77, 65,76, 65,75, 64,75, 63,75, 63,74, 62,74, 61,74, 60,74, 59,74, 59,75, 58,75, 57,75, 57,76, 56,77, 56,78, 55,79, 55,80, 55,81, 56,81, 56,82, 56,83, 57,83, 57,84, 58,85, 59,85, 60,85, 61,85" oldtitle="Prokaryotic Galactolipid Sulfolipid &amp; Phospholipid Synthesis ( 1 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/4" coords="61,354, 62,354, 63,354, 64,354, 64,353, 65,353, 65,352, 66,352, 66,351, 67,350, 67,349, 67,348, 67,347, 66,346, 66,345, 65,345, 65,344, 64,344, 63,343, 62,343, 61,343, 60,343, 59,343, 58,344, 57,344, 57,345, 56,345, 56,346, 56,347, 55,348, 55,349, 55,350, 56,350, 56,351, 56,352, 57,352, 57,353, 58,353, 58,354, 59,354, 60,354, 61,354" oldtitle="Prokaryotic Galactolipid Sulfolipid &amp; Phospholipid Synthesis  ( 1 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/4" coords="61,299, 62,299, 62,298, 63,298, 64,298, 65,297, 65,296, 66,296, 66,295, 67,295, 67,294, 67,293, 67,292, 67,291, 66,291, 66,290, 65,289, 65,288, 64,288, 63,288, 63,287, 62,287, 61,287, 60,287, 59,287, 59,288, 58,288, 57,288, 57,289, 56,290, 56,291, 55,292, 55,293, 55,294, 56,295, 56,296, 57,296, 57,297, 58,298, 59,298, 60,298, 60,299, 61,299" oldtitle="Prokaryotic Galactolipid Sulfolipid &amp; Phospholipid Synthesis  ( 1 of 2)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/33" coords="602,42,646,54" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/38" coords="115,463,128,489" oldtitle="UDP-Sulfoquinovose Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/39" coords="111,355,144,373" oldtitle="UDP-sulfoquinovose:DAG sulfoquinovosyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/30" coords="89,58,138,70" oldtitle="Phosphatidylglycerol-Phosphate Phosphatase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/37" coords="184,242,246,254" oldtitle="Digalactosyldiacylglycerol Synthase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/32" coords="409,160,453,172" oldtitle="Oleate Desaturase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/274" coords="601,160,644,172" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/33" coords="601,142,645,154" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/274" coords="601,294,644,306" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/33" coords="601,276,645,288" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/32" coords="409,295,453,307" oldtitle="Oleate Desaturase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/35" coords="89,205,140,259" oldtitle="Monogalactosyldiacylglycerol Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/31" coords="241,58,284,70" oldtitle="Phosphatidylglycerol Desaturase (palmitate specific)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/274" coords="601,413,644,426" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/274" coords="601,59,644,71" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/33" coords="601,395,645,407" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/32" coords="409,409,453,421" oldtitle="Oleate Desaturase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/32" coords="409,58,453,70" oldtitle="Oleate Desaturase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/36" coords="241,161,285,173" oldtitle="MGDG Desaturase (palmitate-specific)  " title="" data-hasqtip="true">
+               </map>
+               <map name="eukaryotic_galactolipid_sulfolipid_synthesis">
+                <area shape="RECT" href="/enzymes/240" coords="109,422,138,447" oldtitle="Protein Involved in Lipid Transport" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/239" coords="80,445,108,470" oldtitle="ATPase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/238" coords="100,411,130,437" oldtitle="Phosphatidic Acid-Binding Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/34" coords="206,216,251,227" oldtitle="Phosphatidate Phosphatase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/144" coords="475,495,511,510" oldtitle="Phospholipase A2" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/34" coords="219,450,236,460" oldtitle="Phosphatidate Phosphatase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/38" coords="190,139,218,149" oldtitle="UDP-Sulfoquinovose Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/37" coords="419,293,429,342" oldtitle="Digalactosyldiacylglycerol Synthase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/35" coords="342,298,381,339" oldtitle="Monogalactosyldiacylglycerol Synthase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/34" coords="207,202,225,212" oldtitle="Phosphatidate Phosphatase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/142" coords="152,217,184,229" oldtitle="Phospholipase D zeta" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/136" coords="181,245,221,255" oldtitle="Non specific Phospholipase C" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/39" coords="353,147,374,171" oldtitle="UDP-sulfoquinovose:DAG sulfoquinovosyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/41" coords="72,434,100,459" oldtitle="Permease-like Protein of Outer Chloroplast Envelope" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/40" coords="370,476,415,492" oldtitle="1-acylglycerophosphorylcholine Acyltransferase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/274" coords="518,375,552,385" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/33" coords="519,357,553,367" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/274" coords="518,220,552,230" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/33" coords="519,202,553,212" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/274" coords="518,103,552,113" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/33" coords="519,85,553,95" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+               </map>
+               <map name="triacylglycerol_biosynthesis">
+                <area shape="RECT" href="/enzymes/296" coords="816,345,848,355" oldtitle="Abscisic Acid Insensitive (ABI) transcription factors" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/enzymes/107" coords="732,619, 712,640, 679,655, 684,665, 717,650, 741,625, 732,619" oldtitle="Caleosin" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/enzymes/106" coords="614,658, 614,670, 648,672, 676,668, 674,656, 643,660, 614,658" oldtitle="Oil-Body Oleosin" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/enzymes/253" coords="543,614, 534,621, 555,652, 604,669, 607,658, 567,643, 543,614" oldtitle="Steroleosin" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/9" coords="784,628, 785,628, 785,627, 786,627, 787,627, 787,626, 788,626, 788,625, 789,625, 789,624, 789,623, 789,622, 789,621, 789,620, 789,619, 788,619, 788,618, 787,618, 787,617, 786,617, 785,617, 785,616, 784,616, 783,616, 782,616, 782,617, 781,617, 780,617, 780,618, 779,618, 779,619, 778,620, 778,621, 778,622, 778,623, 778,624, 779,625, 779,626, 780,626, 780,627, 781,627, 782,627, 782,628, 783,628, 784,628" oldtitle="Triacylglycerol &amp; Fatty Acid Degradation" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/56" coords="390,543,422,554" oldtitle="Choline-Phosphate Cytidylyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/54" coords="217,545,239,556" oldtitle="Choline Kinase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/25" coords="315,90,358,101" oldtitle="NAD-dependent Glycerol-3-Phosphate Dehydrogenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/40" coords="342,301,368,341" oldtitle="1-acylglycerol-3-phosphocholine Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/108" coords="606,397,617,436" oldtitle="Phospholipid : Diacylglycerol Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/105" coords="639,398,650,439" oldtitle="Acyl-CoA : Diacylglycerol Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/110" coords="749,400,765,454" oldtitle="Monoacylglycerol Transacylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/278" coords="479,302,509,341" oldtitle="Phosphatidylcholine:diacylglycerol cholinephosphotransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/27" coords="481,170,529,194" oldtitle="1-Acylglycerol-3-Phosphate Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/272" coords="816,461,843,471" oldtitle="a SWI/SWF nuclear-localized chromatin remodeling factor of the CHD3 group" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/260" coords="816,438,855,449" oldtitle="Trihelix DNA Binding Family" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/259" coords="816,414,892,425" oldtitle="a member of a novel family of B3 domain proteins" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/259" coords="816,391,887,402" oldtitle="a member of a novel family of B3 domain proteins" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/252" coords="816,368,852,378" oldtitle="AP2/ERWEBP Transcription Factors" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/257" coords="816,321,848,332" oldtitle="Homologous to the maize transcription factor Viviparous-1" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/256" coords="816,298,854,309" oldtitle="Transcriptional factor with high similarity to the B3 region of the VP1/ABI3-like proteins" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/255" coords="816,275,853,286" oldtitle="Transcription factor that contains a B3 domain" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/254" coords="816,252,852,262" oldtitle="Transcriptional activator of genes required for both embryo maturation and cellular differentiation" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/34" coords="558,240,574,259" oldtitle="Phosphatidate Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/144" coords="218,363,254,374" oldtitle="Phosphalipase A2" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/109" coords="673,399,688,447" oldtitle="Diacylglycerol Transacylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/47" coords="73,439,108,450" oldtitle="Oleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/46" coords="512,330,560,385" oldtitle="Diacylglycerol Cholinephosphotransferase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/26" coords="390,171,423,199" oldtitle="Glycerol-3-Phosphate Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/48" coords="180,439,216,450" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+               </map>
+               <map name="eukaryotic_phospholipid_synthesis_editing">
+                <area shape="RECT" href="/enzymes/299" coords="695,455,705,488" oldtitle="myo-inositol-3-phosphate synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/59" coords="253,615,295,627" oldtitle="Phospholipid Base-Exchange" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/3" coords="67,51, 68,51, 69,51, 70,50, 71,50, 71,49, 72,48, 72,47, 72,46, 72,45, 72,44, 72,43, 71,42, 70,41, 69,41, 69,40, 68,40, 67,40, 66,40, 65,40, 64,40, 64,41, 63,41, 63,42, 62,42, 62,43, 61,43, 61,44, 61,45, 61,46, 61,47, 61,48, 62,48, 62,49, 63,50, 64,51, 65,51, 66,51, 67,51" oldtitle="Fatty Acid Elongation, Desaturation &amp; Export From Plastid" title="" data-hasqtip="true">
+                <!--<AREA SHAPE=RECT HREF=""  title="Lysophospholipid acyltransferase"  COORDS="277,215,334,231">-->
+                <area shape="RECT" href="/enzymes/29" coords="746,439,757,477" oldtitle="Phosphatidylglycerol-Phosphate Synthase" title="" data-hasqtip="true">
+                 <!--basils--><area shape="RECT" href="/enzymes/46" coords="439,238,481,303" oldtitle="Diacylglycerol Cholinephosphotransferase.  To indicate the more broad activity it  also has been named AAPT, Amino-Alcohol phosphotransferase.   DAG-CPT and DAG-EPT are the same enzyme." title="" data-hasqtip="true">
+                 <!--basils--><area shape="RECT" href="/enzymes/46" coords="439,434,481,500" oldtitle="Diacylglycerol  Ethanolaminephosphotransferase.  To indicate the more broad activity it also has been named AAPT, Amino-Alcohol phosphotransferase.  DAG-CPT and DAG-EPT are the same enzyme." title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/285" coords="586,107,621,116" oldtitle="N-methylphospholipid methyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/34" coords="538,244,556,253" oldtitle="ER Phosphatidate Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/48" coords="840,388,873,397" oldtitle="Linoleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/47" coords="849,275,882,285" oldtitle="Oleate Desaturase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/54" coords="225,328,245,337" oldtitle="Choline Kinase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/57" coords="154,393,165,431" oldtitle="CTP:phosphorylethanolamine cytidyltransferase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/72" coords="154,291,164,342" oldtitle="Phosphoethanolamine N-Methyltransferase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/124" coords="199,51,230,80" oldtitle="Long-Chain Acyl-CoA Synthetase" title="" data-hasqtip="true">  <!--basils-->
+                <area shape="RECT" href="/enzymes/55" coords="225,358,245,368" oldtitle="Ethanolamine Kinase; soluble" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/56" coords="293,262,325,273" oldtitle="Choline-Phosphate Cytidylyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/144" coords="284,154,320,164" oldtitle="Phospholipase A2" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/40" coords="284,201,328,211" oldtitle="1-acylglycerol-3-phosphocholine Acyltransferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/enzymes/293" coords="651,228, 652,228, 653,228, 654,227, 655,226, 656,226, 656,225, 656,224, 656,223, 657,222, 656,222, 656,221, 656,220, 656,219, 655,219, 655,218, 654,218, 654,217, 653,217, 652,217, 651,217, 650,217, 649,217, 648,217, 648,218, 647,218, 646,219, 646,220, 645,220, 645,221, 645,222, 645,223, 645,224, 645,225, 646,225, 646,226, 647,226, 647,227, 648,227, 649,228, 650,228, 651,228" oldtitle="Triacylglycerol Biosynthesis" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/26" coords="420,66,457,76" oldtitle="Glycerol-3-Phosphate Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/25" coords="307,65,347,75" oldtitle="NAD-dependent Glycerol-3-Phosphate Dehydrogenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/27" coords="585,67,626,77" oldtitle="1-Acylglycerol-3-Phosphate Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/28" coords="631,228,642,290" oldtitle="CDP-DAG Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/58" coords="253,548,291,558" oldtitle="Phosphatidylserine Decarboxylase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/59" coords="251,603,299,613" oldtitle="Phospholipid Base-Exchange" title="" data-hasqtip="true">  <!--basils-->
+                <area shape="RECT" href="/enzymes/52" coords="580,453,603,464" oldtitle="Phosphatidylinositol Synthase " title="" data-hasqtip="true">
+               </map>
+               <map name="triacylglycerol_fatty_acid_degradation">
+                <area shape="RECT" nohref="" coords="62,279,126,308" oldtitle="‘2x cycles’ indicates that the molecule undergoes two successive rounds through the β-oxidation cycle." title="" data-hasqtip="true">
+                <area shape="RECT" nohref="" coords="592,280,656,309" oldtitle="‘2x cycles’ indicates that the molecule undergoes two successive rounds through the β-oxidation cycle." title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/7" coords="57,59, 56,59, 55,59, 55,60, 54,60, 53,61, 52,62, 52,63, 52,64, 52,65, 52,66, 52,67, 53,68, 53,69, 54,69, 55,70, 56,70, 57,70, 58,70, 59,70, 60,70, 61,69, 62,69, 62,68, 63,67, 63,66, 63,65, 63,64, 63,63, 63,62, 62,61, 61,60, 60,60, 60,59, 59,59, 58,59, 57,59" oldtitle="triacylglycerol biosynthesis" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/enzymes/106" coords="121,54, 124,89, 136,82, 134,56, 147,39, 136,30, 121,54" oldtitle="Oleosin" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/enzymes/253" coords="199,99, 200,112, 160,117, 127,97, 136,85, 161,103, 199,99" oldtitle="Steroleosin" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/enzymes/107" coords="202,26, 197,36, 172,26, 148,38, 136,27, 170,13, 202,26" oldtitle="Caleosin" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/111" coords="298,51,333,62" oldtitle="Triacylglycerol Lipase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/111" coords="415,51,450,62" oldtitle="Triacylglycerol Lipase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/112" coords="532,51,572,62" oldtitle="Monoacylglycerol Lipase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/213" coords="615,112,642,123" oldtitle="Peroxisomal ABC Transporter" title="" data-hasqtip="true">
+                <area shape="RECT" nhref="" coords="124,585,135,597" oldtitle="Examples of the involvement of auxiliary activities in the degradation of oleic acid (C18:1 Delta 9cis)" title="" data-hasqtip="true">
+                <area shape="RECT" nhref="" coords="380,585,388,597" oldtitle="The core beta-oxidation cycle" title="" data-hasqtip="true">
+                <area shape="RECT" nhref="" coords="604,585,615,597" oldtitle="Example of the involvement of the monofunctional type 2 enoyl-CoA hydratase (ECH2) in the degradation of fatty acids with a Z double bond on an even-numbered carbon (C18:1 Delta 6cis, petroselinic acid)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/205" coords="368,167,399,178" oldtitle="Acyl-CoA thioesterase" title="" data-hasqtip="true" aria-describedby="qtip-14">
+                <area shape="RECT" href="/enzymes/124" coords="302,169,340,180" oldtitle="Peroxisomal Long-Chain Acyl-CoA Synthetase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/121" coords="97,468,123,479" oldtitle="Dienoyl-CoA Reductase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/269" coords="99,407,124,418" oldtitle="Dienoyl CoA Isomerase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/262" coords="92,352,123,363" oldtitle="Peroxisomal Enoyl CoA isomerase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/262" coords="92,528,123,539" oldtitle="Peroxisomal Enoyl CoA isomerase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/113" coords="318,235,350,246" oldtitle="Acyl-CoA Oxidase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/270" coords="319,283,350,294" oldtitle="multifunctional protein containing a 2E-enoyl-CoA hydratase and a 3S-hydroxyacyl-CoA dehydrogenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/330" coords="295,297,314,304" oldtitle="Peroxisomal Enoyl-CoA Hydratase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/270" coords="319,341,350,352" oldtitle="multifunctional protein containing a 2E-enoyl-CoA hydratase and a 3S-hydroxyacyl-CoA dehydrogenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/330" coords="294,358,314,365" oldtitle="Peroxisomal Enoyl-CoA Hydratase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/116" coords="322,406,350,417" oldtitle="Ketoacyl-CoA Thiolase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/270" coords="547,341,578,352" oldtitle="represents only the 2E-enoyl-CoA hydratase activity of the multifunctional protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/330" coords="522,357,542,364" oldtitle="Peroxisomal Enoyl-CoA Hydratase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/261" coords="539,407,577,418" oldtitle="Peroxisomal Enoyl-CoA Hydratase 2" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/242" coords="753,453,812,467" oldtitle="Lysophosphatidic acid acyltransferase" title="" data-hasqtip="true">
+              </map>
+              <map name="fatty_acid_elongation_wax_biosynthesis">
+                <area shape="RECT" href="/enzymes/202" coords="657,256,667,315" oldtitle="ATP Citrate Lyase A subunit " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/304" coords="675,257,688,315" oldtitle="ATP Citrate Lyase B subunit " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/1" coords="676,374,686,403" oldtitle="Acetyl-CoA Carboxylase (Cytosolic; Homomeric ) " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/124" coords="401,630,473,639" oldtitle="Long-Chain Acyl-CoA Synthetase ; Activity is known, location is unknown." title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/265" coords="752,244,796,254" oldtitle="Myb Transcription Factors" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/189" coords="215,247,224,277" oldtitle="Midchain Alkane Hydroxylase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/18" coords="341,194, 342,194, 343,194, 344,194, 345,193, 345,192, 346,192, 346,191, 346,190, 346,189, 346,188, 346,187, 345,187, 345,186, 344,186, 344,185, 343,185, 342,185, 341,185, 340,185, 339,185, 339,186, 338,186, 338,187, 337,187, 337,188, 337,189, 337,190, 337,191, 337,192, 338,193, 339,194, 340,194, 341,194" oldtitle="Cutin Synthesis &amp; Transport 1" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/2" coords="639,491, 640,491, 641,491, 642,491, 642,490, 643,490, 643,489, 644,489, 644,488, 644,487, 645,487, 645,486, 645,485, 644,484, 644,483, 643,482, 643,481, 642,481, 641,481, 641,480, 640,480, 639,480, 638,480, 637,480, 637,481, 636,481, 635,481, 635,482, 634,482, 634,483, 634,484, 633,484, 633,485, 633,486, 633,487, 634,488, 634,489, 635,490, 636,490, 636,491, 637,491, 638,491, 639,491" oldtitle="Fatty Acid Synthesis" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/185" coords="752,326,788,336" oldtitle="CER3 Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/184" coords="752,381,788,391" oldtitle="CER2-like Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/266" coords="752,263,788,273" oldtitle="CER7 Protein involved in wax synthesis" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/265" coords="752,225,795,235" oldtitle="Myb Transcription Factors" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/265" coords="752,206,796,216" oldtitle="Myb Transcription Factors" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/231" coords="752,187,788,197" oldtitle="SHN Transcription Factors" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/231" coords="752,168,788,178" oldtitle="SHN Transcription Factors" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/231" coords="752,149,824,159" oldtitle="SHN Transcription Factors" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/225" coords="752,307,787,316" oldtitle="CER1-like" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/192" coords="322,326,332,357" oldtitle="Bifunctional Wax Ester Synthase / Diacylglycerol Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/183" coords="215,464,225,504" oldtitle="Aldehyde Decarbonylase ;  Activity and location unknown." title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/188" coords="215,561,225,617" oldtitle="Aldehyde-forming Fatty Acyl-CoA Reductase;  Activity and location unknown." title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/298" coords="323,566,333,611" oldtitle="Alcohol-forming Fatty Acyl-CoA Reductase " title="" data-hasqtip="true">
+                <area shape="RECT" nohref="" coords="302,185,333,194" oldtitle=">C18, mostly C16-C18" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/205" coords="417,604,452,614" oldtitle="Acyl-CoA Thioesterase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/193" coords="57,259,74,292" oldtitle="LTPG; Lipid Transfer Protein type 5; predicted to be a GPI-anchored protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/230" coords="84,199,119,209" oldtitle="ABC Transporter" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/230" coords="83,169,132,180" oldtitle="ABC Transporter; location is plasma membrane" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/230" coords="94,137,145,147" oldtitle="ABC Transporter; location is plasma membrane" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/230" coords="93,106,151,116" oldtitle="ABC Transporter; location is plasma membrane" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/124" coords="568,472,603,482" oldtitle="Long-Chain Acyl-CoA Synthetase; Activity is known, location is unknown." title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/193" coords="43,170,60,207" oldtitle="Lipid Transfer Protein type 1-8; Activity unknown, location is cell wall" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/177" coords="439,405,449,433" oldtitle="Ketoacyl-CoA Synthase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/189" coords="213,326,223,356" oldtitle="Midchain Alkane Hydroxylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/179" coords="439,245,449,284" oldtitle="Hydroxyacyl-CoA Dehydrase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/180" coords="439,160,449,189" oldtitle="Enoyl-CoA Reductase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/178" coords="439,328,449,357" oldtitle="Ketoacyl-CoA Reductase" title="" data-hasqtip="true">
+                <area shape="RECT" nohref="" coords="421,474,479,499" oldtitle="Almost all of the substrates for elongation is 16:0 and 18:0.  The ratio of each is still unknown. based on the fatb-ko mutant, in stems 16:0 can contribute up to 50% of the substrate pool. " title="" data-hasqtip="true">
+                <area shape="RECT" nohref="" coords="421,474,479,499" oldtitle="Almost all of the substrates for elongation is 16:0 and 18:0.  The ratio of each is still unknown. based on the fatb-ko mutant, in stems 16:0 can contribute up to 50% of the substrate pool. " title="" data-hasqtip="true">
+               </map>
+               <map name="sphingolipid_biosynthesis">
+                <area shape="RECT" href="/enzymes/73" coords="621,160,646,169" oldtitle="Dihydrosphingosine delta-4 desaturase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/60" coords="191,63,216,72" oldtitle="Subunit of Serine Palmitoyltransferase  " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/172" coords="184,269,224,278" oldtitle="Long Chain Base 1-Phosphate Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/171" coords="184,253,217,261" oldtitle="Long Chain Base Kinase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/62" coords="380,76,404,85" oldtitle="Ketosphinganine Reductase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/65" coords="318,150,343,159" oldtitle="Sphingobase C4-Hydroxylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/218" coords="802,253,826,262" oldtitle="Sphingosine Transfer Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/63" coords="656,328,680,337" oldtitle="Ceramide Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/63" coords="457,328,480,337" oldtitle="Ceramide Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/63" coords="288,328,310,337" oldtitle="Ceramide Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/68" coords="580,550,610,559" oldtitle="Fatty Acid 2-hydroxylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/66" coords="359,550,382,559" oldtitle="Sphingolipid-D4 Desaturase " title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/12" coords="220,477, 221,477, 222,477, 223,476, 224,476, 224,475, 225,474, 225,473, 225,472, 225,471, 225,470, 225,469, 224,468, 223,467, 222,467, 222,466, 221,466, 220,466, 219,466, 218,466, 217,466, 217,467, 216,467, 216,468, 215,468, 215,469, 214,469, 214,470, 214,471, 214,472, 214,473, 214,474, 215,474, 215,475, 216,476, 217,477, 218,477, 219,477, 220,477" oldtitle="Sphingolipid Biosynthesis (2 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/12" coords="220,565, 221,565, 222,565, 222,564, 223,564, 224,563, 225,562, 225,561, 225,560, 225,559, 225,558, 225,557, 224,556, 224,555, 223,555, 222,554, 221,554, 220,554, 219,554, 218,554, 217,554, 216,555, 215,556, 215,557, 214,557, 214,558, 214,559, 214,560, 214,561, 214,562, 215,562, 215,563, 216,563, 216,564, 217,564, 217,565, 218,565, 219,565, 220,565" oldtitle="Sphingolipid Biosynthesis (2 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/12" coords="498,598, 499,598, 500,598, 501,597, 502,597, 502,596, 503,596, 503,595, 503,594, 503,593, 503,592, 503,591, 503,590, 503,589, 502,589, 502,588, 501,588, 500,588, 500,587, 499,587, 498,587, 497,587, 496,587, 495,588, 494,588, 493,589, 493,590, 492,590, 492,591, 492,592, 492,593, 492,594, 492,595, 493,595, 493,596, 494,597, 495,597, 495,598, 496,598, 497,598, 498,598" oldtitle="Sphingolipid Biosynthesis (2 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/12" coords="431,476, 432,476, 433,476, 434,476, 434,475, 435,475, 436,474, 436,473, 437,473, 437,472, 437,471, 437,470, 437,469, 436,468, 436,467, 435,467, 435,466, 434,466, 433,466, 433,465, 432,465, 431,465, 430,465, 429,466, 428,466, 427,467, 426,468, 426,469, 426,470, 425,470, 425,471, 426,472, 426,473, 426,474, 427,474, 427,475, 428,475, 428,476, 429,476, 430,476, 431,476" oldtitle="Sphingolipid Biosynthesis (2 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/12" coords="798,473, 799,473, 800,472, 801,472, 802,471, 802,470, 803,470, 803,469, 803,468, 803,467, 803,466, 803,465, 803,464, 802,464, 802,463, 801,463, 801,462, 800,462, 799,462, 798,462, 797,462, 796,462, 795,462, 794,462, 794,463, 793,464, 792,465, 792,466, 792,467, 792,468, 792,469, 793,470, 793,471, 794,471, 794,472, 795,472, 796,473, 797,473, 798,473" oldtitle="Sphingolipid Biosynthesis (2 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/12" coords="798,563, 799,563, 800,563, 801,562, 802,562, 802,561, 803,560, 803,559, 803,558, 803,557, 803,556, 803,555, 802,554, 801,553, 800,553, 800,552, 799,552, 798,552, 797,552, 796,552, 795,552, 795,553, 794,553, 794,554, 793,554, 793,555, 792,555, 792,556, 792,557, 792,558, 792,559, 792,560, 793,560, 793,561, 794,562, 795,563, 796,563, 797,563, 798,563" oldtitle="Sphingolipid Biosynthesis (2 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/12" coords="798,540, 799,540, 800,540, 801,539, 802,539, 802,538, 803,537, 803,536, 803,535, 803,534, 803,533, 803,532, 802,531, 801,530, 800,530, 800,529, 799,529, 798,529, 797,529, 796,529, 795,529, 795,530, 794,530, 794,531, 793,531, 793,532, 792,532, 792,533, 792,534, 792,535, 792,536, 792,537, 793,537, 793,538, 794,539, 795,540, 796,540, 797,540, 798,540" oldtitle="Sphingolipid Biosynthesis (2 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/12" coords="532,598, 533,598, 534,598, 535,598, 535,597, 536,597, 536,596, 537,596, 537,595, 537,594, 538,594, 538,593, 538,592, 538,591, 537,591, 537,590, 537,589, 536,589, 536,588, 535,588, 534,587, 533,587, 532,587, 531,587, 530,587, 529,588, 528,588, 527,589, 527,590, 526,591, 526,592, 526,593, 526,594, 527,595, 527,596, 528,597, 529,597, 529,598, 530,598, 531,598, 532,598" oldtitle="Sphingolipid Biosynthesis (2 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/12" coords="219,543, 220,543, 221,543, 222,543, 222,542, 223,542, 224,541, 225,540, 225,539, 225,538, 225,537, 225,536, 225,535, 224,534, 224,533, 223,533, 222,532, 221,532, 220,532, 219,532, 218,532, 217,532, 216,533, 215,533, 215,534, 214,535, 214,536, 214,537, 214,538, 214,539, 214,540, 215,541, 216,542, 217,542, 217,543, 218,543, 219,543" oldtitle="Sphingolipid Biosynthesis (2 of 2)" title="" data-hasqtip="true">
+               </map>
+               <map name="sphingolipid_biosynthesis_2">
+                <area shape="POLYGON" href="/aralip-menu/pathway/11" coords="458,377, 459,377, 460,377, 461,377, 461,376, 462,376, 463,375, 464,374, 464,373, 464,372, 464,371, 464,370, 464,369, 463,368, 463,367, 462,367, 461,366, 460,366, 459,366, 458,366, 457,366, 456,366, 455,367, 454,367, 454,368, 453,369, 453,370, 453,371, 453,372, 453,373, 453,374, 454,375, 455,376, 456,376, 456,377, 457,377, 458,377" oldtitle="Sphingolipid Biosynthesis (1 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/11" coords="535,377, 536,377, 537,377, 538,377, 538,376, 539,376, 539,375, 540,375, 540,374, 541,374, 541,373, 541,372, 541,371, 541,370, 541,369, 540,369, 540,368, 539,367, 538,366, 537,366, 536,366, 535,366, 534,366, 533,366, 532,367, 531,367, 531,368, 530,369, 530,370, 530,371, 530,372, 530,373, 530,374, 531,375, 532,376, 533,376, 533,377, 534,377, 535,377" oldtitle="Sphingolipid Biosynthesis (1 of 2)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/246" coords="489,69,517,78" oldtitle="Inositolphosphorylceramide Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/247" coords="539,201,576,210" oldtitle="Glycosylinositolphosphorylceramide Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/64" coords="462,404,499,413" oldtitle="Ceramidase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/248" coords="569,404,604,413" oldtitle="Glycosylinositolphosphorylceramide Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/249" coords="462,340,489,349" oldtitle="Glucosylceramide Glucosidase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/250" coords="539,340,562,349" oldtitle="Phospholipase C" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/218" coords="402,447,426,456" oldtitle="Sphingosine Transfer Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/171" coords="300,448,332,457" oldtitle="Long Chain Base Kinase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/173" coords="194,447,224,456" oldtitle="Dihydrosphingosine Phosphate Lyase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/11" coords="457,71, 458,71, 459,71, 460,71, 461,70, 462,70, 462,69, 463,68, 463,67, 463,66, 463,65, 463,64, 463,63, 462,63, 462,62, 461,61, 460,61, 460,60, 459,60, 458,60, 457,60, 456,60, 455,60, 455,61, 454,61, 453,62, 453,63, 452,63, 452,64, 452,65, 452,66, 452,67, 452,68, 453,69, 453,70, 454,70, 455,71, 456,71, 457,71" oldtitle="Sphingolipid Biosynthesis (1 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/11" coords="219,83, 220,83, 221,83, 221,82, 222,82, 223,81, 223,80, 224,80, 224,79, 224,78, 224,77, 224,76, 224,75, 223,74, 223,73, 222,73, 221,72, 220,72, 219,72, 218,72, 217,72, 216,72, 215,73, 214,73, 214,74, 213,75, 213,76, 213,77, 213,78, 213,79, 213,80, 214,80, 214,81, 215,82, 216,82, 216,83, 217,83, 218,83, 219,83" oldtitle="Sphingolipid Biosynthesis (1 of 2)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/11" coords="269,71, 270,71, 271,71, 272,70, 273,70, 273,69, 274,69, 274,68, 275,67, 275,66, 275,65, 275,64, 275,63, 274,63, 274,62, 273,61, 272,60, 271,60, 270,60, 269,60, 268,60, 267,60, 266,61, 265,61, 265,62, 264,63, 264,64, 264,65, 264,66, 264,67, 264,68, 265,68, 265,69, 266,70, 267,70, 268,71, 269,71" oldtitle="Sphingolipid Biosynthesis (1 of 2)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/67" coords="221,101,247,110" oldtitle="Glucosylceramide Synthase (UDP-glucose-dependent)" title="" data-hasqtip="true">
+               </map>
+               <map name="mitochondrial_fatty_acid_lipoic_acid_synthesis">
+                <area shape="POLYGON" href="/aralip-menu/pathway/15" coords="592,579, 593,579, 593,578, 594,578, 595,578, 596,577, 597,576, 597,575, 598,575, 598,574, 598,573, 598,572, 598,571, 597,571, 597,570, 596,569, 595,568, 594,568, 594,567, 593,567, 592,567, 591,567, 590,567, 590,568, 589,568, 588,569, 587,570, 587,571, 586,572, 586,573, 586,574, 587,575, 587,576, 588,577, 589,578, 590,578, 591,578, 591,579, 592,579" oldtitle="Mitochondrial Lipopolysaccharide Synthesis" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/21" coords="533,527,554,539" oldtitle="Lipoate Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/22" coords="360,526,380,538" oldtitle="Lipoyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/97" coords="281,86,320,98" oldtitle="Malonyl-CoA Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/14" coords="567,428,603,441" oldtitle="Acyl Carrier Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/22" coords="532,475,553,487" oldtitle="Lipoyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/21" coords="364,475,385,487" oldtitle="Lipoate Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/23" coords="525,161,584,192" oldtitle="Holo ACP Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/98" coords="362,110,417,153" oldtitle="Malonyl-CoA : ACP Malonyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/14" coords="475,159,510,171" oldtitle="Acyl Carrier Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/76" coords="304,212,340,234" oldtitle="Ketoacyl-ACP Synthase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/11" coords="279,418,311,438" oldtitle="Hydroxyacyl-ACP Dehydrase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/12" coords="362,305,377,326" oldtitle="Enoyl-ACP Reductase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/10" coords="136,327,152,360" oldtitle="Ketoacyl-ACP Reductase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/76" coords="176,189,207,218" oldtitle="Ketoacyl-ACP Synthase " title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/enzymes/12" coords="375,357, 376,355, 377,352, 378,349, 379,347, 379,344, 380,341, 380,339, 381,336, 381,334, 381,331, 381,328, 382,326, 382,323, 381,321, 381,318, 381,315, 381,313, 380,310, 380,308, 379,305, 379,303, 378,300, 377,297, 376,295, 375,292, 374,290, 373,287, 372,284, 371,282, 370,279, 369,276, 367,274">
+                <area shape="RECT" href="/enzymes/99" coords="220,126,258,151" oldtitle="Malonyl-[ACP] Synthase" title="" data-hasqtip="true">
+              </map>
+              <map name="mitochondrial_phospholipid_synthesis">
+                <area shape="RECT" href="/enzymes/275" coords="504,175,547,184" oldtitle="Mitochondrial Acyl-CoA Lysocardiolipin Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/242" coords="311,175,337,184" oldtitle="Cardiolipin-Specific Deacylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/243" coords="391,175,415,184" oldtitle="Cardiolipin Transacylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/84" coords="384,317,410,327" oldtitle="Cardiolipin Synthase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/8" coords="688,566, 689,566, 690,566, 691,565, 692,565, 692,564, 693,564, 693,563, 694,562, 694,561, 694,560, 694,559, 693,558, 693,557, 692,556, 691,556, 691,555, 690,555, 689,555, 688,555, 687,555, 686,555, 685,555, 685,556, 684,556, 684,557, 683,557, 683,558, 683,559, 682,559, 682,560, 682,561, 683,562, 683,563, 683,564, 684,564, 684,565, 685,565, 686,566, 687,566, 688,566" oldtitle="Eukaryotic Phospholipid Biosynthesis &amp; Editing" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/26" coords="368,59,403,69" oldtitle="Glycerol-Phosphate Acyltransferase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/58" coords="84,315,113,325" oldtitle="Phosphatidylserine Decarboxylase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/30" coords="448,411,488,421" oldtitle="Phosphatidylglycerol-Phosphate Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/29" coords="617,343,641,373" oldtitle="Phosphatidylglycerol-Phosphate Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/28" coords="649,176,669,238" oldtitle="CDP-Diacylgycerol Synthetase " title="" data-hasqtip="true">   <!--basils-->
+                <area shape="POLYGON" nohref="" coords="539,71, 540,62, 541,62, 540,70, 545,71, 545,72, 539,71" oldtitle="2-Lysophosphatidic Acid Acyltransferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" nohref="" coords="546,72, 549,63, 552,64, 553,64, 554,64, 554,65, 555,65, 555,66, 556,66, 556,67, 556,68, 555,68, 555,69, 554,69, 554,70, 553,70, 552,70, 551,69, 549,69, 548,73, 546,72" oldtitle="2-Lysophosphatidic Acid Acyltransferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" nohref="" coords="549,68, 551,68, 552,68, 552,69, 553,69, 553,68, 554,68, 554,67, 554,66, 553,65, 552,65, 550,65, 549,68" oldtitle="2-Lysophosphatidic Acid Acyltransferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" nohref="" coords="554,74, 560,66, 561,66, 563,77, 561,76, 561,73, 557,72, 555,74, 554,74" oldtitle="2-Lysophosphatidic Acid Acyltransferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" nohref="" coords="557,71, 561,72, 561,69, 560,69, 560,68, 560,67, 560,68, 559,69, 557,71" oldtitle="2-Lysophosphatidic Acid Acyltransferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" nohref="" coords="563,77, 569,69, 571,70, 572,80, 570,79, 570,76, 566,75, 564,77, 563,77" oldtitle="2-Lysophosphatidic Acid Acyltransferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" nohref="" coords="567,74, 570,75, 570,72, 570,71, 570,70, 570,71, 569,71, 569,72, 567,74" oldtitle="2-Lysophosphatidic Acid Acyltransferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" nohref="" coords="574,81, 577,74, 574,72, 575,71, 582,74, 581,75, 578,74, 575,82, 574,81" oldtitle="2-Lysophosphatidic Acid Acyltransferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" nohref="" coords="519,56, 521,56, 523,56, 525,57, 527,57, 529,57, 531,57, 533,57, 535,57, 537,58, 540,58, 542,58, 545,59, 547,59, 549,60, 552,60, 555,61, 557,61, 560,62, 563,63, 566,64, 568,65, 571,66, 574,67, 577,68, 581,70, 584,71, 587,73, 590,75, 594,76, 597,78, 600,80, 604,83" oldtitle="2-Lysophosphatidic Acid Acyltransferase" title="" data-hasqtip="true">
+               </map>
+               <map name="mitochondrial_lipopolysaccharide_synthesis">
+                <area shape="RECT" href="/enzymes/303" coords="427,90,464,105" oldtitle="UDP-3-O-(3-hydroxymyristoyl)glucosamine N-acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/294" coords="312,459,346,470" oldtitle="3-deoxy-D-manno-octulosonic acid (Kdo) transferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/302" coords="541,458,579,473" oldtitle="Tetraacyldisaccharide 4'-kinase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/298" coords="671,319,685,355" oldtitle="Lipid-A-disaccharide synthase" title="" data-hasqtip="true">
+                <area shape="RECT" nohref="" coords="432,176,447,223" oldtitle="UDP--60,-115-diacylglucosamine pyrophosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/293" coords="142,282,180,297" oldtitle=" UDP-3-O-acyl N-acetylglucosamine deacetylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/304" coords="93,178,108,214" oldtitle="UDP-N-acetylglucosamine  acyltransferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/13" coords="95,110, 96,110, 97,110, 98,110, 99,109, 100,109, 100,108, 101,107, 101,106, 101,105, 101,104, 101,103, 101,102, 100,101, 99,100, 98,100, 98,99, 97,99, 96,99, 95,99, 94,99, 93,99, 93,100, 92,100, 91,101, 90,102, 90,103, 90,104, 90,105, 90,106, 90,107, 91,108, 91,109, 92,109, 93,110, 94,110, 95,110" oldtitle="Mitochondrial Fatty Acid &amp; Lipoic Acid Synthesis" title="" data-hasqtip="true">
+               </map>
+               <map name="lipid_trafficking">
+                <area shape="RECT" href="/enzymes/240" coords="402,403,433,413" oldtitle="Protein Involved in Lipid Transport" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/239" coords="393,394,421,402" oldtitle="ATPase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/238" coords="383,384,411,392" oldtitle="Phosphatidic Acid-Binding Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/41" coords="371,373,402,383" oldtitle="Permease-like Protein of Inner Chloroplast Envelope" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/240" coords="671,343,702,353" oldtitle="Protein Involved in Lipid Transport" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/239" coords="662,334,691,342" oldtitle="ATPase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/238" coords="652,324,681,331" oldtitle="Phosphatidic Acid-Binding Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/41" coords="641,312,672,322" oldtitle="Permease-like Protein of Inner Chloroplast Envelope" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/241" coords="558,350,595,360" oldtitle="Vesicle-Inducing Protein in Plastids " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/240" coords="428,290,471,300" oldtitle="Protein Involved in Lipid Transport" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/273" coords="337,259,369,268" oldtitle="Aminophospholipid ATPase" title="" data-hasqtip="true">
+                <area shape="RECT" href="http://" coords="535,348,556,360" oldtitle="The vesicular transfer of lipids from the inner chloroplast envelope to the thylakoids" title="" data-hasqtip="true">
+                <area shape="RECT" href="http://" coords="758,170,768,183" oldtitle="Lipid transfer through membrane contact sites between ER and plastids, mitochondria, plasma membrane or vacuoles" title="" data-hasqtip="true">
+                <area shape="RECT" href="http://" coords="318,258,328,270" oldtitle="Polar lipid flipping across the ER, outer and inner chloroplast envelope membranes" title="" data-hasqtip="true">
+                <area shape="RECT" href="http://" coords="470,51,491,64" oldtitle="A vesicular mechanism is proposed for trafficking of membrane proteins and certain lipids between cellular organelles in the secretory pathways" title="" data-hasqtip="true">
+                <area shape="RECT" href="http://" coords="678,38,698,51" oldtitle="A vesicular mechanism is proposed for trafficking of membrane proteins and certain lipids between cellular organelles in the secretory pathways" title="" data-hasqtip="true">
+                <area shape="RECT" href="http://" coords="231,120,241,133" oldtitle="Lipid transfer through membrane contact sites between ER and plastids, mitochondria, plasma membrane or vacuoles" title="" data-hasqtip="true">
+                <area shape="RECT" href="http://" coords="390,209,400,222" oldtitle="Lipid transfer through membrane contact sites between ER and plastids, mitochondria, plasma membrane or vacuoles" title="" data-hasqtip="true">
+                <area shape="RECT" href="http://" coords="519,288,529,301" oldtitle="Lipid transfer through membrane contact sites between ER and plastids, mitochondria, plasma membrane or vacuoles" title="" data-hasqtip="true">
+                <area shape="RECT" href="http://" coords="410,360,420,372" oldtitle="Polar lipid flipping across the ER, outer and inner chloroplast envelope membranes" title="" data-hasqtip="true">
+                <area shape="RECT" nohref="" coords="615,297,624,309" oldtitle="Polar lipid flipping across the ER, outer and inner chloroplast envelope membranes" title="" data-hasqtip="true">
+               </map>
+               <map name="cutin_synthesis_transport">
+                <area shape="RECT" href="/enzymes/297" coords="406,644,422,654" oldtitle="Feruloyl Transferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/231" coords="792,246,835,258" oldtitle="SHN Transcription Factors" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/231" coords="792,231,835,243" oldtitle="SHN Transcription Factors" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/228" coords="792,384,826,396" oldtitle="Hydrolase-like Protein" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/281" coords="793,368,871,380" oldtitle="DCR/PEL3 Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/231" coords="793,216,878,228" oldtitle="SHN Transcription Factors" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/226" coords="231,273,286,285" oldtitle="Omega-Hydroxy Fatty Acyl Dehydrogenase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/187" coords="158,215,194,226" oldtitle="Fatty Acyl in-chain Hydroxylase" title="" data-hasqtip="true">
+                <area shape="POLYGON" ref="/aralip-menu/pathway/7" coords="342,35, 343,35, 344,35, 344,34, 345,34, 346,34, 346,33, 347,32, 347,31, 347,30, 347,29, 347,28, 347,27, 346,26, 346,25, 345,25, 344,25, 343,24, 342,24, 341,24, 341,25, 340,25, 339,25, 338,26, 338,27, 337,27, 337,28, 337,29, 337,30, 337,31, 337,32, 338,32, 338,33, 339,34, 340,34, 341,35, 342,35" oldtitle="Triacylglycerol Biosynthesis" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/124" coords="393,61,479,75" oldtitle="Long-Chain Acyl-CoA Synthetase" title="" data-hasqtip="true"> <!--basils-->
+                <area shape="RECT" href="/enzymes/227" coords="570,215,612,226" oldtitle="Omega-Hydroxy Fatty Acyl Epoxygenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/263" coords="230,381,286,393" oldtitle="Omega-Oxo Fatty Acyl Dehydrogenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/263" coords="475,381,530,393" oldtitle="Omega-Oxo Fatty Acyl Dehydrogenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/214" coords="671,381,693,392" oldtitle="Epoxide Hydrolase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/18" coords="34,626, 35,626, 36,625, 37,625, 38,625, 38,624, 39,624, 39,623, 40,622, 40,621, 40,620, 40,619, 40,618, 40,617, 39,616, 39,615, 38,615, 38,614, 37,614, 36,614, 36,613, 35,613, 34,613, 33,613, 32,614, 31,614, 30,615, 30,616, 29,616, 29,617, 28,618, 28,619, 28,620, 28,621, 29,622, 29,623, 30,623, 30,624, 31,625, 32,625, 33,625, 34,626" oldtitle="Cutin Synthesis (2 of 2)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/228" coords="344,600,424,615" oldtitle="Hydrolase-like Protein" title="" data-hasqtip="true">    <!--basils-->
+                <area shape="RECT" href="/enzymes/26" coords="322,510,366,562" oldtitle="Glycerol-3-Phosphate Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/228" coords="376,497,439,560" oldtitle="Hydrolase-like Protein" title="" data-hasqtip="true"> <!--basils-->
+                <area shape="RECT" href="/enzymes/226" coords="475,273,530,285" oldtitle="Omega-Hydroxy Fatty Acyl Dehydrogenase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/279" coords="475,153,506,165" oldtitle="Fatty Acyl omega-Hydroxylase " title="" data-hasqtip="true"> <!--basils-->
+                <area shape="RECT" href="/enzymes/279" coords="254,153,286,165" oldtitle="Fatty Acyl omega-Hydroxylase " title="" data-hasqtip="true">  <!--basils-->
+               </map>
+               <map name="cutin_synthesis_transport_2">
+                <area shape="RECT" href="/enzymes/230" coords="155,471,183,481" oldtitle="ABC transporter" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/230" coords="363,471,391,481" oldtitle="ABC transporter" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/229" coords="528,535,549,547" oldtitle="Polyester Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/193" coords="570,518,611,529" oldtitle="LTPG-Like; Lipid Transfer Protein type 5" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/230" coords="553,471,581,481" oldtitle="ABC transporter" title="" data-hasqtip="true">
+
+                <area shape="POLYGON" href="/aralip-menu/pathway/17" coords="568,33, 569,33, 570,33, 571,32, 572,32, 572,31, 573,31, 573,30, 573,29, 574,29, 574,28, 574,27, 574,26, 573,26, 573,25, 573,24, 572,24, 572,23, 571,23, 571,22, 570,22, 569,22, 568,22, 567,22, 566,22, 565,22, 565,23, 564,23, 563,24, 563,25, 562,26, 562,27, 562,28, 562,29, 563,30, 563,31, 564,32, 565,32, 566,33, 567,33, 568,33" oldtitle="Cutin synthesis (1 of 2)" title="" data-hasqtip="true">
+               </map>
+               <map name="suberin_synthesis_transport">
+                <area shape="RECT" href="/enzymes/26" coords="127,502,193,512">
+                <area shape="RECT" href="/enzymes/231" coords="758,162,800,173" oldtitle="SHN Transcription Factors" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/20" coords="723,316, 724,316, 725,316, 725,315, 726,315, 727,314, 728,313, 728,312, 728,311, 728,310, 728,309, 728,308, 727,307, 727,306, 726,306, 725,305, 724,305, 723,305, 722,305, 721,305, 720,305, 719,306, 718,307, 718,308, 717,308, 717,309, 717,310, 717,311, 717,312, 717,313, 718,313, 718,314, 719,314, 719,315, 720,315, 720,316, 721,316, 722,316, 723,316" oldtitle="Suberin Synthesis (2 of 3)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/20" coords="723,234, 724,234, 725,234, 726,233, 727,233, 727,232, 728,231, 728,230, 728,229, 728,228, 728,227, 728,226, 727,226, 727,225, 726,224, 725,224, 724,223, 723,223, 722,223, 721,223, 720,224, 719,224, 719,225, 718,225, 718,226, 717,227, 717,228, 717,229, 717,230, 717,231, 718,231, 718,232, 719,233, 720,234, 721,234, 722,234, 723,234" oldtitle="Suberin Synthesis (2 of 3)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/26" coords="427,502,493,512" oldtitle="Glycerol-3-Phosphate Acyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/124" coords="319,31,363,41" oldtitle="Long-Chain Acyl-CoA Synthetase" title="" data-hasqtip="true"> <!--basils-->
+                <area shape="RECT" href="/enzymes/124" coords="379,317,390,361" oldtitle="Long-Chain Acyl-CoA Synthetase" title="" data-hasqtip="true"> <!--basils-->
+                <area shape="POLYGON" href="/enzymes/46" coords="152,77, 153,77, 153,76, 154,76, 155,76, 156,75, 157,74, 157,73, 158,73, 158,72, 158,71, 158,70, 158,69, 157,69, 157,68, 157,67, 156,67, 156,66, 155,66, 154,66, 154,65, 153,65, 152,65, 151,65, 150,65, 150,66, 149,66, 148,67, 147,68, 147,69, 147,70, 146,70, 146,71, 147,72, 147,73, 147,74, 148,74, 148,75, 149,75, 149,76, 150,76, 151,76, 152,77" oldtitle="Fatty Acid Elongation &amp; Wax Biosynthesis" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/181" coords="493,315,530,326" oldtitle="Alcohol-forming Fatty Acyl-CoA Reductase" title="" data-hasqtip="true"> <!--basil-->
+                <area shape="RECT" href="/enzymes/263" coords="233,312,283,323" oldtitle="Omega-Oxo Fatty Acyl Dehydrogenase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/7" coords="152,59, 153,59, 154,59, 155,59, 155,58, 156,58, 156,57, 157,57, 157,56, 158,55, 158,54, 158,53, 158,52, 157,52, 157,51, 156,50, 156,49, 155,49, 154,48, 153,48, 152,48, 151,48, 150,48, 149,49, 148,49, 148,50, 147,51, 147,52, 146,53, 146,54, 146,55, 147,55, 147,56, 147,57, 148,57, 148,58, 149,58, 149,59, 150,59, 151,59, 152,59" oldtitle="Triacylglycerol Biosynthesis" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/21" coords="723,587, 724,587, 724,586, 725,586, 726,586, 726,585, 727,585, 727,584, 728,584, 728,583, 728,582, 728,581, 728,580, 728,579, 728,578, 727,578, 727,577, 726,577, 726,576, 725,576, 724,576, 724,575, 723,575, 722,575, 721,575, 721,576, 720,576, 719,576, 719,577, 718,577, 718,578, 717,579, 717,580, 717,581, 717,582, 717,583, 718,584, 718,585, 719,585, 719,586, 720,586, 721,586, 721,587, 722,587, 723,587" oldtitle="Suberin Synthesis (3 of 3)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/124" coords="200,385,211,432" oldtitle="Long-Chain Acyl-CoA Synthetase" title="" data-hasqtip="true"> <!--basil-->
+                <area shape="RECT" href="/enzymes/279" coords="167,210,179,283" oldtitle="Fatty Acyl Omega-Hydroxylase" title="" data-hasqtip="true"> <!--basil-->
+                <area shape="RECT" href="/enzymes/226" coords="233,210,244,260" oldtitle="omega-Hydroxy Fatty Acyl Dehydrogenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/181" coords="464,212,504,224" oldtitle="Alcohol-forming Fatty Acyl-CoA Reductase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/181" coords="464,190,570,202" oldtitle="Alcohol-forming Fatty Acyl-CoA Reductase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/279" coords="200,95,211,158" oldtitle="Fatty Acyl omega-Hydroxylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/124" coords="318,48,364,59" oldtitle="Long-Chain Acyl-CoA Synthetase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/279" coords="184,210,195,289" oldtitle="Fatty Acyl Omega-Hydroxylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/124" coords="216,385,227,430" oldtitle="Long-Chain Acyl-CoA Synthetase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/124" coords="395,317,406,363" oldtitle="Long-Chain Acyl-CoA Synthetase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/279" coords="217,95,228,165" oldtitle="Fatty Acyl omega-Hydroxylase" title="" data-hasqtip="true">
+               </map>
+               <map name="suberin_synthesis_transport_2">
+                <area shape="RECT" href="/enzymes/232" coords="253,409,264,451" oldtitle="Feruloyl  transferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/235" coords="405,95,437,107" oldtitle="Cinnamate 4-Hydroxylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/236" coords="405,183,437,195" oldtitle="p-Coumarate 3-Hydroxylase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/232" coords="522,410,534,451" oldtitle="Feruloyl  transferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/232" coords="400,409,412,450" oldtitle="Feruloyl  transferase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/enzymes/232" coords="335,358, 279,358, 278,358, 276,358, 275,359, 273,359, 272,359, 270,359, 269,360, 267,360, 266,361, 265,361, 263,362, 262,363, 261,363, 260,364, 259,365, 257,366, 256,367, 255,368, 255,369, 254,370, 253,371, 252,372, 251,373, 251,374, 250,375, 250,376, 249,378, 249,379, 249,380, 249,381, 248,383, 248,384, 248,469">
+                <area shape="POLYGON" href="/aralip-menu/pathway/21" coords="48,517, 49,517, 50,517, 51,517, 51,516, 52,516, 52,515, 53,515, 53,514, 53,513, 53,512, 53,511, 53,510, 53,509, 52,509, 52,508, 51,507, 50,507, 49,506, 48,506, 47,506, 46,506, 45,507, 44,507, 44,508, 43,508, 43,509, 42,510, 42,511, 42,512, 42,513, 42,514, 43,515, 44,516, 44,517, 45,517, 46,517, 47,517, 48,517" oldtitle="Suberin Synthesis (3 of 3)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/19" coords="344,416, 345,416, 346,416, 346,415, 347,415, 348,415, 348,414, 349,414, 349,413, 350,412, 350,411, 350,410, 350,409, 350,408, 349,408, 349,407, 348,406, 347,406, 347,405, 346,405, 345,405, 344,405, 343,405, 342,405, 341,405, 341,406, 340,406, 340,407, 339,407, 339,408, 339,409, 339,410, 338,410, 339,411, 339,412, 339,413, 340,414, 341,415, 342,415, 343,416, 344,416" oldtitle="Suberin Synthesis (1 of 3)" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/19" coords="197,417, 198,417, 199,417, 200,417, 200,416, 201,416, 202,415, 202,414, 203,413, 203,412, 203,411, 203,410, 202,410, 202,409, 202,408, 201,408, 201,407, 200,407, 199,407, 199,406, 198,406, 197,406, 196,406, 195,406, 195,407, 194,407, 193,407, 193,408, 192,409, 192,410, 191,411, 191,412, 191,413, 192,413, 192,414, 192,415, 193,415, 193,416, 194,416, 194,417, 195,417, 196,417, 197,417" oldtitle="Suberin Synthesis (1 of 3)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/233" coords="481,304,559,316" oldtitle="Caffeoyl-CoA O-Methyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/234" coords="331,304,391,318" oldtitle="4-Coumarate-CoA Ligase" title="" data-hasqtip="true">
+               </map>
+               <map name="suberin_synthesis_transport_3">
+                <area shape="POLYGON" href="/aralip-menu/pathway/20" coords="575,25, 576,25, 577,25, 577,24, 578,24, 579,24, 579,23, 580,23, 580,22, 581,21, 581,20, 581,19, 581,18, 581,17, 580,17, 580,16, 579,15, 578,15, 578,14, 577,14, 576,14, 575,14, 574,14, 573,14, 572,14, 572,15, 571,15, 571,16, 570,16, 570,17, 570,18, 570,19, 569,19, 570,20, 570,21, 570,22, 571,23, 572,24, 573,24, 574,25, 575,25" oldtitle="Suberin Synthesis((2 of 3)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/230" coords="504,470,536,482" oldtitle="ABC transporter" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/228" coords="615,460,652,482" oldtitle="Hydrolase-like Protein" title="" data-hasqtip="true"> <!--basils-->
+                <area shape="RECT" href="/enzymes/228" coords="419,536,526,547" oldtitle="Hydrolase-like Protein" title="" data-hasqtip="true"> <!--basils-->
+                <area shape="RECT" href="/enzymes/228" coords="478,449,519,469" oldtitle="Hydrolase-like Protein" title="" data-hasqtip="true">   <!--basils-->
+                <area shape="RECT" href="/enzymes/230" coords="162,470,194,482" oldtitle="ABC transporter" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/230" coords="354,470,386,482" oldtitle="ABC transporter" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/19" coords="559,25, 560,25, 561,25, 562,24, 563,24, 564,23, 564,22, 565,22, 565,21, 565,20, 565,19, 565,18, 565,17, 564,16, 564,15, 563,15, 562,14, 561,14, 560,14, 559,14, 558,14, 557,14, 556,15, 555,15, 555,16, 554,17, 554,18, 554,19, 554,20, 554,21, 554,22, 555,22, 555,23, 556,24, 557,24, 558,25, 559,25" oldtitle="Suberin Synthesis((1 of 3)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/229" coords="592,54,623,66" oldtitle="Polyester Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/229" coords="433,508,458,518" oldtitle="Polyester Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/228" coords="420,523,475,532" oldtitle="Hydrolase-like Protein" title="" data-hasqtip="true">  <!--basils-->
+                <area shape="RECT" href="/enzymes/193" coords="589,471,616,483" oldtitle="LTPG-Like; Lipid Transfer Protein type 5" title="" data-hasqtip="true">
+               </map>
+               <map name="oxylipin_metabolism">
+                <area shape="RECT" href="/enzymes/164" coords="224,126,252,136" oldtitle="Patatin-like Acyl-Hydrolase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/164" coords="674,117,701,127" oldtitle=" Patatin-like Acyl-Hydrolase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/153" coords="581,415,610,425" oldtitle="Oxo-Phytodienoic Acid Reductase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/175" coords="255,503,293,513" oldtitle="Jasmonic Acid Carboxyl Methyltransferase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/149" coords="674,171,703,181" oldtitle="Lipoxygenase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/152" coords="674,295,705,305" oldtitle="Allene Oxide Cyclase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/151" coords="675,232,704,242" oldtitle="Allene Oxide Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/220" coords="674,103,701,112" oldtitle=" Lipid Acylhydrolase-like" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/147" coords="673,89,691,98" oldtitle="Galactolipase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/148" coords="512,325,532,334" oldtitle="DAD1-like Acylhydrolase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/152" coords="329,298,359,308" oldtitle="Allene Oxide Cyclase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/151" coords="322,229,351,239" oldtitle="Allene Oxide Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/166" coords="152,298,182,308" oldtitle="Peroxygenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/166" coords="198,231,228,240">
+                <area shape="RECT" href="/enzymes/167" coords="253,230,282,239" oldtitle="Hydroperoxide Reductase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/154" coords="139,198,165,208" oldtitle="Hydroperoxide Lyase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/149" coords="289,170,317,180" oldtitle="Plastidial Lipoxygenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/220" coords="307,131,334,140" oldtitle="Lipid Acylhydrolase-like " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/148" coords="317,117,336,126" oldtitle="DAD1-like Acylhydrolase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/144" coords="345,90,378,99" oldtitle="Cytosolic Phospholipase A2" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/143" coords="332,104,364,113" oldtitle="Phospholipase A1 " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/165" coords="262,87,278,97" oldtitle="Sulfolipase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/220" coords="214,115,241,125" oldtitle="Lipid Acylhydrolase-like " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/148" coords="207,103,230,113" oldtitle=" DAD1-like Acylhydrolase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/147" coords="203,90,220,99" oldtitle="Galactolipase " title="" data-hasqtip="true">
+               </map>
+               <map name="oxylipin_metabolism_2">
+                <area shape="RECT" href="/enzymes/166" coords="161,265,174,304" oldtitle="Peroxygenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/158" coords="398,538,424,550" oldtitle="NAD+ Oxidoreductase (involved in fatty acid a-oxidation)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/157" coords="593,449,620,482" oldtitle="a-Dioxygenase-Peroxidase (involved in fatty acid a-oxidation)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/157" coords="386,417,424,429" oldtitle="a-Dioxygenase-Peroxidase (involved in fatty acid a-oxidation)" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/152" coords="330,273,342,312" oldtitle="Allene Oxide Cyclase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/151" coords="288,192,320,221" oldtitle="Allene Oxide Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/166" coords="208,185,238,223" oldtitle="Peroxygenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/167" coords="175,189,206,224" oldtitle="Hydroperoxide Reductase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/149" coords="264,115,301,127" oldtitle=" Cytosolic Lipoxygenase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/220" coords="194,58,206,90">
+                <area shape="RECT" href="/enzymes/148" coords="213,66,225,90" oldtitle="DAD1-like Acylhydrolase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/143" coords="175,51,187,91" oldtitle="Phospholipase A1 " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/144" coords="154,50,166,91" oldtitle="Cytosolic Phospholipase A2" title="" data-hasqtip="true">
+               </map>
+               <map name="phospholipid_signaling">
+                <area shape="RECT" href="/enzymes/128" coords="189,490,225,502" oldtitle="Phosphatidylinositol-3-Kinase " title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/8" coords="252,306, 253,306, 254,305, 255,305, 256,304, 257,303, 257,302, 258,302, 258,301, 258,300, 258,299, 258,298, 257,298, 257,297, 256,296, 255,295, 254,295, 253,294, 252,294, 251,294, 250,295, 249,295, 248,296, 247,297, 247,298, 246,299, 246,300, 246,301, 247,302, 247,303, 248,304, 249,305, 250,305, 251,306, 252,306" oldtitle="Eukaryotic Phospholipid Synthesis &amp; Editing" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/8" coords="280,322, 281,322, 282,322, 283,322, 283,321, 284,321, 285,320, 285,319, 286,319, 286,318, 286,317, 286,316, 286,315, 286,314, 285,314, 285,313, 284,313, 284,312, 283,312, 282,311, 281,311, 280,311, 279,311, 278,311, 277,312, 276,313, 275,313, 275,314, 275,315, 274,316, 274,317, 275,318, 275,319, 275,320, 276,320, 276,321, 277,321, 277,322, 278,322, 279,322, 280,322" oldtitle="Eukaryotic Phospholipid Synthesis &amp; Editing" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/7" coords="396,323, 397,323, 398,322, 399,322, 400,321, 401,321, 401,320, 401,319, 402,319, 402,318, 402,317, 402,316, 402,315, 401,315, 401,314, 401,313, 400,313, 399,312, 398,312, 397,311, 396,311, 395,311, 394,312, 393,312, 392,313, 391,314, 391,315, 391,316, 390,316, 390,317, 390,318, 391,318, 391,319, 391,320, 392,321, 393,322, 394,322, 395,323, 396,323" oldtitle="Triacylglycerol Biosynthesis" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/8" coords="475,323, 476,323, 477,323, 477,322, 478,322, 479,322, 479,321, 480,321, 480,320, 481,320, 481,319, 481,318, 481,317, 481,316, 481,315, 481,314, 480,314, 480,313, 479,313, 479,312, 478,312, 477,312, 477,311, 476,311, 475,311, 474,311, 474,312, 473,312, 472,312, 472,313, 471,313, 471,314, 470,314, 470,315, 470,316, 470,317, 470,318, 470,319, 470,320, 471,320, 471,321, 472,321, 472,322, 473,322, 474,322, 474,323, 475,323" oldtitle="Eukaryotic Phospholipid Synthesis &amp; Editing" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/8" coords="628,323, 629,323, 630,323, 630,322, 631,322, 632,322, 632,321, 633,321, 633,320, 634,320, 634,319, 634,318, 634,317, 634,316, 634,315, 634,314, 633,314, 633,313, 632,313, 632,312, 631,312, 630,312, 630,311, 629,311, 628,311, 627,311, 627,312, 626,312, 625,312, 625,313, 624,313, 624,314, 623,314, 623,315, 623,316, 623,317, 623,318, 623,319, 623,320, 624,320, 624,321, 625,321, 625,322, 626,322, 627,322, 627,323, 628,323" oldtitle="Eukaryotic Phospholipid Synthesis &amp; Editing" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/aralip-menu/pathway/8" coords="548,323, 549,323, 550,322, 551,322, 552,321, 553,321, 553,320, 553,319, 554,319, 554,318, 554,317, 554,316, 554,315, 553,315, 553,314, 553,313, 552,313, 551,312, 550,312, 549,311, 548,311, 547,311, 546,312, 545,312, 545,313, 544,313, 543,314, 543,315, 543,316, 542,316, 542,317, 542,318, 543,318, 543,319, 543,320, 544,321, 545,321, 545,322, 546,322, 547,323, 548,323" oldtitle="Eukaryotic Phospholipid Synthesis &amp; Editing" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/139" coords="613,337,627,373" oldtitle="Phospholipase D  β" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/142" coords="401,327,415,338" oldtitle="Phospholipase D ζ" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/141" coords="552,338,565,350" oldtitle="Phospholipase D δ" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/140" coords="555,353,566,363" oldtitle="Phospholipase D γ" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/139" coords="552,365,566,377" oldtitle="Phospholipase D β  " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/140" coords="484,349,495,359" oldtitle="Phospholipase D γ" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/139" coords="479,361,493,373" oldtitle="Phospholipase D  β " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/141" coords="401,339,414,351" oldtitle="Phospholipase D δ" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/140" coords="405,354,415,364" oldtitle="Phospholipase D γ" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/133" coords="338,452,389,464" oldtitle="Phosphatidylinositol-Phosphate Kinase type IB" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/131" coords="299,341,309,351" oldtitle="Phosphatidylinositol-4-Kinase γ" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/130" coords="296,358,310,370" oldtitle="Phosphatidylinositol-4-Kinase  β " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/133" coords="253,406,265,455" oldtitle="Phosphatidylinositol-Phosphate Kinase type IB" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/133" coords="19,309,43,349" oldtitle="Phosphatidylinositol-Phosphate Kinase type IB" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/132" coords="33,320,67,369" oldtitle="Phosphatidylinositol-Phosphate Kinase type IA " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/140" coords="688,174,698,184" oldtitle="Phospholipase D γ" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/139" coords="400,366,414,378" oldtitle="Phospholipase D β " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/140" coords="636,354,646,364" oldtitle="Phospholipase D γ" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/138" coords="533,334,544,372" oldtitle="Phospholipase D α" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/34" coords="254,210,290,221" oldtitle="ER Phosphatidate Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/169" coords="359,234,412,244" oldtitle="Diacylglycerol-Pyrophosphate Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/127" coords="251,234,298,245" oldtitle="Diacylglycerol Kinase " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/170" coords="363,209,420,221" oldtitle="Diacylglycerol-Phosphate Kinase" title="" data-hasqtip="true">
+                <area shape="POLYGON" href="/enzymes/34" coords="328,292, 328,224, 227,224">
+                <area shape="RECT" href="/enzymes/156" coords="582,222,643,234" oldtitle="N-Acylphosphatidylethanolamine Synthase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/155" coords="685,74,697,115" oldtitle="Fatty Acid Amide Hydrolase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/139" coords="668,166,682,203" oldtitle="Phospholipase D b " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/146" coords="554,74,565,112" oldtitle="Lysophospholipase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/144" coords="568,164,579,203" oldtitle="Cytosolic Phospholipase A2" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/143" coords="554,165,565,203" oldtitle="Phospholipase A1 " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/138" coords="460,335,471,373" oldtitle="Phospholipase D α" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/138" coords="382,336,393,373" oldtitle="Phospholipase D α" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/159" coords="186,466,221,477" oldtitle="PTEN-like Phosphoinositide 3-Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/132" coords="336,466,386,477" oldtitle="Phosphatidylinositol-Phosphate Kinase type IA " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/163" coords="340,489,375,501" oldtitle="Phosphoinositide 4-Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/135" coords="281,493,292,539" oldtitle="Phosphoinositide-specific Phospholipase C" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/161" coords="288,415,299,459" oldtitle="Phosphoinositide 5-Phosphatase Type II" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/132" coords="240,405,251,455" oldtitle="Phosphatidylinositol-Phosphate Kinase type IA " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/129" coords="282,322,294,370" oldtitle="Phosphatidylinositol-4-Kinase α" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/163" coords="254,338,265,373" oldtitle="Phosphoinositide 4-Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/34" coords="393,247,429,258" oldtitle="ER Phosphatidate Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/34" coords="356,246,391,260" oldtitle="Plastidial Phosphatidate Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/144" coords="342,163,353,202" oldtitle="Cytosolic Phospholipase A2" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/143" coords="317,158,328,196" oldtitle="Phospholipase A1 " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/174" coords="321,78,332,118" oldtitle="Lysophosphatidate Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/162" coords="97,333,140,379" oldtitle="Sac domain-containing Phosphoinositide Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/134" coords="123,319,161,362" oldtitle="Phosphatidylinositol-Phosphate Kinase type III " title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/163" coords="62,337,85,371" oldtitle="Phosphoinositide 4-Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/159" coords="165,310,200,321" oldtitle="Phosphoinositide 3-Phosphatase" title="" data-hasqtip="true">
+                <area shape="RECT" href="/enzymes/128" coords="164,285,199,296" oldtitle="Phosphatidylinositol-3-Kinase " title="" data-hasqtip="true">
+               </map>
+        </div>
+
+    </div>
+</mat-card>

@@ -1,0 +1,1 @@
+WG.Load('/static/pmnwg/PHOSLIPSYN2-PWY.wg', 'wgdiv-phoslipsyn2-pwy');

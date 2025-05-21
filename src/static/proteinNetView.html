@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Protein-Protein Interaction Network</title>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+    <link rel='stylesheet' href='js/foundation.css'/>
+    <link rel='stylesheet' href='js/custom.css'/>
+
+    <!-- For loading external data files -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script>
+
+    <script src="js/cytoscape.min.js"></script>
+
+    <!-- <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/basic/jquery.qtip.css" /> -->
+  <style type="text/css">
+    body {background-color: transparent; font-family: 'PT Sans', sans-serif;}
+    .info {
+      font-size: 16px;
+      margin: 5px;
+      text-align: center;
+    }
+    .title {
+      text-align: center;
+      margin: 5px;
+    }
+  </style>
+
+</head>
+<body>
+<br>
+<br>
+<div class="row columns">
+  <div class="columns small-10 small-centered textrow ">
+
+      <h3 class="title">Protein-Protein Interaction Network</h3>
+
+  </div>
+</div>
+<div class="row columns">
+  <div class="columns small-10 small-centered">
+<!--    <h5 id="layouts-header">Layouts:</h5>-->
+    <div class="btn-group">
+      <button id="layout1" title="Dynamic Node Cluster" class="button button1">CoSE</button>
+      <button id="layout2" title="D3 Force Graph" class="button button2">Cola</button>
+      <button id="layout3" title="Circluar Pattern" class="button button3">Circle</button>
+      <button id="layout4" title="Symetric" class="button button4">Concentric</button>
+      <ul id="target-pathway-dropdown"  class="dropdown menu menu-hover-lines " data-dropdown-menu>
+        <li class="menu">
+          <a class="btn-group-dropdown">Target Pathway</a>
+          <ul class="menu vertical" data-submenu>
+            <li><a href="#">Glycerophospholipid metabolism</a></li>
+            <li><a href="#">Biosynthesis of secondary metabolites</a></li>
+            <li><a href="#">Metabolic pathways</a></li>
+            <li><a href="#">Terpenoid backbone biosynthesis</a></li>
+            <li><a href="#">Phosphatidylinositol signaling system</a></li>
+            <li><a href="#">Fatty acid metabolism</a></li>
+            <li><a href="#">Inositol phosphate metabolism</a></li>
+            <li><a href="#">Fatty acid biosynthesis</a></li>
+            <li><a href="#">Glycerolipid metabolism</a></li>
+            <li><a href="#">alpha-Linolenic acid metabolism</a></li>
+            <li><a href="#">Ether lipid metabolism</a></li>
+            <li><a href="#">Steroid biosynthesis</a></li>
+            <li><a href="#">Fatty acid elongation</a></li>
+            <li><a href="#">Diterpenoid biosynthesis</a></li>
+            <li><a href="#">Biosynthesis of unsaturated fatty acids</a></li>
+            <li><a href="#">Peroxisome</a></li>
+            <li><a href="#">Sesquiterpenoid and triterpenoid biosynthesis</a></li>
+            <li><a href="#">Carotenoid biosynthesis</a></li>
+            <li><a href="#">Cutin, suberine and wax biosynthesis</a></li>
+            <li><a href="#">Sphingolipid metabolism</a></li>
+            <li><a href="#">Biosynthesis of antibiotics</a></li>
+            <li><a href="#">Fatty acid degradation</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!--<div class="row columns">-->
+<!--  <div class="columns small-10 small-centered">-->
+<!--    <h5 id="filters-header">Filters:</h5>-->
+<!--    <div id="filters-box">-->
+
+<!--      <ul id="species-dropdown" class="dropdown menu menu-hover-lines " data-dropdown-menu>-->
+<!--        <li class="menu">-->
+<!--          <a class="btn-group-dropdown">Species</a>-->
+<!--          <ul class="menu vertical" data-submenu>-->
+<!--            <li><a href="#">Arabidopsis</a></li>-->
+<!--            <li><a href="#">Species 2</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<br>
+<br>
+
+<div class="row columns">
+
+    <div class=" text-center" id="loading" style="margin-top: 35px">
+        <h5><i class="fas fa-spinner fa-spin fa-1.5x"></i>&nbsp;Loading network... </h5>
+    </div>
+
+</div>
+
+<div class="row columns">
+
+    <div class="columns small-10 small-centered" id="cy">
+
+
+    </div>
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.5.3/cytoscape.umd.js" type="text/javascript"></script>
+<script src="https://marvl.infotech.monash.edu/webcola/cola.min.js"></script>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/what-input.js"></script>
+<script src="js/vendor/foundation.min.js"></script>
+
+<!--test. you could change this latter-->
+<script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+<script src="https://unpkg.com/numeric/numeric-1.2.6.js"></script>
+<script src="https://unpkg.com/layout-base/layout-base.js"></script>
+<script src="https://unpkg.com/cose-base/cose-base.js"></script>
+
+<script src="https://unpkg.com/webcola/WebCola/cola.min.js"></script>
+<script src="js/cytoscape-cola.js"></script>
+<!--change-->
+<script src="js/cytoscape-cola.js"></script>
+<!-- <script src="/static/js/fcose.js"></script> -->
+<script src="js/custom.js"></script>
+<script src="js/go.js"></script>
+
+
+<script src="https://unpkg.com/layout-base/layout-base.js"></script>
+<script src="https://unpkg.com/avsdf-base/avsdf-base.js"></script>
+<script src="js/cytoscape-avsdf.js"></script>
+<script src="https://unpkg.com/popper.js@1.14.7/dist/umd/popper.js"></script>
+<script src="js/cytoscape-popper.js"></script>
+<script src="https://unpkg.com/tippy.js@4.0.1/umd/index.all.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@4.0.1/index.css" />
+<script src='js/proteinNetworkVisualizer.js'></script>
+
+<div class="row columns">
+  <div class="columns small-10 small-centered textrow ">
+
+      <p class="info">The protein-protein interaction network is generated by STRING. All proteins are fatty-acid related.
+      </p>
+
+  </div>
+</div>
+</body>
+</html>

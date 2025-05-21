@@ -1,0 +1,27 @@
+<div class="base">
+    <div class="page-title-bar">
+        <p class="page-title">Pathway Viewer</p>
+    </div>
+    <div style="margin-top: 1%;">
+        <mat-tab-group class="vertical-tabs" [@.disabled]="true">
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    KEGG Pathway Viewer
+                </ng-template>
+                <app-kegg-pathway-viewer></app-kegg-pathway-viewer>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    Custom Pathway Viewer
+                </ng-template>
+                <app-custom-pathway-viewer></app-custom-pathway-viewer>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    Extended Pathways
+                </ng-template>
+                <app-extended-pathway-viewer></app-extended-pathway-viewer>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div> 

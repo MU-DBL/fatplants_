@@ -1,0 +1,438 @@
+<mat-card id="enzyme-page">
+    <div class="page-title-bar">
+        <p class="page-title">Enzyme & Protein Data</p>
+    </div>
+    <h2 style="color:#5F9EA0; padding: 2%; font-weight: 600;"><div [innerHTML]="name"></div></h2>
+    <div *ngFor="let reaction of reactions" style="padding: 2%;">
+        <div *ngIf='reaction.enzymetype=="Heteromeric"; else notHeteromeric'>
+            <div *ngIf='reaction.reactiontype=="Is A Subunit Of"'>
+                <p></p>
+            </div>
+            <div
+                *ngIf='reaction.reactiontype=="Overall Reaction" || reaction.reactiontype=="Subunit & Overall Reaction"'>
+                <p>Is A Subunit Of <a href="/hehos/{{reaction.heho_id}}"
+                        target="_blank">{{reaction.heho_name}}</a> Reaction</p>
+            </div>
+        </div>
+        <ng-template #notHeteromeric>
+            <div *ngIf='reaction.reactiontype=="Is A Subunit Of"'>
+                <p>A Domain Of The {{reaction.enzyme_name}} With {{reaction.domain}} Activity</p>
+            </div>
+            <div *ngIf='reaction.reactiontype=="Overall Reaction"'>
+                <p>{{reaction.enzyme_name}} Overall Reaction</p>
+            </div>
+        </ng-template>
+
+        <div
+            *ngIf="reaction.s1.trim() && reaction.s2.trim() && reaction.p1.trim() && reaction.p2.trim(); else notAllFour">
+            <tr>
+                <td
+                    style="font-size: 10pt; font-weight:bold ;color: green; width:300px;text-align: right; vertical-align: middle;">
+                    <div [innerHTML]="convertToHtml(reaction.s2)"></div></td>
+                <td></td>
+                <td
+                    style="font-size: 10pt;font-weight:bold ; color: green; width:300px;text-align: left; vertical-align: middle;">
+                    <div [innerHTML]="convertToHtml(reaction.p2)"></div></td>
+            </tr>
+            <tr>
+                <td
+                    style="font-size: 10pt; font-weight:bold ;color: red; width:300px; text-align: right;vertical-align: middle;">
+                    <div [innerHTML]="convertToHtml(reaction.s1)"></div></td>
+                <td><img src="/static/reaction.gif" border="=0"></td>
+                <td
+                    style="font-size: 10pt; font-weight:bold ;color:red; width:300px; vertical-align: middle;text-align: left;">
+                    <div [innerHTML]="convertToHtml(reaction.p1)"></div></td>
+                <td *ngIf="reaction.ecnumber.length" style="font-size: 10pt; vertical-align: top;text-align: right;">Brenda:
+                    <span *ngFor="let num of reaction.ecnumber">
+                        <a href="http://www.brenda-enzymes.info/php/result_flat.php4?ecno={{num.ecnumber}}"
+                            target="_blank">[{{num.ecnumber}}]</a>&nbsp;</span>
+                    <br>IUBMB:
+                    <span *ngFor="let num of reaction.ecnumber">
+                        <a href="http://www.chem.qmul.ac.uk/iubmb/enzyme/EC{{num.ecnumber.replaceAll('.', '/')}}.html"
+                            target="_blank">[{{num.ecnumber}}]</a>&nbsp;</span>
+                    <br>ExPASy:
+                    <span *ngFor="let num of reaction.ecnumber">
+                        <a href="http://enzyme.expasy.org/EC/{{num.ecnumber}}"
+                            target="_blank">[{{num.ecnumber}}]</a>&nbsp;</span>
+                    <br>ExplorEnz:
+                    <span *ngFor="let num of reaction.ecnumber">
+                        <a href="http://www.enzyme-database.org/query.php?ec={{num.ecnumber}}"
+                            target="_blank">[{{num.ecnumber}}]</a>&nbsp;</span>
+                    <br>PDB:
+                    <span *ngFor="let num of reaction.ecnumber">
+                        <a href="http://www.ebi.ac.uk/thornton-srv/databases/cgi-bin/enzymes/GetPage.pl?ec_number={{num.ecnumber}}"
+                            target="_blank">[{{num.ecnumber}}]</a>&nbsp;</span>
+                </td>
+            </tr>
+            <tr *ngIf="reaction.comment.trim()">
+                <td style="font-size: 10pt;font-weight:bold ; width:300px; text-align: right; vertical-align: middle;">
+                    Comments:</td>
+                <td colspan="4" style="font-size: 10pt; width:300px; text-align: left; vertical-align: middle;">
+                    {{reaction.comment}}</td>
+            </tr>
+        </div>
+        <ng-template #notAllFour>
+            <div *ngIf="reaction.s1.trim() || reaction.s2.trim() || reaction.p1.trim() || reaction.p2.trim()">
+                <tr>
+                    <td style="vertical-align: middle; width:300px;">
+                        <span *ngIf="reaction.s2.trim()" style="font-size: 10pt; font-weight:bold ;color: green;text-align: right;">
+                            <div [innerHTML]="convertToHtml(reaction.s2)+'+'"></div>
+                        </span>
+                        <span *ngIf="reaction.s1.trim()" style="font-size: 10pt; font-weight:bold ;color: red; text-align: right;">
+                            <div [innerHTML]="convertToHtml(reaction.s1)"></div>
+                        </span>
+                    </td>
+                    <td style="vertical-align: middle;"><img src="/static/reaction_.gif" border="=0"></td>
+                    <td style="vertical-align: middle; width:300px;">
+                        <span *ngIf="reaction.p1.trim()" style="font-size: 10pt; font-weight:bold ;color: red; text-align: left;">
+                            <div [innerHTML]="convertToHtml(reaction.p1)"></div>
+                        </span>
+                        <span *ngIf="reaction.p2.trim()" style="font-size: 10pt; font-weight:bold ;color: green; text-align: left;">
+                            <div [innerHTML]="convertToHtml('+'+reaction.p2)"></div>
+                        </span>
+                    </td>
+                    <td style="font-size: 10pt; vertical-align: top;text-align: right;">Brenda:
+                        <span *ngFor="let num of reaction.ecnumber">
+                            <a href="http://www.brenda-enzymes.info/enzyme.php?ecno={{num.ecnumber}}"
+                                target="_blank">[{{num.ecnumber}}]</a>&nbsp;</span>
+                        <br>IUBMB:
+                        <span *ngFor="let num of reaction.ecnumber">
+                            <a href="http://www.chem.qmul.ac.uk/iubmb/enzyme/EC{{(num.ecnumber.replaceAll('.', '/')+'.html').replace('*.html', '')}}"
+                                target="_blank">[{{num.ecnumber}}]</a>&nbsp;</span>
+                        <br>ExPASy:
+                        <span *ngFor="let num of reaction.ecnumber">
+                            <a href="http://enzyme.expasy.org/EC/{{num.ecnumber}}"
+                                target="_blank">[{{num.ecnumber}}]</a>&nbsp;</span>
+                        <br>ExplorEnz:
+                        <span *ngFor="let num of reaction.ecnumber">
+                            <a href="http://www.enzyme-database.org/query.php?ec={{num.ecnumber}}"
+                                target="_blank">[{{num.ecnumber}}]</a>&nbsp;</span>
+                        <br>PDB:
+                        <span *ngFor="let num of reaction.ecnumber">
+                            <a href="http://www.ebi.ac.uk/thornton-srv/databases/cgi-bin/enzymes/GetPage.pl?ec_number={{num.ecnumber.replaceAll('.*','')}}"
+                                target="_blank">[{{num.ecnumber}}]</a>&nbsp;</span>
+                    </td>
+                </tr>
+                <tr *ngIf="reaction.comment">
+                    <td
+                        style="font-size: 10pt;font-weight:bold ; width:300px; text-align: right; vertical-align: middle;">
+                        Comments:</td>
+                    <td colspan="4" style="font-size: 10pt; width:300px; text-align: left; vertical-align: middle;">
+                        {{reaction.comment}}</td>
+                </tr>
+                <!--</table>-->
+            </div>
+        </ng-template>
+    </div>
+    <p class="subtitle">Enzyme Pathways</p>
+    <span *ngFor="let pathway of pathways; let i=index">
+        <span *ngIf="pathway.nameabbreviation!='Unknown'">
+            <span *ngIf="i">|</span>
+            <a href="/aralip-menu/pathway/{{pathway.pathway_id}}" target="_blank"
+                style="margin-left: 1%;margin-right: 1%;">{{pathway.nameabbreviation}}</a>
+            </span>
+    </span>
+    <div *ngIf="locus.length > 0">
+        <p class="subtitle">Locus Data & Links </p>
+        <div id='table' style="margin-left: 2%; margin-right: 2%;">
+            <mat-table [dataSource]='locusDataSource' style="width:100%">
+                <ng-container matColumnDef="locus_id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Locus Id(TAIR Link) </mat-header-cell>
+                    <mat-cell *matCellDef="let elem">
+                        <a href="http://www.arabidopsis.org/servlets/TairObject?type=locus&name={{elem.locus_id}}"
+                            target="_blank">
+                            {{elem.locus_id}}
+                        </a>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="abbrev">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Abbrev. </mat-header-cell>
+                    <mat-cell *matCellDef="let elem">
+                        <div [innerHTML]="elem.abbrev"></div>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="mutant">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Mutant(s) </mat-header-cell>
+                    <mat-cell *matCellDef="let elem"> <u style="color:blue;cursor: pointer;" (click)='showMutant(elem)'><div [innerHTML]="elem.mutant"></div></u>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="pathway">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Pathway(s) </mat-header-cell>
+                    <mat-cell *matCellDef="let elem"><div>
+                        <ng-container *ngFor="let pathway of elem.pathways">
+                            <a *ngIf="pathway.pathway_id<25" href="/aralip-menu/pathway/{{pathway.pathway_id}}" target="_blank">{{pathway.nameabbreviation}}</a><br>
+                        </ng-container></div>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="subcelluar">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Subcelluar location </mat-header-cell>
+                    <mat-cell *matCellDef="let elem"> {{ elem.subcelles }} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="evidence">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Evidence for function </mat-header-cell>
+                    <mat-cell *matCellDef="let elem"> {{ elem.evidence }} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="references">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Key References </mat-header-cell>
+                    <mat-cell *matCellDef="let elem"> 
+                        <u *ngIf="elem.references.length==1" style="color:blue;cursor: pointer;" (click)='showRef(elem.references)'>1 Ref</u>
+                        <u *ngIf="elem.references.length>1" style="color:blue;cursor: pointer;" (click)='showRef(elem.references)'>{{elem.references.length}} Refs</u>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="comments">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Comments </mat-header-cell>
+
+                    <mat-cell *matCellDef="let elem"><div style="word-break: break-all;" [innerHTML]="elem.comments"></div></mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="microarray">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Microarray Expression </mat-header-cell>
+                    <mat-cell *matCellDef="let elem">
+                        <a href="http://bbc.botany.utoronto.ca/efp/cgi-bin/efpWeb.cgi?dataSource=Developmental_Map&modeInput=Absolute&primaryGene={{elem.locus_id}}"
+                            target="_blank">
+                            <img alt="Efp" height="15" src="/static/efp.PNG" width="15">
+                        </a>
+                    </mat-cell>
+                </ng-container>
+                <!-- <ng-container matColumnDef="proteomics">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Proteomics data </mat-header-cell>
+                    <mat-cell *matCellDef="let elem">
+                        <a href="http://fgcz-atproteome.unizh.ch/?page=tair&agi={{elem.locus_id}}" target="_blank">
+                            <img alt="Eth" height="10" src="/static/eth.PNG" width="30">
+                        </a>
+                    </mat-cell>
+                </ng-container> -->
+                <ng-container matColumnDef="estexpression">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ESTexpression in other oilseeds </mat-header-cell>
+                    <mat-cell *matCellDef="let elem"> 
+                        <u *ngIf="elem.brem1 || elem.brem2 || elem.brem3 || elem.brem4 || elem.caen1 || elem.caen2 || elem.caen3|| elem.caen4 || elem.euen1 || elem.euen2 || elem.euen3 || elem.euen4 || elem.naem1|| elem.naem2 || elem.naem3 || elem.naem4 " style="color:blue;cursor: pointer;" (click)='showEst()'>Data</u>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row
+                    *matHeaderRowDef="['locus_id', 'abbrev', 'mutant', 'pathway', 'subcelluar', 'evidence', 'references', 'comments', 'microarray', 'estexpression']; sticky: true;"></mat-header-row>
+                <mat-row
+                    *matRowDef="let row; columns: ['locus_id', 'abbrev', 'mutant', 'pathway', 'subcelluar', 'evidence', 'references', 'comments', 'microarray', 'estexpression'];"></mat-row>
+            </mat-table>
+
+            <mat-card class="overlay" *ngIf="ref_selected">
+                <div class="popup">
+                    <p *ngFor="let ref of ref_selected"><a href="{{ref.ref}}" target="_blank"><div [innerHTML]="ref.alias"></div></a></p>
+                    <button mat-flat-button class="button_close" (click)="closeRefPopup()">Close</button>
+                </div>
+            </mat-card>
+
+            <mat-card class="overlay" *ngIf="mutant_selected" >
+                <div class="popup">
+                    <table cell="" style="border: 2px solid #e2e1e1;width:100%;">
+                        <tbody>
+                            <tr class="list-odd">
+                                <td style="width:230px;font-weight:bold;">Mutant</td>
+                                <td> <div [innerHTML]="mutant_selected.mutant"></div></td>
+                            </tr>
+                            <tr class="list-even">
+                                <td style="font-weight:bold;">Gene Name</td>
+                                <td>{{mutant_selected.gene}}</td>
+                            </tr>
+
+                            <tr class="list-odd">
+                                <td style="font-weight:bold;">Gene Abbreviation</td>
+                                <td>{{mutant_selected.abbrev}}</td>
+                            </tr>
+
+                            <tr class="list-even">
+                                <td style="font-weight:bold;">ARALIP Pathway(s)</td>
+                                <!---standard_data -->
+                                <td>
+                                    <ng-container *ngFor="let pathway of mutant_selected.pathways">
+                                        <a
+                                            href="/aralip-menu/pathway/{{pathway.pathway_id}}" target="_blank">{{pathway.nameabbreviation}}</a><br>
+                                    </ng-container>
+                            </tr>
+
+                            <tr class="list-odd">
+                                <td style="font-weight:bold;">Evidence For Function</td>
+                                <td>{{mutant_selected.evidence}}</td>
+                            </tr>
+                            <tr class="list-even">
+                                <td style="font-weight:bold;">Comments</td>
+                                <td style="word-break: break-all;">
+                                    {{mutant_selected.comments}}
+                                </td>
+                            </tr>
+
+                            <tr class="list-odd">
+                                <td style="font-weight:bold;">
+                                    <div>Identification Method </div>
+                                    <div style="font-weight: normal;">(<a href="http://www.ncbi.nlm.nih.gov/pubmed/22247268"
+                                            target="_blank">Lloyd &amp; Meinke, 2012</a>)</div>
+
+                                </td>
+                                <td>{{mutant_selected.gene_identification_method}}<br></td>
+                            </tr>
+                            <tr class="list-even">
+                                <td style="font-weight:bold;">
+
+                                    <div> Mutant Description</div>
+                                    <div style="font-weight: normal;">(<a href="http://www.ncbi.nlm.nih.gov/pubmed/22247268"
+                                            target="_blank">Lloyd &amp; Meinke, 2012</a>)</div>
+                                </td>
+                                <td>{{mutant_selected.description_mutant_phenotype}}<br></td>
+                            </tr>
+                            <tr class="list-odd">
+                                <td style="font-weight:bold;">References <sup>1</sup></td>
+                                <td>
+                                    <a href="{{mutant_selected.references[0].ref}}"
+                                        target="_blank"><div [innerHTML]="mutant_selected.references[0].alias"></div></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="padding-bottom: 10px;margin-top:40px;padding-left:5px;">
+                        <div>
+                            <div style="float:left;margin-top:-4px;font-size:12px;"><sup>1</sup></div>
+                            <div style="width:auto;padding-left:8px;">In most cases, the earliest publication for a mutant
+                                describes lipid composition data for the mutant. For further publications, please refer to
+                                the
+                                'references' column.</div>
+                        </div>
+                    </div>
+                    <button mat-flat-button class="button_close" (click)="closeMutantPopup()">Close</button>
+                </div>
+            </mat-card>
+            <mat-card class="overlay" *ngIf="est_selected">
+                <div id="oilseeds" class="popup" style="height: 80%;">
+
+                    <table id="enzymes_data_title">
+                        <tbody>
+                            <tr style="text-align:left;">
+                                <th colspan="7">
+                                    <h3> EST Expression (ESTs/100,000 ESTs) of Developing Oil Seeds, Based on Pyrosequencing
+                                    </h3>
+
+                                    <div style="font-size: 10px;">
+                                        (For further information, see:<a href="http://www.ncbi.nlm.nih.gov/pubmed/21851431"
+                                            target="_new">
+                                            Troncoso-Ponce MA, Kilaru A, et al (2011)</a> Comparative deep transcriptional
+                                        profiling of four developing
+                                        oilseeds. Plant J)
+                                    </div>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <mat-table [dataSource]='locusDataSource' style="width:100%;max-height: 80%;overflow-x: scroll;overflow-y: scroll;">
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef>Locus ID</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.locus_id}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="abbrev">
+                            <th mat-header-cell *matHeaderCellDef>Abbrev.</th>
+                            <td mat-cell *matCellDef="let elem"> <div [innerHTML]="elem.abbrev"></div> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="brem1">
+                            <th mat-header-cell *matHeaderCellDef>Em I 14-20 DAF</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.brem1}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="brem2">
+                            <th mat-header-cell *matHeaderCellDef>Em II 21-25 DAF</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.brem2}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="brem3">
+                            <th mat-header-cell *matHeaderCellDef>Em III 25-30 DAF</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.brem3}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="brem4">
+                            <th mat-header-cell *matHeaderCellDef>Em IV 31-35 DAF</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.brem4}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="caen1">
+                            <th mat-header-cell *matHeaderCellDef>En I Stage III</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.caen1}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="caen2">
+                            <th mat-header-cell *matHeaderCellDef>En II Stage IV</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.caen2}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="caen3">
+                            <th mat-header-cell *matHeaderCellDef>En III Stage VI</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.caen3}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="caen4">
+                            <th mat-header-cell *matHeaderCellDef>En IV Stages VII-VIII</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.caen4}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="caem">
+                            <th mat-header-cell *matHeaderCellDef>Em</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.caem}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="euen1">
+                            <th mat-header-cell *matHeaderCellDef>En I Stage IV</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.euen1}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="euen2">
+                            <th mat-header-cell *matHeaderCellDef>En II Stage VI</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.euen2}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="euen3">
+                            <th mat-header-cell *matHeaderCellDef>En III Stages VII-VIII</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.euen3}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="euen4">
+                            <th mat-header-cell *matHeaderCellDef>En IV Stages 9/19</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.euen4}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="euem">
+                            <th mat-header-cell *matHeaderCellDef>Em</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.euem}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="naem1">
+                            <th mat-header-cell *matHeaderCellDef>Em I 16 DPA</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.naem1}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="naem2">
+                            <th mat-header-cell *matHeaderCellDef>Em II 18 DPA</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.naem2}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="naem3">
+                            <th mat-header-cell *matHeaderCellDef>Em III 22 DPA</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.naem3}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="naem4">
+                            <th mat-header-cell *matHeaderCellDef>Em IV 25 DPA</th>
+                            <td mat-cell *matCellDef="let elem"> {{elem.naem4}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-1-group">
+                            <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"> </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-2-group">
+                            <th mat-header-cell *matHeaderCellDef [attr.colspan]="4">Brassica napus Embryo (Em) Stages (Days
+                                After Flowering (DAF))</th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-3-group">
+                            <th mat-header-cell *matHeaderCellDef [attr.colspan]="5">Ricinus communis Endosperm (En) Stages
+                                & Embryo (Em)</th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-4-group">
+                            <th mat-header-cell *matHeaderCellDef [attr.colspan]="5">Euonymus alatus Endosperm (En) Stages &
+                                Embryo (Em) </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-5-group">
+                            <th mat-header-cell *matHeaderCellDef [attr.colspan]="4">Tropaeolum majus Embryo (Em) Stages
+                                (Days post antithesis (DPA))</th>
+                        </ng-container>
+                        <tr mat-header-row
+                            *matHeaderRowDef="['header-row-1-group', 'header-row-2-group', 'header-row-3-group', 'header-row-4-group', 'header-row-5-group']">
+                        </tr>
+                        <tr mat-header-row
+                            *matHeaderRowDef="['id','abbrev','brem1', 'brem2', 'brem3', 'brem4', 'caen1', 'caen2', 'caen3', 'caen4', 'caem', 'euen1', 'euen2', 'euen3', 'euen4', 'euem', 'naem1', 'naem2', 'naem3', 'naem4']">
+                        </tr>
+                        <tr mat-row
+                            *matRowDef="let row; columns: ['id','abbrev','brem1', 'brem2', 'brem3', 'brem4', 'caen1', 'caen2', 'caen3', 'caen4', 'caem', 'euen1', 'euen2', 'euen3', 'euen4', 'euem', 'naem1', 'naem2', 'naem3', 'naem4'];">
+                        </tr>
+                    </mat-table>
+                    <br>
+                    <button mat-flat-button class="button_close"  (click)="closeEstPopup()">Close</button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</mat-card>

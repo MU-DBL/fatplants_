@@ -1,0 +1,30 @@
+.header {
+    height: 3.5rem;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: Roboto;
+    font-size: 1.8vw;
+    font-weight: 500;
+    background: #629B07 !important;
+    color: whitesmoke;
+    padding: 10px 15px;
+    margin: 0; 
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .box{
+    box-shadow: 0 .125rem .25rem .125rem rgba(22, 29, 57, .2);
+    padding: 1%;
+    margin-bottom: 1%;
+  }
+  
+  a {
+    color: #000000;
+  }
+
+  .subtitle{
+    font-weight: 600;
+    color: var(--bs-navbar-color);
+  }

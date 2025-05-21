@@ -1,0 +1,70 @@
+<mat-card class="base">
+  <div class="page-title-bar">
+    <p class="page-title">GLmol 3D Structure</p>
+  </div>
+  <p style="margin: 2%;">GLmol is a 3D molecular viewer based on WebGL and Javascript.</p>
+  <div>
+    <div style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin: 2%;">
+      <mat-form-field style="margin-left: 1%; width: 200px">
+        <input matInput type="text" class="browser-default" placeholder="Search" [(ngModel)]="glmolID">
+        <span id="help-icon-div">
+          <mat-icon id="help-icon" class="pointer"
+            [matTooltip]="'Enter any identifier to search. Click this icon for an example.'"
+            (click)="setDefaultSearch()">help</mat-icon>
+        </span>
+      </mat-form-field>
+      <mat-form-field style="margin-left: 5%; width: 200px">
+        <mat-select [value]="selectedSpecies" (selectionChange)="changeSpecies($event)">
+          <mat-option *ngFor="let s of species" [value]="s.value">
+            {{s.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" style="margin: 2%;"
+        (click)="Glmol()">Search</button>
+    </div>
+
+    <div class="row" *ngIf="relatedGeneNames.length > 1" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+      <h5 style="margin-top: 1%;">Possible Matches:</h5>
+      <table id="genetable" mat-table [dataSource]="relatedGeneNames">
+        <ng-container matColumnDef="uniprot_id">
+          <th mat-header-cell *matHeaderCellDef> UniProt ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.uniprot_id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="geneName" *ngIf="selectedSpecies != 'camelina'">
+          <th mat-header-cell *matHeaderCellDef> Gene Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.geneName || element.gene_names}} </td>
+        </ng-container>
+        <ng-container matColumnDef="geneName" *ngIf="selectedSpecies == 'camelina'">
+          <th mat-header-cell *matHeaderCellDef> Tair ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.tair_id }} </td>
+        </ng-container>
+        <ng-container matColumnDef="proteinNames">
+          <th mat-header-cell *matHeaderCellDef> Protein Names </th>
+          <td mat-cell *matCellDef="let element" style="text-overflow: ellipsis;"> {{element.proteinNames ||
+            element.protein_name}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedGeneColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedGeneColumns; let entry"
+          [ngClass]="{'generow': true, 'selected': entry.fp_id == selectedFPID}"
+          (click)="selectColumn(entry.uniprot_id, entry.fp_id)"></tr>
+      </table>
+      <label *ngIf="nopdb && noRes">No results found for that search.</label>
+      <label *ngIf="nopdb && !noRes">No PDB file found for selected UniProt ID: "{{this.selectedUniProt}}".</label>
+    </div>
+  </div>
+
+  <div class="row" style="width: 50%; margin: 5px auto;">
+    <mat-progress-bar id="loading-bar" mode="indeterminate" *ngIf="this.loading"></mat-progress-bar>
+  </div>
+
+  <div *ngIf="hasSearched" id="glmol-display" #scroll style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+    <mat-tab-group *ngIf="isGlmol" style="color: #4CAF50" style="width: 100%" height="768" animationDuration="0ms">
+      <mat-tab *ngFor="let pdb of pdbs" label="{{pdb.name}}">
+        <ng-template matTabContent>
+          <iframe [src]="pdb.url" style="width: 100%" height="768" class='viewer'></iframe>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-card>

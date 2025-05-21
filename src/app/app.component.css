@@ -1,0 +1,25 @@
+.active-nav {
+    border-left: 3px solid #91c784;
+    transition: border-left 0.5s, color 0.5s;
+}
+.active-nav>mat-icon {
+    color: #91c784;
+}
+button:focus {
+    background-color: inherit;
+}
+#sideNav {
+    display: flex;
+}
+.absolute {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.scrollable-container {
+    height: 100%;
+    overflow: hidden;
+}

@@ -1,0 +1,56 @@
+mat-card.base {
+    width: 100%;
+    box-sizing: border-box;
+    background-image: none !important;
+    margin: 0 !important;
+    padding:0 !important;
+  }
+
+/*We have a bar for page's title*/
+.page-title-bar {
+  background-color: #629B07;
+  color: rgb(255, 255, 255);
+  padding: 0.1rem;
+}
+
+/*page's title - font style*/
+.page-title {
+  font-size: 1.8vw;
+  font-weight: 500;
+  padding-left: 2%;
+  margin-block-end: 0.5rem;
+  margin-block-start: 0.5rem;
+}
+
+  :host {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  :host ::ng-deep .mat-tab-labels {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  mat-tab-group {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  :host ::ng-deep .mat-tab-body-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-tab-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  :host ::ng-deep mat-ink-bar {
+    display: none;
+  }

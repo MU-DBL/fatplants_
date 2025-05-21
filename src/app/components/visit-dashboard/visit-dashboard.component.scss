@@ -1,0 +1,59 @@
+a {
+  text-decoration: none;
+  color: darkgray;
+}
+
+.page-title-bar {
+  background-color: #629B07;
+  color: rgb(255, 255, 255);
+  padding: 0.1rem;
+}
+
+/*page's title - font style*/
+.page-title {
+  font-family: Roboto;
+  font-size: 1.8vw;
+  font-weight: 500;
+  padding-left: 2%;
+  margin-block-end: 0.5rem;
+  margin-block-start: 0.5rem;
+}
+
+#map {
+  width: 100%;
+  height: 390px;
+}
+.row{
+  padding-left:10px;
+  padding-right:10px;
+}
+.box{
+  box-shadow: 0 .125rem .25rem .125rem rgba(22, 29, 57, .2);
+  margin-bottom: 1%;
+  width: 49%;
+}
+
+.box1{
+  box-shadow: 0 .125rem .25rem .125rem rgba(22, 29, 57, .2);
+  height: 300px;
+  margin-bottom: 1%;
+}
+
+.box2{
+  box-shadow: 0 .125rem .25rem .125rem rgba(22, 29, 57, .2);
+  height: 400px;
+}
+
+.full-width-chart {
+  width: 100%;
+}
+
+  .subtitle{
+    padding-top: 5px;
+    padding-left: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: large;
+    color: var(--bs-navbar-color);
+  }
+  

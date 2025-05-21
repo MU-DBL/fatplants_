@@ -1,0 +1,433 @@
+<mat-card id="protein-page">
+    <div class="header">Protein Details</div>
+    <button mat-button routerLink='/datasets/arabidopsis'>
+        <mat-icon>keyboard_arrow_left</mat-icon><span class='back-text'>Back</span>
+    </button>
+
+    <div class="row" #results id="results" style="width: 100%">
+        <div>
+            <mat-tab-group class="vertical-tabs" (selectedTabChange)="tabChanged($event)">
+                <mat-tab *ngIf="showSummaryTab">
+                    <ng-template mat-tab-label>
+                        Summary
+                    </ng-template>
+                    <div *ngIf='!this.dataService.loading && (this.extendedData)'>
+                        <div id="mainContainer">
+                            <p *ngIf='extendedData.status && extendedData.status === "reviewed"'
+                                class='status reviewed'>
+                                <mat-icon class='info-icon'
+                                    [matTooltip]='"This entry has been reviewed by the UniProtKB curators."'>info</mat-icon>
+                                Reviewed
+                            </p>
+                            <p *ngIf='!extendedData.status || extendedData.status === "unreviewed"'
+                                class='status unreviewed'>
+                                <mat-icon class='info-icon'
+                                    [matTooltip]='"This entry has not been reviewed by the UniProtKB curators, and may not have complete data."'>info</mat-icon>
+                                Unreviewed
+                            </p>
+                            <h2 class='title'>
+                                <span *ngIf='headingName !== undefined'>
+                                    {{ headingName }}
+                                </span>
+                            </h2>
+                            <br>
+                            <h2 *ngIf="homologs" class='title'>Homologs</h2>
+                            <div style="margin-left: 15px;" *ngIf="homologs && speciesName == 'lmpd'">
+                                <a *ngIf="homologs.camelina" target="_blank"
+                                    [routerLink]="['/camelina_prot', homologs.camelina]">Camelina</a> |
+                                <a *ngIf="homologs.glymine_max" target="_blank"
+                                    [routerLink]="['/soybean_prot', homologs.glymine_max]">Soybean</a>
+                            </div>
+                            <div style="margin-left: 15px;" *ngIf="homologs && speciesName == 'camelina'">
+                                <a *ngIf="homologs.arabidopsis" target="_blank"
+                                    [routerLink]="['/protein', homologs.arabidopsis]">Arabidopsis</a> | <a
+                                    *ngIf="homologs.glymine_max" target="_blank"
+                                    [routerLink]="['/soybean_prot', homologs.glymine_max]">Soybean</a>
+                            </div>
+                            <div style="margin-left: 15px;" *ngIf="homologs && speciesName == 'soya'">
+                                <a *ngIf="homologs.arabidopsis" target="_blank"
+                                    [routerLink]="['/protein', homologs.arabidopsis]">Arabidopsis</a> |
+                                <a *ngIf="homologs.camelina" target="_blank"
+                                    [routerLink]="['/camelina_prot', homologs.camelina]">Camelina</a>
+                            </div>
+                            <div class='card-wrapper'>
+                                <mat-card class='protein-info-card'>
+                                    <h3 class='protein-subtitle'>Identification</h3>
+                                    <div class='protein-info-wrapper'>
+                                        <p class='protein-info'>Gene: {{ extendedData.gene_names }}</p>
+                                        <p class='protein-info protein-subtitle'>Protein Names: {{
+                                            headingName }}
+                                        </p>
+                                        <p class='protein-info'>RefSeq ID: {{ extendedData.refseq_id }}</p>
+                                        <p class='protein-info' *ngIf="extendedData.tair_id">Tair ID: {{
+                                            extendedData.tair_id }}
+                                        </p>
+                                        <p class='protein-info protein-subtitle'>Uniprot ID: {{
+                                            extendedData.uniprot_id }}</p>
+                                        <p class='protein-info'>Organism ID: {{ extendedData.organism_id }}</p>
+                                    </div>
+                                </mat-card>
+                                <mat-card class='protein-function-card'>
+                                    <div class="function-header">
+                                        <h3 class='protein-subtitle'>Protein Function</h3>
+                                    </div>
+                                    <mat-form-field appearance="fill" style="margin-left: 1%;">
+                                        <mat-label>GPT Query</mat-label>
+                                        <mat-select [value]="selectedGPTQuery"
+                                            (selectionChange)="selectGPTOption($event)">
+                                            <mat-option [value]="splitGeneNames[0]">
+                                                {{splitGeneNames[0]}}
+                                            </mat-option>
+                                            <mat-option *ngIf="splitGeneNames[1]" [value]="splitGeneNames[1]">
+                                                {{splitGeneNames[1]}}
+                                            </mat-option>
+                                            <mat-option [value]="extendedData.protein_name">
+                                                {{extendedData.protein_name || extendedData.protein_names}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <button style="margin-left: 1%;" mat-raised-button color="primary" (click)="openGptDialog()">Ask
+                                        ChatGPT</button>
+                                    <p class='protein-function' *ngIf='extendedData.function.length > 0'>{{
+                                        extendedData.function.substr(10) }}</p>
+                                    <p class='protein-function' *ngIf='extendedData.function.length === 0'>No
+                                        function specified for this entry.</p>
+                                    <b class='protein-subtitle'>Keywords:</b>
+                                    <p class= 'protein-function'>
+                                        {{parseKeywords(extendedData.keywords)}}
+                                    </p>
+                                </mat-card>
+                            </div>
+                            <mat-card class='domain-function-card'>
+                                <h3 class='protein-subtitle'>Gene Ontology</h3>
+                                <div *ngIf="extendedData.gene_ontology_go">
+                                    <b class='protein-subtitle'>Gene Ontology - GO</b>
+                                    <p class='protein-info'>&emsp; {{ extendedData.gene_ontology_go }}</p>
+                                </div>
+                                <div *ngIf="extendedData.gene_ontology_biological">
+                                    <b class='protein-subtitle'>Gene Ontology - Biological Process</b>
+                                    <p class='protein-info'>&emsp; {{ extendedData.gene_ontology_biological }}</p>
+                                </div>
+                                <div *ngIf="extendedData.gene_ontology_cellular">
+                                    <b class='protein-subtitle'>Gene Ontology - Cellular Component</b>
+                                    <p class='protein-info'>&emsp; {{ extendedData.gene_ontology_cellular }}</p>
+                                </div>
+                                <div *ngIf="extendedData.gene_ontology_molecular">
+                                    <b class='protein-subtitle'>Gene Ontology - Molecular Function</b>
+                                    <p class='protein-info'>&emsp; {{ extendedData.gene_ontology_molecular }}</p>
+                                </div>
+                            </mat-card>
+                            <mat-card class='sequence-card'>
+                            <div class="sequence-header">
+                                <div class="header-content">
+                                    <h2>Sequence</h2>
+                                    <button id="sequence-button" color="primary" (click)="copyToClipboard(this.extendedData.sequence)">Copy Sequence</button>
+                                </div>
+                            </div>
+                            <div id="sequence-display">{{this.extendedData.sequence}}</div>
+                            </mat-card>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab *ngIf="showSimpleSummaryTab">
+                    <ng-template mat-tab-label>
+                        Summary
+                    </ng-template>
+                    <p *ngIf='!extendedData.status || extendedData.status === "unreviewed"' class='status unreviewed'>
+                    <mat-icon class='info-icon'
+                        [matTooltip]='"This entry has not been reviewed by the UniProtKB curators, and may not have complete data."'>info</mat-icon>
+                    Unreviewed
+                </p>
+                <h2 class='title'>
+                    <span *ngIf='headingName !== undefined'>
+                        {{ headingName }}
+                    </span>
+                </h2>
+                <br>
+                    <mat-card class='sequence-card'>
+                        <div class="sequence-header">
+                            <div class="header-content">
+                                <h2>Sequence</h2>
+                                <button id="sequence-button" color="primary" (click)="copyToClipboard(this.extendedData.sequence)">Copy Sequence</button>
+                            </div>
+                        </div>
+                        <div id="sequence-display">{{this.extendedData.sequence}}</div>
+                        </mat-card>
+                        <br>
+                </mat-tab>
+                <mat-tab *ngIf="showAligmentsTab">
+                    <ng-template mat-tab-label>
+                        3D Model
+                    </ng-template>
+                    <!-- 3d structure-->
+                    <div *ngIf="is3DStructure && (this.speciesName)">
+                        <div class="column middleright" id="mainContainer">
+                            <h2>3D Model</h2>
+                            <div class="row">
+                                <mat-progress-bar id="pdb-loading-bar" mode="indeterminate"
+                                    *ngIf="g2sLoading"></mat-progress-bar>
+                                <label *ngIf="!g2sLoading && noPdb">No PDB match found.</label>
+                                <iframe [src]="defaultPdb"
+                                    style="transform: scale(1);transform-origin: 0 0;width: 100%; min-height: 600px"
+                                    *ngIf="!g2sLoading && !noPdb"></iframe>
+                            </div>
+                            <div class="row">
+                                <mat-card class='sequence-card'>
+                                    <div class="sequence-header">
+                                        <div class="header-content">
+                                            <h2>Sequence</h2>
+                                            <button id="sequence-button" color="primary" (click)="copyToClipboard(this.extendedData.sequence)">Copy Sequence</button>
+                                        </div>
+                                    </div>
+                                    <div id="sequence-display">{{this.extendedData.sequence}}</div>
+                                </mat-card>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab *ngIf="showStructrueTab">
+                    <ng-template mat-tab-label>
+                        Structure
+                    </ng-template>
+                    <!--Structure-->
+                    <div class="column middleright" *ngIf="isStructure" id="mainContainer">
+                        <div *ngIf="noPdb && !g2sLoading" class="centered">No PDB matches found.</div>
+                        <mat-progress-bar mode="indeterminate" *ngIf="g2sLoading"></mat-progress-bar>
+                        <mat-table [dataSource]='G2SDataSource' id='table' *ngIf="!g2sLoading">
+                            <ng-container matColumnDef="entryId">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Entry ID </mat-header-cell>
+                                <mat-cell *matCellDef="let elem"> {{elem.entryId}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="gene">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Gene </mat-header-cell>
+                                <mat-cell *matCellDef="let elem"> {{elem.gene}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="uniprotAccession">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Accession </mat-header-cell>
+                                <mat-cell *matCellDef="let elem"> {{elem.uniprotAccession}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="taxId">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Taxonomy ID </mat-header-cell>
+                                <mat-cell *matCellDef="let elem"> {{elem.taxId}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="uniprotStart">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Uniprot Start </mat-header-cell>
+                                <mat-cell *matCellDef="let elem"> {{elem.uniprotStart}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="uniprotEnd">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Uniprot End </mat-header-cell>
+                                <mat-cell *matCellDef="let elem"> {{elem.uniprotEnd}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="3DViewer">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header>3D Viewer </mat-header-cell>
+                                <mat-cell *matCellDef="let elem">
+                                    <button mat-raised-button color="primary" class="viewer-button"
+                                        (click)="showViewer(elem.entryId, elem.pdbUrl)">
+                                        <mat-icon>launch</mat-icon>
+                                    </button>
+                                    <a mat-button href="/static/display3d.html?pdbId={{elem.pdbUrl}}"
+                                        target="_blank">
+                                        <mat-icon>exit_to_app</mat-icon>
+                                    </a>
+                                </mat-cell>
+                            </ng-container>
+                            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table>
+                    </div>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Blast
+                    </ng-template>
+                    <!--Blast-->
+                    <div class="column middleright"  *ngIf="isBlast" id="mainContainer">
+                        <div class="row centered" *ngIf="showProgress">
+                            <circle-progress [percent]="percent" [radius]="100" [outerStrokeWidth]="16"
+                                [innerStrokeWidth]="8" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'"
+                                [animation]="true" [animationDuration]="300"
+                                [startFromZero]="false"></circle-progress>
+                        </div>
+
+                        <div class="centered" *ngIf="!showProgress && showBlastResList.length == 0">
+                            There was a problem loading the BLAST results.
+                        </div>
+                        <div *ngIf="!showProgress && showBlastResList.length !== 0">
+                            <p>Blast against Arabidopsis, Camelina and Soybean databse.</p>
+                            <p>Filter Blast Result by Percent Identity. Current Value: {{BlastFilterValue}}%</p>
+                            <mat-slider 
+                            min="1" 
+                            max="100" 
+                            step="5" 
+                            [(ngModel)]="BlastFilterValue" 
+                            thumbLabel tickInterval="10"
+                            (change)="onBlastFilterValueChange($event)">
+                        </mat-slider>
+                        </div>
+                        <div class="row" *ngFor="let res of showFilterBlastResList">                           
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            {{res[0]}}
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <pre>{{res[1]}}</pre>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab *ngIf="showPsiBlastTab">
+                    <ng-template mat-tab-label>
+                        PSI-Blast
+                    </ng-template>
+                     <!--Blast-->
+                     <div class="column middleright" id="mainContainer">
+                        <div class="row centered" *ngIf="showProgress">
+                            <circle-progress [percent]="percent" [radius]="100" [outerStrokeWidth]="16"
+                                [innerStrokeWidth]="8" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'"
+                                [animation]="true" [animationDuration]="300"
+                                [startFromZero]="false"></circle-progress>
+                        </div>
+
+                        <div class="centered" *ngIf="!showProgress && showPSIBlastResList.length == 0">
+                            There was a problem loading the PSI BLAST results.
+                        </div>
+                        <div *ngIf="!showProgress && showPSIBlastResList.length !== 0">
+                            <p>PSI Blast against Arabidopsis, Camelina and Soybean databse.</p>
+                            <p>Filter Blast Result by Percent Identity. Current Value: {{PSIBlastFilterValue}}%</p>              
+                            <mat-slider 
+                            min="1" 
+                            max="100" 
+                            step="5" 
+                            [(ngModel)]="PSIBlastFilterValue" 
+                            thumbLabel tickInterval="10"
+                            (change)="onPSIBlastFilterValueChange($event)">
+                        </mat-slider>
+                        </div>
+                        <div class="row" *ngFor="let res of showFilterPSIBlastResList">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            {{res[0]}}
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <pre>{{res[1]}}</pre>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                </mat-tab> 
+                <mat-tab *ngIf="showPathwayTab">
+                    <ng-template mat-tab-label>
+                        Pathway
+                    </ng-template>
+                    <!-- Pathway-->
+
+                    <div class="column middleright" *ngIf="isPathway"  id="mainContainer">
+                        <div class="centered" style="margin: 10px auto; width: 80%;" *ngIf="noimg">No pathway
+                            diagrams found in
+                            our
+                            database.</div>
+                        <div *ngIf="pathwayList.length !== 0">
+                            <br>
+                            <label class='pathway-label'><strong>Pathway Figures</strong></label>
+                            <br>
+                            <mat-radio-group aria-labelledby="pathway-radio-group-label"
+                                class="pathway-radio-group centered" [(ngModel)]="currPath">
+
+                                <mat-radio-button class="pathway-radio-button" *ngFor="let pathway of pathwayList"
+                                    [value]="pathway" (change)="loadImage(pathway)">
+                                    {{pathway}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                            <br>
+                            <div id="pathway-viewer">
+                            </div>
+
+                        </div>
+                        <mat-progress-bar mode='indeterminate' style="margin: 10px auto; width: 80%;"
+                            *ngIf='this.pathwayLoading || isLoadingImage'></mat-progress-bar>
+
+                        <div>
+                            <br>
+                            <br>
+                            <div id='canvas-container' [hidden]="!(!noimg && !pathwayLoading)">
+                                <!-- <img [src]="selectedPathImage" (load)="onImageLoad()" alt="" /> -->
+                                <canvas #canvasEl id='canvas'></canvas>
+                                <!--
+            If you wanted to scale the image down and use a maximum defined height and width use this (replace the numbers with whatever you want)
+            <canvas #canvasEl id='calvas'></canvas>
+          -->
+                            </div>
+                        </div>
+                        <!-- <mat-tab-group style="color: #4CAF50" style="min-height: 600px" id="pathway-tabs" animationDuration="0ms" *ngIf="pathwayList.length > 0">
+        <mat-tab *ngFor="let pathway of pathwayList" label="{{pathway.name}}">
+          <ng-template matTabContent>
+            <iframe id="pathway-view" [src]="pathway.url"></iframe>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group> -->
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+
+            <!-- <mat-vertical-stepper (selectionChange)="changeConfig($event.selectedStep.label)" disableRipple="true">
+                <ng-template matStepperIcon="number">
+                </ng-template>
+                <mat-step class="nav-item" #summaryStep [class.active]="isSummary" label="Summary"
+                    [completed]='false'></mat-step>
+                <mat-step class="nav-item" #structure3DStep [class.active]="is3DStructure" label="Alignments"
+                    [completed]='false'></mat-step>
+                <mat-step class="nav-item" #structureStep [class.active]="isStructure" label="Structure"
+                    [completed]='false'></mat-step>
+                <mat-step class="nav-item" #blastStep [class.active]="isBlast" label="Blast"
+                    [completed]='false'></mat-step>
+                <mat-step class="nav-item" #pathwayStep [class.active]="isPathway" label="Pathway"
+                    [completed]='false'></mat-step>
+            </mat-vertical-stepper> -->
+            <!-- <div id="arrow-wrapper">
+                <mat-icon id="left-arrow" [class.disabled-arrow]="!this.leftArrowEnabled"
+                    [class.enabled-arrow]="this.leftArrowEnabled" matTooltip="Previous Tab"
+                    matTooltipPosition="below" [matTooltipDisabled]="!this.leftArrowEnabled"
+                    (click)="arrowSelect('left', summaryStep, structure3DStep, structureStep, blastStep, pathwayStep)">keyboard_arrow_left</mat-icon>
+                <span id="arrow-label">{{prettyConfig}}</span>
+                <mat-icon id="right-arrow" [class.disabled-arrow]="!this.rightArrowEnabled"
+                    [class.enabled-arrow]="this.rightArrowEnabled" matTooltip="Next Tab" matTooltipPosition="below"
+                    [matTooltipDisabled]="!this.rightArrowEnabled"
+                    (click)="arrowSelect('right', summaryStep, structure3DStep, structureStep, blastStep, pathwayStep)">keyboard_arrow_right</mat-icon>
+            </div> -->
+        </div>
+
+        <!-- SUMMARY-->
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="wrapper main">
+        <mat-progress-bar id="loading-bar" mode="indeterminate" *ngIf="this.dataService.loading"></mat-progress-bar>
+
+        
+
+    </div>
+
+    <!--  <mat-progress-bar id="loading-bar" mode="indeterminate" *ngIf="this.isLoadingProtein"></mat-progress-bar> -->
+    <div class='no-data-message' *ngIf='this.arapidopsisData === undefined && !this.isLoadingArapidopsis'>
+        <h3 class='error-message'>No uniprot entry found matching '{{this.uniprotId}}'</h3>
+    </div>
+    <div class='no-data-message'
+        *ngIf='this.arapidopsisData !== undefined && this.proteinData === undefined && !this.isLoadingProtein'>
+        <h3 class='error-message'>No protein details found matching '{{this.proteinEntry}}'</h3>
+    </div>
+</mat-card>

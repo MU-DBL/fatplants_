@@ -1,0 +1,63 @@
+
+<div class="page-title-bar">
+    <p class="page-title"> Contact Us</p>
+</div>
+
+<div class="base">
+    <div style="margin-top: 2%;">
+        <p> Welcome to our Contact Us page! We're here to help with any questions or feedback you may have. Feel free to
+            reach out, and we'll get back to you as soon as possible.
+        </p>
+    </div>
+    <div style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; padding: 1%;">
+        <form #contactForm (submit)="validateForm($event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                    <div class="error-message"></div>
+                </div>
+                &nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                    <div class="error-message"></div>
+                </div>
+            </div>
+            <br>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                    <div id="emailError" class="error-message"></div>
+                </div>
+                &nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input type="text" id="subject" name="subject" required>
+                    <div class="error-message"></div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required></textarea>
+                <div class="error-message"></div>
+            </div>
+            <!-- <br>
+            <div class="form-group">
+                <label for="attachments">Attachments</label>
+                <input type="file" id="attachments" name="attachments" multiple (change)="onFileChange($event)">
+            </div>
+            <br> -->
+            <button type="submit" class="send-button">Send</button>
+        </form>
+    </div>
+    
+   
+    <div #successMessage id="successMessage" class="contact-form-container"
+        style="display: none; border: 0px solid darkgreen; background-color: #a0c474; padding: 10px;"></div>
+    <div #errorMessage id="errorMessage" class="contact-form-container"
+        style="display: none; border: 0px solid red; background-color: lightpink; padding: 10px;">Unable to process
+        request at this time. Please try later.</div>
+</div>

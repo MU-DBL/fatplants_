@@ -1,0 +1,44 @@
+<mat-card>
+    <div style="margin-left:2%">
+        <h2>Pathway Viewer</h2>
+        <p>A tool for viewing pathway figures.</p>
+        <mat-form-field appearance="fill" class="selector">
+            <mat-label>Pathways</mat-label>
+            <mat-select (selectionChange)="onChange($event.value)" value="selectedOption">
+                <mat-option *ngFor="let option of pathwayOptions" [value]="option">{{ option.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="info-table">
+            <mat-table [dataSource]="selectedProtein" *ngIf="selectedProtein">
+                <ng-container matColumnDef="In_Fatplants" >
+                    <mat-header-cell *matHeaderCellDef> In Fatplants </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <button mat-icon-button color="primary" aria-label="Go to protein page." (click)="navigateToProtein(element)">
+                            <mat-icon>check</mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+                
+                <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns | excludeListItem:'In_Fatplants'">
+                  <mat-header-cell *matHeaderCellDef> {{columnTitles[column]}} </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element[column] ? element[column] : "-"}} </mat-cell>
+                </ng-container>
+              
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+        </div>
+
+        <div [class.show]="selectedGraph" class="imageArea">
+            <mat-progress-bar mode="indeterminate" *ngIf='loading' class="loading-bar"></mat-progress-bar>
+            <div class="canvas-container">
+                <canvas #canvas id="imgCanvas" 
+                        [width]="img.width" 
+                        [height]="img.height" 
+                        >
+
+                </canvas>
+            </div>
+        </div>
+    </div>
+  </mat-card>

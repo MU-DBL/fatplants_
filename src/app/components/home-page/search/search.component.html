@@ -1,0 +1,109 @@
+<div>
+  <div
+    class="py-5 bg d-flex justify-content-center flex-column align-items-center"
+  >
+    <h5 class="title mb-4 text-center">
+      The comprehensive platform for plant fat related genes, proteins, and
+      metabolism
+    </h5>
+    <div class="row align-items-center" style="width: 100%;">
+      <form
+        class="input-group"
+        [formGroup]="searchForm"
+        (submit)="submitSearch()"
+      >
+      <div class="input-group justify-content-center" style="width: 100%;">
+        <div class="mb-3" style="width: 130px;">
+          <div class="input-group-prepend">
+            <select
+              class="custom-select input-drop-style rounded"
+              id="search-type"
+              formControlName="species"
+            >
+              <option value="arabidopsis">Arabidopsis</option>
+              <option value="camelina">Camelina</option>
+              <option value="soybean">Soybean</option>
+              <option value="cuphea">Cuphea</option>
+              <option value="pennycress">Pennycress</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3" style="width: 60%;">
+          <input
+            type="search"
+            class="form-control rounded input-search-style"
+            aria-label="Search"
+            aria-describedby="search-addon"
+            formControlName="searchTerm"
+          />
+        </div>
+
+        <!-- <div class="text-left">
+          <button
+            type="button"
+            class="btn advanced-search"
+            data-mdb-ripple-init
+          >
+            Advanced
+          </button>
+        </div> -->
+        <div class="input-group-append" style="margin-left: 10px;">
+          <button
+            class="btn btn-secondary search-style"
+            type="submit"
+            id="button-addon2"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+      </form>
+    </div>
+    <p class="title mb-4 justify-content-left">
+      Enter gene name,Uniprot Id,Tair Id to search.Examples:P05067
+    </p>
+  </div>
+</div>
+
+<!-- Popup HTML -->
+<div class="modal fade" id="advancedSearchModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="custom-modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Advanced Search</h5>
+      </div>
+      <form [formGroup]="advancedSearchForm" class="input-group" (submit)="submitAdvancedSearch()">
+        <div class="modal-body">
+          <div class="row align-items-center">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="speciesDropdown">Species</label><br>
+                <select class="custom-select input-drop-style-pop rounded" id="speciesDropdown" name="speciesDropdown" formControlName="species">
+                  <option value="arabidopsis">Arabidopsis</option>
+                  <option value="camelina">Camelina</option>
+                  <option value="soybean">Soybean</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="uniprotId">Uniprot ID</label>
+                <input type="text" class="form-control rounded input-search-style-pop" id="uniprotId" name="uniprotId" formControlName="uniprotId" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="tairId">TAIR ID</label>
+                <input type="text" class="form-control rounded input-search-style-pop" id="tairId" name="tairId" formControlName="tairId" />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary">Search</button>
+            <button type="button" class="btn btn-secondary" (click)="closePopup()">Close</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

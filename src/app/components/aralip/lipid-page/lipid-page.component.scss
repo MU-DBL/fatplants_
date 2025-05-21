@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.download-card {
+    margin: 3%;
+    padding: 1%;
+    border: 1px solid #ddd;
+    width: 48%; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}

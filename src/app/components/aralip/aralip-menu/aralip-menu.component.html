@@ -1,0 +1,126 @@
+<div class="page-title-bar">
+    <p class="page-title">Aralip Data</p>
+</div>
+<div id="base">
+    <div class="left-menu">
+        <a class="menu active" [class.active]='this.page == "pathways"' (click)='changePage("pathways")'>Pathways</a>
+        <div *ngIf="page === 'pathways' || (page === 'pathway' && allowedPathwayIds.includes(pathway_id))">
+            <a *ngFor="let pathway of pathways"
+               class="submenu"
+               [class.subactive]="page === 'pathway' && pathway_id == pathway.id"
+               (click)="changePage(pathway.id)">
+              {{ pathway.name }}
+            </a>
+        </div>
+        <a class="menu" [class.active]='this.page == "enzyme"' (click)='changePage("enzyme")'>Enzyme/Protein<br>Summary</a>
+        <a class="menu" [class.active]='this.page == "loci-summary"' (click)='changePage("loci-summary")'>Loci Summary</a>
+        <a class="menu" [class.active]='this.page === "structure" || this.page === "fatty" || this.page === "phospholipids" || this.page === "glycolipids" || this.page === "main" || this.page === "sphingolipid" || this.page === "acc" || this.page === "pdc"' (click)='changePage("fatty")'>Structures & Schemas</a>
+        <div *ngIf='this.page === "structure" || this.page === "fatty" || this.page === "phospholipids" || this.page === "glycolipids" || this.page === "main" || this.page === "sphingolipid" || this.page === "acc" || this.page === "pdc"'>
+            <a class="submenu" [class.subactive]='this.page == "fatty"' (click)='changePage("fatty")'>Fatty Acids</a>
+            <a class="submenu" [class.subactive]='this.page == "phospholipids"' (click)='changePage("phospholipids")'>Phospholipids</a>
+            <a class="submenu" [class.subactive]='this.page == "glycolipids"' (click)='changePage("glycolipids")'>Glycolipids</a>
+            <a class="submenu" [class.subactive]='this.page == "main"' (click)='changePage("main")'>Main lipids</a>
+            <a class="submenu" [class.subactive]='this.page == "sphingolipid"' (click)='changePage("sphingolipid")'>Sphingolipid</a>
+            <a class="submenu" [class.subactive]='this.page == "acc"' (click)='changePage("acc")'>ACC Schema</a>
+            <a class="submenu" [class.subactive]='this.page == "pdc"' (click)='changePage("pdc")'>PDC Schema</a>
+        </div>
+        <a class="menu" [class.active]='this.page == "lipid"' (click)='changePage("lipid")'>Lipid method &<br>compositions</a>
+        <a class="menu" [class.active]='this.page == "mutant"' (click)='changePage("mutant")'>Mutants</a>
+        <a class="menu" [class.active]='this.page == "download"' (click)='changePage("download")'>Downloads</a>
+        <a class="menu" [class.active]='this.page === "aralip-site" || this.page === "contributors"' (click)='changePage("aralip-site")'>About</a>
+        <div *ngIf='this.page === "aralip-site" || this.page === "contributors"'>
+            <a class="submenu" [class.subactive]='this.page == "aralip-site"' (click)='changePage("aralip-site")'>This Website</a>
+            <a class="submenu" [class.subactive]='this.page == "contributors"' (click)='changePage("contributors")'>Contributors</a>
+        </div>
+        <a class="menu" [class.active]='this.page == "comments"' (click)='changePage("comments")'>Comments</a>
+        <a class="menu" [class.active]='this.page == "memory"' (click)='changePage("memory")'>In Memory of <br>John Ohlrogge</a>
+    </div>
+    <div class="right-content-box">
+        <div *ngIf='this.page == "pathways"'>
+            <app-aralip-pathway-main></app-aralip-pathway-main>
+        </div>
+        <div *ngIf='this.page == "pathway"'>
+            <app-aralip-pathway></app-aralip-pathway>
+        </div>
+        <div *ngIf='this.page == "enzyme"'>
+            <app-enzyme-page></app-enzyme-page>
+        </div>
+        <div *ngIf='this.page == "loci-summary"'>
+            <app-loci-summary></app-loci-summary>
+        </div>
+        <div *ngIf='this.page == "structure"'>
+            <div class="structure-container">
+                <h4 class='structure-title'>Structure Of Major Arabidopsis Fatty Acids</h4>
+                <img src="/static/major_plant_fatty_acids_structures.GIF" border="=0">
+            </div>
+        </div>
+        <div *ngIf='this.page == "lipid"'>
+            <app-lipid-page></app-lipid-page>
+        </div>
+        <div *ngIf='this.page == "mutant"'>
+            <app-mutants></app-mutants>
+        </div>
+        <div *ngIf='this.page == "download"'>
+            <app-aralip-download></app-aralip-download>
+        </div>
+        <div *ngIf='this.page == "about"'>
+            <app-aralip-site></app-aralip-site>
+        </div>
+        <div *ngIf='this.page == "comments"'>
+            <app-comments></app-comments>
+        </div>
+        <div *ngIf='this.page == "memory"'>
+            <app-memoryofjohn></app-memoryofjohn>
+        </div>
+        <div *ngIf='this.page == "fatty"'>
+            <div class="structure-container">
+                <h4 class='structure-title'>Structure Of Major Arabidopsis Fatty Acids</h4>
+                <img src="/static/major_plant_fatty_acids_structures.GIF" border="=0">
+            </div>
+        </div>
+        <div *ngIf='this.page == "phospholipids"'>
+            <div class="structure-container">
+                <h4 class='structure-title'>Glycolipid Head Group Structures</h4>
+                <img src="/static/phospholipid_head_group_structures.GIF" border="=0">
+            </div>
+        </div>
+        <div *ngIf='this.page == "glycolipids"'>
+            <div class="structure-container">
+                <h4 class='structure-title'>Phospholipid Head Group Structures</h4>
+                <img src="/static/glycolipid_head_group_structures.GIF" border="=0">
+            </div>
+        </div>
+        <div *ngIf='this.page == "main"'>
+            <div class="structure-container">
+                <h4 class='structure-title'>Main Classes Of Storage & Membrane Lipid Structures</h4>
+                <img src="/static/main_classes_storage_and_membrane_lipid_structures.GIF" border="=0">
+            </div>
+        </div>
+        <div *ngIf='this.page == "sphingolipid"'>
+            <div class="structure-container">
+                <h4 class='structure-title'>Sphingolipid Sample Structure</h4>
+                <img src="/static/sphingolipid_sample_structure.GIF" border="=0">
+            </div>
+        </div>
+        <div *ngIf='this.page == "acc"'>
+            <div class="structure-container">
+                <h4 class='structure-title'>Acetyl-CoA Carboxylase (multisubunits; heteromeric ) Schematic</h4>
+                <p class='title'><span>Note:</span> Click on schematic for further information</p>
+                <iframe src="/static/acc_structure.html" width="100%" height="700"></iframe>
+            </div>
+        </div>
+        <div *ngIf='this.page == "pdc"'>
+            <div class="structure-container">
+                <h4 class='structure-title'>Pyruvate Dehydrogenase Complex Schematic</h4>
+                <p class='title'><span>Note:</span> Click on schematic for further information</p>
+                <iframe src="/static/pdc_structure.html" width="100%" height="700"></iframe>
+            </div>
+        </div>
+        <div *ngIf='this.page == "aralip-site"'>
+            <app-aralip-site></app-aralip-site>
+        </div>
+        <div *ngIf='this.page == "contributors"'>
+            <app-contributors></app-contributors>
+        </div>
+    </div>
+</div>  

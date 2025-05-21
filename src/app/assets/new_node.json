@@ -1,0 +1,3793 @@
+{
+  "data": [
+    {
+      "description": "CK I-like 10",
+      "family": "Casein Kinase Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 5.0,
+      "tair_id": "AT3G23340",
+      "type": "kinase"
+    },
+    {
+      "description": "CKA1",
+      "family": "Casein Kinase Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 1.0,
+      "tair_id": "AT5G67380",
+      "type": "kinase"
+    },
+    {
+      "description": "RLC-PK",
+      "family": "RLCK Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 6.0,
+      "tair_id": "AT3G55450",
+      "type": "kinase"
+    },
+    {
+      "description": "AME1",
+      "family": "AME/AFC Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 4.0,
+      "tair_id": "AT4G24740",
+      "type": "kinase"
+    },
+    {
+      "description": "AME3",
+      "family": "AME/AFC Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 4.0,
+      "tair_id": "AT4G32660",
+      "type": "kinase"
+    },
+    {
+      "description": "PKc-L",
+      "family": "Ser/Thr Protein Kinase Superfamily",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 2.0,
+      "tair_id": "AT2G17530",
+      "type": "kinase"
+    },
+    {
+      "description": "SRPK1",
+      "family": "Ser/Thr Protein Kinase Superfamily",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 1.0,
+      "tair_id": "AT4G35500",
+      "type": "kinase"
+    },
+    {
+      "description": "Ser PK like protein",
+      "family": "Ser/Thr Protein Kinase Superfamily",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 2.0,
+      "tair_id": "AT5G22840",
+      "type": "kinase"
+    },
+    {
+      "description": "CRK2",
+      "family": "CDPk Super Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 1.0,
+      "tair_id": "AT3G19100",
+      "type": "kinase"
+    },
+    {
+      "description": "CRK4",
+      "family": "CDPk Super Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 2.0,
+      "tair_id": "AT5G24430",
+      "type": "kinase"
+    },
+    {
+      "description": "CPK1",
+      "family": "CDPk Super Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 2.0,
+      "tair_id": "AT5G04870",
+      "type": "kinase"
+    },
+    {
+      "description": "CPK3",
+      "family": "CDPk Super Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 7.0,
+      "tair_id": "AT4G23650",
+      "type": "kinase"
+    },
+    {
+      "description": "CPK6",
+      "family": "CDPk Super Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 1.0,
+      "tair_id": "AT2G17290",
+      "type": "kinase"
+    },
+    {
+      "description": "CPK8",
+      "family": "CDPk Super Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 4.0,
+      "tair_id": "AT5G19450",
+      "type": "kinase"
+    },
+    {
+      "description": "CPK11",
+      "family": "CDPk Super Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 9.0,
+      "tair_id": "AT1G35670",
+      "type": "kinase"
+    },
+    {
+      "description": "CPK24",
+      "family": "CDPk Super Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 2.0,
+      "tair_id": "AT2G31500",
+      "type": "kinase"
+    },
+    {
+      "description": "CPK28",
+      "family": "CDPk Super Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 4.0,
+      "tair_id": "AT5G66210",
+      "type": "kinase"
+    },
+    {
+      "description": "PPI-2",
+      "family": "NA",
+      "in_vitro_phosphosite": "IHDDDDDEGsLsPRGGR\n",
+      "in_vivo_phosphosite": "TPYHPMIHDDDDDEGsLsPR",
+      "substrate_count": "NA",
+      "tair_id": "AT5G52200",
+      "type": "protein"
+    },
+    {
+      "description": "D111/G-patch protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "KPKIAIAsVFGNDSDED\n",
+      "in_vivo_phosphosite": "IAIASVFGNDsDED",
+      "substrate_count": "NA",
+      "tair_id": "AT5G26610",
+      "type": "protein"
+    },
+    {
+      "description": "FRIGIDA interacting protein 2",
+      "family": "NA",
+      "in_vitro_phosphosite": "GDFDADsDDEIVLVPK\n",
+      "in_vivo_phosphosite": "VSGDFDADsDDEIVLVPK",
+      "substrate_count": "NA",
+      "tair_id": "AT4G17060",
+      "type": "protein"
+    },
+    {
+      "description": "MPPN family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "GIADYSASPDVKsER\n",
+      "in_vivo_phosphosite": "SDFSPEsGIADysAsPDVK",
+      "substrate_count": "NA",
+      "tair_id": "AT3G16310",
+      "type": "protein"
+    },
+    {
+      "description": "Myb protein 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "HDDEDDEsDDEFAR\n",
+      "in_vivo_phosphosite": "APPPVQIVDINHDDEDDEsDDEFAR",
+      "substrate_count": "NA",
+      "tair_id": "AT1G76970",
+      "type": "protein"
+    },
+    {
+      "description": "RNA helicase",
+      "family": "NA",
+      "in_vitro_phosphosite": "ITGNFPAsKLsQDLQR\n",
+      "in_vivo_phosphosite": "ETLKSITGNFPASKLsQDLQR",
+      "substrate_count": "NA",
+      "tair_id": "AT5G61140",
+      "type": "protein"
+    },
+    {
+      "description": "Clathrin light chain protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "FQsQRFDSSFSNFEK\n",
+      "in_vivo_phosphosite": "FDssFsNFEK",
+      "substrate_count": "NA",
+      "tair_id": "AT3G51890",
+      "type": "protein"
+    },
+    {
+      "description": "CtaG Protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "TSLHStRtVPLVPW\n",
+      "in_vivo_phosphosite": "ISSYLENLHRTSLHstRtVPLVPWsR",
+      "substrate_count": "NA",
+      "tair_id": "AT1G02410",
+      "type": "protein"
+    },
+    {
+      "description": "CHUP1 Protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "IGEIENRstFLLAVK\n",
+      "in_vivo_phosphosite": "DGSPSLISPGtGSsSEARSNMIGEIENRStFLLAVK",
+      "substrate_count": "NA",
+      "tair_id": "AT3G25690",
+      "type": "protein"
+    },
+    {
+      "description": "Cytochrome P450",
+      "family": "NA",
+      "in_vitro_phosphosite": "AEVtVtRsYMLMFPR\n",
+      "in_vivo_phosphosite": "sYMLMFPRGCDVQISK",
+      "substrate_count": "NA",
+      "tair_id": "AT3G30290",
+      "type": "protein"
+    },
+    {
+      "description": "RSZp22 splicing factor",
+      "family": "NA",
+      "in_vitro_phosphosite": "GRNYsRsPPPYR\n",
+      "in_vivo_phosphosite": "NYsRsPPPYR",
+      "substrate_count": "NA",
+      "tair_id": "AT2G24590",
+      "type": "protein"
+    },
+    {
+      "description": "DUF1296",
+      "family": "NA",
+      "in_vitro_phosphosite": "VRVSRSDsPVSAVSE\n",
+      "in_vivo_phosphosite": "sDsPVsAVSEPQLPEQK",
+      "substrate_count": "NA",
+      "tair_id": "AT3G13990",
+      "type": "protein"
+    },
+    {
+      "description": "FPA protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "RRDGsVDGFTPMGVDER\n",
+      "in_vivo_phosphosite": "DGsVDGFTPMGVDER",
+      "substrate_count": "NA",
+      "tair_id": "AT2G43410",
+      "type": "protein"
+    },
+    {
+      "description": "CAP160 protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "LGKEsPERSDEFDLG\n",
+      "in_vivo_phosphosite": "LGKEsPERsDEFDLGK",
+      "substrate_count": "NA",
+      "tair_id": "AT4G25580",
+      "type": "protein"
+    },
+    {
+      "description": "Aquaporin PIP2-3",
+      "family": "NA",
+      "in_vitro_phosphosite": "ASGSKSLGsFRSAANV\n",
+      "in_vivo_phosphosite": "SLGsFRsAANV",
+      "substrate_count": "NA",
+      "tair_id": "AT2G37180",
+      "type": "protein"
+    },
+    {
+      "description": "CPN60-like 2",
+      "family": "NA",
+      "in_vitro_phosphosite": "VLSKLSsSIGSSTSRKLV\n",
+      "in_vivo_phosphosite": "LSssIGSstsRK",
+      "substrate_count": "NA",
+      "tair_id": "AT3G13860",
+      "type": "protein"
+    },
+    {
+      "description": "DUF3511",
+      "family": "NA",
+      "in_vitro_phosphosite": "GDGAASRSWsFsDPESR\n",
+      "in_vivo_phosphosite": "SWsFSDPESR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G13910",
+      "type": "protein"
+    },
+    {
+      "description": "GYF domain-containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NEGMGRMMsFEAQDR\n",
+      "in_vivo_phosphosite": "MMsFEAQDR",
+      "substrate_count": "NA",
+      "tair_id": "AT1G24300",
+      "type": "protein"
+    },
+    {
+      "description": "Protein uncharacterized",
+      "family": "NA",
+      "in_vitro_phosphosite": "QFSRDGsFGFPDR\n",
+      "in_vivo_phosphosite": "DGsFGFPDR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G50370",
+      "type": "protein"
+    },
+    {
+      "description": "bZIP_1 transcription factor",
+      "family": "NA",
+      "in_vitro_phosphosite": "LERsFsGGECADWSK\n",
+      "in_vivo_phosphosite": "sFsGGECADWSK",
+      "substrate_count": "NA",
+      "tair_id": "AT4G38900",
+      "type": "protein"
+    },
+    {
+      "description": "PPR containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "MPRVDssQNWAGHI\n",
+      "in_vivo_phosphosite": "VDssQNWAGHI",
+      "substrate_count": "NA",
+      "tair_id": "AT5G43830",
+      "type": "protein"
+    },
+    {
+      "description": "Transmembrane protein 14C",
+      "family": "NA",
+      "in_vitro_phosphosite": "AYSKSGSKGsLLGGLTG\n",
+      "in_vivo_phosphosite": "GsLLGGLTGSVLMASAYFLtK",
+      "substrate_count": "NA",
+      "tair_id": "AT1G33265",
+      "type": "protein"
+    },
+    {
+      "description": "TPR domain-containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "KTPNLGGPsMKsMSGGNL\n",
+      "in_vivo_phosphosite": "TPNLGGPSMKsMsGGNLSSSGLPSNSDPFGNLVGFGSK",
+      "substrate_count": "NA",
+      "tair_id": "AT3G16760",
+      "type": "protein"
+    },
+    {
+      "description": "Leucine-rich repeat protein kinase",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G37050",
+      "type": "protein"
+    },
+    {
+      "description": "RING/U-box superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G05200",
+      "type": "protein"
+    },
+    {
+      "description": "KNAT3",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G25220",
+      "type": "protein"
+    },
+    {
+      "description": "Embryo Defective 2719",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G75990",
+      "type": "protein"
+    },
+    {
+      "description": "NTMC2T6.1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G53590",
+      "type": "protein"
+    },
+    {
+      "description": "EIF4G",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G60240",
+      "type": "protein"
+    },
+    {
+      "description": "Aconitase 3",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G05710",
+      "type": "protein"
+    },
+    {
+      "description": "Leucine-rich repeat protein kinase",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G67200",
+      "type": "protein"
+    },
+    {
+      "description": "PRP39",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G04080",
+      "type": "protein"
+    },
+    {
+      "description": "CBS / octicosapeptide/Phox/Bemp1 (PB1) domains-containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G52950",
+      "type": "protein"
+    },
+    {
+      "description": "SPT6L encodes a putative WG/GW-repeat protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G63210",
+      "type": "protein"
+    },
+    {
+      "description": "RING/U-box superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G40640",
+      "type": "protein"
+    },
+    {
+      "description": "ADP-glucose pyrophosphorylase family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G74910",
+      "type": "protein"
+    },
+    {
+      "description": "Protein kinase superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G53050",
+      "type": "protein"
+    },
+    {
+      "description": "Histidine kinase 2",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G35750",
+      "type": "protein"
+    },
+    {
+      "description": "RNI-like superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G19320",
+      "type": "protein"
+    },
+    {
+      "description": "Leucine-rich repeat protein kinase ",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G36570",
+      "type": "protein"
+    },
+    {
+      "description": "Sensitivity to red light reduced 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G59560",
+      "type": "protein"
+    },
+    {
+      "description": "Plant invertase/pectin methylesterase inhibitor superfamily",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G02300",
+      "type": "protein"
+    },
+    {
+      "description": "PIRL9",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G11330",
+      "type": "protein"
+    },
+    {
+      "description": "MSL10",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G12080",
+      "type": "protein"
+    },
+    {
+      "description": "HAT3.1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G19510",
+      "type": "protein"
+    },
+    {
+      "description": "Fructose-2,6-bisphosphatase ",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G07110",
+      "type": "protein"
+    },
+    {
+      "description": "ATDEK1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G55350",
+      "type": "protein"
+    },
+    {
+      "description": "Ankyrin repeat family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G03480",
+      "type": "protein"
+    },
+    {
+      "description": "Aldo-Keto reductase family 4 member (AKR4C10)",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G37790",
+      "type": "protein"
+    },
+    {
+      "description": "Protein phosphatase 2C ( PP2C) family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G40860",
+      "type": "protein"
+    },
+    {
+      "description": "DHHC-type zinc finger family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G48760",
+      "type": "protein"
+    },
+    {
+      "description": "BYPASS 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G01550",
+      "type": "protein"
+    },
+    {
+      "description": "Unknown protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G15400",
+      "type": "protein"
+    },
+    {
+      "description": "HAC13",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G32750",
+      "type": "protein"
+    },
+    {
+      "description": "EMBRYONIC FACTOR1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G38280",
+      "type": "protein"
+    },
+    {
+      "description": "basic helix-loop-helix (bHLH) DNA-binding superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G22760",
+      "type": "protein"
+    },
+    {
+      "description": "Magnesium chelatase I2",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G45930",
+      "type": "protein"
+    },
+    {
+      "description": "Metal transport protein 5",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G12100",
+      "type": "protein"
+    },
+    {
+      "description": "PPR superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G35030",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "PKNASPtIVSPKQYKRRFRK",
+      "substrate_count": "NA",
+      "tair_id": "AT1G71010",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "RNFYVSNPLtKSFRELPARS",
+      "substrate_count": "NA",
+      "tair_id": "AT1G27340",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ICNKMGLKGYQIGKtKIFLR",
+      "substrate_count": "NA",
+      "tair_id": "AT2G31900",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LLQRVKsIKLPSLYRSDPDP",
+      "substrate_count": "NA",
+      "tair_id": "AT4G26130",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SKKVLMPNLsGIFNRKKNQV",
+      "substrate_count": "NA",
+      "tair_id": "AT5G55860",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GIAKTGSGKtLAFGIPAIMH",
+      "substrate_count": "NA",
+      "tair_id": "AT1G31970",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LPKNtVILPTMLSPLGKACA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G46570",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NKPKPPtIITRDSPNVLRSH",
+      "substrate_count": "NA",
+      "tair_id": "AT4G35390",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NEVIYNtMILGYCKEGSSYR",
+      "substrate_count": "NA",
+      "tair_id": "AT4G11690",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "IPMSQSSPYSPKtLKHPRSL",
+      "substrate_count": "NA",
+      "tair_id": "AT3G53520",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GTSMSTPVVsGIVALLRKKR",
+      "substrate_count": "NA",
+      "tair_id": "AT1G66210",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "PSGNTGGIVtAFYLTSKGGG",
+      "substrate_count": "NA",
+      "tair_id": "AT3G25050",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LQRAASNAYSWWWAsHIRTK",
+      "substrate_count": "NA",
+      "tair_id": "AT1G09720",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "FKFDSSYEWVVtKKLGRSSE",
+      "substrate_count": "NA",
+      "tair_id": "AT3G07330",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "EYMQWFNsITVPKLHRDTSL",
+      "substrate_count": "NA",
+      "tair_id": "AT1G17930",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GSLNtVVIASPEAAREVLRT",
+      "substrate_count": "NA",
+      "tair_id": "AT2G45560",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ARMSQKLIVSPIVKtLVFSK",
+      "substrate_count": "NA",
+      "tair_id": "AT3G01060",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KLLLLGAGESGKsTIFKQIK",
+      "substrate_count": "NA",
+      "tair_id": "AT2G26300",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "MAIRRAQtLLCLSKFKTNFV",
+      "substrate_count": "NA",
+      "tair_id": "AT4G20930",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SMIQSAIMtTAWPVKAKGRG",
+      "substrate_count": "NA",
+      "tair_id": "AT5G59090",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GKKVVKtLMYFEHCPKPLGF",
+      "substrate_count": "NA",
+      "tair_id": "AT3G14270",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "MQFMLYEtMLTKLKKKRALK",
+      "substrate_count": "NA",
+      "tair_id": "AT2G39970",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KKKPQPVKISPWtLARLNAE",
+      "substrate_count": "NA",
+      "tair_id": "AT1G69420",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "EVKVKTAKMSLEDItKYWKR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G17760",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "AGtKVFKNCSALLERLMKHK",
+      "substrate_count": "NA",
+      "tair_id": "AT1G06230",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KNRYVLTGATWVtGAFNRVS",
+      "substrate_count": "NA",
+      "tair_id": "AT5G46870",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "DPESEVIALSPKTLLAtNRF",
+      "substrate_count": "NA",
+      "tair_id": "AT3G50700",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KKADSLFPIVSGAsIVAKVT",
+      "substrate_count": "NA",
+      "tair_id": "AT2G25100",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "PDLETYtLLLSSLLKRFNKL",
+      "substrate_count": "NA",
+      "tair_id": "AT3G25210",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "QRKMLNALsTIMAHVPRSLR",
+      "substrate_count": "NA",
+      "tair_id": "AT1G20640",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "REHGNSPGYYDGRYWtMWKL",
+      "substrate_count": "NA",
+      "tair_id": "AT1G67090",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "DSRRLDKsLSIARSRHDSAR",
+      "substrate_count": "NA",
+      "tair_id": "AT1G16010",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "AAIKsAIITSAKPISRRVNK",
+      "substrate_count": "NA",
+      "tair_id": "AT4G00230",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "FKLQDTARVSHNtQLFRFSF",
+      "substrate_count": "NA",
+      "tair_id": "AT5G20080",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KtQSFARASSLTCIKDYPRK",
+      "substrate_count": "NA",
+      "tair_id": "AT3G14910",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NRDGYsLVFETLKKYSVTVK",
+      "substrate_count": "NA",
+      "tair_id": "AT5G45300",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SWtTMIKGYSQNKRYREAIA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G06143",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "VSPVtFTGKHPVNSRSRRRT",
+      "substrate_count": "NA",
+      "tair_id": "AT1G23360",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "MRNGKMPtVTMEQAQKNYRK",
+      "substrate_count": "NA",
+      "tair_id": "AT2G41220",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "AMYSVRAFYsGIVAYTPVRE",
+      "substrate_count": "NA",
+      "tair_id": "AT4G28210",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LLDTtIIQNSGNLKGFEKYV",
+      "substrate_count": "NA",
+      "tair_id": "AT5G49770",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "RMLVYEFVPNKtLEYHLHGK",
+      "substrate_count": "NA",
+      "tair_id": "AT2G18470",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ARSNSQRARSQLFEtHLAKL",
+      "substrate_count": "NA",
+      "tair_id": "AT4G02030",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "TNRITGYtFSFDQMLNDKGD",
+      "substrate_count": "NA",
+      "tair_id": "AT1G66530",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "VNSSAPLITYLDNLFLsKQL",
+      "substrate_count": "NA",
+      "tair_id": "AT2G34690",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "IIQAPVRTKSVLsAFFVKQK",
+      "substrate_count": "NA",
+      "tair_id": "AT2G46225",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NLNYPSItAVFPTNRRGLVS",
+      "substrate_count": "NA",
+      "tair_id": "AT4G34980",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GFAPKSGLISTLIsHHFTAA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G24290",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "FIGRSHSVsTILTPVSHKSE",
+      "substrate_count": "NA",
+      "tair_id": "AT5G04550",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GNtSVWKSLSPEVLQAAFKV",
+      "substrate_count": "NA",
+      "tair_id": "AT1G07750",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "PRKPEILSPSILDFPsLVLS",
+      "substrate_count": "NA",
+      "tair_id": "AT1G28280",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "FLNKtVVPGCSTRLSLRQPR",
+      "substrate_count": "NA",
+      "tair_id": "AT1G79750",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KKLTGGIMLsRNKDFLVFYR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G23070",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LRDItTTFPSFVFNSEVDEI",
+      "substrate_count": "NA",
+      "tair_id": "AT5G47100",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KDQQRKRSYTDTANFtLRCG",
+      "substrate_count": "NA",
+      "tair_id": "AT1G50670",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KLSKVAMLLsRNQRRVHKLL",
+      "substrate_count": "NA",
+      "tair_id": "AT4G19650",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "TNNGItVLVTGAAGFVGTHV",
+      "substrate_count": "NA",
+      "tair_id": "AT2G45310",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "IKGDFLSTKsKQLRLVHRTV",
+      "substrate_count": "NA",
+      "tair_id": "AT3G49190",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "EQFMtEYVVTRWYRAPELLL",
+      "substrate_count": "NA",
+      "tair_id": "AT2G18170",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KNKASPEtVADFTLTMLKRR",
+      "substrate_count": "NA",
+      "tair_id": "AT2G01140",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NMQTYLQsITVRLEEWRLKR",
+      "substrate_count": "NA",
+      "tair_id": "AT2G24610",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "DLCRPNRKKYNLAVtVAMGR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G54670",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LLGVsLLVDYYYYKRWTSSV",
+      "substrate_count": "NA",
+      "tair_id": "AT1G16900",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "MDAFtISNITRGSNKLWVHF",
+      "substrate_count": "NA",
+      "tair_id": "AT3G54510",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "VAKQFSIEEtEVFPIISKNC",
+      "substrate_count": "NA",
+      "tair_id": "AT1G18910",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SIKFLKRTLSFTDVtAVPKG",
+      "substrate_count": "NA",
+      "tair_id": "AT2G24400",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KLGPSASQSHItTRVMGTHG",
+      "substrate_count": "NA",
+      "tair_id": "AT2G17220",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LKSLSVLNISGCGLtGRIPV",
+      "substrate_count": "NA",
+      "tair_id": "AT1G75640",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "VVtKLMEGGSLHELMLKNKK",
+      "substrate_count": "NA",
+      "tair_id": "AT5G58520",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "TLEKGKLDMtQKISETSPEI",
+      "substrate_count": "NA",
+      "tair_id": "AT5G24690",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "FGVSFVPLFsGIVQKQKQHT",
+      "substrate_count": "NA",
+      "tair_id": "AT5G32470",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "VRHQSLDVHPSPtFSASRKK",
+      "substrate_count": "NA",
+      "tair_id": "AT5G06780",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "PQDEFDKtFSMNQARSIRWN",
+      "substrate_count": "NA",
+      "tair_id": "AT4G12420",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "IWIMMPtSTYKKIWLKSMRA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G23020",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "APtAIFWTDYVATRWYRAPE",
+      "substrate_count": "NA",
+      "tair_id": "AT1G18150",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "VVGKRGGSTTPVPtWRLMGR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G11590",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KELGYPLStLVTFPTCLKYT",
+      "substrate_count": "NA",
+      "tair_id": "AT5G06811",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SKELSPYANtSSFSDLQVFR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G04680",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ADIsSIFGSSKTEPSAMKLA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G71410",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "RYNKKPtITSREIQTAVRLV",
+      "substrate_count": "NA",
+      "tair_id": "AT3G45980",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GSDSLLtLGSFRKLKERYFP",
+      "substrate_count": "NA",
+      "tair_id": "AT5G10960",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "IKRLEVVELsNVLARQSLLR",
+      "substrate_count": "NA",
+      "tair_id": "AT4G16310",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "PRGASPGAVTPKsVRSISRF",
+      "substrate_count": "NA",
+      "tair_id": "AT3G07790",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "YYYNQYsVSSPRSVVSGRFH",
+      "substrate_count": "NA",
+      "tair_id": "AT5G47060",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "DLVMtQAGVSRSKAVKALKS",
+      "substrate_count": "NA",
+      "tair_id": "AT3G49470",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "QVLVKQMAtSLLKALHINTI",
+      "substrate_count": "NA",
+      "tair_id": "AT3G13530",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KLSSLESLISRHsLKVPVRA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G58250",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GAGAAtSIATNPLWVVKTRL",
+      "substrate_count": "NA",
+      "tair_id": "AT1G25380",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KLPtAVLSTSVKAKARAKKE",
+      "substrate_count": "NA",
+      "tair_id": "AT2G32730",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "VKTKPIKsFSLFGLSKWRKG",
+      "substrate_count": "NA",
+      "tair_id": "AT5G42750",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KPKLENtISYIKGELDELER",
+      "substrate_count": "NA",
+      "tair_id": "AT3G58730",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GLLRSIYtVSPSSSFSKKSV",
+      "substrate_count": "NA",
+      "tair_id": "AT4G34310",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LLQGYAPSSEPYLsMMLRVH",
+      "substrate_count": "NA",
+      "tair_id": "AT4G11130",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KSSKsNVYRDIGGSGSRTGN",
+      "substrate_count": "NA",
+      "tair_id": "AT3G26600",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LHVAsLVVQTGLRAMAARKQ",
+      "substrate_count": "NA",
+      "tair_id": "AT1G08730",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "AFGVsGVVTKPVESARENGI",
+      "substrate_count": "NA",
+      "tair_id": "AT4G17140",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GSIYIWtYVYNLMRVLSNSP",
+      "substrate_count": "NA",
+      "tair_id": "AT1G76520",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "THtQVIGMTSGSSSRVKEDD",
+      "substrate_count": "NA",
+      "tair_id": "AT2G36910",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LDESLIKsITVYKYRKMDGF",
+      "substrate_count": "NA",
+      "tair_id": "AT3G03550",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LKRITPsLAYLEQIRQHMAR",
+      "substrate_count": "NA",
+      "tair_id": "AT1G50920",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ALNMKGFSItVVEGQFNKVS",
+      "substrate_count": "NA",
+      "tair_id": "AT3G46680",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KGDFIINVNtGKRIKVPRLV",
+      "substrate_count": "NA",
+      "tair_id": "AT2G45030",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "PTAKISFLGtLIGPSPPSPR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G14067",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ENIHSEMYSLLLEtFIKDSK",
+      "substrate_count": "NA",
+      "tair_id": "AT3G23580",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "MNSIMAASHYPLsIVLVGVG",
+      "substrate_count": "NA",
+      "tair_id": "AT5G63970",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "DEHGNPMYLtGVVSSTPQHK",
+      "substrate_count": "NA",
+      "tair_id": "AT2G21490",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LGKDSQNLRWVPFGtLIANV",
+      "substrate_count": "NA",
+      "tair_id": "AT2G41705",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SDGEItWRYTPWLGDHAAKG",
+      "substrate_count": "NA",
+      "tair_id": "AT5G06610",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "TSSSsIWYALSYLEAKRRMK",
+      "substrate_count": "NA",
+      "tair_id": "AT5G49070",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "IADPsLSFSPSRISSPIKLS",
+      "substrate_count": "NA",
+      "tair_id": "AT5G60050",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SAWIWTRAPtIGGMRFASTI",
+      "substrate_count": "NA",
+      "tair_id": "AT3G22370",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "TIKtIIQVGSGPNKKLSSFQ",
+      "substrate_count": "NA",
+      "tair_id": "AT4G15010",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "RVFNSISSFsQTSFPEVDLG",
+      "substrate_count": "NA",
+      "tair_id": "AT1G71090",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SNRFISPFPSDRFVSPtASF",
+      "substrate_count": "NA",
+      "tair_id": "AT2G35350",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "TLKKSVSSPFMNtASKMYSI",
+      "substrate_count": "NA",
+      "tair_id": "AT1G77760",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GVVTSSSLLGNsWRFFDQKQ",
+      "substrate_count": "NA",
+      "tair_id": "AT4G32300",
+      "type": "protein"
+    },
+    {
+      "description": "splicing factor PWI domain-containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ANLSCDSKDtIRHQIKDKNR",
+      "substrate_count": "NA",
+      "tair_id": "AT2G29210",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ASLKGPEFAtIVNSVTSKKV",
+      "substrate_count": "NA",
+      "tair_id": "AT2G21170",
+      "type": "protein"
+    },
+    {
+      "description": "PLAC8 family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NGLFtLMCLYQHPKRFYHLV",
+      "substrate_count": "NA",
+      "tair_id": "AT3G10980",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "INDLDRHSPKILKNAFsFRF",
+      "substrate_count": "NA",
+      "tair_id": "AT3G25760",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KSVKAIPDSYLsAIFRQVLQ",
+      "substrate_count": "NA",
+      "tair_id": "AT4G29810",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GSELVItKRTDNKVTSRTLG",
+      "substrate_count": "NA",
+      "tair_id": "AT2G24500",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LEVItQLRFPVSDSERFGVP",
+      "substrate_count": "NA",
+      "tair_id": "AT5G16760",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SRLGTDSYNFsFAQVLSPSR",
+      "substrate_count": "NA",
+      "tair_id": "AT5G23060",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SSKPKNFANsFGRKQSKTSF",
+      "substrate_count": "NA",
+      "tair_id": "AT1G42550",
+      "type": "protein"
+    },
+    {
+      "description": "UDP-glucose dehydrogenase 3",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KTRFVNRIVSSMFNtVSNKK",
+      "substrate_count": "NA",
+      "tair_id": "AT5G15490",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "DPLLRSPIVsAAAFENLVKL",
+      "substrate_count": "NA",
+      "tair_id": "AT1G64790",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LCFVsGVPGSFYSRLFPRKS",
+      "substrate_count": "NA",
+      "tair_id": "AT5G66430",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "VTAAVPSGAStGIYEALELR",
+      "substrate_count": "NA",
+      "tair_id": "AT2G36530",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KGLSKDIGsSLSLLPSIMHR",
+      "substrate_count": "NA",
+      "tair_id": "AT5G20320",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GKIVNVGSItVMAPGPWAGV",
+      "substrate_count": "NA",
+      "tair_id": "AT5G10050",
+      "type": "protein"
+    },
+    {
+      "description": "Plant protein of unknown function (DUF869)",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "IFVLGKQLKsFRPQPEQMRS",
+      "substrate_count": "NA",
+      "tair_id": "AT1G47900",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SEtSSFNLQTPRSLPSPRSI",
+      "substrate_count": "NA",
+      "tair_id": "AT5G47070",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "MERSKWtLMSFHKLGFSEHE",
+      "substrate_count": "NA",
+      "tair_id": "AT1G28440",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SPtTGGFGPSRKQCRIPYSG",
+      "substrate_count": "NA",
+      "tair_id": "AT3G02730",
+      "type": "protein"
+    },
+    {
+      "description": "Aldolase superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GKRLAsINVENVETNRRNLR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G52930",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "AAsVVAPKYTSIKPLGDRVL",
+      "substrate_count": "NA",
+      "tair_id": "AT5G20720",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "AANtWVVSGSPQTKKLQDIL",
+      "substrate_count": "NA",
+      "tair_id": "AT1G17880",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LKIMELLGLsLGVKRDYFRE",
+      "substrate_count": "NA",
+      "tair_id": "AT4G25420",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ALGVAALGMtGPVAAAGLAA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G69800",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "TSTNsIASIFAWSRGLAHRA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G54340",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "VVtLREKMVSMHDRWQVFRG",
+      "substrate_count": "NA",
+      "tair_id": "AT5G01750",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "RKSGTNStLSLLRKELREGD",
+      "substrate_count": "NA",
+      "tair_id": "AT1G56280",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "YRNLTVPELtQQMWDAKNMM",
+      "substrate_count": "NA",
+      "tair_id": "AT2G29550",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "AMKRLQKEFYQILsMNRAYL",
+      "substrate_count": "NA",
+      "tair_id": "AT3G09520",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SLATDLQLLsMELRKKQSTY",
+      "substrate_count": "NA",
+      "tair_id": "AT5G26980",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SSLQSsGMLTKEQMVYLFDR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G27050",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ICQREVtTFYPVLLNEKDLL",
+      "substrate_count": "NA",
+      "tair_id": "AT4G05440",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ARRGRSPPPPPsKGASSPSK",
+      "substrate_count": "NA",
+      "tair_id": "AT1G16610",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "HRLMRGSLLSLISPtMMKDH",
+      "substrate_count": "NA",
+      "tair_id": "AT3G30180",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "MMEAYtEMLTYIKSAVTRNY",
+      "substrate_count": "NA",
+      "tair_id": "AT2G26990",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "IFLTLDVYQtIVDLLPKINE",
+      "substrate_count": "NA",
+      "tair_id": "AT2G28650",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "DVIQQAQSGTGKtATFCSGV",
+      "substrate_count": "NA",
+      "tair_id": "AT1G54270",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "MNKGTDSYGVtTGFGATSHR",
+      "substrate_count": "NA",
+      "tair_id": "AT2G37040",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "PDsFIIEAGQTPTNTGRRSL",
+      "substrate_count": "NA",
+      "tair_id": "AT4G13420",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "EIsSLFSRETLENAMLDLHK",
+      "substrate_count": "NA",
+      "tair_id": "AT1G11100",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KGYKFDSGPSLFsGLQSRGP",
+      "substrate_count": "NA",
+      "tair_id": "AT1G57770",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "PSKLTGTMAFMFEsALIPRV",
+      "substrate_count": "NA",
+      "tair_id": "AT5G54080",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "YDAsIMMTASHLPYTRNGLK",
+      "substrate_count": "NA",
+      "tair_id": "AT1G70820",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "DSALAsAVFSPTHKSAVFNQ",
+      "substrate_count": "NA",
+      "tair_id": "AT2G41900",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "ADVIALSPTTLMAtNRFVCE",
+      "substrate_count": "NA",
+      "tair_id": "AT5G03150",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "MGAADIEKQSFNVLsMKLLG",
+      "substrate_count": "NA",
+      "tair_id": "AT5G28237",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NNLIsGVIPSDVGRLKMLSR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G20820",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "MLKLIQQtHSPDAREVQVRG",
+      "substrate_count": "NA",
+      "tair_id": "AT3G01680",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "SLQtEVSVLSPRVAFLDHQR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G58120",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "GLLFsLKSLTAKMDPVNADK",
+      "substrate_count": "NA",
+      "tair_id": "AT1G51160",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "IAAATDTSAVtNEWAMAEAI",
+      "substrate_count": "NA",
+      "tair_id": "AT1G01280",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KEAIFRTLITNGMFDNtHIR",
+      "substrate_count": "NA",
+      "tair_id": "AT3G05190",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "DLNNQRSFLtLNALNEFDPK",
+      "substrate_count": "NA",
+      "tair_id": "AT4G20980",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "Lectin Receptor Kinase family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": 185.0,
+      "tair_id": "AT5G60300",
+      "type": "kinase"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "MSRRLSLPAGAPVtVAVSPV",
+      "substrate_count": "NA",
+      "tair_id": "LOC_OS12G36890.1",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "KtVDYSRLLASTTTAADMRG",
+      "substrate_count": "NA",
+      "tair_id": "LOC_OS06G03970.1",
+      "type": "protein"
+    },
+    {
+      "description": "NA",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "LREITKsGSFLKTVRNGSSR",
+      "substrate_count": "NA",
+      "tair_id": "AT4G18910",
+      "type": "protein"
+    },
+    {
+      "description": "Leucine-rich repeat protein kinase family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G49760",
+      "type": "protein"
+    },
+    {
+      "description": "NR2",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G37130",
+      "type": "protein"
+    },
+    {
+      "description": "ZFN1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G02830",
+      "type": "protein"
+    },
+    {
+      "description": "unknown protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G16520",
+      "type": "protein"
+    },
+    {
+      "description": "PIRL9",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G11330\t",
+      "type": "protein"
+    },
+    {
+      "description": "unknown protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G53440",
+      "type": "protein"
+    },
+    {
+      "description": "KOR2",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G49720",
+      "type": "protein"
+    },
+    {
+      "description": "Proteinaceous RNAse P2",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G16650",
+      "type": "protein"
+    },
+    {
+      "description": "Calmodulin-binding transcription activator 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G09410",
+      "type": "protein"
+    },
+    {
+      "description": "F-box and associated interaction domains-containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G19930",
+      "type": "protein"
+    },
+    {
+      "description": "Ethylene response DNA binding factor 2 (RAV2)",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G68840",
+      "type": "protein"
+    },
+    {
+      "description": "Transcription regulators",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G13240",
+      "type": "protein"
+    },
+    {
+      "description": "DHHC-type zinc finger family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G50020",
+      "type": "protein"
+    },
+    {
+      "description": "Disease resistance protein TIR-NBS-LRR class) family",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G19510",
+      "type": "protein"
+    },
+    {
+      "description": "ATCDC48B",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G53230",
+      "type": "protein"
+    },
+    {
+      "description": "SPIRAL1-LIKE3",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G02180",
+      "type": "protein"
+    },
+    {
+      "description": "SKI-interacting protein (SKIP)",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G77180",
+      "type": "protein"
+    },
+    {
+      "description": "PIP2;8",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G16850",
+      "type": "protein"
+    },
+    {
+      "description": "'SHUTTLE' IN CHINESE",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G48050",
+      "type": "protein"
+    },
+    {
+      "description": "Ankyrin repeat family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G31820",
+      "type": "protein"
+    },
+    {
+      "description": "Receptor-like kinase 902",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G17840",
+      "type": "protein"
+    },
+    {
+      "description": "CCT motif family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G53420",
+      "type": "protein"
+    },
+    {
+      "description": "Ankyrin repeat family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G04470",
+      "type": "protein"
+    },
+    {
+      "description": "ATP binding microtubule motor family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G18550",
+      "type": "protein"
+    },
+    {
+      "description": "Keep on going (KEG)",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G13530",
+      "type": "protein"
+    },
+    {
+      "description": "Pigment defective 321",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G17650",
+      "type": "protein"
+    },
+    {
+      "description": "CYP712A2",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G06905",
+      "type": "protein"
+    },
+    {
+      "description": "CPK8",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G19450",
+      "type": "protein"
+    },
+    {
+      "description": "F-box/RNI-like/FBD-like domains-containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G78840",
+      "type": "protein"
+    },
+    {
+      "description": "Nucleoporin 155",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G14850",
+      "type": "protein"
+    },
+    {
+      "description": "basic helix-loop-helix (bHLH) DNA-binding superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G05805",
+      "type": "protein"
+    },
+    {
+      "description": "UDP-glucose pyrophosphorylase 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G03250",
+      "type": "protein"
+    },
+    {
+      "description": "Pantothenate Kinase 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G60440",
+      "type": "protein"
+    },
+    {
+      "description": "Remorin family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G45207",
+      "type": "protein"
+    },
+    {
+      "description": "Lipid X B",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G04560",
+      "type": "protein"
+    },
+    {
+      "description": "Autophagy-related protein 13",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G18770",
+      "type": "protein"
+    },
+    {
+      "description": "Unknown",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G66480",
+      "type": "protein"
+    },
+    {
+      "description": "Periodic tryptophan protein 2",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G15440",
+      "type": "protein"
+    },
+    {
+      "description": "Myosin 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G19960",
+      "type": "protein"
+    },
+    {
+      "description": "F-box and associated interaction domains-containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G19930\t",
+      "type": "protein"
+    },
+    {
+      "description": "Transmembrane amino acid transporter family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G39130",
+      "type": "protein"
+    },
+    {
+      "description": "Unknown protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G40640",
+      "type": "protein"
+    },
+    {
+      "description": "ATBZIP12",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G41070",
+      "type": "protein"
+    },
+    {
+      "description": "Syntaxin of plants 122",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G52400",
+      "type": "protein"
+    },
+    {
+      "description": "alpha/beta-Hydrolases superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G39955",
+      "type": "protein"
+    },
+    {
+      "description": "RING/U-box superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G46495",
+      "type": "protein"
+    },
+    {
+      "description": "MEI2-like protein 5",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G29400",
+      "type": "protein"
+    },
+    {
+      "description": "Alpha/Beta-Hydrolases superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G37710",
+      "type": "protein"
+    },
+    {
+      "description": "Cyclic nucleotide-gated channel 15",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G28260",
+      "type": "protein"
+    },
+    {
+      "description": "Transducin/WD40 repeat-like superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G02430",
+      "type": "protein"
+    },
+    {
+      "description": "Phosphoinositide binding protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G35180",
+      "type": "protein"
+    },
+    {
+      "description": "Oxysterol binding protein-related protein 1C",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G08180",
+      "type": "protein"
+    },
+    {
+      "description": "Chaperonin-60 Beta4",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G13470",
+      "type": "protein"
+    },
+    {
+      "description": "RING/U-box superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G18760",
+      "type": "protein"
+    },
+    {
+      "description": "Arginine/Serine-rich splicing factor 41",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G52040",
+      "type": "protein"
+    },
+    {
+      "description": "Phosphatidylinositol-4-phosphate 5-kinase family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G10900",
+      "type": "protein"
+    },
+    {
+      "description": "SC35-like splicing factor 30",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G55460",
+      "type": "protein"
+    },
+    {
+      "description": "Phosphofructokinase family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G12000",
+      "type": "protein"
+    },
+    {
+      "description": "Dynamin related protein 2B",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G59610",
+      "type": "protein"
+    },
+    {
+      "description": "S-adenosyl-L-methionine-dependent methyltransferases superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G36310",
+      "type": "protein"
+    },
+    {
+      "description": "XAP5 circadian timekeeper",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G21150",
+      "type": "protein"
+    },
+    {
+      "description": "Unknown protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G45688",
+      "type": "protein"
+    },
+    {
+      "description": "Ankyrin repeat family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G03470",
+      "type": "protein"
+    },
+    {
+      "description": "Myosin XI K",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G20490",
+      "type": "protein"
+    },
+    {
+      "description": "DHHC-type zinc finger family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G26935",
+      "type": "protein"
+    },
+    {
+      "description": "CRK8",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G49580",
+      "type": "protein"
+    },
+    {
+      "description": "ARM repeat superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G41830",
+      "type": "protein"
+    },
+    {
+      "description": "RLCK V",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G18500",
+      "type": "protein"
+    },
+    {
+      "description": "Alpha/Beta-Hydrolases superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G23540",
+      "type": "protein"
+    },
+    {
+      "description": "40S ribosomal protein (ATBBC1)",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G49010",
+      "type": "protein"
+    },
+    {
+      "description": "IQ-domain 14",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G43680",
+      "type": "protein"
+    },
+    {
+      "description": "Phosphoribulokinase / Uridine kinase family",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G73980",
+      "type": "protein"
+    },
+    {
+      "description": "Cytochrome P450, family 71",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G42590",
+      "type": "protein"
+    },
+    {
+      "description": "POL-like 5",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G07630\t",
+      "type": "protein"
+    },
+    {
+      "description": "Pale-green and chlorophyll B reduced 2",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G18660",
+      "type": "protein"
+    },
+    {
+      "description": "Transducin/WD40 repeat-like superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G63460",
+      "type": "protein"
+    },
+    {
+      "description": "ATP-binding cassette C14",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G62700",
+      "type": "protein"
+    },
+    {
+      "description": "AAA-type ATPase family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G18820",
+      "type": "protein"
+    },
+    {
+      "description": "AT hook motif DNA-binding family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G33620",
+      "type": "protein"
+    },
+    {
+      "description": "IQ-DOMAIN 30",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G74690",
+      "type": "protein"
+    },
+    {
+      "description": "Serine/Arginine rich-like protein 45A",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G07350",
+      "type": "protein"
+    },
+    {
+      "description": "Proline-rich extensin-like receptor kinase 10",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G26150",
+      "type": "protein"
+    },
+    {
+      "description": "IBA-response 3",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G06810",
+      "type": "protein"
+    },
+    {
+      "description": "LRR protein kinase family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G10020",
+      "type": "protein"
+    },
+    {
+      "description": "POL-like 5",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G07630",
+      "type": "protein"
+    },
+    {
+      "description": "C3HC4-type RING finger-containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G08050",
+      "type": "protein"
+    },
+    {
+      "description": "VHS and GAT domain-containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G38410",
+      "type": "protein"
+    },
+    {
+      "description": "Putative serine/threonine-protein kinase",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G01540",
+      "type": "protein"
+    },
+    {
+      "description": "Uracil DNA glycosylase",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G18630",
+      "type": "protein"
+    },
+    {
+      "description": "NSP-interacting kinase 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G16000",
+      "type": "protein"
+    },
+    {
+      "description": "Pseudouridine synthase family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G04820",
+      "type": "protein"
+    },
+    {
+      "description": "LATERAL ROOT STIMULATOR 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G05090",
+      "type": "protein"
+    },
+    {
+      "description": "SNRK3.13",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G24400",
+      "type": "protein"
+    },
+    {
+      "description": "CW14",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G59650",
+      "type": "protein"
+    },
+    {
+      "description": "Casein kinase I-like 5",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G19470",
+      "type": "protein"
+    },
+    {
+      "description": "AtVillin4",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G30160",
+      "type": "protein"
+    },
+    {
+      "description": "Aldehyde dehydrogenase 3",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G34240",
+      "type": "protein"
+    },
+    {
+      "description": "SER/ARG-rich protein kinase 4",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G53030",
+      "type": "protein"
+    },
+    {
+      "description": "Transducin/WD40 repeat-like superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G19485",
+      "type": "protein"
+    },
+    {
+      "description": "Light insensitive period 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G64813",
+      "type": "protein"
+    },
+    {
+      "description": "Networked 1D",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G03080",
+      "type": "protein"
+    },
+    {
+      "description": "Formin homolog 6",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G67470",
+      "type": "protein"
+    },
+    {
+      "description": "Hydroxysteroid dehydrogenase 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G50600",
+      "type": "protein"
+    },
+    {
+      "description": "NagB/RpiA/CoA transferase-like superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G38640",
+      "type": "protein"
+    },
+    {
+      "description": "Serine acetyltransferase 1;1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G56760",
+      "type": "protein"
+    },
+    {
+      "description": "lectin protein kinase family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G34300",
+      "type": "protein"
+    },
+    {
+      "description": "Calmodulin-binding transcription activator protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G67310",
+      "type": "protein"
+    },
+    {
+      "description": "CDC5",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G09770",
+      "type": "protein"
+    },
+    {
+      "description": "Polynucleotidyl transferase",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G35910",
+      "type": "protein"
+    },
+    {
+      "description": "Ubiquitin-specific protease family C19-related protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G78880",
+      "type": "protein"
+    },
+    {
+      "description": "SEC14 cytosolic factor family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G46450",
+      "type": "protein"
+    },
+    {
+      "description": "Lipid phosphate phosphatase 3",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G02600",
+      "type": "protein"
+    },
+    {
+      "description": "Tetratricopeptide repeat 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G30480",
+      "type": "protein"
+    },
+    {
+      "description": "Protein kinase superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G28690",
+      "type": "protein"
+    },
+    {
+      "description": "Protein kinase superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G32250",
+      "type": "protein"
+    },
+    {
+      "description": "Regulator of Vps4 activity in the MVB pathway protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G19710",
+      "type": "protein"
+    },
+    {
+      "description": "RS2-interacting KH protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G29390",
+      "type": "protein"
+    },
+    {
+      "description": "Sec14p-like phosphatidylinositol transfer family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G72160",
+      "type": "protein"
+    },
+    {
+      "description": "Protein kinase superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G45160",
+      "type": "protein"
+    },
+    {
+      "description": "Cellulose-synthase like C5",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G31590",
+      "type": "protein"
+    },
+    {
+      "description": "Cell division control protein 6 (CDC6)",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G29680",
+      "type": "protein"
+    },
+    {
+      "description": "B-block binding subunit of TFIIIC",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G59453",
+      "type": "protein"
+    },
+    {
+      "description": "bHLH DNA-binding superfamily protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G10570",
+      "type": "protein"
+    },
+    {
+      "description": "Unknown protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G12735",
+      "type": "protein"
+    },
+    {
+      "description": "Phox/Bemp1 (PB1) domains-containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G63490",
+      "type": "protein"
+    },
+    {
+      "description": "rRNA processing protein-related",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G61330",
+      "type": "protein"
+    },
+    {
+      "description": "Tetratricopeptide repeat (TPR)-like super family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G35430",
+      "type": "protein"
+    },
+    {
+      "description": "Unknown function",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G65950",
+      "type": "protein"
+    },
+    {
+      "description": "Formin homology 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G25500",
+      "type": "protein"
+    },
+    {
+      "description": "O-acyltransferase (WSD1-like) family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G49210",
+      "type": "protein"
+    },
+    {
+      "description": "Alpha 1,4-glycosyltransferase family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G09020",
+      "type": "protein"
+    },
+    {
+      "description": "Major facilitator super family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G45275",
+      "type": "protein"
+    },
+    {
+      "description": "Protein kinase super family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G73450",
+      "type": "protein"
+    },
+    {
+      "description": "Phytanoyl-CoA dioxygenase (PhyH) family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G01490",
+      "type": "protein"
+    },
+    {
+      "description": "Aminophospholipid ATPase 2",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G44240",
+      "type": "protein"
+    },
+    {
+      "description": "BR-signaling kinase 1 (BSK1)",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G35230",
+      "type": "protein"
+    },
+    {
+      "description": "Tubulin beta chain 2",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G62690",
+      "type": "protein"
+    },
+    {
+      "description": "Transmembrane amino acid transporter family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G47670",
+      "type": "protein"
+    },
+    {
+      "description": "Heat Shock Protein 70-15",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G79920",
+      "type": "protein"
+    },
+    {
+      "description": "Leucine-rich repeat protein kinase family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G06840",
+      "type": "protein"
+    },
+    {
+      "description": "Impaired in BABA-induced sterility 1 (IBS1)",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G18670",
+      "type": "protein"
+    },
+    {
+      "description": "Unknown protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G01400",
+      "type": "protein"
+    },
+    {
+      "description": "Ypt/Rab-GAP domain of gyp1p super family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G55020",
+      "type": "protein"
+    },
+    {
+      "description": "GDSL-like Lipase/Acylhydrolase super family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G62280",
+      "type": "protein"
+    },
+    {
+      "description": "LRR and NB-ARC domains-containing protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G47250",
+      "type": "protein"
+    },
+    {
+      "description": "ARIADNE 5",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G05890",
+      "type": "protein"
+    },
+    {
+      "description": "TON1 recruiting motif 19",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G53540",
+      "type": "protein"
+    },
+    {
+      "description": "Calcium-binding EF hand family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G20760",
+      "type": "protein"
+    },
+    {
+      "description": "Protein kinase super family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G67580",
+      "type": "protein"
+    },
+    {
+      "description": "Unknown protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G14120",
+      "type": "protein"
+    },
+    {
+      "description": "GDP-D-mannose-4,6-dehydratase 2",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G51160",
+      "type": "protein"
+    },
+    {
+      "description": "Nuclear transport factor 2 (NTF2) family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G41470",
+      "type": "protein"
+    },
+    {
+      "description": "AtCOM1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G52115",
+      "type": "protein"
+    },
+    {
+      "description": "POLTERGEIST",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G46920",
+      "type": "protein"
+    },
+    {
+      "description": "Lipid phosphate phosphatase 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G01180",
+      "type": "protein"
+    },
+    {
+      "description": "Chalcone-flavanone isomerase family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G66230",
+      "type": "protein"
+    },
+    {
+      "description": "DWNN domain, a CCHC-type zinc finger",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G47430",
+      "type": "protein"
+    },
+    {
+      "description": "Unknown function",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G49110",
+      "type": "protein"
+    },
+    {
+      "description": "Unknown function",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G50120",
+      "type": "protein"
+    },
+    {
+      "description": "DUF1664",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G24267",
+      "type": "protein"
+    },
+    {
+      "description": "Calcium-binding tetratricopeptide family protein",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT2G32450",
+      "type": "protein"
+    },
+    {
+      "description": "PURINE PERMEASE 18",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G57990",
+      "type": "protein"
+    },
+    {
+      "description": "Unknown function",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G43630",
+      "type": "protein"
+    },
+    {
+      "description": "DDB1-CUL4 associated factor 1",
+      "family": "NA",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT4G31160",
+      "type": "protein"
+    },
+    {
+      "description": "CPK17",
+      "family": "CDPk Super Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G12180",
+      "type": "kinase"
+    },
+    {
+      "description": "CPK32",
+      "family": "CDPk Super Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G57530",
+      "type": "kinase"
+    },
+    {
+      "description": "PPCK1",
+      "family": "Casein Kinase Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G08650",
+      "type": "kinase"
+    },
+    {
+      "description": "PPCK2",
+      "family": "Casein Kinase Family",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT3G04530",
+      "type": "kinase"
+    },
+    {
+      "description": "SnRK-1.3",
+      "family": "Ser/Thr Protein Kinase Superfamily",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT5G39440",
+      "type": "kinase"
+    },
+    {
+      "description": "SnRK2.4",
+      "family": "Ser/Thr Protein Kinase Superfamily",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G10940",
+      "type": "kinase"
+    },
+    {
+      "description": "SnRK2.8",
+      "family": "Ser/Thr Protein Kinase Superfamily",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G78290",
+      "type": "kinase"
+    },
+    {
+      "description": "SnRK2.10",
+      "family": "Ser/Thr Protein Kinase Superfamily",
+      "in_vitro_phosphosite": "NA",
+      "in_vivo_phosphosite": "NA",
+      "substrate_count": "NA",
+      "tair_id": "AT1G60940",
+      "type": "kinase"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "/blastp": {
+    "target": "http://linux-shell-test.appspot.com",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/data1": {
+    "target": "http://linux-shell-test.appspot.com",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/node-description1": {
+    "target": "http://linux-shell-test.appspot.com",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/link": {
+    "target": "http://rest.kegg.jp",
+    "secure": false
+  },
+  "/oneclick": {
+    "target": "http://linux-shell-test.appspot.com",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/node-description": {
+    "target": "http://linux-shell-test.appspot.com",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/data": {
+    "target": "http://linux-shell-test.appspot.com",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/conv": {
+    "target": "http://rest.kegg.jp",
+    "secure": false
+  },
+  "/get": {
+    "target": "http://rest.kegg.jp",
+    "secure": false
+  },
+  "/matomo": {
+    "target": "https://fatplants.net/matomo",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/matomo": ""
+    },
+    "logLevel": "debug"
+  }
+}

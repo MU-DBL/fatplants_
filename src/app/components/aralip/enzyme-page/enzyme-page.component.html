@@ -1,0 +1,53 @@
+<div class="filter">
+    <mat-form-field id="filter">
+        <input type="search" matInput [value]="searchQuery" (keyup)="onSearchChange($event)"
+            placeholder="Enter your search query" />
+    </mat-form-field>
+    <button (click)='applySearchQuery()' class="search-button" matTooltip="Search">Search</button>
+</div>
+
+<div id='table'>
+    <mat-table [dataSource]='arabidopsisDataSource' style="width:100%">
+        <ng-container matColumnDef="pathways">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Pathways </mat-header-cell>
+            <mat-cell *matCellDef="let elem" style="padding-right: 5px;">
+                <ng-container *ngIf='elem.path_name === "Unknown"; else pathway_link'>
+                    Unknown
+                </ng-container>
+                <ng-template #pathway_link>
+                    <a href="/aralip-menu/pathway/{{elem.path_id}}" target="_blank">
+                        {{elem.path_name}} 
+                    </a>
+                </ng-template>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="enzymes_proteins">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Enzymes/Proteins </mat-header-cell>
+            <mat-cell *matCellDef="let elem" style="padding-right: 5px;">
+                <a href="/enzymes/{{elem.id}}" target="_blank">
+                    <!--{{elem.name}} -->
+                    <div [innerHTML]="elem.name"></div>
+                </a>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="abbreviations">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Abbreviations </mat-header-cell>
+            <mat-cell *matCellDef="let elem" style="padding-right: 5px;"> 
+                <ng-container *ngIf='elem.abbreviation !== null'>
+                    <div [innerHTML]="elem.abbreviation"></div>
+                    <!--{{ elem.abbreviation.replaceAll(';', '').replaceAll('&alpha', 'α').replaceAll('&beta', 'β') }}-->
+                </ng-container>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="comments">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Comments </mat-header-cell>
+            <mat-cell *matCellDef="let elem"> {{ elem.comments }} </mat-cell>
+        </ng-container>
+        <mat-header-row
+            *matHeaderRowDef="['pathways', 'enzymes_proteins', 'abbreviations', 'comments']; sticky: true;"></mat-header-row>
+        <mat-row
+            *matRowDef="let row; columns: ['pathways', 'enzymes_proteins', 'abbreviations', 'comments'];"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>

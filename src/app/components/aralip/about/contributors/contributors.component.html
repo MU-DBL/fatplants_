@@ -1,0 +1,49 @@
+
+<div class="content-container">
+  <div class="header">
+    <h1>Contributors</h1><br>
+  </div>
+
+  <div class="contributors-list">
+    <div class="contributor-item" *ngFor="let contributor of contributors">
+      <div class="image">
+        <div class="wall">
+          <img [src]="contributor.image" alt="{{ 'img' }}">
+        </div>
+      </div>
+      <div class="details">
+        <div class="professional_div" >
+          <div class="contributor"><strong>{{ contributor.name }}</strong></div><br>
+          <div *ngIf="contributor.profile"> 
+            <span class="subs">Professional Profile:&nbsp;</span>
+            <a [href]="contributor.profile" target="_blank">{{ contributor.name }}</a>
+          </div>
+        </div>
+        
+        <div class="network_div" *ngIf="contributor.network">
+          <span class="subs">Network Profile:&nbsp;</span>
+          <span>
+            <a [href]="contributor.network" target="_blank">
+              {{ contributor.network_name ? contributor.network_name : 'LinkedIn' }}
+            </a>
+          </span>
+          <span *ngIf="contributor.network_per">
+            &nbsp; &nbsp;
+            <a [href]="contributor.network_per" target="_blank"> {{contributor.network_per_name}}</a>
+          </span>
+        </div>
+        
+        
+        
+        <div class="email_div" *ngIf="contributor.email">
+          <span class="subs">Email:&nbsp;</span>
+          <a [href]="'mailto:' + contributor.email">{{ contributor.email }}</a>
+        </div>
+        <div class="summary_div">
+          <span class="subs">Summary:&nbsp;</span>
+          {{ contributor.summary }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

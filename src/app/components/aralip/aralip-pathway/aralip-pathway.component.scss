@@ -1,0 +1,69 @@
+
+
+.imageArea{
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+
+
+.selector{
+    margin-top: 10px;
+    width: 40%;
+}
+
+mat-card {
+  box-sizing: border-box;
+  text-align: left;
+  padding: 1% !important;
+  margin: 0% !important;
+}
+#imgCanvas {
+  width:100%;
+}
+.imageArea{
+  display: flex;
+  justify-content: left;
+}
+.info-table {
+  width: 100%;
+  margin: 20px auto;
+}
+.name-card {
+  margin: 10px auto;
+  width: 97%;
+}
+.canvas-container {
+  width:80%;
+}
+
+.loading-bar {
+  width: 80%;
+  text-align: left;
+}
+
+.toggle-btn {
+  cursor: pointer;
+}
+
+.collapsible-div {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.collapsible-div.ng-animating {
+  max-height: 0;
+  opacity: 0;
+}
+
+.toggle-container button, .toggle-container p {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px; /* Optional: Add space between button and text */
+}
+
+.toggle-container p {
+  margin: 0; /* Optional: Removes default paragraph margins */
+}

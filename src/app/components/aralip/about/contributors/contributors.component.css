@@ -1,0 +1,49 @@
+
+.content-container {
+  width: 90%;
+  margin:2%;
+}
+  
+  .header {
+    text-align: center;
+  }
+ 
+  .contributors-list {
+    margin-left: 30px;
+  }
+  
+  .contributor-item {
+    display: flex;
+    margin-bottom: 40px;
+  }
+  
+  .image {
+    margin-right: 20px;
+  }
+  
+  .wall img {
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+  }
+  
+  .professional_div,
+  .network_div,
+  .email_div,
+  .summary_div {
+    margin-bottom: 10px;
+  }
+  
+  .subs {
+    font-weight: bold;
+  }
+  .summary_div {
+    text-align: justify; 
+  }

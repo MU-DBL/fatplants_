@@ -1,0 +1,45 @@
+
+.content-container {
+  width: 90%;
+  margin: 2%;
+}
+
+.header-content {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header-content .main-title {
+  margin: 0;
+  font-size: 36px;
+}
+
+.header-content .subtitle {
+  margin: 0;
+  font-size: 24px;
+}
+
+
+.content p {
+  padding-left: 10px;
+  text-align: justify;
+}
+
+.content ul {
+  padding-left: 50px;
+}
+
+.content ul li {
+  padding-left: 40px;
+  margin-bottom: 10px;
+}
+
+.citation a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.highlight {
+  color: red;
+  font-weight: bold;
+}

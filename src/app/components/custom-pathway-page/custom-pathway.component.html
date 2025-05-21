@@ -1,0 +1,130 @@
+<div class="page-title-bar">
+    <p class="page-title"> Custom Pathway Viewer</p>
+</div>
+
+<mat-card class="row columns base" style="min-width: 1000px">
+
+    <div class="columns small-10 small-centered textrow ">
+      <p *ngIf="selectedGraph == null">A tool for viewing custom pathway figures.</p>
+      <p *ngIf="selectedGraph && selectedGraph.length > 0">{{selectedGraph[0].paper}}</p>
+    </div>
+    <div class="infoSection">
+        <mat-slide-toggle [(ngModel)]="showingUniprot">Use Uniprot Links</mat-slide-toggle>
+    </div>
+    <div [class.show]="selectedGraph" class="imageArea">
+        
+        <div id="side-graph">
+            <mat-table [dataSource]='graphTable' id='side-table' *ngIf="graphTable != null">
+        
+                <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef>Clickable Gene Components</mat-header-cell>
+                    <mat-cell *matCellDef="let prot" 
+                               class="titleCell" 
+                               (mouseover)="drawMapForTitle(prot.title)" 
+                               (mouseout)="clearMap()"
+                               (click)="openLink(prot)"
+                               >
+                               {{ prot.title }}
+                            </mat-cell>
+                </ng-container>
+        
+                <mat-header-row *matHeaderRowDef="['title']"></mat-header-row>
+                
+                <mat-row *matRowDef="let row; columns: ['title']"></mat-row>
+        
+            </mat-table>
+        </div>
+
+        <div class="canvas-container">
+            <!--<img [src]="selectedGraph.imgPath" usemap="#chartMap">
+            
+            <MAP NAME="chartMap" *ngIf="!showingUniprot">
+                <AREA *ngFor="let area of selectedGraph.areas" 
+                        [shape]="area.shape" 
+                        [href]="area.fpLink" 
+                        target="_blank" 
+                        [title]="area.title"  
+                        [coords]="area.coords"
+                        >
+            </MAP> -->
+
+            <!-- UNIPROT LINKS -->
+            
+            <canvas #canvas id="imgCanvas" 
+                    [width]="img.width" 
+                    [height]="img.height" 
+                    >
+
+            </canvas>
+            <!-- <MAP NAME="chartMap" *ngIf="showingUniprot">
+                <AREA *ngFor="let area of selectedGraph.areas" 
+                    [shape]="area.shape" 
+                    [href]="area.uniProtLink" 
+                    target="_blank" 
+                    [title]="area.title"  
+                    [coords]="area.coords"
+                    >
+            </MAP> -->
+        </div>
+    </div>
+
+    <!-- <mat-card class="graph-card">
+        <mat-card-title class="graphTitle" *ngIf="graphTable != null">Clickable Gene Components</mat-card-title>
+        <mat-table [dataSource]='graphTable' id='table' *ngIf="graphTable != null">
+            <ng-container matColumnDef="title">
+                <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+                <mat-cell *matCellDef="let prot" class="titleCell" (mouseover)="drawMapForTitle(prot.title)" (mouseout)="clearMap()">{{ prot.title }}</mat-cell>
+            </ng-container>
+            
+            <ng-container matColumnDef="fpLink">
+                <mat-header-cell *matHeaderCellDef>FatPlants Link</mat-header-cell>
+                <mat-cell *matCellDef="let prot">
+                    <a href="{{ prot.fpLink }}" target="_blank">Fatplants Link</a>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="uniProtLink">
+                <mat-header-cell *matHeaderCellDef>Uniprot Link</mat-header-cell>
+                <mat-cell *matCellDef="let prot">
+                    <a href="{{ prot.uniProtLink }}" target="_blank">Uniprot Link</a>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="geneName">
+                <mat-header-cell *matHeaderCellDef>Gene Name</mat-header-cell>
+                <mat-cell *matCellDef="let prot">
+                    <p>{{ prot.geneName }}</p>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="dataSet">
+                <mat-header-cell *matHeaderCellDef>Data Set</mat-header-cell>
+                <mat-cell *matCellDef="let prot">
+                    <p>{{ prot.dataSet }}</p>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="modified">
+                <mat-header-cell *matHeaderCellDef>Modified</mat-header-cell>
+                <mat-cell *matCellDef="let prot">
+                    <p>{{ prot.modified }}</p>
+                </mat-cell>
+            </ng-container>
+    
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    
+        </mat-table>
+      <mat-progress-bar mode="indeterminate" *ngIf='graphTable == null'></mat-progress-bar>
+    </mat-card> -->
+    <ng-template *ngIf="selectedGraph == null" >
+        <mat-card>
+            <mat-card-title>No Graph Found</mat-card-title>
+            <mat-card-content>
+                It looks like there isn't a pathway in the database for the id provided.
+            </mat-card-content>
+        </mat-card>
+    </ng-template>
+  
+  </mat-card>

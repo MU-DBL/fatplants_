@@ -1,0 +1,144 @@
+<mat-card class="base">
+  <div class="page-title-bar">
+    <p class="page-title"> Blast Tools</p>
+  </div>
+  <div class="textali">
+    <div class="alert" [class.visible]="alertVisible">
+      Sequence should not be empty
+    </div>
+
+    <div style="margin-top: 2%;">
+      <p>BLAST finds regions of similarity between biological sequences.</p>
+      <p>The program compares nucleotide or protein sequences to sequence databases and calculates the statistical
+        significance.</p>
+    </div>
+    <div style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; padding: 1%;">
+      <div class="input-field col s6">
+        <p style="font-weight: bold; margin-bottom: 0;">Sequence</p>
+        <textarea style="height: 100px; width: 100%;" name="fasta" class="browser-default input-area"
+          [(ngModel)]="proteinSeq"></textarea>
+      </div>
+
+      <div style="margin-top: 2%;">
+        <p style="font-weight: bold; margin-bottom: 0;">Database</p>
+        <mat-radio-group color="primary" [(ngModel)]="database">
+          <mat-radio-button class="option" value="Arabidopsis">Arabidopsis</mat-radio-button>
+          <mat-radio-button class="option" value="Soybean">Soybean</mat-radio-button>
+          <mat-radio-button class="option" value="Camelina">Camelina</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    <div>
+      <div style="margin-top: 2%;">
+        <p style="font-weight: bold; margin-bottom: 0;">E-value threshold
+          <mat-icon style="font-size: small;" matTooltip="E-value, or Expectation value, is a metric that estimates the number of random alignments expected to achieve a particular alignment score by chance when searching a database of a given size.
+                
+                We recommend using 0.01 or 0.1 as the initial values for the search" matTooltipPosition="after"> help
+          </mat-icon>
+        </p>
+        <mat-radio-group color="primary" [(ngModel)]="evalue">
+          <mat-radio-button class="option" value="0.0001">0.0001</mat-radio-button>
+          <mat-radio-button class="option" value="0.001">0.001</mat-radio-button>
+          <mat-radio-button class="option" value="0.01">0.01</mat-radio-button>
+          <mat-radio-button class="option" value="0.1">0.1</mat-radio-button>
+          <mat-radio-button class="option" value="1">1</mat-radio-button>
+          <mat-radio-button class="option" value="10">10</mat-radio-button>
+          <mat-radio-button class="option" value="100">100</mat-radio-button>
+          <mat-radio-button class="option" value="1000">10000</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div>
+      <div class="col s6" style="margin-top: 2%;">
+        <p style="margin-bottom: 0; font-weight: bold;">Scoring Matrix
+          <mat-icon style="font-size: small;"
+            matTooltip="Scoring matrix is a table used to determine the score of aligning two amino acids or nucleotides during a sequence alignment.
+                
+                Two matrix, PAM (Point Accepted Mutation) and BLOSUM (Blocks Substitution Matrix) are using for protein sequences, and nucleotide scoring matrices for DNA sequences."
+            matTooltipPosition="after"> help
+          </mat-icon>
+        </p>
+        <mat-radio-group color="primary" [(ngModel)]="matrix">
+          <mat-radio-button class="option" value="PAM30">PAM30</mat-radio-button>
+          <mat-radio-button class="option" value="PAM70">PAM70</mat-radio-button>
+          <mat-radio-button class="option" value="PAM250">PAM250</mat-radio-button>
+          <mat-radio-button class="option" value="BLOSUM80">BLOSUM80</mat-radio-button>
+          <mat-radio-button class="option" value="BLOSUM62">BLOSUM62</mat-radio-button>
+          <mat-radio-button class="option" value="BLOSUM45">BLOSUM45</mat-radio-button>
+          <mat-radio-button class="option" value="BLOSUM50">BLOSUM50</mat-radio-button>
+          <mat-radio-button class="option" value="BLOSUM90">BLOSUM90</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <button mat-raised-button style="margin: 1%;" color="primary" type="submit" name="action" (click)="onSubmit()">Run
+      BLAST
+    </button>
+    <button *ngIf="this.result != undefined" mat-raised-button class="btn clear waves-effect waves-light" type="reset"
+      name="action" (click)="clear()">Clear Results
+    </button>
+    <mat-icon id="help-icon" class="pointer"
+      [matTooltip]="'Input a fasta sequence to do blast. Click this icon for an example.'"
+      (click)="setDefaultSearch()">help</mat-icon>
+  </div>
+
+  <div class="row">
+    <div *ngIf="isLoading">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+  </div>
+  <mat-progress-bar id="loading-bar" mode="indeterminate" *ngIf="this.loading"></mat-progress-bar>
+  <p *ngIf="blastError" class="centered">No results were found for the previous search.</p>
+  </div>
+
+  <div style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin: 2%;">
+    <mat-table [dataSource]='blastDataSource' id='table' *ngIf="blastDataSource">
+      <ng-container matColumnDef="sequences">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sequences producing significant alignments
+        </mat-header-cell>
+        <mat-cell *matCellDef="let elem">{{elem.sequences}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="score">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Score </mat-header-cell>
+        <mat-cell *matCellDef="let elem">{{ elem.score }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="evalue">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Evalue </mat-header-cell>
+        <mat-cell *matCellDef="let elem"> {{ elem.evalue }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="identities">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Identities </mat-header-cell>
+        <mat-cell *matCellDef="let elem"> {{ elem.identities }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="positives">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Positives </mat-header-cell>
+        <mat-cell *matCellDef="let elem"> {{ elem.positives }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="gaps">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Gaps </mat-header-cell>
+        <mat-cell *matCellDef="let elem"> {{ elem.gaps }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+        <mat-cell *matCellDef="let elem">
+          <pre class="precenter">{{elem.expand}}</pre>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row
+        *matHeaderRowDef="['sequences','score','evalue','identities','gaps','positives']; sticky: true;"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['sequences','score','evalue','identities','gaps','positives'];" matRipple
+        class="element-row" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl"></mat-row>
+    </mat-table>
+
+    <ng-template #tpl let-elem>
+      <div class="mat-row" [@detailExpand] style="overflow: hidden">
+        <pre class="precenter">{{elem.expand}}</pre>
+      </div>
+    </ng-template>
+  </div>
+
+
+</mat-card>

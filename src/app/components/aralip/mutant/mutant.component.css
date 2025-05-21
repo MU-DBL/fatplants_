@@ -1,0 +1,57 @@
+.container {
+    width: 90%;
+    margin: 2%;
+    background-color: white;
+}
+
+.highlight-note {
+    color: red; /* Text color */
+    text-decoration: underline; /* Underline the text */
+    text-decoration-color: red; /* Set the underline color to red */
+}
+.download-icon {
+    cursor: pointer; /* Changes the cursor to a hand when hovering */
+    user-select: none; /* Prevents text/image selection when clicked */
+    width:20px; 
+    height:20px;
+}
+
+.download-icon:active {
+    cursor: progress; /* Optional: changes cursor to a progress indicator when clicking */
+}
+
+header h1 {
+    text-align: center;
+}
+
+main ul {
+    list-style-type: disc;
+    padding-left: 40px;
+    padding-right: 40px;
+    line-height: 1.8;
+}
+
+main ul li {
+    text-decoration: justify;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.citation {
+    margin: 40px;
+    text-decoration: justify;
+    font-size: 0.9rem;
+    margin-top: 40px;
+    color: #555;
+}
+
+.citation a {
+    color: #1a73e8;
+    text-decoration: justify;
+}
+
+.citation a:hover {
+    text-decoration: underline;
+}
+
+

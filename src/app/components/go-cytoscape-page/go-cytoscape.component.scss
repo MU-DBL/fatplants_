@@ -1,0 +1,42 @@
+.header {
+    height: 3.5rem;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: Roboto;
+    font-size: 1.8vw;
+    font-weight: 500;
+    background: #629B07 !important;
+    color: whitesmoke;
+    padding: 10px 15px;
+    margin: 0; 
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+#component-container{
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+    width: 80%;
+    height: fit-content;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(124, 179, 66, 0.65);
+}
+
+#title {
+    text-align: center;
+    font-family: "Lato",sans-serif ;
+    font-weight: bold;
+}
+
+
+
+/* .card{
+    margin: 10px 0 !important;
+} */
+.card pre{
+    font-family: "Lato",sans-serif ;
+}

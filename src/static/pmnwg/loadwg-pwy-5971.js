@@ -1,0 +1,1 @@
+WG.Load('/static/pmnwg/PWY-5971.wg', 'wgdiv-pwy-5971');

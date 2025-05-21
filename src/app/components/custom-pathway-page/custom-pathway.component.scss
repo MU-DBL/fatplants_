@@ -1,0 +1,113 @@
+@import '../../../variables';
+
+.page-title-bar {
+  background-color: #629B07;
+  color: rgb(255, 255, 255);
+  padding: 0.1rem;
+}
+
+/*page's title - font style*/
+.page-title {
+  font-family: Roboto;
+  font-size: 1.8vw;
+  font-weight: 500;
+  padding-left: 2%;
+  margin-block-end: 0.5rem;
+  margin-block-start: 0.5rem;
+}
+
+#side-graph {
+  max-width: 150px;
+}
+
+.graphTitle {
+  background-color: white;
+  margin-bottom: 0px;
+  padding: 10px;
+  text-align: center;
+}
+
+.imageArea{
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+}
+
+.infoSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 45%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.graph-card {
+  display: block;
+  width: 80%;
+  margin: 20px auto;
+}
+
+mat-header-cell {
+  font-family: "PT Serif", serif;
+  color: black;
+  padding-right: 2%;
+}
+mat-header-row {
+  border-bottom-color: rgba(grey, 0.5);
+  font-size: 1.0vw;
+}
+mat-row {
+  border-bottom-color: $pale-green;
+}
+mat-cell {
+  padding-right: 2%;
+}
+mat-cell>a, mat-cell>span>a {
+  text-decoration: none;
+  color: $light-green;
+}
+mat-cell>a:visited, mat-cell>span>a:visited {
+  color: $dark-green;
+}
+
+.image-map-container {
+  position: relative;
+  display:inline-block;
+}
+.image-map-container img {
+  display:block;
+}
+.image-map-container .map-selector {
+  left:0;top:0;right:0;bottom:0;
+  color:#546E7A00;
+  transition-duration: .3s;
+  transition-timing-function: ease-out;
+  transition-property: top, left, right, bottom, color;
+}
+.image-map-container .map-selector.hover {
+  color:#546E7A80;
+}
+
+.map-selector:after {
+  content: '';
+  position: absolute;
+  top: inherit;right: inherit;bottom: inherit;left: inherit;
+  background: currentColor;
+  transition-duration: .3s;
+  transition-timing-function: ease-out;
+  transition-property: top, left, right, bottom, background;
+  pointer-events: none;
+}
+
+.titleCell:hover {
+  background-color: rgba(219,112,147,0.4);
+}
+
+#imgCanvas {
+  width:100%;
+}
+
+.canvas-container {
+  width:60%;
+}

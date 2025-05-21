@@ -1,0 +1,140 @@
+
+@import '../../../variables';
+
+mat-card {
+    font-family: "PT Sans", sans-serif;
+    width: 100%;
+    height: auto;
+    background-image: none !important;
+    background-color: white;
+    margin: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#protein-page {
+    min-height: calc(94% - 32px);
+    background-color: white;
+}
+.protein-name {
+    padding-left: 5%;
+    font-size: 20px;
+}
+.card-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.protein-info-card {
+    width: 45%;
+    margin-top: 1%;
+    background-color: #FDFAF0;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px;
+}
+.protein-info-wrapper {
+    margin-left: 2%;
+}
+.protein-info {
+    margin-top: 0;
+}
+.protein-function-card {
+    width: 45%;
+    min-height: 40%;
+    margin-top: 1%;
+    background-color: rgba(#F9F9F9, 0.7);
+    border-radius: 5px;
+    box-shadow: 0 1px 4px;
+}
+.domain-function-card {
+    width: 100%;
+    margin-top: 3%;
+    background-color: rgba(#F9F9F9, 0.7);
+    border-radius: 5px;
+    box-shadow: 0 1px 4px;
+    box-sizing: border-box;
+}
+.protein-subtitle {
+    color: #205434;
+}
+.title {
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+.back-text {
+    margin-left: 1vw;
+}
+.no-data-message {
+    margin: auto;
+    text-align: center;
+    padding-top: 5vh;
+}
+.error {
+    font-weight: normal;
+}
+.status {
+    margin: 2vh 0 0.5vh 1%;
+}
+.status.reviewed {
+    color: $light-green;
+}
+.status.unreviewed {
+    color: $orange-yellow;
+}
+.info-icon {
+    font-size: 1em;
+}
+.sequence-card {
+    width: 100%;
+    margin-top: 3%;
+    background-color: rgba(#86c786, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 1px 4px;
+    box-sizing: border-box;
+}
+#sequence-display {
+    word-wrap: break-word;
+}
+#sequence-button {
+    color: white;
+    margin-left: 2vw;
+}
+.alt-names {
+    margin: 0 0 0 1%;
+    font-size: 0.85em;
+}
+
+#mainContainer {
+    margin: 10px auto;
+    width: 70%;
+}
+
+a {
+    text-decoration: none;
+    color: $light-green;
+}
+a:visited, a:visited {
+    color: $dark-green;
+}
+
+.function-header {
+    display: flex;
+    justify-content: space-between;
+    max-height: 50px;
+}
+
+.function-header > h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.function-header > button {
+    height: 35px;
+}
+
+.function-header > mat-form-field {
+    font-size: 12px;
+}

@@ -1,0 +1,183 @@
+@import '../../../../variables';
+
+div{
+  width:100%;
+}
+
+.click-zoom input[type=checkbox] {
+  display: none
+}
+
+.click-zoom img {
+  margin: 100px;
+  transition: transform 0.25s ease;
+  cursor: zoom-in
+}
+
+.click-zoom input[type=checkbox]:checked~img {
+  transform: scale(3);
+  cursor: zoom-out
+}
+
+button {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 10px;
+}
+
+mat-card {
+  box-sizing: border-box;
+  text-align: left;
+  padding: 1% !important;
+  margin: 0% !important;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main,
+.sidebar {
+  padding: 15px;
+}
+
+.main {
+  width: 85%;
+  height: 600vh;
+}
+
+.sidebar {
+  width: 5%;
+  height: 25vh;
+}
+
+.sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+a:hover {
+  color: blue;
+  cursor:pointer;
+  text-decoration: underline;
+}
+
+.row {
+  margin: auto;
+}
+
+.btn{
+  margin: 10px 0 0 0;
+  transition: background-color 0.5s;
+}
+
+.btn:hover {
+  background-color: rgba($lime-green, 0.3);
+  transition: all 0.5s;
+}
+
+#loading-bar {
+  width: 60%;
+  margin: auto;
+  margin-top: 2%;
+}
+
+#pathway-viewer {
+  width: 60%;
+  margin: auto;
+}
+
+#pathway-tabs {
+  width: 80%;
+  min-width: 910px;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label {
+  transition: all 0.5s cubic-bezier(.35,0,.25,1); // match ink bar
+}
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  background-color: rgba($lime-green, 0.4);
+  transition: all 0.5s cubic-bezier(.35,0,.25,1);
+}
+
+#help-icon-div {
+   position: absolute;
+   right: -10%;
+   vertical-align: middle;
+   height: 100%;
+ }
+#help-icon {
+  position: absolute;
+  top: 0px;
+}
+.help-icon {
+  margin-left: 20px;
+}
+#identifier-help-icon {
+  color: rgba($main-green, 0.6);
+}
+
+.pathway-radio-group {
+  flex-direction: column;
+  margin: auto;
+
+}
+.pathway-radio-button {
+  margin: 5px;
+}
+#canvas-container {
+  max-width: 95%;
+  max-height: 100%;
+  margin: auto;
+  overflow: scroll;
+}
+#canvas {
+  width: max-content;
+  height: max-content;
+}
+
+#genetable {
+  margin: 10px auto;
+  table-layout: fixed;
+}
+
+.generow {
+  text-align: left;
+}
+
+.generow:hover {
+  background-color: lightgray;
+}
+
+.generow.selected {
+  background-color: rgba($lime-green, 0.4);
+  transition: all 0.5s;
+}
+
+th, td.mat-cell {
+  overflow: hidden;
+  width:auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.row{
+  margin:2%;
+  
+}
+
+.mat-header-cell {
+  font-family: "PT Serif", serif;
+  font-weight:bold;
+  font-size: 15px;
+  color: black;
+  padding-right: 2%;
+}

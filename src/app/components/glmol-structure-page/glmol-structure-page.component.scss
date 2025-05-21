@@ -1,0 +1,176 @@
+/*We have a bar for page's title*/
+@import '../../../variables';
+
+.page-title-bar {
+    background-color: #629B07;
+    color: rgb(255, 255, 255);
+    padding: 0.1rem;
+}
+
+/*page's title - font style*/
+.page-title {
+    font-size: 1.8vw;
+    font-family: Roboto;
+    font-weight: 500;
+    padding-left: 2%;
+    margin-block-end: 0.5rem;
+    margin-block-start: 0.5rem;
+}
+
+mat-card.base {
+    width: 100%;
+    box-sizing: border-box;
+    background-image: none !important;
+    margin: 0 !important;
+    min-height: 100%;
+    padding:0% !important;
+}
+  
+
+.click-zoom input[type=checkbox] {
+  display: none
+}
+
+.click-zoom img {
+  margin: 100px;
+  transition: transform 0.25s ease;
+  cursor: zoom-in
+}
+
+.click-zoom input[type=checkbox]:checked~img {
+  transform: scale(3);
+  cursor: zoom-out
+}
+
+button {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 10px;
+}
+
+mat-card {
+  font-family: 'Catamaran', sans-serif;
+}
+
+#genetable {
+  width: 50%;
+  margin: 10px auto;
+  table-layout: fixed;
+}
+
+.generow {
+  text-align: left;
+}
+
+.generow:hover {
+  background-color: lightgray;
+}
+
+.generow.selected {
+  background-color: rgba($lime-green, 0.4);
+  transition: all 0.5s;
+}
+
+th, td.mat-cell {
+  overflow: hidden;
+  width:auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main,
+.sidebar {
+  padding: 15px;
+}
+
+.main {
+  width: 85%;
+  height: 100%;
+}
+
+.sidebar {
+  width: 5%;
+  height: 25vh;
+}
+.sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+a:hover {
+  color: blue;
+  cursor:pointer;
+  text-decoration: underline;
+}
+
+.btn{
+  margin: 10px 0 0 0;
+  transition: background-color 0.5s;
+}
+
+.btn:hover {
+  background-color: rgba($lime-green, 0.3);
+  transition: all 0.5s;
+}
+
+#glmol-display {
+  width: 80%;
+  margin: auto;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label {
+  transition: all 0.5s cubic-bezier(.35,0,.25,1); // match ink bar
+}
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  background-color: rgba($lime-green, 0.4);
+  transition: all 0.5s cubic-bezier(.35,0,.25,1);
+}
+
+#help-icon-div {
+  position: absolute;
+  right: -10%;
+  vertical-align: middle;
+  height: 100%;
+}
+#help-icon {
+  position: absolute;
+  top: 0px;
+}
+
+.help-icon {
+  margin-left: 20px;
+}
+
+#identifier-help-icon {
+  color: rgba($main-green, 0.6);
+}
+.viewer {
+  border: none;
+}
+#scroll-target {
+  position: absolute;
+  bottom: 5%;
+}
+.row{
+  margin:2%;
+}
+
+.mat-header-cell {
+  font-family: "PT Serif", serif;
+  font-weight:normal;
+  font-size: 15px;
+  color: black;
+  padding-right: 2%;
+}

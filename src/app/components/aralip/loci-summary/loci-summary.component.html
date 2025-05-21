@@ -1,0 +1,70 @@
+<div class="filter">
+  <mat-form-field id="filter">
+    <input
+      type="search"
+      matInput
+      [value]="searchQuery"
+      (input)="onSearchInput($event)"
+      (keydown.enter)="applySearchQuery()"
+      placeholder="Enter your search query"
+    />
+  </mat-form-field>
+  <button (click)="applySearchQuery()" class="search-button" matTooltip="Search">
+    Search
+  </button>
+</div>
+
+<div class="table-container">
+  <div id="table">
+    <mat-table [dataSource]='locationSummariesDataSource' style="width: 100%">
+
+      <!-- Loci Column -->
+      <ng-container matColumnDef="loci">
+        <mat-header-cell *matHeaderCellDef style="width: 10%"> Loci </mat-header-cell>
+        <mat-cell *matCellDef="let element" style="width: 10%">
+          <!-- <div><a href="">{{ element.location_name }}</a></div> -->
+          <a href="#" (click)="onLociClick(element.location_id, $event)">
+            {{ element.location_name }}
+          </a>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Abbreviations Column -->
+      <ng-container matColumnDef="abbreviations">
+        <mat-header-cell *matHeaderCellDef style="width: 20%"> Abbreviations </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <!--{{element.abbreviations}}-->
+          <div [innerHTML]="element.abbreviations"></div>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Activities/Proteins Column -->
+      <ng-container matColumnDef="activities-proteins">
+        <mat-header-cell *matHeaderCellDef style="width: 50%"> Activities/Proteins </mat-header-cell>
+        <mat-cell *matCellDef="let element" style="width: 50%">
+          <!--{{ element.activities.join(', ') }}-->
+          <div [innerHTML]="element.activities.join(', ')"></div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="pathways">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Pathways </mat-header-cell>
+        <mat-cell *matCellDef="let elem">
+          <ng-container *ngFor="let path of elem.pathways; let i = index">
+            <div>
+              <a href="/aralip-menu/pathway/{{path.id}}" target="_blank">
+                {{path.nameabbreviation }} 
+              </a>
+            </div>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['loci', 'abbreviations', 'activities-proteins', 'pathways']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['loci', 'abbreviations', 'activities-proteins', 'pathways']"></mat-row>
+
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 75]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+  </div>
+</div>

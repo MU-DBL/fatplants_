@@ -1,0 +1,1 @@
+WG.Load('/static/pmnwg/FASYN-ELONG-PWY.wg', 'wgdiv-fasyn-elong-pwy');

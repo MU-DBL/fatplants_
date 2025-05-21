@@ -1,0 +1,85 @@
+.icon {
+  float: left;
+  border-radius: 2px;
+  height: 4vw;
+  width: 12vw;
+  box-sizing: border-box;
+  background-image: url("../../../assets/homepageAssets/icon.PNG");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.nav-item a.nav-link:hover {
+  cursor: pointer;
+}
+
+.bg {
+  background-color: #efefef;
+}
+
+.hit-counter {
+  float: right;
+  margin-top: 10px;
+  margin-right:10px;
+  margin-left: 15px;
+  background-color:  #629B07;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  position: fixed;
+  right: -100%; 
+  top: 0;
+  bottom: 0;
+  width: 25%; 
+  background: #fff;
+  transition: right 0.3s;
+  overflow-x: hidden;
+  z-index: 1050; 
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.content.blur {
+  filter: blur(5px);
+}
+
+.content {
+  z-index: 1040;
+  transition: filter 0.3s;
+}
+
+@media (max-width: 990px) {
+  .toggle-button {
+    display: block;
+    position: relative;
+    z-index: 1051;
+  }
+}
+
+@media (min-width: 991px) {
+  .toggle-button {
+    display: none;
+  }
+}
+
+::ng-deep .mat-menu-panel {
+  z-index: 1100;
+}
+
+::ng-deep .cdk-overlay-container {
+  z-index: 10000;
+}
+
+.navbar-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

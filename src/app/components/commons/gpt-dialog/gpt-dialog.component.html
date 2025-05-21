@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Ask ChatGPT</h1>
+<mat-dialog-content class="mat-typography">
+    <h3>Information about {{display_name}} from ChatGPT</h3>
+    <p *ngIf="gpt_output">{{gpt_output}}</p>
+    <mat-progress-bar id="loading-bar" style="margin-top: 20px;" mode="indeterminate" *ngIf="!gpt_output"></mat-progress-bar>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button color="primary" (click)="generateData()" [disabled]="!gpt_output">Regenerate</button>
+    <button mat-button (click)="closeDialog()">Close</button>
+</mat-dialog-actions>

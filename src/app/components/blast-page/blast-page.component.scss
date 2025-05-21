@@ -1,0 +1,254 @@
+
+@import '../../../variables';
+
+/*We have a bar for page's title*/
+.page-title-bar {
+    background-color: #629B07;
+    color: rgb(255, 255, 255);
+    padding: 0.1rem;
+}
+
+/*page's title - font style*/
+.page-title {
+    font-family: Roboto;
+    font-size: 1.8vw;
+    font-weight: 500;
+    padding-left: 2%;
+    margin-block-end: 0.5rem;
+    margin-block-start: 0.5rem;
+}
+
+.click-zoom input[type=checkbox] {
+  display: none
+}
+
+.click-zoom img {
+  margin: 100px;
+  transition: transform 0.25s ease;
+  cursor: zoom-in
+}
+
+.click-zoom input[type=checkbox]:checked~img {
+  transform: scale(3);
+  cursor: zoom-out
+}
+
+button {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+textarea {
+  width: 70%;
+  border-radius: 10px;
+  margin: auto;
+}
+
+mat-card {
+  font-family: 'Catamaran', sans-serif;
+}
+
+mat-card.base {
+  width: 100%;
+  box-sizing: border-box;
+  background-image: none !important;
+  margin: 0 !important;
+  min-height: 100%;
+  padding:0% !important;
+}
+
+mat-select {
+  width: 20%;
+  border: solid grey 1px;
+  border-radius: 2px;
+  padding: 4px 4px 4px 4px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main,
+.sidebar {
+  padding: 15px;
+}
+
+.main {
+  width: 85%;
+  height: 600vh;
+}
+
+.sidebar {
+  width: 5%;
+  height: 25vh;
+}
+.sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+a:hover {
+  color: blue;
+  cursor:pointer;
+  text-decoration: underline;
+}
+
+.database-selector {
+  display: inline-block;
+  background-color: inherit;
+  width: 48%;
+  height: 50%;
+  border: 1px solid black;
+  text-align: center;
+  padding: 2%;
+  cursor: pointer;
+  transition: all 0.5s;
+  box-shadow: 2px 2px 2px grey;
+  box-sizing: border-box;
+  margin-right: 2%
+}
+
+.database-selector.selected {
+  background-color: rgba($lime-green, 0.4);
+  transition: all 0.5s;
+}
+
+.selector-wrapper {
+  width: 60%;
+  margin: auto;
+}
+
+.option {
+  padding: 0 10px;
+}
+
+.btn {
+  margin: 10px;
+  transition: background-color 0.5s;
+}
+
+.btn:not(.clear):hover {
+  background-color: rgba($lime-green, 0.3);
+  transition: all 0.5s;
+}
+
+.btn.clear:hover {
+  background-color: rgba($yellow, 0.3);
+  transition: all 0.5s;
+}
+
+#loading-bar {
+  width: 60%;
+  margin: auto;
+  margin-top: 2%;
+}
+
+.textali{
+  text-align: left;
+  margin-left:2%;
+  margin-right:2%;
+}
+
+.blast{
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#help-icon {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+
+.alert  {
+  position: fixed;
+  top: 30%;
+  color: #f65656;
+  transition:  all 0.2s ease-in-out;
+  opacity: 0;
+  text-align: center;
+  width: 30%;
+  border:1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  background: #fff;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.5);
+}
+.visible {
+  opacity: 1;
+  transform: translateY(1.25rem);
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  width: 70%;
+  margin: auto;
+}
+
+.element-row {
+  position: relative;
+}
+
+.element-row:not(.expanded) {
+  cursor: pointer;
+}
+
+.element-row:not(.expanded):hover {
+  background: #f5f5f5;
+}
+.element-row.expanded:hover {
+  background: rgba($lime-green, 0.4);
+  cursor: pointer;
+}
+
+.element-row.expanded {
+  border-bottom-color: transparent;
+}
+
+.mat-column-sequences {
+  flex: 0 0 45%;
+}
+.mat-column-score {
+  flex: 0 0 10%;
+  text-align: center;
+}
+.mat-column-evalue {
+  flex: 0 0 5%;
+  text-align: center;
+}
+.mat-column-identities {
+  flex: 0 0 10%;
+  text-align: center;
+}
+.mat-column-positives {
+  flex: 0 0 10%;
+  text-align: center;
+}
+.mat-column-gaps {
+  flex: 0 0 10%;
+  text-align: center;
+}
+
+.precenter{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.mat-header-cell {
+  font-family: "PT Serif", serif;
+  font-weight:bold;
+  font-size: 15px;
+  color: black;
+  padding-right: 2%;
+}

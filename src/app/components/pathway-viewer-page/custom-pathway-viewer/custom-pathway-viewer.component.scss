@@ -1,0 +1,121 @@
+@import '../../../../variables';
+
+mat-card {
+    box-sizing: border-box;
+    text-align: left;
+    padding: 1% !important;
+    margin: 0% !important;
+}
+
+.title-info {
+    margin-bottom: 50px;
+    text-align: left;
+    margin:2%;
+}
+.error-text {
+    text-align: center;
+}
+
+.submit {
+    margin: 20px auto;
+    display: block;
+    width: 30%;
+}
+
+.form {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.formitem{
+    margin: 20px 10%;
+    width: 30%;
+}
+
+a.menu {
+    display: block;
+    padding: 3%;
+    color: gray;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+a.menu:not(.active):hover {
+    color: $lime-green;
+    transition: color 0.2s;
+}
+
+a.active {
+    color: black;
+    border-bottom: 1px solid $lime-green;
+    width: max-content;
+    padding-bottom: none;
+    font-size: 1.3vw;
+    transition: all 0.5s;
+}
+#table {
+    margin-left: 2%;
+    margin-right: 2%;
+    font-family: "PT Sans", sans-serif;
+}
+mat-header-cell {
+    font-family: "PT Serif", serif;
+    font-weight:bold;
+    font-size: 15px;
+    color: black;
+    padding-right: 2%;
+}
+mat-header-row {
+    border-bottom-color: rgba(grey, 0.5);
+    font-size: 1.0vw;
+}
+mat-row {
+    border-bottom-color: $pale-green;
+}
+mat-cell {
+    padding-right: 2%;
+}
+mat-cell>a, mat-cell>span>a {
+    text-decoration: none;
+    color: $light-green;
+}
+mat-cell>a:visited, mat-cell>span>a:visited {
+    color: $dark-green;
+}
+
+mat-expansion-panel, mat-progress-bar {
+    width: 90%;
+    margin: auto;
+}
+
+.pointer {
+    cursor: pointer;
+    padding: 5px;
+}
+#filter {
+    width: 70%;
+}
+
+.subheader {
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+}
+
+.subheader.protein {
+    background-color: rgba($light-green, 0.3);
+}
+
+.subheader.fattyacid {
+    background-color: rgba($yellow, 0.3);
+}
+
+.seq-cell {
+    flex-wrap: wrap;
+}
+
+.seq-entry {
+    margin: 2% 0;
+}

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>3D PDB Viewer</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="shortcut icon" href="musitedeep_w.ico">
+  
+</head>
+<script src="https://unpkg.com/ngl@2.0.0-dev.36/dist/ngl.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+    let pdbId = getUrlVars()['pdbId'];
+    console.log(pdbId);
+    // let selection = getUrlVars()['sele'].replace(/%20/g,' ');
+    // let position = getUrlVars()['position'].replace(/%20/g,' ');
+    // let queryPlist=position.split(" ");
+    // console.log(queryPlist.length)
+    // console.log(selection.length)
+    let labelText = {};
+    // let selectionObject = new NGL.Selection(selection);
+    document.addEventListener("DOMContentLoaded", function () {
+    var stage = new NGL.Stage("viewport");
+    let index=0;
+    var cartoonRepr,surfaceRepr
+    var ptmannotation = []
+    function createElement (name, properties, style) {
+             var el = document.createElement(name)
+             Object.assign(el, properties)
+             Object.assign(el.style, style)
+             return el
+    }
+    
+    function addElement (el) {
+       Object.assign(el.style, {
+       position: "absolute",
+       zIndex: 10
+     })
+     stage.viewer.container.appendChild(el)
+    }
+    
+    function addElement_relative (el) {
+       Object.assign(el.style, {
+       position: "relative",
+       zIndex: 10
+     })
+     stage.viewer.container.appendChild(el)
+    }
+    
+    var topPosition = 8
+    function getTopPosition (increment) {
+        if (increment) topPosition += increment
+        return topPosition + "px"
+    }
+    
+    function createSelect (options, properties, style) {
+        var select = createElement("select", properties, style)
+        options.forEach(function (d) {
+               select.add(createElement("option", {
+               value: d[ 0 ], text: d[ 1 ]
+               }))
+        })
+         return select
+    }
+    
+    addElement(createElement("span", {
+        innerText: "src: " + pdbId
+    }, {color: "white", top: "15px", left: "12px"}));
+    
+    // addElement(createElement("span", {
+    //            innerText: "Supported by NGL Viewer"
+    //            }, { top: getTopPosition(5), left: "14px", color: "red" ,'font-size':"16px"}))
+    // //PTM site 
+    // addElement(createElement("span", {
+    //            innerText: "PTM site representation:"
+    //            }, { top: getTopPosition(30), left: "14px", color: "white" ,'font-size':"16px"}))
+    
+    // var posrepSelect = createSelect([
+    //  [ "licorice", "licorice" ],
+    //  [ "ball+stick", "ball+stick" ]
+    //  ], {
+    //      onchange: function (e) {
+    //        stage.getRepresentationsByName("positionrep").dispose()
+    //        stage.eachComponent(function (o) {
+    //          positionrep=o.addRepresentation(e.target.value, {
+    //            sele: selection, scale: 2.0, name:'positionrep'
+    //          })
+    //        })
+    //        //if(e.target.value == 'ball+stick'){ballrep.setVisibility(true);licoricerep.setVisibility(false)}
+    //        //if(e.target.value == 'licorice'){licoricerep.setVisibility(true);ballrep.setVisibility(false)}
+    //        }
+    //     }, { top: getTopPosition(), left: "14.8em"})
+    
+    // addElement(posrepSelect)
+    
+//     addElement(createElement("span", {
+//       innerText: "radius (0-3)"
+//       }, { top: getTopPosition(20), left: "14px", color: "grey" ,'font-size':"14px"}))
+//       var radiusRange = createElement("input", {
+//       type: "range", value: 1, min: 0, max: 3, step: 0.05
+//       }, { top: getTopPosition(15), left: "14px" })
+//       radiusRange.oninput = function (e) {
+//       console.log(e.target.value);
+//       //ballrep.setParameters({scale: parseFloat(e.target.value)})
+//       stage.getRepresentationsByName("positionrep").setParameters({
+//       radius: parseFloat(e.target.value)
+//       })
+//     }
+//     addElement(radiusRange)
+    
+//     var cartoonCheckbox = createElement("input", {
+//                           type: "checkbox",
+//                           checked: true,
+//                           onchange: function (e) {
+//                           cartoonRepr.setVisibility(e.target.checked)
+//                           }
+//                           }, { top: getTopPosition(45), left: "14px" })
+    
+//     addElement(cartoonCheckbox)
+//     addElement(createElement("span", {
+//                innerText: "Cartoon representation"
+//     }, { top: getTopPosition(), left: "32px", color: "white" ,'font-size':"16px"}))
+    
+//     //opacity for cartoonRepr
+//     addElement(createElement("span", {
+//       innerText: "opacity (0-100)"
+//     }, { top: getTopPosition(20), left: "14px", color: "grey" ,'font-size':"14px"}))
+//     var cartoonOpacityRange = createElement("input", {
+//       type: "range", value: 90, min: 0, max: 100, step: 1
+//     }, { top: getTopPosition(15), left: "14px" })
+//     cartoonOpacityRange.oninput = function (e) {
+//       cartoonRepr.setParameters({
+//         opacity: parseFloat(e.target.value) / 100
+//       })
+//     }
+//     addElement(cartoonOpacityRange)
+    
+//     //surface checkbox
+//     var surfaceCheckbox = createElement("input", {
+//                           type: "checkbox",
+//                           checked: false,
+//                           onchange: function (e) {
+//                           surfaceRepr.setVisibility(e.target.checked)
+//                           //on change reset default
+//                           //probeRadiusRange.value=1.2
+//                           //scaleFactorRange.value=1.0
+//                           //surfaceOpacityRange.value=90
+                          
+//                           }
+//                           }, { top: getTopPosition(45), left: "14px" })
+    
+//     addElement(surfaceCheckbox)
+//     addElement(createElement("span", {
+//                innerText: "Add surface"
+//                }, { top: getTopPosition(), left: "32px", color: "white",'font-size':"16px" }))
+    
+//      //surface resetcheckbox
+//     var surfacereset= createElement("input", {
+//                           type: "button",
+//                           value: 'reset',
+//                           onclick: function (e) {
+//                           //on change reset default
+//                           probeRadiusRange.value=1.4
+//                           scaleFactorRange.value=2.0
+//                           surfaceOpacityRange.value=90
+//                           surfaceRepr.setParameters({
+//                           probeRadius: 1.4,
+//                           opacity:0.9,
+//                           scaleFactor:2.0
+                          
+//                            })
+//                           }
+//                           }, { top: getTopPosition(), left: "130px" })
+    
+//     addElement(surfacereset)
+//     //opacity for surface
+//     addElement(createElement("span", {
+//       innerText: "opacity (0-100)"
+//     }, { top: getTopPosition(25), left: "14px", color: "grey" ,'font-size':"14px"}))
+//     var surfaceOpacityRange = createElement("input", {
+//       type: "range", value: 90, min: 0, max: 100, step: 1
+//     }, { top: getTopPosition(15), left: "14px" })
+//     surfaceOpacityRange.oninput = function (e) {
+//       surfaceRepr.setParameters({
+//         opacity: parseFloat(e.target.value) / 100
+//       })
+//     }
+//     addElement(surfaceOpacityRange)
+    
+//     //scaleFactor for surface
+//     addElement(createElement("span", {
+//       innerText: "scaleFactor (0-5)"
+//     }, { top: getTopPosition(25), left: "14px", color: "grey" ,'font-size':"14px"}))
+//     var scaleFactorRange = createElement("input", {
+//       type: "range", value: 2, min: 0, max: 5, step: 0.1
+//     }, { top: getTopPosition(15), left: "14px" })
+//     scaleFactorRange.oninput = function (e) {
+//       surfaceRepr.setParameters({
+//         scaleFactor: parseFloat(e.target.value)
+//       })
+//     }
+//     addElement(scaleFactorRange)
+    
+//     //probeRadius for surface
+//    addElement(createElement("span", {
+//       innerText: "probeRadius (0-2)"
+//     }, { top: getTopPosition(25), left: "14px", color: "grey" ,'font-size':"14px"}))
+//     var probeRadiusRange = createElement("input", {
+//       type: "range", value: 1.4, min: 0, max: 2, step: 0.1
+//     }, { top: getTopPosition(15), left: "14px" })
+    
+//     probeRadiusRange.oninput = function (e) {
+//       surfaceRepr.setParameters({
+//         probeRadius: parseFloat(e.target.value)
+//       })
+//     }
+//     addElement(probeRadiusRange)
+    
+    // var ptmannotationCheckbox = createElement("input", {
+    //                       type: "checkbox",
+    //                       checked: false,
+    //                       onchange: function (e) {
+    //                       if(position.length>0){
+                          
+    //                       for(let index=0;index<ptmannotation.length;index++)
+    //                       {
+    //                           ptmannotation[index].setVisibility(!e.target.checked)
+    //                       }
+    //                       }
+    //                       }
+    //                       }, { top: getTopPosition(45), left: "14px" })
+    
+    // addElement(ptmannotationCheckbox)
+    // addElement(createElement("span", {
+    //            innerText: "Hide PTM label"
+    //            }, { top: getTopPosition(), left: "32px", color: "white" }))
+    
+    
+    var screenshotButton = createElement("input", {
+    type: "button",
+    value: "Take Screenshot",
+    id: "screenshot-button",
+    onclick: function () {
+    stage.makeImage({
+      factor: 1,
+      antialias: false,
+      trim: false,
+      transparent: false
+    }).then(function (blob) {
+      NGL.download(blob, "PTM3D_view.png")
+    })
+  }
+   }, { top: getTopPosition(30), left: "12px", color: "white", "background-color": "transparent", padding: "5px", transition: "background-color 0.5s" })
+   addElement(screenshotButton)
+    
+    stage.loadFile(pdbId,{firstModelOnly:true}).then( function( o ){
+        //o.structure.eachAtom(function(atomProxy) {
+        //    // if you don't want a label and can't be more specific with the selection
+        //    // set `labelText[atomProxy.index] = ""`
+        //    labelText[atomProxy.index] = queryPlist[index]  //"Hello " + atomProxy.qualifiedName();
+        //    console.log(atomProxy.index);
+        //    index+=1;
+        //}, 
+        //selectionObject);
+        //if(o.type !="structure")
+        //{
+        //   alert("Structure not found!");
+        //   return;
+        //}
+        index=0;
+        // if(position.length>0)
+        // {
+        //   var ap = o.structure.getAtomProxy()
+        //    o.structure.eachResidue(function (rp) {
+        //           ap.index = rp.atomOffset + Math.floor(rp.atomCount / 2)
+        //           //console.log(ap.index);
+        //           var elm = document.createElement("div")
+        //           elm.innerText = queryPlist[index];
+        //           //console.log(index);
+        //           elm.style.color = "red"
+        //           elm.style.backgroundColor = "white"
+        //           elm.style.padding = "1px"
+        //           elm.style.opacity = '0.8'
+        //           if(index<queryPlist.length)
+        //           {
+        //           //console.log(queryPlist[index]);
+        //           ptmannotation.push(o.addAnnotation(ap.positionToVector3(), elm))
+        //           }
+        //           index+=1;
+        //  }, selectionObject)
+        //  }
+        //for(let index=0;index<queryPlist.length;index++)
+        //{
+        //    ap.index = rp.atomOffset + Math.floor(rp.atomCount / 2)
+        //    var elm = document.createElement("div")
+        //    elm.innerText = queryPlist[index]
+        //    elm.style.color = "green"
+        //    
+        //    o.addAnnotation(rp.positionToVector3(), elm)
+        //}
+        
+        cartoonRepr=o.addRepresentation( "cartoon",  {colorScheme: "residueindex", opacity: 0.7});
+        surfaceRepr=o.addRepresentation('surface', {
+                           surfaceType: 'ms',
+                           smooth: 1,
+                           probeRadius: 1.4,
+                           scaleFactor: 2.0,
+                           flatShaded: false,
+                           opacity: 0.7,
+                           lowResolution: false,
+                           color: '#fff',
+                           visible:false
+                          }
+                          )
+        
+        // if(position.length>0)
+        // {
+        // o.addRepresentation("licorice", {sele: selection, scale: 1.0,name:'positionrep'})
+        // //ballrep=o.addRepresentation( "ball+stick", {sele: selection, scale: 3.0 } );
+        // //o.addRepresentation( "ball", { color: "red", sele: selection, radius: 0.2 } );
+        // //o.addRepresentation( "label",  { sele: selection, labelType: "text", labelText:labelText, color: "green"});
+        // //o.addRepresentation( "label",  { sele: selection, labelType: "residue", color: "green"});
+    	// }
+        o.autoView();
+    	}).catch(e=>{    
+               addElement(createElement("span", {
+               innerText: pdbId +" not found in the NGL Viewer!"
+               }, { top: getTopPosition(), left: "50vw", color: "red" }))
+        })
+    });
+  </script>
+<body id="viewport" style="margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden;">
+  
+  <div  style="width: 100%; height: 100%;"></div>
+  <style>
+    #screenshot-button:hover {
+        background-color: rgba(11, 244, 61, 0.3) !important;
+        transition: background-color 0.3s !important;
+    }
+  </style>
+</body>
+</html>

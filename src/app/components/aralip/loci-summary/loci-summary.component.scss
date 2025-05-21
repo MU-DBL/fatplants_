@@ -1,0 +1,112 @@
+#table {
+  margin-left: 2%;
+  margin-right: 2%;
+  font-family: "PT Sans", sans-serif;
+  width: 95%;
+}
+
+mat-header-cell {
+  font-family: "PT Serif", serif;
+  color: black;
+  padding-right: 1%;
+  font-size: 1vw;
+  font-weight: bold;
+  background-color: #f9f9f9;
+}
+
+mat-header-row {
+  border-bottom-color: rgba(grey, 0.5);
+  font-size: 1.0vw;
+  padding-top: 1%;
+}
+
+mat-cell {
+  padding-right: 2%;
+  display: block !important; 
+}
+
+mat-cell>a,
+mat-cell>span>a {
+  text-decoration: none;
+}
+
+mat-cell>a:visited,
+mat-cell>span>a:visited {
+  color: #006400;
+}
+
+.pointer {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.seq-cell {
+  flex-wrap: wrap;
+}
+
+.seq-entry {
+  margin: 2% 0;
+}
+
+.external-link {
+  font-size: 14px;
+}
+
+.custom-hr {
+  width: 90%;
+  border: none;
+  border-top: 0.8px solid #ccc;
+  margin: 0;
+  padding: 0;
+}
+
+.left-menu .menu.active {
+  color: black;
+  text-decoration: underline;
+}
+
+input.mat-input-element {
+  padding-right: 10%;
+}
+
+.mat-form-field {
+  width: 40%;
+  height: 45px;
+  margin-left: 2%;
+  margin-top: 2%;
+  margin-bottom: 1.5%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  box-shadow: -10px 0px 10px -5px rgba(128, 128, 128, 0.5), 10px 0px 10px -5px rgba(128, 128, 128, 0.5);
+  flex: 1;
+  margin-right: 8px;
+}
+
+.search-button {
+  background-color: #629B07;
+  justify-content: center;
+  margin-top: 2px;
+  align-items: center;
+  color: white;
+  font-size: 120%;
+  text-align: center;
+  width: 80px;
+  font-family: "PT Sans", sans-serif;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  height: 44px;
+  border: 10px;
+  border-radius: 3px;
+  box-shadow: -10px 0px 10px -5px rgba(128, 128, 128, 0.5), 10px 0px 10px -5px rgba(128, 128, 128, 0.5);
+}
+
+mat-card::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  margin-left: 6px;
+}

@@ -1,0 +1,242 @@
+.card{
+  border:0px !important;
+  margin-bottom: 10px !important;
+}
+
+.button_reset{
+  margin-left: 20px;
+  height:35px;
+  // background-color: #93E9BE ;
+  background-color: rgba(124, 179, 66, 0.85);
+  text-align: center;
+  
+}
+.button_reset:disabled{
+  background-color: rgba(124, 179, 66, 0.85);
+  opacity: 0.5;
+  color: #000;
+}
+
+#tooltip {
+  position: absolute;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 10px;
+  pointer-events: none;
+  z-index: 100;
+}
+
+#cy {
+  vertical-align:top;
+  height: 60vh;
+  padding: 0px;
+  position: sticky;
+  width: 78%;
+  margin-top: 1%;
+  margin-left: 1%;
+  align-self: flex-start;
+}
+
+.right-content-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-top: 1%;
+    margin-left: 1%;
+    padding-bottom: 20px;
+    width: 18%;
+    max-height: 100%;
+    overflow-y: auto;
+    background-color: white;
+    //height: 79vh;
+
+    &:hover {
+        overflow-y: auto;
+    }
+
+    box-sizing: border-box;
+}
+
+.detailTitle{
+  font-weight: 600;
+  font-size: 15PX;
+}
+
+#options-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 1vh;
+}
+
+.card {
+  border-radius: 5px;
+  border: 1px solid rgb(128, 128, 128);
+  background-color: white;
+  margin: auto;
+  box-shadow: -10px 0px 10px -5px rgba(128, 128, 128, 0.5), 10px 0px 10px -5px rgba(128, 128, 128, 0.5);
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+}
+
+.card #exptitle{
+  font-family: "Lato",sans-serif ;
+  font-weight: bold;
+  font-size: 2vh;
+}
+.card #filter-container button{
+  // background-color: #8adbcc;
+  background-color: rgba(124, 179, 66, 0.85);
+
+}
+.card #style-container button{
+  // background-color: #8adbcc;
+  background-color: rgba(124, 179, 66, 0.85);
+
+}
+
+::ng-deep .mat-form-field-wrapper{
+  margin-bottom: -1.25em;
+}
+
+::ng-deep .mat-form-field{
+  width: 45%;
+  margin: 10px 0;
+}
+
+#toggle-container{
+  width: 45%;
+  padding: 10px 0;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+#filter-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 1vh;
+
+  form{
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+}
+
+.filter-field{
+  width: 20% !important;
+  margin: 10px 0;
+}
+
+#style-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 1vh;
+
+  form{
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+  }
+}
+
+.style-spacer{
+  width: 90px;
+}
+
+.style-field{
+  width: 40% !important;
+  margin: 10px 0;
+}
+
+h3{
+  margin: 0px;
+}
+
+.filter {
+  border: 1px solid blue;
+  border-radius: 20px;
+  padding: 4px 12px;
+  width: fit-content;
+  margin: 10px;
+  display: flex;
+}
+
+.filter:hover {
+  background-color: blue;
+  color: white;
+}
+
+#active-filters-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cancel-x {
+  margin: 2px -8px 0 10px;
+  border: 1px solid darkgray;
+  border-radius: 15px;
+  font-size: 9px;
+  height: 15px;
+  width: 15px;
+  text-align: center;
+  padding: 2px;
+}
+.cancel-x:hover {
+  background-color: darkgray;
+}
+
+.detailTitle{
+  font-weight: 600;
+  font-size: 15PX;
+}
+
+.noBorder {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.search-container {
+  padding: 20px;
+  border: 10px  #141313;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.filter-box {
+  margin-right: 20px;
+  width: 20%;
+  font-weight: bold;
+}
+
+
+.search-field {
+  margin-right: 5px;
+  padding: 5px;
+  width:350px;
+  font-weight: bold;
+}
+
+.button_search {
+  height:35px;
+  background-color:rgba(124, 179, 66, 0.85);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center; 
+}
+
+.button_search:disabled {
+  background-color:rgba(124, 179, 66, 0.85);
+  opacity: 0.5;
+  color: rgb(7, 7, 7) !important;
+}

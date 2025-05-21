@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg navbar-light bg">
+  <a class="navbar-brand icon ms-1" routerLink="/"> </a>
+  <div class="sidebar" [class.active]="isSidebarVisible">
+    <ul class="navbar-nav">
+      <li class="nav-item" (click)="toggleSidebar()" routerLink="/home" routerLinkActive="desktop-active">
+        <a class="nav-link fw-bold">Home</a>
+      </li>
+      <li class="nav-item" (click)="toggleSidebar()" routerLink="/datasets/arabidopsis" routerLinkActive="desktop-active">
+        <a class="nav-link fw-bold">Datasets</a>
+      </li>
+      <li class="nav-item tools" [matMenuTriggerFor]="toolsMenu" routerLinkActive="desktop-active">
+        <a class="nav-link fw-bold">Tools</a>
+      </li>
+      <li class="nav-item" (click)="toggleSidebar()" routerLink="/aralip-menu/pathways" routerLinkActive="desktop-active">
+        <a class="nav-link fw-bold">ARALIP</a>
+      </li>
+      <li class="nav-item" (click)="toggleSidebar()" routerLink="/plmn-pathways" routerLinkActive="desktop-active">
+        <a class="nav-link fw-bold">PLMN</a>
+      </li>
+      <li class="nav-item" (click)="toggleSidebar()">
+        <a class="nav-link fw-bold" href="/plantfadb" target="_blank" rel="noopener noreferrer">PlantFADB</a>
+      </li>
+    </ul>
+  </div>
+  <div class="collapse navbar-collapse content" id="navbarNav" [class.blur]="isSidebarVisible">
+    <ul class="navbar-nav">
+      <li class="nav-item" routerLink="/home" routerLinkActive="desktop-active">
+        <a class="nav-link fw-bold">Home</a>
+      </li>
+      <li
+        class="nav-item"
+        routerLink="/datasets/arabidopsis"
+        routerLinkActive="desktop-active"
+      >
+        <a class="nav-link fw-bold">Datasets</a>
+      </li>
+      <li
+        class="nav-item"
+        [matMenuTriggerFor]="toolsMenu"
+        routerLinkActive="desktop-active"
+      >
+        <a class="nav-link fw-bold">Tools</a>
+      </li>
+      <li class="nav-item" routerLink="/aralip-menu/pathways" routerLinkActive="desktop-active">
+        <a class="nav-link fw-bold">ARALIP</a>
+      </li>
+      <li class="nav-item" routerLink="/plmn-pathways" routerLinkActive="desktop-active">
+        <a class="nav-link fw-bold">PLMN</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fw-bold" href="/plantfadb" target="_blank" rel="noopener noreferrer">PlantFADB</a>
+      </li>
+    </ul>
+  </div>
+  <div class="navbar-header">
+    <button class="toggle-button" *ngIf="showHamburgerIcon" (click)="toggleSidebar()">☰</button>
+  <!--
+  <div class="hit-counter">
+    <a href="javascript:void(0)"><img src="https://www.cutercounter.com/hits.php?id=hxpaxkp&nd=6&style=64" border="0" alt="hit counter"></a>
+  </div>-->
+  <app-counter></app-counter>
+  </div>
+</nav>
+
+<mat-menu #toolsMenu="matMenu" class="mat-menu-content">
+  <button
+  mat-menu-item
+  routerLink="/go-network-page"
+  (click)="closeSidebar()"
+  routerLinkActive="desktop-active-menu-item"
+  class="menu-item">Arabidopsis GO Network</button>
+  <button
+    mat-menu-item
+    routerLink="/blast-page"
+    (click)="closeSidebar()"
+    routerLinkActive="desktop-active-menu-item"
+    class="menu-item">Blast</button>
+  <button
+    mat-menu-item
+    routerLink="/glmol-page"
+    (click)="closeSidebar()"
+    routerLinkActive="desktop-active-menu-item"
+    class="menu-item">3D Structure</button>
+  <button
+    mat-menu-item
+    routerLink="/pathway-viewer-page"
+    (click)="closeSidebar()"
+    routerLinkActive="desktop-active-menu-item"
+    class="menu-item">Pathway Viewer</button>
+  <button
+    mat-menu-item
+    routerLink="/download"
+    (click)="closeSidebar()"
+    routerLinkActive="desktop-active-menu-item"
+    class="menu-item">Download</button>
+</mat-menu>

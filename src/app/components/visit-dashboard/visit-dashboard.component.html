@@ -1,0 +1,35 @@
+<div class="page-title-bar">
+  <p class="page-title"> Traffic Dashboard (All visits since 5/07/2025)</p>
+</div>
+<div style="margin: 2%;">
+    <div class="row justify-content-between">
+    <div class="col-sm-6 box">
+        <p class="subtitle" style="padding-left: 0;">Visits in the Past 24 Hours</p>
+        <p>{{live_visits}}</p>
+    </div>
+    <div class="col-sm-6 box">
+        <p class="subtitle" style="padding-left: 0;">Total Visits</p>
+        <p>{{visits}}</p>
+    </div>
+    </div>
+    <div class="box1">
+        <p class="subtitle">Visits for Last 12 Months</p>
+            <ngx-charts-line-chart
+            [view]="[chartWidth, 250]"
+            [scheme]="colorScheme"
+            [results]="visitsData"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="false"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [xAxisLabel]="'Month'"
+            [yAxisLabel]="'Visits'"
+            class="full-width-chart">
+            </ngx-charts-line-chart>
+    </div>
+    <div class="box2" >
+        <p class="subtitle">Visitor Map</p>
+        <div id="map"></div>
+    </div>
+</div>

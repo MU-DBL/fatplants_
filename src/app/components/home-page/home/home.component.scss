@@ -1,0 +1,92 @@
+.container {
+  overflow: auto;
+}
+
+.bg {
+  background-color: #efefef;
+}
+
+.content-box {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  // height: 300px;
+  overflow: auto;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.content-box-analysis {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  height: 300px;
+  overflow: auto;
+  margin-bottom: 20px;
+  position: relative;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.content-box-analysis:hover {
+  transform: scale(1.05);
+}
+.information-box {
+  padding: 20px;
+  overflow: visible;
+  max-width: 1800px;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.bg-tools:hover {
+  cursor: pointer;
+}
+
+.icon1 {
+  background-image: url("../../../assets/homepageAssets/blast-protien.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon2 {
+  background-image: url("../../../assets/homepageAssets/3d-structure.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon3 {
+  background-image: url("../../../assets/homepageAssets/pathway.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon4 {
+  background-image: url("../../../assets/homepageAssets/enrichment-network.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.card-overlay {
+  position: absolute;
+  background-color: rgba(202, 202, 202, 0.7);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+}
+

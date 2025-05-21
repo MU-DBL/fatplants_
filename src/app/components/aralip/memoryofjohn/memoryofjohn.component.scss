@@ -1,0 +1,14 @@
+.content-container {
+    width: 90%;
+    margin:2%;
+}
+    
+.header {
+  text-align: center;
+}
+   
+.publications a { display: block; margin-top: 5px; color: #007BFF; }
+.bio-container { display: flex; align-items: flex-start; margin-left: 5%;}
+.bio-image { flex: 0 0 280px; margin-left: 20px; }
+.bio-image img { width: 100%; border-radius: 10px; }
+.photo-credit { font-size: 12px; text-align: center; color: #666; }

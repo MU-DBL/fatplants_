@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Multiple Items Selected:</h2>
+
+<mat-dialog-content>
+    <mat-table [dataSource]='hoveredRects' id='side-table'>
+        
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+            <mat-cell *matCellDef="let prot" class="titleCell">{{ prot.title }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="fpLink">
+            <mat-header-cell *matHeaderCellDef>FatPlants Link</mat-header-cell>
+            <mat-cell *matCellDef="let prot">
+                <a href="{{ prot.fpLink }}" target="_blank">Fatplants Link</a>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="uniProtLink">
+            <mat-header-cell *matHeaderCellDef>Uniprot Link</mat-header-cell>
+            <mat-cell *matCellDef="let prot">
+                <a href="{{ prot.uniProtLink }}" target="_blank">Uniprot Link</a>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['title', 'fpLink', 'uniProtLink']"></mat-header-row>
+        
+        <mat-row *matRowDef="let row; columns: ['title', 'fpLink', 'uniProtLink']"></mat-row>
+
+    </mat-table>
+    
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Close</button>
+</mat-dialog-actions>

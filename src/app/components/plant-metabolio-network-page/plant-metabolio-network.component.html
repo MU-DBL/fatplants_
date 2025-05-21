@@ -1,0 +1,789 @@
+<div class="page-title-bar">
+    <p class="page-title">Plant Lipid Metabolic Network (PLMN)</p>
+</div>
+
+<div id="base">
+
+    <div class="left-menu">
+        <p class="subheader">Pathways</p>
+        <a class="menu" [class.active]="dataset === 'fatty_acid_biosynthesis_initiation'" (click)="changeDataset('fatty_acid_biosynthesis_initiation')">Fatty Acid Biosynthesis<br>Initiation</a>
+        <a class="menu" [class.active]="dataset === 'fatty_acid_elongation'" (click)="changeDataset('fatty_acid_elongation')">Fatty Acid Elongation<br>-- saturated</a>
+        <a class="menu" [class.active]="dataset === 'fatty_acid_α-oxidation_I'" (click)="changeDataset('fatty_acid_α-oxidation_I')">Fatty Acid α-oxidation I</a>
+        <a class="menu" [class.active]="dataset === 'fatty_acid_β-oxidation_II'" (click)="changeDataset('fatty_acid_β-oxidation_II')">Fatty Acid β-oxidation II</a>
+        <a class="menu" [class.active]="dataset === 'fatty_acid_β-oxidation_III'" (click)="changeDataset('fatty_acid_β-oxidation_III')">Fatty Acid β-oxidation III</a>
+        <a class="menu" [class.active]="dataset === 'fatty_acid_β-oxidation_IV'" (click)="changeDataset('fatty_acid_β-oxidation_IV')">Fatty Acid β-oxidation IV</a>
+        <a class="menu" [class.active]="dataset === 'fatty_acid_β-oxidation_V'" (click)="changeDataset('fatty_acid_β-oxidation_V')">Fatty Acid β-oxidation V</a>
+        <a class="menu" [class.active]="dataset === 'glycolipid_desaturation'" (click)="changeDataset('glycolipid_desaturation')">Glycolipid Desaturation</a>
+        <a class="menu" [class.active]="dataset === 'long-chain_fatty_acid_activation'" (click)="changeDataset('long-chain_fatty_acid_activation')">Long-chain Fatty Acid<br>Activation</a>
+        <a class="menu" [class.active]="dataset === 'palmitate_biosynthesis_II'" (click)="changeDataset('palmitate_biosynthesis_II')">Palmitate Biosynthesis II</a>
+        <a class="menu" [class.active]="dataset === 'phospholipid_desaturation'" (click)="changeDataset('phospholipid_desaturation')">Phospholipid Desaturation</a>
+        <a class="menu" [class.active]="dataset === 'poly-hydroxy_fatty_acids_biosynthesis'" (click)="changeDataset('poly-hydroxy_fatty_acids_biosynthesis')">Poly-hydroxy fatty acids<br>biosynthesis</a>
+        <a class="menu" [class.active]="dataset === 'superpathway_of_fatty_acid_biosynthesis_II'" (click)="changeDataset('superpathway_of_fatty_acid_biosynthesis_II')">Superpathway Of Fatty<br>Acid Biosynthesis II</a>
+        <a class="menu" [class.active]="dataset === 'tetradecanoate_biosynthesis'" (click)="changeDataset('tetradecanoate_biosynthesis')">Tetradecanoate<br>Biosynthesis</a>
+        <a class="menu" [class.active]="dataset === 'very_long_chain_fatty_acid_biosynthesis_I'" (click)="changeDataset('very_long_chain_fatty_acid_biosynthesis_I')">very long chain fatty acid<br>biosynthesis I</a>
+        <a class="menu" [class.active]="dataset === 'very_long_chain_fatty_acid_biosynthesis_II'" (click)="changeDataset('very_long_chain_fatty_acid_biosynthesis_II')">Very Long Chain Fatty<br>Acid Biosynthesis II</a>
+        <!--<hr class="custom-hr">
+        <p class="subheader">Lipid</p>-->
+        <a class="menu" [class.active]='this.dataset == "1D-myo-inositol_hexakisphosphate_biosynthesis_III"' (click)='changeDataset("1D-myo-inositol_hexakisphosphate_biosynthesis_III")'>1D Myo Inositol<br>Hexakisphosphate<br>Biosynthesis III </a>
+        <a class="menu" [class.active]='this.dataset == "galactolipid_biosynthesis_I"' (click)='changeDataset("galactolipid_biosynthesis_I")'>Galactolipid Biosynthesis I</a>
+        <!--<a class="menu" [class.active]='this.dataset == "glycolipid_desaturation"' (click)='changeDataset("glycolipid_desaturation")'>Glycolipid Desaturation</a>-->
+        <a class="menu" [class.active]='this.dataset == "lipid-dependent_phytate_biosynthesis_I"' (click)='changeDataset("lipid-dependent_phytate_biosynthesis_I")'>Lipid-dependent Phytate<br>Biosynthesis I</a>
+        <!--<a class="menu" [class.active]='this.dataset == "phospholipid_desaturation"' (click)='changeDataset("phospholipid_desaturation")'>Phospholipid Desaturation</a>-->
+        <a class="menu" [class.active]='this.dataset == "phospholipid_remodeling"' (click)='changeDataset("phospholipid_remodeling")'>Phospholipid Remodeling</a>
+        <a class="menu" [class.active]='this.dataset == "sphingolipid_biosynthesis"' (click)='changeDataset("sphingolipid_biosynthesis")'>Sphingolipid Biosynthesis</a>
+        <a class="menu" [class.active]='this.dataset == "superpathway_of_phospholipid_biosynthesis_II"' (click)='changeDataset("superpathway_of_phospholipid_biosynthesis_II")'>Superpathway Of<br>Phospholipid<br>Biosynthesis II</a>
+        <!--<hr class="custom-hr">
+        <hr class="custom-hr">
+        <p class="subheader">Sterol</p>-->
+        <a class="menu" [class.active]='this.dataset == "cholesterol_biosynthesis"' (click)='changeDataset("cholesterol_biosynthesis")'>Cholesterol Biosynthesis</a>
+        <a class="menu" [class.active]='this.dataset == "phytosterol_biosynthesis "' (click)='changeDataset("phytosterol_biosynthesis ")'>Phytosterol Biosynthesis </a>
+        <a class="menu" [class.active]='this.dataset == "sterol:steryl_ester_interconversion"' (click)='changeDataset("sterol:steryl_ester_interconversion")'>Sterol:steryl<br>ester interconversion</a>
+        <!--<hr class="custom-hr">-->
+        <!-- New About Page Link -->
+        <p id="acknowledgment" class="menu" [class.active]="dataset === 'acknowledgment'" (click)="changeDataset('acknowledgment')">Acknowledgments</p>
+
+
+    </div>
+
+    <!-- Right Content -->
+    <div class="right-content-box">
+        <div *ngIf="dataset === 'fatty_acid_biosynthesis_initiation'">
+            <div class="subtitle">Fatty acid biosynthesis initiation (type II)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-4381"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-4381.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+        </div>
+
+        <div *ngIf="dataset === 'fatty_acid_elongation'">
+            <div class="subtitle">Fatty acid elongation -- saturated</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-fasyn-elong-pwy"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-fasyn-elong-pwy.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    This pathway shows the reactions that constitute one turn of a cycle that lengthens the chain of an acyl-[acyl-carrier protein] molecule by two carbons. The pathway is fed acetoacetyl-[acp] (see Pathway superpathway of fatty acid biosynthesis initiation), which is a substrate of the second reaction shown here.
+                    <br><br>
+                    The products of multiple turns of this cycle are drawn off to become components of fatty acid-containing compounds, such as phospholipids, lipid A, and lipoproteins. They comprise saturated fatty acids such as laurate (dodecanoate), tetradecanoate (tetradecanoate), palmitate (hexadecanoate), and stearate (octadecanoate).
+                    <br><br>
+                    In Escherichia coli, of the four reactions involved in a cycle of fatty-acid elongation, two are catalyzed by more that one enzyme. These function preferentially on substrates of different chain length. They also act differentially on saturated and unsaturated substrates [Heath96].
+                    <br><br>
+                    The first reaction in the sequence, the condensation reaction, is catalyzed in Escherichia coli by three enzymes, FabB, FabF, and FabH. However, FabH initiates fatty-acid synthesis: it uses only acetyl-[acp] as a substrate, and is thus not included in this pathway (see Pathway superpathway of fatty acid biosynthesis initiation) [Lai03]. Other organisms may use other initiation enzymes, such as FabY.
+                    <br><br>
+                    Bacteria such as Escherichia coli also contain unsaturated fatty acids. These are formed by a pathway that branches at the level of the 10-carbon intermediate (see (5Z)-dodecenoate biosynthesis I) [Cronan03, Magnuson93]. FabB, but not FabF, participates in the synthesis of unsaturated fatty acids [Campbell01]. The activity of FabF, and hence the fraction of fatty acids that are saturated, is modultated by temperature. However, the distribution of the flow of synthesis that proceeds to saturated vs. unsaturated fatty acids is determined mostly by the activities of FabA and FabZ [Heath96].
+                    <br><br>
+                    The final step of the cycle, the reductase, is known to be catalzed by enzymes that utilize either NADH, or NADPH, or both [Bergler96]. The Escherichia coli FabI can use both cofactors, although the activity with NADH was shown to be over 17-fold higher than with NADPH [Bergler96]. FabV and FabK are NADH-specific. FabV enzymes are common in Gram-negative bacteria, and have been described from multiple organisms, including Pseudomonas aeruginosa PAO1 [Zhu10], Burkholderia mallei [Lu10], Xanthomonas oryzae [Li11a], Aliivibrio fischeri [Park12], and Yersinia pestis [Hirschbeck12]. FabK enzymes are found only in some Gram-positive bacteria such as Streptococcus pneumoniae [Heath00a, Marrakchi03] and Porphyromonas gingivalis [Hevener12]. Another isoform, FabL, which is found in Bacillus subtilis and some other Gram-positive bacteria, uses only NADPH [Heath00].
+                </p>
+            </div> -->
+        </div>
+
+
+        <div *ngIf="dataset === 'fatty_acid_α-oxidation_I'">
+            <div class="subtitle">Fatty acid α-oxidation I (plants)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-2501"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-2501.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: Enzyme(s) that catalyzes one or more of the key reactions in this pathway were predicted in Aegilops tauschii.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    Although β-oxidation is the major route for fatty acid degradation, fatty acids can also be subject to α- and ω-oxidation.
+                    <br><br>
+                    There are several forms of α-oxidation. In this pathway a fatty acid is oxidized at the α-position (C-2) to give rise to a 2-hydroperoxy fatty acid. A different type of α-oxidation, used for the degradation of β-methyl-branched fatty acids, is described at 3-methyl-branched fatty acid α-oxidation.
+                    <br><br>
+                    2-hydroperoxy fatty acids are chemically unstable and are quickly converted to chain-shortened (by one carbon) fatty aldehydes through decarboxylation, or to 2-hydroxy fatty acids. The chain-shortened fatty aldehydes are further oxidized to free fatty acids which can enter the next round of α-oxidation. The conversion of the intermediate 2(R)-hydroperoxy fatty acids to 2(R)-hydroxy fatty acids may be spontaneous or catalyzed by a peroxidase [Hamberg02].
+                    <br><br>
+                    It was reported that pea α-dioxygenase catalyzes both the dioxygenation and the peroxidation activities [Saffert00]. The conversion of the chain-shortened aldehydes to corresponding fatty acids may be spontaneous or catalyzed by an NAD+ oxidoreductase. An enzyme with such activity, described as "a 50 kDa subunit of α-dioxygenase" was described from pea [Saffert00].
+                    <br><br>
+                    Both polysaturated and unsaturated fatty acids are effective substrates in the pathway. Among the tested substrates are laurate, palmitate, stearate, oleate, linoleate, linolenate, and arachidonate.
+                    <br><br>
+                    The physiological role of fatty acid α-oxidation in plants is not clear, but the process has been correlated with responses to both biotic and abiotic stresses, such as wounding and plant-pathogen interactions [De02b, Hamberg03]. It has also been noted that α-dioxygenase in pea is induced only during seed germination [Saffert00].
+                </p>
+            </div> -->
+        </div>
+
+
+        <div *ngIf="dataset === 'fatty_acid_β-oxidation_II'">
+            <div class="subtitle">Fatty acid β-oxidation II (plant peroxisome)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-5136"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-5136.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    The major site for fatty acid β-oxidation in animal cells is the mitochondrion, although partial β-oxidation has also been shown to occur in peroxisomes (see pathway fatty acid β-oxidation VI (mammalian peroxisome)) (reviewed in [Van10, Wanders11]). In plant cells, on the other hand, the major sites are the peroxisome and glyoxysome (a specialized peroxisome found only in germinating seeds). The mitochondrion is also active, but is most likely responsible only for degradation of branched-chain fatty acids.
+                    <br><br>
+                    Another major difference lies in the structure of the enzymes. In animal mitochondria, after initial metabolism of long chain acyl-CoAs by membrane-bound enzymes, medium and short chain acyl-CoAs are metabolized in the matrix by separate soluble enzymes. In contrast, plant and animal peroxisomes and plant glyoxysomes contain multifunctional proteins (MFPs) that catalyze multiple steps of the pathway. Plant MFPs appear to have S stereospecificity, whereas the fungal counterparts are R stereospecific (see fatty acid β-oxidation VII (yeast peroxisome)). Mammals contain two distinct MFPs, one with S and the other with R stereospecificity (reviewed in [Goepfert07, Poirier06, Van10, Houten10]).
+                    <br><br>
+                    The main biochemical difference between the animal mitochondrial and bacterial β-oxidation pathway (see fatty acid β-oxidation I (generic)) and the plant and animal peroxisomal counterpart lies in the first step, which converts an acyl-CoA to a (2E)-2-enoyl-CoA. In bacteria or animal mitochondria, this reaction is catalyzed by acyl-CoA dehydrogenase. The electrons removed by the oxidation pass through the respiratory chain to oxygen, generating water as the final product. In plant and animal peroxisomes, this reaction is catalyzed by short-chain acyl-CoA oxidase. The electrons pass directly to oxygen and produce hydrogen peroxide, which is immediately cleaved by peroxisomal catalases.
+                    <br><br>
+                    It is still debated whether fatty acids are activated to acyl-CoAs prior to or after their transport into peroxisomes. Two peroxisomal acyl-CoA synthetases have been recently identified and characterized from Arabidopsis thaliana col [Fulda02]. Both enzymes are able to activate the full spectrum of fatty acids naturally found in the seed, and both genes are strongly induced during seed germination. These observations suggest that the two peroxisomal enzymes are involved in the fatty acid β-oxidation pathway. Reviewed in [Graham02a].
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'fatty_acid_β-oxidation_III'">
+            <div class="subtitle">Fatty acid β-oxidation III (unsaturated, odd number)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-5137"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-5137.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    When fatty acids that contain a cis-double bond on odd-numbered carbons are processed by short-chain acyl-CoA oxidase (see fatty acid β-oxidation II (plant peroxisome)), they are converted to a (3Z)-3-enoyl-CoA. These compounds must be converted to a (2E)-2-enoyl-CoA before they can be processed further [Graham02a].
+                    <br><br>
+                    Monofunctional proteins having such activity have been described from many organisms, including mammals, plants and bacteria.
+                    <br><br>
+                    In plants, this activity is also a part of of the multifunction protein (MFP) (see multifunctional protein MFP I, multifunctional protein MFP II, multifunctional protein MFP III).
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'fatty_acid_β-oxidation_IV'">
+            <div class="subtitle">Fatty acid β-oxidation IV (unsaturated, even number)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-5138"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-5138.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    Some of the most prevalent fatty acids in lipid storage tissues, such as linoleate and α-linolenate, contain cis-double bonds on even-numbered carbons. When such fatty acids are processed by the first enzyme of the core β-oxidation pathway, short-chain acyl-CoA oxidase (see fatty acid β-oxidation II (plant peroxisome)), they are converted into a (2E,4Z)-2,4-dienoyl-CoA. This intermediate cannot proceed directly through the core β-oxidation pathway, and must be processed via either of two alternative routes.
+                    <br><br>
+                    In the first route a (2E,4Z)-2,4-dienoyl-CoA enters the so called reductase/isomerase pathway, which involves the enzymes 2,4-dienoyl-CoA reductase and delta-3, delta2-enoyl-CoA isomerase. In this route the dienoyl-CoA is converted to a (2E)-2-enoyl-CoA, which can be processed further by the core β-oxidation pathway.
+                    <br><br>
+                    Alternatively, a (2E,4Z)-2,4-dienoyl-CoA can be converted to a (2Z)-2-enoyl-CoA through one more cycle of core beta-oxidation pathway. A cis-2-enoyl-CoA cannot be completely degraded via the core β-oxidation pathway since its hydratation yields a 2,3,4-saturated (3R)-3-hydroxyacyl-CoA which is not a substrate for (S)-3-hydroxyacyl-CoA:NAD+ oxidoreductase. Thus, the D-3-hydroxyacyl-CoA enters the so called epimerase pathway that involves converting a 2,3,4-saturated (3R)-3-hydroxyacyl-CoA to a 2,3,4-saturated (3S)-3-hydroxyacyl-CoA by 3-hydroxyacyl-CoA epimerase. Alternatively, this conversion can be performed by two stereo-specific enoyl-CoA hydratases. The L-3-hydroxyacyl-CoA then returns to the core β-oxidation pathway for complete degradation.
+                    <br><br>
+                    The enoyl-CoA isomerase and 3-hydroxyacyl-CoA epimerase activities, together with two enzyme activities also found in the core β-oxidation pathway, namely 2-enoyl-CoA hydratase and 3-hydroxyacyl-CoA dehydrogenase, are attributed to a single multifunctional protein (MFP).
+                    <br><br>
+                    Studies in Cucumis sativus cotyledon suggested the epimerase pathway is much more effective than the reductase/isomerase pathway [Engeland91], whereas studies in Arabidopsis thaliana col indicated that both pathways have a similar contribution [Allenbach00].
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'fatty_acid_β-oxidation_V'">
+            <div class="subtitle">Fatty acid β-oxidation V (unsaturated, odd number, di-isomerase-dependent)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-6837"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-6837.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: Enzyme(s) that catalyzes one or more of the key reactions in this pathway were predicted in Aegilops tauschii.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    This is an alternative degradation route of fatty acids with cis-double bonds on odd-number carbons, for example, oleate, that was proposed after the identification of EC 5.3.3.21, Δ3,5-Δ2,4-dienoyl-CoA isomerase, from yeast [Gurvitz99]. The physiological role of the yeast DCI1 however remains unclear since yeast mutants with a deletion in DCI1 showed no deficiency in utilization of oleate [Gurvitz99]. Later, this pathway was thought to be present in Arabidopsis based on the identification of the Arabidopsis DCI1 [Goepfert05, Goepfert07]. No genetics data are available for the Arabidopsis DCI1 thus its physiological role in fatty acid degradation is still unclear.
+                    <br><br>
+                    In this pathway, unsaturated fatty acids with cis-double bonds on odd-number carbons (i.e. a double bond on the 9th position in the case of oleate) are converted to cis-5-enoyl-CoA after two rounds of core beta oxidation cycle. Instead of continuing for another round of core beta-oxidation cycle which would yield cis-3-enoyl-CoA to enter fatty acid β-oxidation III (unsaturated, odd number), cis-5-enoyl-CoA once being oxidized to trans-2,cis-5-dienoyl-CoA exits the core beta oxidation. It is converted to trans-3,cis-5-dienoyl-CoA by delta3,delta2-enoyl-CoA isomerase. Trans-3,cis-5-dienoyl-CoA is then converted by the di-isomerase delta3,5-delta2,4-dienoyl-CoA isomerase to trans-2,trans-4-dienoyl-CoA. The latter is further converted to trans-3-enoyl-CoA by 2,4-dienoyl-CoA reductase. Finally, trans-3-enoyl-CoA is converted to trans-2-enoyl-CoA to reenter core beta oxidation for complete degradation.
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'glycolipid_desaturation'">
+            <div class="subtitle">Glycolipid desaturation (fatty acid desaturation)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-782"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-782.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    Fatty acids constitute a major component of plant membranes in the form of glycerolipids, mainly phosphoglycerolipids and glycosylglycerolipids. The majority of them have C16 or C18 carbon chains and are attached to the sn-1 and sn-2 positions of the glycerol backbone. In Arabidopsis, the major fatty acids are C16:0, C16:1, C16:2, C16:3, C18:1, C18:2, and C18:3. Unsaturated fatty acids are significant to membrane functions such as photosynthesis and cold tolerance. C16:3 and C18:3 together make up more than 90% of the fatty acid content of monogalactosyldiacylglycerol (MGDG), a major glycosylglycerolipid of leaf chloroplast membranes [Meyerowitz].
+                    <br><br>
+                    C18:1 is desaturated from C18:0 in the form of stearoyl-ACP (oleate biosynthesis I (plants)) and is subsequently incorporated into glycerolipids. The rest of the unsaturated fatty acids, C16:1, C16:2, C16:3, C18:2 and C18:3, on the other hand, are desaturated from C16:0 or C18:1 after C16:0 and C18:1 are incorporated into glycerolipids. These latter desaturation processes are catalyzed by membrane-bound fatty acid desaturases, and occur in chloroplasts and ER. Fatty acid desaturation is best studied in Arabidopsis using desaturase mutants.
+                    <br><br>
+                    The depicted glycosylglyceride desaturation pathway illustrates the biosynthesis of 18:3-16:3-MGDG and 18:3-18:3-DGDG, the two most abundant glycosylglycerolipid found in chloroplast membranes. It is noteworthy that desaturation occurs on both sn-1 and sn-2 acyl chains, and that the order of the desaturation steps on one chain versus the other is not known. Here, all the possible steps are presented. 
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'long-chain_fatty_acid_activation'">
+            <div class="subtitle">Long-chain fatty acid activation</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-5143"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-5143.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    Fatty acids are often found in the cell in the activated form of an acyl-coA. Acyl-CoAs are used in the biosynthesis of many cellular products and components. In plants they are involved in the biosynthesis of membrane lipids, seed storage lipids, wax, cutins and suberin.
+                    <br><br>
+                    Intracellular membranes are generally barriers for acyl-CoAs, preventing their movement within the cell. To circumvent this limitation, fatty acids are transported in their free form, and converted to acyl-CoAs while crossing the membrane by the enzymes acyl-CoA synthetases (ACS). These enzymes catalyze the esterification of fatty acids into the CoA thioesters concomitant with transport. In plant cells, ACS activity has been detected in plastids, oil bodies, peroxisomes, mitochondria, and the ER.
+                    <br><br>
+                    The activated fatty-CoAs can be hydrolyzed back to free acids (see acyl-CoA hydrolysis).
+                    <br><br>
+                    The Arabidopsis genome contains nine functional genes encoding long-chain acyl-CoA synthetase - LACS1, LACS2, LACS3, LACS4, LACS5, LACS6, LACS7, LACS8 and LACS9 [Shockey02]. Genetic and biochemical evidence have sorted the physiological roles of some of them.
+                    <br><br>
+                    The plastidial LACS9 contributes to the activation of de novo synthesized fatty acids during their exporting from the chloroplast [Schnurr02]. LACS6 and LACS7 are peroxisome-localized and are involved in fatty acids β-oxidation (fatty acid β-oxidation II (plant peroxisome)) in the peroxisome [Fulda02]. LACS2 is required for cutin biosynthesis, where it was shown to activate the cutin monomer 16-hydroxypalmitate [Schnurr04].
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'palmitate_biosynthesis_II'">
+            <div class="subtitle">Palmitate biosynthesis II (type II fatty acid synthase)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-5971"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-5971.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                </p>
+                <br><br>
+                <p>
+                    <b>General Background</b> 
+                    <br><br>
+                    Fatty acids are key building blocks for the phospholipid components of cell membranes. They are also determinants of intracellular communication in the form of lipid second messengers [Prieschl00] and protein modification, where fatty acyl moieties of proteins modify their location and function [Resh99].
+                    <br><br>
+                    Palmitate is one of the most common saturated fatty acids found in animals and plants. It was discovered by Edmond Fremy in 1840 in saponified palm oil, of which it is a major component, and hence its name. Palmitate is synthesized by stepwise condensation of C2 units to a growing acyl chain. Each elongation cycle results in the addition of two carbons to the acyl chain, and consists of four separate reactions. The first step is the condensation of a C2 unit with the nascent [acp]-bound acyl, forming a a 3-oxoacyl-[acyl-carrier protein] and releasing CO2. This step is followed by reduction to a (3R)-3-hydroxyacyl-[acyl-carrier protein], dehydration to a trans-2-enoyl-[acyl-carrier protein], and a final reduction to form the elongated fatty acid-[acp]. This chain of event repeats itself several times, until the final product, a palmitoyl-[acp], is formed.
+                    <br><br>
+                    There are two basic types of fatty acid biosynthesis systems, named type I and type II. The type I system is found in animals and lower eukaryotes. The mammalian system consists of a single gene product that contains all of the reaction centers required to produce a fatty acid (see fatty acid synthase from Homo sapiens), while the system of lower eukaryotes (such as yeast) consists of two genes, whose polypeptide products combine to form a multifunctional complex (see fatty acid synthase from Saccharomyces cerevisiae). The pathway catalyzed by the type I systems is available at palmitate biosynthesis I (type I fatty acid synthase).
+                    <br><br>
+                    Type II systems are found in bacteria, plants [White05], parasites of the Apicomplexa phylum [Ferguson07] and mitochondria [Zhang03, Miinalainen03]. The reactions in these systems are catalyzed by a series of individual soluble proteins that are each encoded by a discrete gene, and the pathway intermediates are transferred between the enzymes as thioesters of a soluble [acyl-carrier protein].
+                    <br><br>
+                    Unlike the type I system that accepts malonyl-CoA as the source of the two-carbon units, the type II systems accept only a malonyl-[acp]. The final product of the pathway is palmitoyl group bound to the acyl-carrier protein. It is released from the [acp] moiety and converted to a free acid or a CoA-derivative.
+                    <br><br>
+                    In plant systems palmitoyl-[acp] is often extended to form stearoyl-[acp] (see stearate biosynthesis II (bacteria and plants)). Thus, in most plants the primary products of fatty acid biosynthesis are both palmitoyl-[acp] (16:0-ACP) and stearoyl-[acp] (18:0-ACP). In addition, the enzyme stearoyl-[acp] 9-desaturase, which is ubiquitous in plants, introduces the first double bond in stearoyl-[acp] (while still bound to ACP), producing oleoyl-acp. The palmitate and oleate products can either be utilized within the plastid for lipid assembly and further desaturation, or exported to allow further desaturation in the endoplasmic reticulum, as well as incorporation into lipids. The fatty acids that are exported out of the chloroplast are first cleaved from ACP by thioesterases, followed by activation to fatty acyl-CoAs by an outer envelope LACS9 activity. Once activated to acyl-CoAs, they are exported to the endoplasmic reticulum [Schnurr04].
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'phospholipid_desaturation'">
+            <div class="subtitle">Phospholipid desaturation (fatty acid desaturation)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-762"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-762.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    Fatty acids constitute a major component of plant membranes in the form of glycerolipids, mainly phosphoglycerolipids and glycosylglycerolipids. The majority of them have C16 or C18 carbon chains and are attached to the sn-1 and sn-2 positions of the glycerol backbone. In Arabidopsis, the major fatty acids are C16:0, C16:1, C16:2, C16:3, C18:1, C18:2, and C18:3. Unsaturated fatty acids are significant to membrane functions such as photosynthesis and cold tolerance. C16:3 and C18:3 together make up more than 90% of the fatty acid content of monogalactosyldiacylglycerol (MGDG), a major glycosylglycerolipid of leaf chloroplast membranes [Meyerowitz].
+                    <br><br>
+                    C18:1 is desaturated from C18:0 in the form of stearoyl-ACP (oleate biosynthesis I (plants)) and is subsequently incorporated into glycerolipids. The rest of the unsaturated fatty acids, C16:1, C16:2, C16:3, C18:2 and C18:3, on the other hand, are desaturated from C16:0 or C18:1 after C16:0 and C18:1 are incorporated into glycerolipids. These latter desaturation processes are catalyzed by membrane-bound fatty acid desaturases, and occur in chloroplasts and ER. Fatty acid desaturation is best studied in Arabidopsis using desaturase mutants.
+                    <br><br>
+                    The desaturation of phosphatidylglycerol occurs in the chloroplast, and the desaturation of phosphatidylcholine occurs in the ER. Note that desaturation occurs on both sn-1 and sn-2 acyl chains, and that the order of the desaturation steps on one chain versus the other is not known. Here, all the possible steps are presented.
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'poly-hydroxy_fatty_acids_biosynthesis'">
+            <div class="subtitle">Poly-hydroxy fatty acids biosynthesis</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-6710"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-6710.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: Enzyme(s) that catalyzes one or more of the key reactions in this pathway were predicted in Aegilops tauschii.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    An Arabidopsis cytochrome P450, CYP77A4, was shown to catalyze expoxidation of free fatty acids, the first one of its kind characterized in plants [Sauveplane09]. The epoxides can be further metabolized by epoxide hydrolases and fatty acid hydroxylases to diols and poly-hydroxy fatty acids. Some of the derived metabolites are cutin monomers, i.e. 18-hydroxy-9,10-epoxystearate (see cutin biosynthesis), some others have antifungal properties possibly involved in plant defense, i.e. 12,13,17-trihydroxyoctadeca-9-enoate [Hou00].
+                </p>
+            </div> -->
+        </div>
+        
+        <div *ngIf="dataset === 'superpathway_of_fatty_acid_biosynthesis_II'">
+            <div class="subtitle">Superpathway of fatty acid biosynthesis II (plant)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-5156"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-5156.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    Fatty acid biosynthesis in plants mainly occurs in plastids, although mitochondria are also capable to synthesize fatty acids [Yasuno04]. The active sites for fatty acid biosynthesis are photosynthetic leaf mesophyll cells, seeds, and oil-accumulating fruits. In plants, the initial condensation of an acetyl group and a malonyl group to give rise to acetoacetyl-ACP is carried out by the condensing enzyme isoform KAS III. The enzyme specifically uses the substrates acetyl-CoA and malonyl-ACP. There is no evidence for the existence, or physiological significance if exists, of a bacterial version of the initial condensation reaction, which utilizes acetyl-ACP and malonyl-ACP [Dey97, Jones03]. Acetoacetyl-ACP (a beta-ketoacyl-ACP) then enters the elongation cycle, composed of four reactions. One cycle extends the chain length of an acyl-ACP by two carbon units using malonyl-ACP as the carbon donor. The condensing enzyme isoforms KASI and KASII are responsible for elongation steps from C4 to C16, and from C16 to C18, respectively. Unlike their bacterial counterparts, plants KAS I and KAS II do not accept unsaturated acyl-ACP substrates.
+                    <br><br>
+                    In most plants, the primary products of the fatty acid elongation cycle are 16:0-ACP and 18:0-ACP. The first double bond is then introduced to 18:0-ACP by delta9 18:0-ACP desaturase, which is ubiquitous to all plants. Additional double bonds are inserted to oleate and palmitate after they are incorporated into lipids (glycolipid desaturation, phospholipid desaturation). Plants also contain very long-chain fatty acids (chain length larger than 18). The additional chain elongation occurs via the very long chain fatty acid biosynthesis pathway (very long chain fatty acid biosynthesis I) located in the ER. Free fatty acids are released from acyl-ACPs and are exported out of plastids.
+                </p>
+            </div> -->
+        </div>
+        
+        <div *ngIf="dataset === 'tetradecanoate_biosynthesis'">
+            <div class="subtitle">Tetradecanoate biosynthesis (mitochondria) (fatty acid biosynthesis (type II fatty acid synthase))</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy66-430"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy66-430.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                </p>
+                <p>
+                    <b>General Background</b> 
+                    <br><br>
+                    Fatty acids are key building blocks for the phospholipid components of cell membranes. They are also determinants of intracellular communication in the form of lipid second messengers [Prieschl00] and fatty acyl moieties of proteins that modify their location and function [Resh99].
+                    <br><br>
+                    There are two basic types of fatty acid biosynthesis systems, named type I and type II. Type I systems are found in lower eukaryotes and animals, while type II systems are found in bacteria, plants [White05], parasites of the Apicomplexa phylum [Ferguson07] and mitochondria [Zhang03, Miinalainen03]. Thus both systems operate in animals - the type I system in the cytosol, (see palmitate biosynthesis I (type I fatty acid synthase)), and the type II system in the mitochondria (this pathway).
+                    <br><br>
+                    The main difference between the two systems is that type I systems consist of one (in the case of animals) or two (in the case of fungi) large multifunctional gene products that form a single complex that contains all of the reaction centers required to produce a fatty acid (see fatty acid synthase from Homo sapiens), while in type II systems the different reactions are catalyzed by a series of individual soluble proteins that are each encoded by a discrete gene, and the pathway intermediates are transferred between the enzymes as thioesters of a soluble [acyl-carrier protein].
+                </p>
+                <p>
+                    <b>About This Pathway</b> 
+                    <br><br>
+                    The contribution of the mitochondrial pathway counts for only a few percentage of the overall cellular fatty acid biosynthesis, as the bulk of endogenously derived fatty acids is synthesized in the cytosol by the type I fatty acid synthase system [Brody97]. The mitochondrial pathway is believed to provide the octanoyl group that is required for the endogenous synthesis of (R)-lipoate. Additionally there is putative evidence suggesting its involvement in remodeling of cardiolipins [Zensen92, Schneider95].
+                    <br><br>
+                    The mitochondrial FAS pathway is indespensible, as demonstrated by the observation that the inactivation of any FAS II gene in yeast results in the loss of mitochondrially encoded cytochromes and ultimately in a respiratory-deficient phenotype.
+                    <br><br>
+                    The pathway starts with malonyl-[acp], whose production is described in the pathway fatty acid biosynthesis initiation (mitochondria). The malonyl moiety is attached to the mitochondrial acyl carrier protein, which is encoded by the NDUFAB1 gene. The four steps of the iterative fatty acid biosynthesis process - malonyltransfer, reduction of the oxo group to a 3R hydroxy group, dehydration, which forms a trans double bond, and reduction of this bond, are carried out by the 3-oxoacyl-[acyl-carrier protein] reductase (a heterotetramer encoded by a HSD17B8 and CBR4 genes), a hydroxyacyl-thioester dehydratase type 2 (encoded by HTD2), a mitochondrial trans-2-enoyl-[acyl-carrier protein] reductase (encoded by MECR), and a mitochondrial 3-oxoacyl-[acyl-carrier-protein] synthase (encoded by OXSM).
+                    <br><br>
+                    While all enzymes have been shown to act with substrates having chain lengths up to 16 carbon atoms, the physiological relevance of products longer than octanoate (used as a precursor for (R)-lipoate biosynthesis), however, is not clear. The final product of this pathway is tetradecanoate, based on an observation reported from Neurospora crassa [Mikolajczyk90]. Some studies reported that plant mitochondria also produce palmitate [Wada97] and even stearate [Gueguen00]. Simlar reports have not been made for the mammalian system.
+                </p>
+
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'very_long_chain_fatty_acid_biosynthesis_I'">
+            <div class="subtitle">Very long chain fatty acid biosynthesis I</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-5080"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-5080.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    A significant amount of the fatty acids synthesized in animals by the cytosolic enzyme complex fatty acid synthase (FAS) or taken up by the diet are further elongated into very long chain fatty acids (VLCFAs), which are at least 22 carbons in length. VLCFAs are also important in plants, where they are the main constituents of hydrophobic polymers (such as cuticular waxes, seed oils and membrane sphingolipids) that prevent dessication at the leaf surface and provide stability to pollen grains [Trenkamp04].
+                    <br><br>
+                    VLCFAs are synthesized in the endoplasmic reticulum by sequential addition of C2 moieties from malonyl-CoA to preformed C18 acyl groups derived from the de novo fatty acid biosynthesis pathway. Each elongation cycle is composed of 4 reactions, similar to de novo fatty acid biosynthesis. The cycle includes the condensation of a long-chain fatty acyl-CoA and malonyl-CoA to form a 2,3,4-saturated 3-oxoacyl-CoA, reduction to a 3-hydroxyacyl-CoA, dehydration to a (2E)-2-enoyl-CoA, and a final reduction to yield a chain-elongated fatty acyl-CoA [Jakobsson06].
+                    <br><br>
+                    Unlike in de novo fatty acid biosynthesis, malonyl-CoA rather than a malonyl-[acp] is used in the condensing reaction. The elongation cycle is catalyzed by a membrane-bound enzyme complex, the elongase [Domergue00], which is composed of four enzymes, very-long-chain 3-ketoacyl-CoA synthase or condensing enzyme [Ghanevati01], 3-ketoacyl-CoA reductase, very-long-chain 3-hydroxyacyl-CoA dehydratase and very-long-chain enoyl-CoA reductase [Zheng05].
+                    <br><br>
+                    Substrate and tissue specificity of VLCFAs elongation is determined by the condensing enzyme, which catalyzes the rate-limiting reaction. Both saturated and unsaturated fatty acids are elongated via this pathway. While both NADPH and NADH were shown to be an effective reducing power for the two reduction steps, in many cases NADPH is the 'preferred' reductant (reviewed in [Cassagne94] and [Jakobsson06]).
+                    <br><br>
+                    For a pathway that specifies the intermediates involved, please see very long chain fatty acid biosynthesis II.
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'very_long_chain_fatty_acid_biosynthesis_II'">
+            <div class="subtitle">Very long chain fatty acid biosynthesis II</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-7036"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-7036.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Accept-If-Predicted Pathways (AIPP) generated for the COMET project, which includes pathways that are present widely throughout the plant kingdom. The AIPP list contains pathways that are automatically accepted if they are predicted for any plant species database. However, AIPP pathways are not automatically imported into databases if they are not predicted by the Pathologic program.
+                    <br><br>
+                    Summary from MetaCyc:
+                </p>                
+                <br><br>
+                <p>
+                    <b>General Background</b> 
+                    <br><br>
+                    Fatty acids are carboxylic acids with a long unbranched aliphatic tail. Even though fatty acids derived from natural fats and oils are usually at least 8 carbon atoms long, carboxylic acids as short as butanoate (4 carbon atoms) are considered to be fatty acids.
+                    <br><br>
+                    Fatty acids are often classified into four groups by their lengths:
+                    <br><br>
+                    Short-chain fatty acids (SCFA) are fatty acids with aliphatic tails of fewer than six carbons.
+                    <br><br>
+                    Medium-chain fatty acids (MCFA) are fatty acids with aliphatic tails of 6-12 carbons.
+                    <br><br>
+                    Long-chain fatty acids (LCFA) are fatty acids with aliphatic tails of 13-21 carbons.
+                    <br><br>
+                    Very-long-chain fatty acids (VLCFA) are fatty acids with aliphatic tails of 22 carbons or longer.
+                    <br><br>
+                    Very-long-chain fatty acids are components of eukaryotic cells and are involved in many different physiological functions in different organisms. They are abundant in some tissues, for example as constituents of myelin in the brain or of storage triacylglycerols in plant seeds, and are components of plant cuticular waxes [Westerberg04] (see cuticular wax biosynthesis), of sphingolipids [Dickson06], and of the lipid barrier of the skin. They are also involved in the pathways for protein trafficking and for the synthesis of the glycosylphostphatidylinositol (GPI) lipid anchor [Gaigg06].
+                </p>
+                <br><br>
+                <p>
+                    <b>About This Pathway</b> 
+                    <br><br>
+                    VLCFAs are synthesized in eukaryotes in the endoplasmic reticulum (ER) by a membrane-bound enzyme complex known as the elongase [Domergue00]. This complex catalyzes the sequential additions of C2 moieties from malonyl-CoA to preformed C18 acyl groups derived from the de novo fatty acid biosynthesis pathway. Each elongation cycle is composed of 4 reactions: condensation of a long-chain fatty acyl-CoA and malonyl-CoA to form a 2,3,4-saturated 3-oxoacyl-CoA, reduction to a 3-hydroxyacyl-CoA, dehydration to a (2E)-2-enoyl-CoA, and a final reduction to yield a chain-elongated fatty acyl-CoA [Tehlivets07, Jakobsson06].
+                    <br><br>
+                    While the reactions catalyzed by the elongase are similar to those of de novo fatty acid biosynthesis (see palmitate biosynthesis I (type I fatty acid synthase) and palmitate biosynthesis II (type II fatty acid synthase)), there are several differences between the elongase complex and the fatty acid synthase (FAS) complex. In animals and yeast all of the functions of FAS are present in either one (mammals) or two (yeast) large multidomain subunits (see human fatty acid synthase and yeast fatty acid synthase). The elongase, on the other hand, is composed of four enzymes that catalyze independent reactions, similarly to the bacterial/plants FAS systems. In addition, the elongase always utilizes malonyl-CoA as the C2 donor unit, while FAS uses either malonyl-CoA (in yeast and animals) or malonyl-[acp] in bacteria and plants.
+                    <br><br>
+                    The elongase accepts long-chain fatty acids [usually palmitate (C16) or stearate (C18)] made by the cytosolic fatty acid synthase complex, and produces arachidate (C20), behenate (C22), lignocerate (C24), cerotate (26) or even longer acids.
+                    <br><br>
+                    The four enzymes that form the elongase complex are very-long-chain 3-oxoacyl-CoA synthase or condensing enzyme [Ghanevati01], very-long-chain 3-oxoacyl-CoA reductase, very-long-chain 3-hydroxyacyl-CoA dehydratase and very-long-chain enoyl-CoA reductase. While only one enzyme catalyzes each of the last three reactions of the cycle (respectively), the first step (the condensation of the 2 carbons from malonyl-CoA to the nascent acyl-CoA) is catalyzed by several different enzymes that differ from each other in their preference towards substrates with different lengths and degrees of desaturation. These enzymes, which are also the rate-limiting step in the cycle, thus determine the length of the final acyl-CoA produced by the complex they participate in [Kohlwein01].
+                    <br><br>
+                    In yeast the ELO2 and ELO3 genes encode condensing enzymes that participate in the elongase complex. In mammals there are seven distinct "elongase for very long fatty acids" (ELOVL) subtypes. The human enzymes are encoded by the ELOVL1, ELOVL2, ELOVL3, ELOVL4, ELOVL5, ELOVL6, and ELOVL7 genes [Jakobsson06].
+                </p>
+
+            </div> -->
+        </div>
+        <!-- second part  -->
+
+        <div *ngIf="dataset === '1D-myo-inositol_hexakisphosphate_biosynthesis_III'">
+            <div class="subtitle">1D-myo-inositol hexakisphosphate biosynthesis III (Spirodela polyrrhiza) (lipid-independent phytic acid biosynthesis)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-4661"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-4661.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Accept-If-Predicted Pathways (AIPP) generated for the COMET project, which includes pathways that are present widely throughout the plant kingdom. The AIPP list contains pathways that are automatically accepted if they are predicted for any plant species database. However, AIPP pathways are not automatically imported into databases if they are not predicted by the Pathologic program.
+                    <br><br>
+                    Summary from MetaCyc:
+                </p>
+                <br><br>
+                <p>
+                    <b>General Background</b> 
+                    <br><br>
+                    phytate (phytate, phytic acid) is one of the most prevalent forms of phosphorylated inositols in the eukaryotic cell, with a total concentration of 15-100 μM [Szwergold87, French91, Bunce93]. It's cellular distribution is not completely known - some of it is soluble, some is "wall-papered" around membranes, while some is bound to proteins [Shears98]. In plant seeds, large amount of phytate are complexed with cations and deposited as globular inclusions in membrane-bound storage bodies [Coelho05].
+                    <br><br>
+                    The compound has been proposed to have a number of signaling roles, including regulation of insulin exocytosis [Efanov97], regulation of nuclear mRNA export [York99, Saiardi00], binding of the clathrin assembly proteins AP2 and AP3 [Theibert91, Chadwick92], inhibition of clathrin cage assembly [Norris95a, Ye95], and inhibition of serine and threonine protein phosphatases that are thought to regulate L-type Ca2+ channels [Larsson97].
+                </p>
+                <br><br>
+                <p>
+                    <b>Phytate in Plants</b>
+                    <br><br>
+                    In plant cells phytate serves as a storage form of myo-inositol, phosphate and mineral nutrients for utilization during seed germination and seedling growth. It is deposited within single-membrane storage organelles referred to as protein bodies and is usually present as mixed complexes with different cations, including K+, Mg2+, Ca2+, Fe2+, and Zn2+, known as phytin [Raboy01, Raboy96]. Although phytin only makes up about 1% of the seed weight, it may contain up to 80% of the total seed phosphorus [Coelho05]. Phytate is also present in other plant tissues and organs such as pollen, roots, tuber and turions in smaller quantities [Raboy03].
+                </p>
+                <br><br>
+                <p>
+                    <b>About This Pathway</b> 
+                    <br><br>
+                    Most of our knowledge about phytate biosynthesis concerns lipid-dependent pathways, where the inositol phosphate precursor originates from a phospholipid, as described in pathways 1D-myo-inositol hexakisphosphate biosynthesis I (from Ins(1,4,5)P3) and 1D-myo-inositol hexakisphosphate biosynthesis II (mammalian). However, information exists that suggests that certain organisms synthesize this compound from myo-inositol or 1D-myo-inositol 3-monophosphate that do not originate from phospholipids.
+                    <br><br>
+                    To date such pathways have only been reported in two organisms - the aquatic monocotyledonous plant Spirodela polyrhiza [Brearley96a] (described here), and the slime mold Dictyostelium discoideum, which utilizes different intermediates [Stephens90] (see 1D-myo-inositol hexakisphosphate biosynthesis IV (Dictyostelium)). The sequence of conversions from 1D-myo-inositol 3-monophosphate to phytate in Spirodela polyrhiza has been illucidated only by the use of radiolabeled compounds and no enzymes have been characterized from this organism. However, the pathway is also believed to exist in maize, and several maize enzymes have been characterized [Shukla04, Shi03, Shi05].
+                    <br><br>
+                    These include myo-inositol-3-monophosphate synthase (MIPS) [Shukla04], which produces 1D-myo-inositol 3-monophosphate from D-glucopyranose 6-phosphate, and myo-inositol kinase [Shi05], which which produces 1D-myo-inositol 3-monophosphate from myo-inositol.
+                    <br><br>
+                    The rest of the enzymes of this pathway have not been characterized in great detail as yet. While a myo-inositol polyphosphate kinase that phosphorylates D-myo-inositol (3,4,5,6)-tetrakisphosphate has been detected in maize, the exact nature of the kinase activity of this enzyme is not yet known as the reaction product have not been characterized [Shi03].
+
+                </p>
+
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'galactolipid_biosynthesis_I'">
+            <div class="subtitle">Galactolipid biosynthesis I</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-401"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-401.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Accept-If-Predicted Pathways (AIPP) generated for the COMET project, which includes pathways that are present widely throughout the plant kingdom. The AIPP list contains pathways that are automatically accepted if they are predicted for any plant species database. However, AIPP pathways are not automatically imported into databases if they are not predicted by the Pathologic program.
+                    <br><br>
+                    Summary from MetaCyc:
+                </p>
+                <br><br>
+                <p>
+                    <b>General Background</b> 
+                    <br><br>
+                    The galactolipids monogalactosyldiacylglycerol (MGDG) and digalactosyldiacylglycerol (DGDG) are prevalent membrane lipids in organisms that carry out oxygenic photosynthesis, such as land plants, algae, and cyanobacteria [Doermann13]. MGDG and DGDG constitute about 50% and 30%, respectively, of the total lipids in the majority of photosynthetic membranes.
+                    <br><br>
+                    Crystallographic analysis of photosystem complexes revealed that stoichiometric amounts of both types of galactolipids are bound in the interior of photosystem complexes [Jones07, Umena11], and it has been shown that a galactolipid-deficient mutant of Arabidopsis thaliana lacks photosynthetic activity [Kobayashi07].
+                </p>
+                <br><br>
+                <p>
+                    <b>About This Pathway</b> 
+                    <br><br>
+                    The biosynthesis of galactolipids in plants is localized to the envelope membranes of chloroplasts. Thus both MGDG and DGDG have to be transported to the thylakoid membranes during chloroplast development.
+                    <br><br>
+                    The glycosylglycerides are synthesized using diacylglycerol (DAG) as the starting compound. The first enzyme of galactolipid synthesis, EC 2.4.1.46, monogalactosyldiacylglycerol synthase, was isolated from cucumber seedlings [Shimojima97]. This enzyme transfers a galactose residue from UDP-α-D-galactose onto diacylglycerol. The enzyme inverts the anomeric configuration of the galactose, resulting in a β bond to DAG. Three genes encoding MGDG synthases were isolated from Arabidopsis [Awai01]. However, only MGD1 is crucial for the synthesis of most of the MGDG lipid required for thylakoid membrane assembly in chloroplasts. MGD2 and MGD3 are only expressed in certain plant organs or under specific conditions such as phosphate limitation [Kobayashi09].
+                    <br><br>
+                    The second enzyme involved is EC 2.4.1.241, digalactosyldiacylglycerol synthase. Arabidopsis contains two genes encoding the enzyme - DGD1 and DGD2 [Dormann99]. Both are UDP-galactose-dependent galactosyltransferases that transfer galactose from UDP-α-D-galactose onto MGDG with retention of the anomeric configuration of the sugar moiety.
+                    <br><br>
+                    In addition to MGDG and DGDG, plants contain low amounts of oligogalactolipids with three or four galactose residues in their head groups. The synthesis of these oligogalactolipids is independent of DGDG synthases DGD1 and DGD2, and is carried out by EC 2.4.1.184, galactolipid galactosyltransferase (GGGT) [Xu03], which is encoded by the SFR2 gene [Moellering10]. GGGT is not related to glycosyltransferases and belongs to the family of glycosylhydrolases. The enzyme acts on MGDG, converting it into di-, tri-, and tetragalactosyldiacylglycerol during low temperature stress. The galactosyl linkages are all in β form [Xu03]. The GGGT activity provides an important mechanism for the stabilization of the chloroplast membranes during freezing and drought stress. SFR2 is essential for the adaptation of Arabidopsis to freezing stress [Thorlby04, Fourrier08]
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'lipid-dependent_phytate_biosynthesis_I'">
+            <div class="subtitle">Lipid-dependent phytate biosynthesis I (via Ins(1,4,5)P<sub>3</sub>)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-4541"></DIV>
+            <!-- <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-4541.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div>  -->
+            <div class="description">
+                <p>
+                    No Pathway Summary Available
+                </p>
+            </div>
+        </div>
+
+        <div *ngIf="dataset === 'phospholipid_remodeling'">
+            <div class="subtitle">Phospholipid remodeling (phosphatidylethanolamine, yeast)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-7409"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-7409.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Accept-If-Predicted Pathways (AIPP) generated for the COMET project, which includes pathways that are present widely throughout the plant kingdom. The AIPP list contains pathways that are automatically accepted if they are predicted for any plant species database. However, AIPP pathways are not automatically imported into databases if they are not predicted by the Pathologic program.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    The homeostasis of glycerophospholipids constitutes an indispensable element for buildup, maintenance and component dynamics of cell membranes in all organisms. The many different phospholipid molecular species found in yeast basically vary in their composition of fatty acids esterified to the sn-1 and sn-2 position of a phosphorylated glycerol and a head group which can either be a choline, ethanolamine, L-serine, myo-inositol or the one phospholipid without a head group, i.e. phosphatidate (for example 1-18:1-2-18:1-phosphatidylethanolamine) [Lands65, Henry12]. After the de novo synthesis of phospholipids in the Kennedy pathway (see diacylglycerol and triacylglycerol biosynthesis, phosphatidylcholine biosynthesis I) glycerophospholipids can be degraded (see triacylglycerol degradation) and remodeled (this pathway; see also phospholipid remodeling (phosphatidylcholine, yeast) and phospholipid remodeling (phosphatidate, yeast)). The latter has been proposed by William E.M. Lands [Lands60] who describes in the eponymous 'Lands cycle' a de-acylation-re-acylation process of phospholipids typically characterized by saturated acyl chains at the sn-1 and unsaturated acyl chains at the sn-2 position [Wagner94].
+                    <br><br>
+                    This remodeling process starts with the de-acylation at the sn-2 position of phospholipids catalyzed by phospholipases (e.g. phospholipase A2) generating the corresponding lyso-phospholipids. The resulting lyso-phospholipids represent the substrates for acyl-CoA dependent lyso-phospholipid acyltransferases or phospholipid transacylases which can re-acylate the sn-2 position. Generally, the Lands cycle constitutes an exchange of fatty acids at the sn-2 position which is an substantial factor in the maintenance of the homeostasis of phospholipids [deKroon07]. This de- and re-acylation process translates into many physiological functions, for example increasing membrane fluidity through a higher percentage of unsaturated acyl chains, re-esterification of exogenous lyso-phospholipids [Jain07], buffering excess toxic fatty acids [Ayciriex12, Petschnigg09] and maintenance of the intrinsic membrane curvature necessary to preserve membrane integrity [Boumann06, Cullis78].
+                    <br><br>
+                    In the phosphatidylethanolamine remodeling pathway the de-acylation of 1-(oleoyl)-sn-glycero-3-phosphoethanolamine is catalyzed by the phospholipase A2 activity of the triacylglycerol lipase TGL4p [Athenstaedt05, Kurat06, Rajakumari10] whereas the re-acylation of sn-glycero-3-phosphoethanolamine is carried out by the acyl-CoA dependent lyso-phosphatidylethanolamine acyltransferase (ALE1p) [Riekhof07, Jain07, Chen07]. However, the remodeling of 1-(oleoyl)-sn-glycero-3-phosphoethanolamine can also be achieved by the enzymatic action of the phospholipases B, i.e PLB1p and PLB2p [Lee94, Fyrst99, Merkel99, Merkel05] in cooperation with the glycerophosphocholine phosphodiesterase encoded by GDE1 [Fisher05] channeling ethanolamine into the Kennedy pathway of phosphatidylethanolamine biosynthesis (see phosphatidylethanolamine biosynthesis II) which in turn may resupply 1-(oleoyl)-sn-glycero-3-phosphoethanolamine or other molecular acyl phosphatidylethanolamine species to the remodeling pathway.
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'sphingolipid_biosynthesis'">
+            <div class="subtitle">Sphingolipid biosynthesis (plants)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-5129"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-5129.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                </p>
+                <br><br>
+                <p>
+                    <b>General Background</b> 
+                    <br><br>
+                    Sphingolipids are ubiquitous components of eukaryotic cells. They are composed of a long-chain base (amino alcohol), an amide linked fatty acyl chain, and a polar head. The predominant long-chain bases in plants are C18 amino alcohols, with sphinganine, 4-hydroxysphinganine, and 4-hydroxy-8-sphingenine being the prevalent long-chain bases. The prevalent long-chain base of many mammalian sphingolipids, sphingosine (4-sphingenine), is found only in trace amounts in plants. The predominant fatty acyl chains in plants are alpha-hydroxy fatty acids, with saturated C22 to C26 hydroxy fatty acyl chains, especially 2-hydroxylignoceric acid, are the most common ones.
+                    <br><br>
+                    Ceramide (without a polar head group), glucosylceramide, and derivatives of inositolphosphorylceramide are the predominant plant sphingolipids. Sphingomyelin, which has phosphocholine as the polar head group and is the major phosphosphingolipid in animals, has not been detected in plants. On the other hand, yeast contains exclusively inositolphosphorylceramides.
+                    <br><br>
+                    Species- and tissue-specific diversity of the long-chain base and fatty acyl chain exists in plant glucosylceramides. In general, seed glucosylceramides are enriched with dihydroxy long-chain bases and C16 to C20 saturated hydroxy fatty acids. In contrast, leaves are enriched with trihydroxy long-chain bases and very long-chain (C20 to C26) saturated and monoenoic hydroxy fatty acids. Monoenoic hydroxyl fatty acids are predominantly found in glucosylceramides from cold hardy crops and Arabidopsis.
+                    <br><br>
+                    It is estimated that sphingolipids account for up to 10% of total lipids in plants. Glucosylceramide is the major sphingolipid. It is a significant lipid component of the plant cell plasma and tonoplast. While our knowledge of sphingolipid functions are mainly learned from studies in mammals and yeast, plant sphingolipids are thought to serve as membrane structural components and signal molecules.
+                </p>
+                <br><br>
+                <p>
+                    <b>About This Pathway</b> 
+                    <br><br>
+                    Two mechanisms were shown for ceramide formation via condensation of a fatty acyl group with the amino group of a long chain base. One utilizes acyl-CoAs and is catalyzed by sphinganine N-acyltransferase, the other uses free fatty acids by ceramide synthase. The sphinganine N-acyltransferase route is most likely the major route in plants. The relative activity of sphinganine N-acyltransferase using acyl-CoA of varying chain length from 16 to 24 carbons parallel the distribution of fatty acyl chains in glucosylceramides from different plant sources [Lynch00]. It suggests that sphinganine N-acyltransferase plays a key role in determining the respective acyl chain composition of naturally occurring plant glucosylceramides.
+                    <br><br>
+                    Although hydroxylation of the long chain base can occur with free sphinganine, hydroxylation and desaturation of long chain bases, as well as alpha-hydroxylation of fatty acyl chains, occur primarily after the formation of ceramides.
+
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'superpathway_of_phospholipid_biosynthesis_II'">
+            <div class="subtitle">Superpathway of phospholipid biosynthesis II (plants)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-phoslipsyn2-pwy"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-phoslipsyn2-pwy.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                    <br><br>
+                    Phospholipids are the major structural components of biological membranes. Some phospholipids (i.e. phosphatidylinositol) also serve as important lipid-signaling molecules. In plants, phospholipids predominate extra-chloroplast membranes including the plasma membrane, mitochondria membrane, endoplasmic reticulum, and microsomal membrane, with phosphatidylcholine and phosphatidylethanolamine being the major constituents. On the other hand, glycolipids predominate chloroplast envolope and thylakoid membranes. Phosphatidylglycerol is the only phospholipid found in chloroplast thylakoids, and is critical for the structural and functional integrity of the thylakoid membranes.
+                    <br><br>
+                    Phospholipids are mostly synthesized in the endoplasmic reticulum membrane. Once synthesized, they are transported to other phospholipid containing membranes. However, genetic and biochemical evidence has demonstrated that phosphatidylglycerol can be synthesized in the plastids [Xu06]. In addition, mitochondria also contain enzymes for phospholipid synthesis, thus we cannot rule out the possibility that phospholipids can be synthesized there.
+                </p>
+            </div> -->
+        </div>
+
+        <!-- part 3 -->
+        <div *ngIf="dataset === 'cholesterol_biosynthesis'">
+            <div class="subtitle">Cholesterol biosynthesis (plants, early side-chain reductase)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy18c3-1"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy18c3-1.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Until fairly recently the biosynthesis of cholesterol in plants was poorly understood and only a few enzymes involved in this pathway had been characterized [Sawai14]. On the other hand, this pathway has been elucidated in much more detail in animals (see for instance superpathway of cholesterol biosynthesis) [Nes11]. Cholesterol has been found in plants at much lower concentrations than in animals (i.e. 1-2% of the total sterols) but can accumulate to significant higher levels in Solanaceae [Whitaker88, Whitaker91, Japelt11]. The more prominent sterols in plants, which have been investigated in more detail are the phytosterols (C24-alkylsterols) [Piironen00] (see phytosterol biosynthesis (plants)).
+                    <br><br>
+                    The observation that cholesterol level and steroidal glycoalkaloid biosynthesis in potato appeared to be connected [Bergenstrahle96] confirmed previous results [Tschesche80, Heftmann67] and laid the foundation to studies that implicated the involvement of cholesterol in the biosynthesis of steroidal glycoalkaloids [Ohmura95, Ohyama13]. Because of their adverse effects in human diet steroidal glycoalkaloids are considered a health threat [Friedman06], a fact which in view of the advantageous pharmaceutical properties of steroidal glycoalkaloids resulted in considerable efforts to elucidate the underlying pathways of cholesterol, α-tomatine in tomato (see solasodine and soladulcidine biosynthesis, α-tomatine biosynthesis) [Itkin11, Itkin13] and α-chaconine and α-solanine in potato (see α-solanine/α-chaconine biosynthesis) [McCue05, McCue06, McCue07]. Furthermore, cholesterol is an important component of membranes and protective surface layers and gives rise to phytoecdysteroids [Dinan01, Cardenas15].
+                    <br><br>
+                    The finding that cholesterol is usually present in plants in only diminutive amounts but rises to significant higher levels in members of the Solaneceae family suggests that the biosynthesis of cholesterol in those species might be distinct from that of other plants. For instance, in Nicotiana benthamiana the level of cholesterol reaches up to 12% of the total sterols [Suza16]. The cholesterol biosynthetic pathway is the gateway to various steroids and vitamins, e.g. vitamin D3 (see vitamin D3 biosynthesis) [Japelt13]. Metabolic intermediates such as cycloartenol and desmosterol are branching points that either give way to plant C-24 alkylsterols (see phytosterol biosynthesis (plants)) or cholesterol. The flux into different pathways depends on the activity of basically two enzymes competing for those substrates, i.e. the sterol C-24 methyltransferase 1, which steers the flux of carbon towards C-24 alkylsterols and in doing so lowers cholesterol biosynthesis [Diener00, Holmberg02, Arnqvist03], and the sterol side chain reductase (SSR2), which has been shown to form respective precursor and cholesterol by reducing the side chain of cycloartenol and desmosterol [Sawai14].
+                    <br><br>
+                    Using the human 24-dehydrocholesterol reductase (DHCR24) [Waterham01] as probe and performing BLAST searches against the potato unigene database [Quackenbush01] and the tomato database [Bombarely11] resulted in the identification of cDNA's (SSR2) that encoded sterol side chain reductases able to carry out the reduction of cycloartenol and desmosterol to form cycloartanol and cholesterol, respectively [Sawai14].
+                    <br><br>
+                    The SSR2 cDNA of tomato was then used to identify the entire set of cholesterogenesis genes in Solanum lycopersicum and Nicotiana benthamiana and this information lead to the entire reaction sequence required for the biosynthesis of cholesterol in plants [Sonawane16, Cardenas16]. It was found that the enzymes of this pathway are often promiscuous and are active in related pathways such as phytosterol biosynthesis (plants). This is in accordance with the evolutionary 'patchwork' hypothesis, proposing that ancestral enzymes with low substrate specificity develop narrower specificities through duplication and diversification over time, which eventually results in the genesis of new pathways with enzymes of new catalytic properties [Ycas74, Moghe15]. This is exemplified by the C4-demethylation complex formed by sterol methyl oxidases (SMO's), 3β-hydroxysteroid dehydrogenase/C4-decarboxylase (3βHSD), and 3-oxosteroid reductase (SDR) [Pascal94, Nes11, Rahier11]. In tomato and Nicotiana benthamiana SMO3 and 4 encode proteins that are specific for cholesterol biosynthesis, whereas SMO1 and 2 encode proteins that catalyze reactions in phytosterol biosynthesis (plants). Since both groups of SMO's participate in a multi-enzyme complexes with the same promiscuous 3βHSD and SDR proteins, the specificity of the SMO component determines in what pathway, cholesterol biosynthesis (plants, early side-chain reductase) or phytosterol biosynthesis (plants), those enzyme complexes operate [Sonawane16, Cardenas16].
+                </p>
+            </div> -->
+        </div>        
+
+        <div *ngIf="dataset === 'phytosterol_biosynthesis '">
+            <div class="subtitle">Phytosterol biosynthesis (plants)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-2541"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-2541.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br><br>
+                    Supporting evidence for this pathway in Aegilops tauschii: This pathway is on the list of Ubiquitous Plant Pathways (UPP) that was generated for the COMET project, which includes pathways that are thought to be present in all or most land plants. All UPP pathways are automatically imported into databases regardless of Pathologic predictions.
+                    <br><br>
+                    Summary from MetaCyc:
+                </p>
+                <br><br>
+                <p>
+                    <b>General Background</b> 
+                    <br><br>
+                    Sterols are isoprenoid-derived molecules that have essential functions in eukaryotes. In vertebrates cholesterol is by far the major sterol, whereas a mixture of various sterols is present in higher plants, including sitosterol (usually predominant), stigmasterol, campesterol, isofucosterol, brassicasterol and cholesterol. Sterols are present in three forms: free sterols (the major form with a free 3β-hydroxyl), steryl esters, and steryl glucosides.
+                    <br><br>
+                    Free sterols are integral components of the membrane lipid bilayer and thus interact with some molecular species of phosphoglycero(sphingo) lipids. The extent of this interaction plays a functional role in the regulation of membrane fluidity and permeability. Sterols have also been shown to play important roles in embryonic development of vertebrates and the formation of membrane microdomains (rafts), which may constitute signaling centers for multiple pathways [Karpen01].
+                    <br><br>
+                    Finally, sterols are precursors of compounds with a high physiological activity such as brassinosteroids, an important class of plant hormones involved in growth and development [Li96], ecdysteroids in invertebrates [Svoboda95] and plants [CoriotCostet93], and antheridiol and oogoniols, sexual pheromones of aquatic fungi belonging to the saprolegniale class [Brunt91].
+                </p>
+                <br><br>
+                <p>
+                    <b>In plants:</b>
+                    <br><br>
+                    The plant sterol biosynthesis pathway is essentially linear until reaching 24-methylene lophenol, with a bifurcation downstream of this compound that results in two main pathways leading to 24-methyl- and 24-ethyl-sterols. The simplicity of this pathway is essentially due to i) the relatively high substrate specificity of most enzymes from the postsqualene segment of the biosynthetic chain and ii) to the channeling of substrates/products through microdomains of the endoplasmic reticulum [Benveniste04].
+                    <br><br>
+                    A number of minor sterols have been detected suggesting that in addition to the main sterol biosynthesis pathway depicted here a number of side pathways exist. Those compounds remain largely undetected until sterol biosynthesis inhibitors are used or genes encoding various enzymes of the biosynthesis pathways are mutated. Our knowledge of the sterol biosynthesis pathway in plants results largely from the study of Arabidopsis thaliana mutants and through detecting the accumulated intermediates and/or functional complementation of the mutant phenotypes with wild type genes.
+                </p>
+                <br><br>
+                <p>
+                    <b>Key Notes on the Enzymes:</b> 
+                    <br><br>
+                    i) Of the many enzymes involved in the sterol biosynthesis pathway, very few have been purified to homogeneity. Nonetheless many genes encoding those proteins have been cloned in Arabidopsis and have been expressed in heterologous systems where the substrate specificity of the corresponding enzymes has been assessed (see individual comments on particular enzymes).
+                    <br><br>
+                    ii) One of the major rate-limiting steps of this pathway is the C-24 methylation of cycloartenol catalyzed by EC 2.1.1.41, sterol 24-C-methyltransferase (SMT1).
+                    <br><br>
+                    iii) EC 1.14.14.154, sterol 14α-demethylase (OBT14DM; CYP51) from Zea mays (corn) has been described as a major potential herbicide target.
+
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'sterol:steryl_ester_interconversion'">
+            <div class="subtitle">Sterol:steryl ester interconversion (yeast)</div>
+            <DIV STYLE="POSITION: RELATIVE; DISPLAY: BLOCK" ID="wgdiv-pwy-7424"></DIV>
+            <div class="description">
+                <iframe src="/static/pmnwg/wgdiv-pwy-7424.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="width:100%;border:none;overflow:hidden;"></iframe>
+            </div> 
+            <!-- <div class="description">
+                <p>
+                    <b>Pathway Summary</b> 
+                    <br>
+                    <br>
+                    Supporting evidence for this pathway in Aegilops tauschii: Enzyme(s) that catalyzes one or more of the key reactions in this pathway were predicted in Aegilops tauschii.
+                    <br>
+                    <br>
+
+                    Summary from MetaCyc:
+                    <br>
+                    <br>
+                    
+                    Sterols are essential lipids which exist in free and esterified forms in all eukaryotic cells. Only the free amphiphilic sterols are incorporated into membranes whereas steryl esters are of hydrophobic nature ([Czabany07]) and accumulate in lipid droplets (LD) which serve as storage bodies for neutral lipids in Saccharomyces cells (reviewed in [Zweytick00]). Although steryl ester biosynthesis and lipid body formation appear as important but not essential processes in yeast ([Sandager02]) a strict control is exercised to maintain the required amount of free sterols ([Wagner09, Lewis87]).
+                    <br>
+                    <br>
+                    
+                    Consequently, steryl ester storage and mobilization is considered significant in sterol homeostasis for the biosynthesis and distribution of the various sterols in yeast such as lanosterol (see lanosterol biosynthesis), zymosterol (see zymosterol biosynthesis) and the main sterol ergosterol (see ergosterol biosynthesis I) ([Rajakumari08, Wagner09, Sturley00]). A lack of steryl esters in a quadruple mutant deficient in triacylglycerol synthases (DGA1, LRO1) and ARE1 and 2, the acyl-CoA:sterol acyltransferases in yeast, strongly interfered with the squalene epoxidase ERG1, located upstream of the ergosterol biosynthetic route causing reduced incorporation of ergosterol into yeast plasma membranes ([Sorger04]).
+                    <br>
+                    <br>
+                    
+                    An interesting phenomenon has been observed when yeast grows under heme-limiting/anaerobic conditions. Various pairs of isoenzymes involved in the sterol:steryl ester interconversion pathway, such as the steryl ester hydrolases YEH1 and YEH2 and the acyl-CoA:sterol acyltransferases ARE1 and ARE2 behave differently in terms of enzyme and transcriptional activity which may explain the existence of seemingly redundant proteins.
+                    <br>
+                    <br>
+                    
+                    Under heme-deficient conditions YEH1 was identified as the only steryl ester hydrolase being active under these conditions ([Koffel05]). The data also indicate a transcriptional control of YEH1 through ROX3, a component of the complex that regulates RNA polymerase II [Koffel06]. In addition, under conditions of heme-deficiency the acyl-CoA:sterol acyltransferase (ASAT) ARE1 is transcriptionally up-regulated which is regulated by ROX1p in the ARE1 promoter region. Hence, ARE1p is the hypoxic form of the ASAT's which is induced by heme depletion. On the other side ARE2p is the normoxic form of the ASAT's which is induced under aerobic conditions [Valachovic02]. Moreover, ARE1 and ARE2 contribute differentially to the steryl ester formation in the sterol biosynthetic pathway with ARE2p predominantly esterifying ergosterol and ARE1p carrying out the esterification of sterol precursors of the pathway such as zymosterol and lanosterol ([Yang96, Yu96, Zweytick00a, JensenPergakes01]). Overall a differentially regulated activity of both the steryl ester hydrolases and the ASAT's by the heme status of the cell highlights the adaptability of the pathway and individual impact of the isoenzymes under varying conditions.
+                </p>
+            </div> -->
+        </div>
+
+        <div *ngIf="dataset === 'acknowledgment'">
+            <div class="description" style="margin: 3%;">
+                    <h3 style="align-items: center;">Acknowledgments</h3>
+                    <br>
+                    <p>
+                        We gratefully acknowledge PMN for providing valuable data, developed at Michigan State University's Department of Biochemistry & Molecular Biology and the Plant Resilience Institute.
+                    </p>
+                    <p>
+                        We also extend our appreciation to MetaCyc, developed and maintained by SRI International. MetaCyc serves as a vital resource for curated metabolic pathway summaries, enabling us to present accurate and detailed insights into plant fat metabolism.
+                    </p>
+                    <p>
+                        In Fatplants, we identified 24 metabolic pathways related to plant fat metabolism by searching for key terms such as "fatty acid," "lipid," and "sterol" in PlantCyc. These pathways were imported into Fatplants and are now available for user reference.
+                    </p>
+                    <p>
+                        Each pathway includes a summary and an interactive visualization, allowing users to explore its components and reactions. Clicking on tags within the pathway diagram redirects users to the corresponding PMN page for detailed biochemical and genetic information. Additionally, pathway summaries from MetaCyc include direct links to the MetaCyc database for further exploration.
+                    </p>
+                    <p>
+                        By integrating these resources, Fatplants offers a comprehensive and reliable repository of plant lipid metabolic pathways, supporting researchers, students, and professionals in plant biochemistry and metabolic engineering.
+                    </p>
+                    <br>
+                    <b>References on Plant Metabolic Network (PMN) Pathway and MetaCyc Database</b><br>
+                    <br>
+                    <ol style="list-style-type: decimal">
+                        <li><p>Charles Hawkins, Bo Xue, Farida Yasmin, Gabrielle Wyatt, Philipp Zerbe, Seung Y Rhee, Plant Metabolic Network 16: expansion of underrepresented plant groups and experimentally supported enzyme data, Nucleic Acids Research, Volume 53, Issue D1, 6 January 2025, Pages D1606–D1613, <a href="https://doi.org/10.1093/nar/gkae991" class="uri">https://doi.org/10.1093/nar/gkae991</a></p></li>
+                        <li><p>Caspi, R., Billington, R., Keseler, I. M., Kothari, A., Krummenacker, M., Midford, P. E., Ong, W. K., Paley, S., Subhraveti, P., & Karp, P. D. (2020). The MetaCyc database of metabolic pathways and enzymes - a 2019 update. Nucleic acids research, 48(D1), D445–D453. <a href="https://doi.org/10.1093/nar/gkz862" class="uri">https://doi.org/10.1093/nar/gkz862</a></p></li>
+                        <li><p>Caspi, R., Dreher, K., & Karp, P. D. (2013). The challenge of constructing, classifying, and representing metabolic pathways. FEMS microbiology letters, 345(2), 85–93. <a href="https://doi.org/10.1111/1574-6968.12194" class="uri">https://doi.org/10.1111/1574-6968.12194</a></p></li>
+                        <li><p>Latendresse, M., Karp, P.D. Web-based metabolic network visualization with a zooming user interface. BMC Bioinformatics 12, 176 (2011). <a href="https://doi.org/10.1186/1471-2105-12-176" class="uri">https://doi.org/10.1186/1471-2105-12-176</a></p></li>
+                        </ol>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+

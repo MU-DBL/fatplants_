@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Pathway</title>
+    <script type="text/javascript" language="javascript" src="https://plantreactome.gramene.org/DiagramJs/diagram/diagram.nocache.js"></script>
+
+<script type="text/javascript" language="javascript">
+    //Creating the Plant Reactome Diagram widget
+    //Take into account a proxy needs to be set up in your server side pointing to www.reactome.org
+    function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+    function onReactomeDiagramReady(){  //This function is automatically called when the widget code is ready to be used
+        var diagram = Reactome.Diagram.create({
+            "placeHolder" : "diagramHolder",
+            "width" : 900,
+            "height" : 500
+        });
+
+        var id = getQueryVariable("id")
+        //Initialising it to the "Circadian Rhythm" pathway
+        if (id != false){
+            diagram.loadDiagram(id);
+        }
+        else{
+            console.log("Not found")
+            diagram.loadDiagram("R-OSA-1119506");
+        }
+
+
+        //Adding different listeners
+
+        // diagram.onDiagramLoaded(function (loaded) {
+        //     console.info("Loaded ", loaded);
+        //     diagram.selectItem("R-OSA-1119567");
+        //     diagram.flagItems("ELF3");
+        // });
+
+        diagram.onObjectHovered(function (hovered){
+            console.info("Hovered ", hovered);
+        });
+
+        diagram.onObjectSelected(function (selected){
+            console.info("Selected ", selected);
+        });
+    }
+</script>
+
+    <!-- <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/basic/jquery.qtip.css" /> -->
+  <style type="text/css">
+    body {background-color: transparent}
+  </style>
+</head>
+<body>
+        <div id="diagramHolder"></div>
+<br>
+<br>
+
+
+</body>
+</html>
