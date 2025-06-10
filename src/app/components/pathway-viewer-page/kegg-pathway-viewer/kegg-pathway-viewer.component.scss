@@ -107,13 +107,13 @@ a:hover {
 }
 
 #help-icon-div {
-   position: absolute;
-   right: -10%;
+   position: relative;
+   //right: -10%;
    vertical-align: middle;
    height: 100%;
  }
 #help-icon {
-  position: absolute;
+  position: relative;
   top: 0px;
 }
 .help-icon {
