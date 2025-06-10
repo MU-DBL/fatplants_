@@ -62,6 +62,10 @@ mat-card {
   table-layout: fixed;
 }
 
+.mdc-data-table__table{
+  min-width: 50%;
+}
+
 .generow {
   text-align: left;
 }
@@ -139,13 +143,13 @@ a:hover {
 }
 
 #help-icon-div {
-  position: absolute;
-  right: -10%;
+  position: relative;
+  //right: -10%;
   vertical-align: middle;
   height: 100%;
 }
 #help-icon {
-  position: absolute;
+  position: relative;
   top: 0px;
 }
 
