@@ -32,6 +32,11 @@ mat-card.base {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  :host ::ng-deep .mat-mdc-tab-labels {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   
   mat-tab-group {
     flex-grow: 1;
