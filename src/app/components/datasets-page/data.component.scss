@@ -159,19 +159,18 @@ input.mat-input-element {
     padding-right: 10%;
 }
 
-.mat-form-field {
+.mat-mdc-form-field {
     width: 40%;
-    height: 45px;
+    //height: 45px;
     margin-left: 2%;
     margin-top: 2%;
     margin-bottom: 1.5%;
-    border: 1px solid #ccc;
+    //border: 1px solid #ccc;
     box-sizing: border-box;
-    box-shadow: -10px 0px 10px -5px rgba(128, 128, 128, 0.5), 10px 0px 10px -5px rgba(128, 128, 128, 0.5);
-    flex: 1;
+    //box-shadow: -10px 0px 10px -5px rgba(128, 128, 128, 0.5), 10px 0px 10px -5px rgba(128, 128, 128, 0.5);
+    flex: 1;//
     margin-right: 8px;
 }
-
 .search-button {
     background-color: #629B07;
     justify-content: center;
