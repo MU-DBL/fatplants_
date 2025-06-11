@@ -124,8 +124,8 @@
             </div>
         </ng-template>
     </div>
-    <p class="subtitle">Enzyme Pathways</p>
-    <span *ngFor="let pathway of pathways; let i=index">
+    <p style="padding-left: 1%;" class="subtitle">Enzyme Pathways</p>
+    <span style="padding-left: 1%;" *ngFor="let pathway of pathways; let i=index">
         <span *ngIf="pathway.nameabbreviation!='Unknown'">
             <span *ngIf="i">|</span>
             <a href="/aralip-menu/pathway/{{pathway.pathway_id}}" target="_blank"
@@ -133,7 +133,7 @@
             </span>
     </span>
     <div *ngIf="locus.length > 0">
-        <p class="subtitle">Locus Data & Links </p>
+        <p style="padding-left: 1%;" class="subtitle">Locus Data & Links </p>
         <div id='table' style="margin-left: 2%; margin-right: 2%;">
             <mat-table [dataSource]='locusDataSource' style="width:100%">
                 <ng-container matColumnDef="locus_id">
@@ -216,7 +216,7 @@
             <mat-card class="overlay" *ngIf="ref_selected">
                 <div class="popup">
                     <p *ngFor="let ref of ref_selected"><a href="{{ref.ref}}" target="_blank"><div [innerHTML]="ref.alias"></div></a></p>
-                    <button mat-flat-button class="button_close" (click)="closeRefPopup()">Close</button>
+                    <button mat-flat-button color="primary" class="button_close" (click)="closeRefPopup()">Close</button>
                 </div>
             </mat-card>
 
@@ -295,7 +295,7 @@
                                 'references' column.</div>
                         </div>
                     </div>
-                    <button mat-flat-button class="button_close" (click)="closeMutantPopup()">Close</button>
+                    <button mat-flat-button class="button_close" color="primary"  (click)="closeMutantPopup()">Close</button>
                 </div>
             </mat-card>
             <mat-card class="overlay" *ngIf="est_selected">
@@ -430,7 +430,7 @@
                         </tr>
                     </mat-table>
                     <br>
-                    <button mat-flat-button class="button_close"  (click)="closeEstPopup()">Close</button>
+                    <button mat-flat-button color="primary" class="button_close"  (click)="closeEstPopup()">Close</button>
                 </div>
             </mat-card>
         </div>

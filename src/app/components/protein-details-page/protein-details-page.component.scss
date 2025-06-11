@@ -524,8 +524,15 @@ mat-cell {
   font-weight: normal;
 }
 
+.icon-text {
+  display: inline-flex;
+  align-items: center; /* Vertically align */
+  gap: 2px; /* Optional: spacing between icon and text */
+}
+
 .info-icon {
-  font-size: 1em;
+  font-size: 20px; 
+  vertical-align: middle;
 }
 
 .alt-names {

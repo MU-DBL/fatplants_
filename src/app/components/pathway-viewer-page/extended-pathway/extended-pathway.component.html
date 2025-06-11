@@ -1,0 +1,74 @@
+<mat-card class="row columns base" style="min-width: 1000px;">
+  <div class="columns small-10 small-centered textrow">
+    <h1>Pathway Viewer</h1>
+    <p>A tool for viewing pathway figures.</p>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill" class="selector">
+      <mat-label>Pathways</mat-label>
+      <mat-select (selectionChange)="onChange($event.value)" [value]="selectedOption">
+        <mat-option *ngFor="let option of pathwayOptions" [value]="option">{{ option.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="info-table">
+    <!-- <mat-tab-group mat-stretch-tabs mat-align-tabs="center" (selectedTabChange)="changeTable($event)">
+      <mat-tab label="Regulation"></mat-tab>
+      <mat-tab label="Proteomics"></mat-tab>
+      <mat-tab label="Transcriptomics"></mat-tab>
+      <mat-tab label="Translatomics"></mat-tab>
+    </mat-tab-group> -->
+
+    <mat-table [dataSource]="selectedDetails">
+
+      <!-- in_fp column: Fatplants check -->
+      <ng-container matColumnDef="in_fp">
+        <mat-header-cell *matHeaderCellDef> In Fatplants </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button [color]="selectedUniprot ? 'primary' : 'warn'"
+                  [disabled]="!selectedUniprot"
+                  aria-label="Go to protein page."
+                  (click)="selectedUniprot && navigateToProtein()">
+            <mat-icon>{{ selectedUniprot ? 'check' : 'close' }}</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <!-- dynamic columns -->
+      <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns | excludeListItem: 'in_fp'">
+        <mat-header-cell *matHeaderCellDef> {{ columnTitles[column] || column }} </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element[column] || '-' }} </mat-cell>
+      </ng-container>
+
+      <!-- header and rows -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+  <!-- description panel -->
+  <div class="info-table">
+    <mat-card class="name-card">
+      <mat-card-subtitle>
+        {{ selectedTair || "No component selected." }}
+      </mat-card-subtitle>
+      <mat-card-content>
+        {{ selectedDetails[0].description || "-" }}
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- image + canvas area -->
+  <div [class.show]="selectedGraph.length > 0" class="imageArea">
+    <mat-progress-bar mode="indeterminate" *ngIf="loading" class="loading-bar"></mat-progress-bar>
+
+    <div class="canvas-container">
+      <canvas #canvas id="imgCanvas"
+              [width]="img.width || 800"
+              [height]="img.height || 600">
+      </canvas>
+    </div>
+  </div>
+</mat-card>

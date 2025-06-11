@@ -1,18 +1,17 @@
-.header {
-    height: 3.5rem;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    font-family: Roboto;
-    font-size: 1.8vw;
-    font-weight: 500;
-    background: #629B07 !important;
-    color: whitesmoke;
-    padding: 10px 15px;
-    margin: 0; 
-    box-sizing: border-box;
-    width: 100%;
-  }
+.page-title-bar {
+  background-color: #629B07;
+  color: rgb(255, 255, 255);
+  padding: 0.1rem;
+}
+
+/*page's title - font style*/
+.page-title {
+  font-size: 1.8vw;
+  font-weight: 500;
+  padding-left: 2%;
+  margin-block-end: 0.2rem;
+  margin-block-start: 0.2rem;
+}
 
 #component-container{
     width: 80%;
@@ -26,17 +25,6 @@
     background-color: rgba(124, 179, 66, 0.65);
 }
 
-#title {
-    text-align: center;
-    font-family: "Lato",sans-serif ;
-    font-weight: bold;
-}
-
-
-
-/* .card{
-    margin: 10px 0 !important;
-} */
 .card pre{
     font-family: "Lato",sans-serif ;
 }

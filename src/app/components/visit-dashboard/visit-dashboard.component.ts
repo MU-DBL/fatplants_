@@ -22,6 +22,7 @@ interface ChartPoint {
   templateUrl: './visit-dashboard.component.html',
   styleUrls: ['./visit-dashboard.component.scss']
 })
+
 export class VisitDashboardComponent implements OnInit, OnDestroy {
   map: L.Map | null = null;
   options: L.MapOptions | undefined;
@@ -32,7 +33,8 @@ export class VisitDashboardComponent implements OnInit, OnDestroy {
   cityVisits: CityVisit[] = [];
 
   visitsData: any;
-  colorScheme = '#5AA454';
+  colorScheme = 'forest';
+
   chartWidth = 1000;
 
   constructor(private matomoService: MatomoService) {}

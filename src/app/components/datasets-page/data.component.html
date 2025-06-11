@@ -3,14 +3,14 @@
 </div>
 <div id="base">
     <div class="left-menu">
-        <p class="subheader protein" style="font-size: 16px;padding-left: 5%;">Protein Species</p>
+        <p class="subheader protein" style="font-size: 16px;margin-top: 6%;">Protein Species</p>
         <a class="menu active" [class.active]='this.dataset == "arabidopsis"' (click)='changeDataset("arabidopsis")'>Arabidopsis</a>
         <a class="menu" [class.active]='this.dataset == "camelina"' (click)='changeDataset("camelina")'>Camelina</a>
         <a class="menu" [class.active]='this.dataset == "soybean"' (click)='changeDataset("soybean")'>Soybean</a>
         <a class="menu" [class.active]='this.dataset == "cuphea"' (click)='changeDataset("cuphea")'>Cuphea</a>
         <a class="menu" [class.active]='this.dataset == "pennycress"' (click)='changeDataset("pennycress")'>Pennycress</a>
         <hr class="custom-hr">
-        <p class="subheader fattyacid" style="font-size: 16px; padding-left: 5%; margin-top: 1%;">Fatty Acids</p>
+        <p class="subheader fattyacid" style="font-size: 16px; margin-top: 1%;">Fatty Acids</p>
         <a class="menu" [class.active]='this.dataset == "fattyacid"' (click)='changeDataset("fattyacid")'>Chemical Data</a>
         <hr class="custom-hr">
     </div>

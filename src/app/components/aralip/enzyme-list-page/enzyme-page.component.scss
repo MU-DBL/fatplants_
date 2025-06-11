@@ -9,12 +9,12 @@
 
 /*page's title - font style*/
 .page-title {
-    font-family: Roboto;
+    
     font-size: 1.8vw;
     font-weight: 500;
     padding-left: 2%;
-    margin-block-end: 0.5rem;
-    margin-block-start: 0.5rem;
+    margin-block-end: 0.2rem;
+    margin-block-start: 0.2rem;
 }
 
 #base {
@@ -105,10 +105,6 @@ mat-header-row {
     padding-top: 1%;
 }
 
-// mat-row {
-//     border-bottom-color: $pale-green;
-// }
-
 .pointer {
     cursor: pointer;
     padding: 5px;
@@ -153,7 +149,7 @@ input.mat-input-element {
     width: 40%;
     //height: 45px;
     margin-left: 2%;
-    margin-top: 2%;
+    margin-top: 4%;
     margin-bottom: 1.5%;
     //border: 1px solid #ccc;
     box-sizing: border-box;

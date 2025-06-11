@@ -10,11 +10,10 @@
 /*page's title - font style*/
 .page-title {
     font-size: 1.8vw;
-    font-family: Roboto;
     font-weight: 500;
     padding-left: 2%;
-    margin-block-end: 0.5rem;
-    margin-block-start: 0.5rem;
+    margin-block-end: 0.2rem;
+    margin-block-start: 0.2rem;
 }
 
 mat-card.base {
@@ -50,10 +49,6 @@ button {
 textarea {
   width: 100%;
   border-radius: 10px;
-}
-
-mat-card {
-  font-family: 'Catamaran', sans-serif;
 }
 
 #genetable {

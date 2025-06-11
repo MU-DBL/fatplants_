@@ -1,229 +1,222 @@
 <mat-card class="search-container">
-    <form [formGroup]="searchForm">
-      <mat-form-field class="filter-box">
-        <mat-label>Filter Type</mat-label>
-        <mat-select formControlName="searchType">
-          <mat-option [value]="'id'"> ID </mat-option>
-          <mat-option [value]="'Description'"> Description </mat-option>
-          <mat-option [value]="'Category'"> Category </mat-option>
-        </mat-select>
-      </mat-form-field>
-  
-      <mat-form-field class="search-field">
-        <mat-label>Search Kinase Client (example: GO:0006631)...</mat-label>
-        <input matInput formControlName="searchValue" />
-      </mat-form-field>
-      <button mat-flat-button color="primary" class="button_search" (click)="performSearch()">Search</button>
-    </form>
-  </mat-card>
-  
-  <ng-template #warningSearchDialog>
-    <h2 matDialogTitle>Warning</h2>
-    <p matDialogContent><em>Your search gave 0 results, please search again ....!</em></p>
-    <mat-dialog-actions >
-      <button mat-button matDialogClose>Dismiss</button>
-    </mat-dialog-actions>
-  </ng-template>
-  
-  
-  <div class="card">
-    <div id="tooltip"></div>
+  <form [formGroup]="searchForm">
+    <mat-form-field class="filter-box">
+      <mat-label>Filter Type</mat-label>
+      <mat-select formControlName="searchType">
+        <mat-option [value]="'id'"> ID </mat-option>
+        <mat-option [value]="'Description'"> Description </mat-option>
+        <mat-option [value]="'Category'"> Category </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="search-field">
+      <mat-label>Search Kinase Client (example: GO:0006631)...</mat-label>
+      <input matInput formControlName="searchValue" />
+    </mat-form-field>
+    <button mat-flat-button color="primary" class="button_search" (click)="performSearch()">Search</button>
+  </form>
+</mat-card>
+
+<ng-template #warningSearchDialog>
+  <h2 matDialogTitle>Warning</h2>
+  <p matDialogContent><em>Your search gave 0 results, please search again ....!</em></p>
+  <mat-dialog-actions>
+    <button mat-button matDialogClose>Dismiss</button>
+  </mat-dialog-actions>
+</ng-template>
+
+
+<div class="card">
+  <div id="tooltip"></div>
+  <div class="cy-wrapper">
     <div id="cy" cy (click)="updateSelected()"></div>
-    <div class = 'right-content-box'>
-    <button mat-flat-button color="primary" class="button_reset" [disabled]="!isResetEnabled" (click)="resetNetwork()">Reset Network</button>
+    <div class='right-content-box'>
+      <button mat-flat-button color="primary" class="button_reset" [disabled]="!isResetEnabled"
+        (click)="resetNetwork()">Reset Network</button>
       <div style="margin: 10px; margin-bottom: 20px;">
-        Information: 
+        Information:
       </div>
-      <div>
+      <div style="margin: 10px;">
         <mat-spinner *ngIf="!cytoData" style="margin: 60px auto"></mat-spinner>
-        <div *ngIf="hover_data.length < 1 && clickedEdge_Data.length<1 && this.cytoData" class="noBorder" >
+        <div *ngIf="hover_data.length < 1 && clickedEdge_Data.length<1 && this.cytoData" class="noBorder">
           <div>
             <p style="text-align: center;">No Element Selected</p>
           </div>
         </div>
-  
+
         <div *ngIf="hover_data.length > 0" style="margin-bottom: 10px" class="noBorder">
           <div id="detail_info">
             <div *ngFor="let item of hover_data">
-              <div *ngIf="item.title != 'Experiment Data'" >
-                <!-- {{item}} -->
-                
-                <span class="detailTitle">{{item.title}}</span> 
-                <mat-icon 
-                  style="font-size: small;" 
-                  *ngIf="item.title == 'Substrate Count'" 
-                  matTooltip="Node size is based on substrate count."
-                  matTooltipPosition="after">help
-                </mat-icon> 
-                <mat-icon 
-                  style="font-size: small;" 
-                  *ngIf="item.title == 'Phosphorylated Percentage'" 
+              <div *ngIf="item.title != 'Experiment Data'">
+                <span class="detailTitle">{{item.title}}</span>
+                <mat-icon style="font-size: small;" *ngIf="item.title == 'Substrate Count'"
+                  matTooltip="Node size is based on substrate count." matTooltipPosition="after">help
+                </mat-icon>
+                <mat-icon style="font-size: small;" *ngIf="item.title == 'Phosphorylated Percentage'"
                   matTooltip="Edge width is based on its Phosphorylated Percentage. This value is noted on the edges."
                   matTooltipPosition="after">help
-                </mat-icon> 
-                <mat-icon 
-                  style="font-size: small;" 
-                  *ngIf="item.title == 'Experiments ID'"
+                </mat-icon>
+                <mat-icon style="font-size: small;" *ngIf="item.title == 'Experiments ID'"
                   matTooltip="Edge color and experiment data is based on its Experiments Id."
                   matTooltipPosition="after">help
-                </mat-icon> 
-                <mat-icon 
-                  style="font-size: small;" 
-                  *ngIf="item.title == 'Family'" 
-                  matTooltip="Node color is based on its family."
-                  matTooltipPosition="after">help
-                </mat-icon> 
+                </mat-icon>
+                <mat-icon style="font-size: small;" *ngIf="item.title == 'Family'"
+                  matTooltip="Node color is based on its family." matTooltipPosition="after">help
+                </mat-icon>
                 <br />
-                <span *ngIf="!item.detail.nodeTitle" style="word-wrap: break-word; margin-left: 6px;">{{item.detail}}</span>
+                <span *ngIf="!item.detail.nodeTitle"
+                  style="word-wrap: break-word; margin-left: 6px;">{{item.detail}}</span>
                 <span *ngIf="item.detail.nodeTitle" style="word-wrap: break-word; margin-left: 6px;">
                   <button [routerLink]="" (click)="renderExtendableNode(item.detail, details)">Show Node</button>
-                </span> 
-                <br/><br/>
+                </span>
+                <br /><br />
               </div>
             </div>
           </div>
         </div>
         <div *ngIf="clickedEdge_Data.length>1">
-          <mat-card  class="noBorder" >
+          <mat-card class="noBorder">
             <mat-card-content>
-                <div *ngFor="let item of clickedEdge_Data">
-                  
-                  <span class="detailTitle">
-                    {{item.title}} <br>
-                  </span>
-                  <!-- <span style="word-wrap: break-word; margin-left: 6px;" *ngIf="expData.key == 'Pubmed'">
+              <div *ngFor="let item of clickedEdge_Data">
+
+                <span class="detailTitle">
+                  {{item.title}} <br>
+                </span>
+                <!-- <span style="word-wrap: break-word; margin-left: 6px;" *ngIf="expData.key == 'Pubmed'">
                      <a href="https://pubmed.ncbi.nlm.nih.gov/">
                       {{expData.value}}
                      </a> 
                   </span> -->
-                  <span style="word-wrap: break-word; margin-left: 6px;" >
-                    {{item.detail}}
-                  </span>
-                  <br />
-                </div>
+                <span style="word-wrap: break-word; margin-left: 6px;">
+                  {{item.detail}}
+                </span>
+                <br />
+              </div>
             </mat-card-content>
           </mat-card>
-        </div>  
+        </div>
       </div>
     </div>
   </div>
-  
-  <mat-expansion-panel class="card">
-  
-    <mat-expansion-panel-header>
-      <mat-panel-title id="exptitle">
-        Graph Options
-      </mat-panel-title>
-      <mat-panel-description>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-  
-    <div id="active-filters-container">
-      <div *ngFor="let filt of filters" class="filter">
-        {{ filt.filter }}
-        <span class="material-icons cancel-x" (click)="removeFilter(filt)">
-          close
-        </span>
-      </div>
-      <div *ngFor="let filt of styles| slice:2" class="filter">
-        {{ filt['selector'] }} Style
-        <span class="material-icons cancel-x" (click)="removeStyle(filt)">
-          close
-        </span>
-      </div>
+</div>
+
+<mat-expansion-panel class="card">
+
+  <mat-expansion-panel-header>
+    <mat-panel-title id="exptitle">
+      Graph Options
+    </mat-panel-title>
+    <mat-panel-description>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div id="active-filters-container">
+    <div *ngFor="let filt of filters" class="filter">
+      {{ filt.filter }}
+      <span class="material-icons cancel-x" (click)="removeFilter(filt)">
+        close
+      </span>
     </div>
-  
-    <h3> Add a filter: </h3>
-    <div id="filter-container">
-      <form [formGroup]="filterForm">
-        <mat-form-field class="filter-field">
-          <mat-label>Filter Type</mat-label>
-          <mat-select formControlName="filterType">
-            <mat-option [value]="'node'"> Node </mat-option>
-            <mat-option [value]="'edge'"> Edge </mat-option>
-          </mat-select>
-        </mat-form-field>
-  
-        <mat-form-field class="filter-field" *ngIf="filterForm.get('filterType').value === 'node'">
-          <mat-label>Property</mat-label>
-          <mat-select matInput formControlName="filterProp">
-            <mat-option *ngFor="let key of nodeKeys" [value]="key">{{key}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-  
-        <mat-form-field class="filter-field" *ngIf="filterForm.get('filterType').value === 'edge'">
-          <mat-label>Property</mat-label>
-          <mat-select matInput formControlName="filterProp">
-            <mat-option *ngFor="let key of edgeKeys" [value]="key">{{key}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-  
-        <mat-form-field class="filter-field">
-          <mat-label>Operator</mat-label>
-          <mat-select matInput formControlName="filterOperator">
-            <mat-option value='='>Equals</mat-option>
-            <mat-option value='<'>Less Than</mat-option>
-            <mat-option value='<='>Less Than or Equal</mat-option>
-            <mat-option value='>'>Greater Than</mat-option>
-            <mat-option value='>='>Greater Than or Equal</mat-option>
-          </mat-select>
-        </mat-form-field>
-  
-        <mat-form-field class="filter-field">
-          <mat-label>Value</mat-label>
-          <input matInput formControlName="filterValue" />
-          <mat-error *ngIf="filterForm.get('filterValue').hasError('alphaNumericError')">Alphanumeric characters and spaces only.</mat-error>
-        </mat-form-field>
-  
-        <button mat-flat-button color="primary" (click)="addFilter(); showSelected = false" [disabled]="!filterForm.valid"> Add Filter </button>
-        <!-- <mat-slide-toggle formControlName="filterAndOr">AND/OR</mat-slide-toggle> -->
-      </form>
+    <div *ngFor="let filt of styles| slice:2" class="filter">
+      {{ filt['selector'] }} Style
+      <span class="material-icons cancel-x" (click)="removeStyle(filt)">
+        close
+      </span>
     </div>
-  
-    <h3> Add a style: </h3>
-    <div id="style-container">
-      <form [formGroup]="styleForm">
-        <mat-form-field appearance="fill" class="style-field">
-          <mat-label>Selector Type</mat-label>
-          <mat-select formControlName="selectorType">
-            <mat-option [value]="'node'"> Node </mat-option>
-            <mat-option [value]="'edge'"> Edge </mat-option>
-          </mat-select>
-        </mat-form-field>
-  
-        <mat-form-field class="style-field">
-          <mat-label>Selector</mat-label>
-          <textarea matInput placeholder="Ex. group > 1..." formControlName="selectorValue"></textarea>
-        </mat-form-field>
-  
-        <div class="style-spacer"></div>
-  
-        <mat-form-field class="style-field">
-          <mat-label>Style Field</mat-label>
-          <textarea matInput placeholder="Ex. background-color, line-color" formControlName="styleType"></textarea>
-        </mat-form-field>
-  
-        <mat-form-field class="style-field">
-          <mat-label>Style Value</mat-label>
-          <textarea matInput placeholder="Ex. red, triangle..." formControlName="styleValue"></textarea>
-        </mat-form-field>
-  
-        <button mat-flat-button color="primary" (click)="addStyle();"> Add Style </button>
-      </form>
-    </div>
-  
-  
-    <h3> Other Options: </h3>
-    <div id="options-container">
-      <mat-form-field appearance="fill">
-        <mat-label>Graph Layout</mat-label>
-        <mat-select (selectionChange)="changeLayout($event.value)">
-          <mat-option *ngFor="let layout of layouts" [value]="layout.value">
-            {{layout.value}}
-          </mat-option>
+  </div>
+
+  <h3> Add a filter: </h3>
+  <div id="filter-container">
+    <form [formGroup]="filterForm">
+      <mat-form-field class="filter-field">
+        <mat-label>Filter Type</mat-label>
+        <mat-select formControlName="filterType">
+          <mat-option [value]="'node'"> Node </mat-option>
+          <mat-option [value]="'edge'"> Edge </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
-  
-  </mat-expansion-panel>
-  
+
+      <mat-form-field class="filter-field" *ngIf="filterForm.get('filterType').value === 'node'">
+        <mat-label>Property</mat-label>
+        <mat-select matInput formControlName="filterProp">
+          <mat-option *ngFor="let key of nodeKeys" [value]="key">{{key}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="filter-field" *ngIf="filterForm.get('filterType').value === 'edge'">
+        <mat-label>Property</mat-label>
+        <mat-select matInput formControlName="filterProp">
+          <mat-option *ngFor="let key of edgeKeys" [value]="key">{{key}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="filter-field">
+        <mat-label>Operator</mat-label>
+        <mat-select matInput formControlName="filterOperator">
+          <mat-option value='='>Equals</mat-option>
+          <mat-option value='<'>Less Than</mat-option>
+          <mat-option value='<='>Less Than or Equal</mat-option>
+          <mat-option value='>'>Greater Than</mat-option>
+          <mat-option value='>='>Greater Than or Equal</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="filter-field">
+        <mat-label>Value</mat-label>
+        <input matInput formControlName="filterValue" />
+        <mat-error *ngIf="filterForm.get('filterValue').hasError('alphaNumericError')">Alphanumeric characters and
+          spaces only.</mat-error>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" (click)="addFilter(); showSelected = false"
+        [disabled]="!filterForm.valid"> Add Filter </button>
+      <!-- <mat-slide-toggle formControlName="filterAndOr">AND/OR</mat-slide-toggle> -->
+    </form>
+  </div>
+
+  <h3> Add a style: </h3>
+  <div id="style-container">
+    <form [formGroup]="styleForm">
+      <mat-form-field appearance="fill" class="style-field">
+        <mat-label>Selector Type</mat-label>
+        <mat-select formControlName="selectorType">
+          <mat-option [value]="'node'"> Node </mat-option>
+          <mat-option [value]="'edge'"> Edge </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="style-field">
+        <mat-label>Selector</mat-label>
+        <textarea matInput placeholder="Ex. group > 1..." formControlName="selectorValue"></textarea>
+      </mat-form-field>
+
+      <div class="style-spacer"></div>
+
+      <mat-form-field class="style-field">
+        <mat-label>Style Field</mat-label>
+        <textarea matInput placeholder="Ex. background-color, line-color" formControlName="styleType"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="style-field">
+        <mat-label>Style Value</mat-label>
+        <textarea matInput placeholder="Ex. red, triangle..." formControlName="styleValue"></textarea>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" (click)="addStyle();"> Add Style </button>
+    </form>
+  </div>
+
+
+  <h3> Other Options: </h3>
+  <div id="options-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Graph Layout</mat-label>
+      <mat-select (selectionChange)="changeLayout($event.value)">
+        <mat-option *ngFor="let layout of layouts" [value]="layout.value">
+          {{layout.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</mat-expansion-panel>

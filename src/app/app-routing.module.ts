@@ -16,7 +16,7 @@ import { GoCytoscapeComponent } from './components/go-cytoscape-page/go-cytoscap
 import { LatestNewsPageComponent } from './components/latest-news-page/latest-news-page.component';
 import { ResearchPapersPageComponent } from './components/research-papers-page/research-papers-page.component';
 import { AralipMenuComponent } from './components/aralip/aralip-menu/aralip-menu.component';
-import { EnzymesComponent } from './components/aralip/enzymes/enzymes.component';
+import { EnzymesComponent } from './components/aralip/enzyme-details-page/enzymes.component';
 import { HehosComponent } from './components/aralip/hehos/hehos.component';
 import { DownloadPageComponent } from './components/download-page/download-page.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';

@@ -55,7 +55,7 @@ import { PathwayViewerPageComponent } from './components/pathway-viewer-page/pat
 import { BlastPageComponent } from './components/blast-page/blast-page.component';
 import { CustomPathwayViewerComponent } from './components/pathway-viewer-page/custom-pathway-viewer/custom-pathway-viewer.component';
 import { KeggPathwayViewerComponent } from './components/pathway-viewer-page/kegg-pathway-viewer/kegg-pathway-viewer.component';
-import { ExtendedPathwayViewerComponent } from './components/pathway-viewer-page/extended-pathway-viewer/extended-pathway-viewer.component';
+import { ExtendedPathwayViewerComponent } from './components/pathway-viewer-page/extended-pathway-aralip-viewer/extended-pathway-viewer.component';
 import { DataComponent } from './components/datasets-page/data.component';
 import { GoCytoscapeComponent } from './components/go-cytoscape-page/go-cytoscape.component';
 import { GoCytoscapeNetworkComponent } from './components/commons/go-cytoscape-network/go-cytoscape-network.component';
@@ -63,22 +63,22 @@ import { CounterComponent } from './components/home-page/counter/counter.compone
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ResearchPapersPageComponent } from './components/research-papers-page/research-papers-page.component';
 import { LatestNewsPageComponent } from './components/latest-news-page/latest-news-page.component';
-import { EnzymePageComponent } from './components/aralip/enzyme-page/enzyme-page.component';
+import { EnzymePageComponent } from './components/aralip/enzyme-list-page/enzyme-page.component';
 import { LipidPageComponent } from './components/aralip/lipid-page/lipid-page.component';
 import { AralipMenuComponent } from './components/aralip/aralip-menu/aralip-menu.component';
 import { ContributorsComponent } from './components/aralip/about/contributors/contributors.component'; 
 import { AralipSiteComponent } from './components/aralip/about/aralip-site/aralip-site.component';
 import { AralipPathwayComponent } from './components/aralip/aralip-pathway/aralip-pathway.component';
 import{ MutantsComponent } from './components/aralip/mutant/mutant.component';
-import { EnzymesComponent } from './components/aralip/enzymes/enzymes.component';
+import { EnzymesComponent } from './components/aralip/enzyme-details-page/enzymes.component';
 import { CommentsComponent } from './components/aralip/comments/comments.component';
-import { LociSummaryComponent } from './components/aralip/loci-summary/loci-summary.component';
+import { LociSummaryComponent } from './components/aralip/loci-list-page/loci-summary.component';
 import { HehosComponent } from './components/aralip/hehos/hehos.component';
 import { AralipPathwayMainComponent } from './components/aralip/aralip-pathway-main/aralip-pathway-main.component';
 import { DownloadPageComponent } from './components/download-page/download-page.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { PlantMetabolioNetworkComponent } from './components/plant-metabolio-network-page/plant-metabolio-network.component'
-import { MemoryofjohnComponent } from './components/aralip/memoryofjohn/memoryofjohn.component'
+import { MemoryofjohnComponent } from './components/aralip/memory-of-john/memoryofjohn.component'
 import { NgxMatomoTrackerModule } from '@ngx-matomo/tracker';
 import { NgxMatomoRouterModule } from '@ngx-matomo/router';
 import { environment } from 'src/environments/environment';
@@ -87,7 +87,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AralipDownloadComponent } from './components/aralip/Download/download.component';
 import { CdkDetailRowDirective } from './directives/cdk-detail-row.directive';
-import { ExcludeListItemPipe } from './components/pathway-viewer-page/extended-pathway-viewer/extended-pathway-viewer.component';
+import { ExcludeListItemPipe, ExtendedPathwayComponent } from './components/pathway-viewer-page/extended-pathway/extended-pathway.component';
 
 @NgModule({
   declarations: [
@@ -137,7 +137,8 @@ import { ExcludeListItemPipe } from './components/pathway-viewer-page/extended-p
     MemoryofjohnComponent,
     VisitDashboardComponent,
     CdkDetailRowDirective,
-    ExcludeListItemPipe
+    ExcludeListItemPipe,
+    ExtendedPathwayComponent
   ],
   imports: [
     BrowserModule,

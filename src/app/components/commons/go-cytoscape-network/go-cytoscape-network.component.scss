@@ -27,6 +27,13 @@
   z-index: 100;
 }
 
+.cy-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+
 #cy {
   vertical-align:top;
   height: 60vh;
@@ -40,10 +47,10 @@
 
 .right-content-box {
     border: 1px solid #ccc;
-    border-radius: 5px;
     padding-top: 1%;
+    border-radius: 5px;
+    margin-top: 2%;
     margin-left: 1%;
-    padding-bottom: 20px;
     width: 18%;
     max-height: 100%;
     overflow-y: auto;

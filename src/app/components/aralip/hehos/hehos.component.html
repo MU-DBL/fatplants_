@@ -109,15 +109,15 @@
             </div>
         </ng-template>
     </div>
-    <p class="subtitle">Enzyme Pathways</p>
-    <span *ngFor="let pathway of pathways; let i=index">
+    <p style="padding-left: 1%;" class="subtitle">Enzyme Pathways</p>
+    <span style="padding-left: 1%;" *ngFor="let pathway of pathways; let i=index">
         <span *ngIf="pathway.nameabbreviation!='Unknown'">
             <span *ngIf="i">|</span>
             <a href="/aralip-menu/pathway/{{pathway.pathway_id}}" target="_blank"
                 style="margin-left: 1%;margin-right: 1%;">{{pathway.nameabbreviation}}</a>
             </span>
     </span>
-    <p class="subtitle">Locus Data & Links </p>
+    <p style="padding-left: 1%;" class="subtitle">Locus Data & Links </p>
     <div id='table' style="margin-left: 2%; margin-right: 2%;">
         <mat-table [dataSource]='locusDataSource' style="width:100%">
             <ng-container matColumnDef="locus_id">

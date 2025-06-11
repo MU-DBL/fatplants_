@@ -13,7 +13,7 @@
           [matTooltip]="'Enter any identifier to search. Click this icon for an example.'"
           (click)="setDefaultSearch()">help</mat-icon>
       </span>
-      <mat-form-field style="margin-left: 5%; width: 200px">
+      <mat-form-field style="margin-left: 2%; width: 200px">
         <mat-select [value]="selectedSpecies" (selectionChange)="changeSpecies($event)">
           <mat-option *ngFor="let s of species" [value]="s.value">
             {{s.name}}

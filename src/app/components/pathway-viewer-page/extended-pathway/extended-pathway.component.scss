@@ -1,0 +1,54 @@
+@import '../../../../variables';
+
+div{
+  width:100%;
+  text-align: center;
+  /* background-color: #FCFF7B; */
+}
+
+.imageArea{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+
+img {
+  width: 80%;
+}
+
+.selector{
+    margin-top: 10px;
+    width: 40%;
+}
+
+#imgCanvas {
+  width:100%;
+}
+
+.canvas-container {
+  width:80%;
+}
+
+.loading-bar {
+  width: 80%;
+  text-align: center;
+}
+
+.info-table {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.tab-select {
+  width: 100%;
+}
+
+#side-graph {
+  max-width: 150px;
+}
+
+.name-card {
+  margin: 10px auto;
+  width: 97%;
+}

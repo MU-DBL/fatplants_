@@ -15,15 +15,21 @@
                         <div id="mainContainer">
                             <p *ngIf='extendedData.status && extendedData.status === "reviewed"'
                                 class='status reviewed'>
-                                <mat-icon class='info-icon'
-                                    [matTooltip]='"This entry has been reviewed by the UniProtKB curators."'>info</mat-icon>
-                                Reviewed
+                                <span class="icon-text">
+                                    <mat-icon class="info-icon"
+                                        [matTooltip]='"This entry has been reviewed by the UniProtKB curators."'>
+                                        info
+                                    </mat-icon>
+                                    Reviewed
+                                </span>
                             </p>
                             <p *ngIf='!extendedData.status || extendedData.status === "unreviewed"'
                                 class='status unreviewed'>
-                                <mat-icon class='info-icon'
-                                    [matTooltip]='"This entry has not been reviewed by the UniProtKB curators, and may not have complete data."'>info</mat-icon>
-                                Unreviewed
+                                <span class="icon-text">
+                                    <mat-icon class="info-icon"
+                                        [matTooltip]='"This entry has not been reviewed by the UniProtKB curators, and may not have complete data."'>info</mat-icon>
+                                    Unreviewed
+                                </span>
                             </p>
                             <h2 class='title'>
                                 <span *ngIf='headingName !== undefined'>
@@ -87,7 +93,8 @@
                                                 </mat-option>
                                             </mat-select>
                                         </mat-form-field>
-                                        <button style="margin-left: 1%;" mat-raised-button color="primary" (click)="openGptDialog()">Ask
+                                        <button style="margin-left: 1%;" mat-raised-button color="primary"
+                                            (click)="openGptDialog()">Ask
                                             ChatGPT</button>
                                     </div>
                                     <p class='protein-function' *ngIf='extendedData.function.length > 0'>{{
@@ -95,7 +102,7 @@
                                     <p class='protein-function' *ngIf='extendedData.function.length === 0'>No
                                         function specified for this entry.</p>
                                     <b class='protein-subtitle'>Keywords:</b>
-                                    <p class= 'protein-function'>
+                                    <p class='protein-function'>
                                         {{parseKeywords(extendedData.keywords)}}
                                     </p>
                                 </mat-card>
@@ -120,13 +127,14 @@
                                 </div>
                             </mat-card>
                             <mat-card class='sequence-card'>
-                            <div class="sequence-header">
-                                <div class="header-content">
-                                    <h2>Sequence</h2>
-                                    <button id="sequence-button" color="primary" (click)="copyToClipboard(this.extendedData.sequence)">Copy Sequence</button>
+                                <div class="sequence-header">
+                                    <div class="header-content">
+                                        <h2>Sequence</h2>
+                                        <button id="sequence-button" color="primary"
+                                            (click)="copyToClipboard(this.extendedData.sequence)">Copy Sequence</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="sequence-display">{{this.extendedData.sequence}}</div>
+                                <div id="sequence-display">{{this.extendedData.sequence}}</div>
                             </mat-card>
                         </div>
                     </div>
@@ -136,26 +144,27 @@
                         Summary
                     </ng-template>
                     <p *ngIf='!extendedData.status || extendedData.status === "unreviewed"' class='status unreviewed'>
-                    <mat-icon class='info-icon'
-                        [matTooltip]='"This entry has not been reviewed by the UniProtKB curators, and may not have complete data."'>info</mat-icon>
-                    Unreviewed
-                </p>
-                <h2 class='title'>
-                    <span *ngIf='headingName !== undefined'>
-                        {{ headingName }}
-                    </span>
-                </h2>
-                <br>
+                        <mat-icon class='info-icon'
+                            [matTooltip]='"This entry has not been reviewed by the UniProtKB curators, and may not have complete data."'>info</mat-icon>
+                        Unreviewed
+                    </p>
+                    <h2 class='title'>
+                        <span *ngIf='headingName !== undefined'>
+                            {{ headingName }}
+                        </span>
+                    </h2>
+                    <br>
                     <mat-card class='sequence-card'>
                         <div class="sequence-header">
                             <div class="header-content">
                                 <h2>Sequence</h2>
-                                <button id="sequence-button" color="primary" (click)="copyToClipboard(this.extendedData.sequence)">Copy Sequence</button>
+                                <button id="sequence-button" color="primary"
+                                    (click)="copyToClipboard(this.extendedData.sequence)">Copy Sequence</button>
                             </div>
                         </div>
                         <div id="sequence-display">{{this.extendedData.sequence}}</div>
-                        </mat-card>
-                        <br>
+                    </mat-card>
+                    <br>
                 </mat-tab>
                 <mat-tab *ngIf="showAligmentsTab">
                     <ng-template mat-tab-label>
@@ -178,7 +187,9 @@
                                     <div class="sequence-header">
                                         <div class="header-content">
                                             <h2>Sequence</h2>
-                                            <button id="sequence-button" color="primary" (click)="copyToClipboard(this.extendedData.sequence)">Copy Sequence</button>
+                                            <button id="sequence-button" color="primary"
+                                                (click)="copyToClipboard(this.extendedData.sequence)">Copy
+                                                Sequence</button>
                                         </div>
                                     </div>
                                     <div id="sequence-display">{{this.extendedData.sequence}}</div>
@@ -227,8 +238,7 @@
                                         (click)="showViewer(elem.entryId, elem.pdbUrl)">
                                         <mat-icon>launch</mat-icon>
                                     </button>
-                                    <a mat-button href="/static/display3d.html?pdbId={{elem.pdbUrl}}"
-                                        target="_blank">
+                                    <a mat-button href="/static/display3d.html?pdbId={{elem.pdbUrl}}" target="_blank">
                                         <mat-icon>exit_to_app</mat-icon>
                                     </a>
                                 </mat-cell>
@@ -243,12 +253,11 @@
                         Blast
                     </ng-template>
                     <!--Blast-->
-                    <div class="column middleright"  *ngIf="isBlast" id="mainContainer">
+                    <div class="column middleright" *ngIf="isBlast" id="mainContainer">
                         <div class="row centered" *ngIf="showProgress">
                             <circle-progress [percent]="percent" [radius]="100" [outerStrokeWidth]="16"
                                 [innerStrokeWidth]="8" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'"
-                                [animation]="true" [animationDuration]="300"
-                                [startFromZero]="false"></circle-progress>
+                                [animation]="true" [animationDuration]="300" [startFromZero]="false"></circle-progress>
                         </div>
 
                         <div class="centered" *ngIf="!showProgress && showBlastResList.length == 0">
@@ -257,16 +266,12 @@
                         <div *ngIf="!showProgress && showBlastResList.length !== 0">
                             <p>Blast against Arabidopsis, Camelina and Soybean databse.</p>
                             <p>Filter Blast Result by Percent Identity. Current Value: {{BlastFilterValue}}%</p>
-                            <mat-slider 
-                            min="1" 
-                            max="100" 
-                            step="5" 
-                            [(ngModel)]="BlastFilterValue" 
-                            thumbLabel tickInterval="10"
-                            (change)="onBlastFilterValueChange($event)">
-                        </mat-slider>
+                            <mat-slider *ngIf="BlastFilterValue !== null" min="1" max="100" step="5" discrete>
+                                <input matSliderThumb [(ngModel)]="BlastFilterValue"
+                                    (valueChange)="onBlastFilterValueChange($event)">
+                            </mat-slider>
                         </div>
-                        <div class="row" *ngFor="let res of showFilterBlastResList">                           
+                        <div class="row" *ngFor="let res of showFilterBlastResList">
                             <mat-accordion>
                                 <mat-expansion-panel>
                                     <mat-expansion-panel-header>
@@ -285,13 +290,12 @@
                     <ng-template mat-tab-label>
                         PSI-Blast
                     </ng-template>
-                     <!--Blast-->
-                     <div class="column middleright" id="mainContainer">
+                    <!--Blast-->
+                    <div class="column middleright" id="mainContainer">
                         <div class="row centered" *ngIf="showProgress">
                             <circle-progress [percent]="percent" [radius]="100" [outerStrokeWidth]="16"
                                 [innerStrokeWidth]="8" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'"
-                                [animation]="true" [animationDuration]="300"
-                                [startFromZero]="false"></circle-progress>
+                                [animation]="true" [animationDuration]="300" [startFromZero]="false"></circle-progress>
                         </div>
 
                         <div class="centered" *ngIf="!showProgress && showPSIBlastResList.length == 0">
@@ -299,15 +303,11 @@
                         </div>
                         <div *ngIf="!showProgress && showPSIBlastResList.length !== 0">
                             <p>PSI Blast against Arabidopsis, Camelina and Soybean databse.</p>
-                            <p>Filter Blast Result by Percent Identity. Current Value: {{PSIBlastFilterValue}}%</p>              
-                            <mat-slider 
-                            min="1" 
-                            max="100" 
-                            step="5" 
-                            [(ngModel)]="PSIBlastFilterValue" 
-                            thumbLabel tickInterval="10"
-                            (change)="onPSIBlastFilterValueChange($event)">
-                        </mat-slider>
+                            <p>Filter Blast Result by Percent Identity. Current Value: {{PSIBlastFilterValue}}%</p>
+                            <mat-slider *ngIf="PSIBlastFilterValue !== null" min="1" max="100" step="5" discrete>
+                                <input matSliderThumb [(ngModel)]="PSIBlastFilterValue"
+                                    (valueChange)="onPSIBlastFilterValueChange($event)">
+                            </mat-slider>
                         </div>
                         <div class="row" *ngFor="let res of showFilterPSIBlastResList">
                             <mat-accordion>
@@ -322,14 +322,14 @@
                             </mat-accordion>
                         </div>
                     </div>
-                </mat-tab> 
+                </mat-tab>
                 <mat-tab *ngIf="showPathwayTab">
                     <ng-template mat-tab-label>
                         Pathway
                     </ng-template>
                     <!-- Pathway-->
 
-                    <div class="column middleright" *ngIf="isPathway"  id="mainContainer">
+                    <div class="column middleright" *ngIf="isPathway" id="mainContainer">
                         <div class="centered" style="margin: 10px auto; width: 80%;" *ngIf="noimg">No pathway
                             diagrams found in
                             our
@@ -420,7 +420,7 @@
     <div class="wrapper main">
         <mat-progress-bar id="loading-bar" mode="indeterminate" *ngIf="this.dataService.loading"></mat-progress-bar>
 
-        
+
 
     </div>
 

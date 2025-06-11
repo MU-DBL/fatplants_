@@ -86,8 +86,8 @@ export class ProteinDetailsPageComponent implements OnInit {
   loadingSearch = false;
   hasSearched = false;
   headingName = "";
-  BlastFilterValue!: number;
-  PSIBlastFilterValue!: number;
+  BlastFilterValue: number = 70;
+  PSIBlastFilterValue: number = 70;
 
   constructor(
     private route: ActivatedRoute,

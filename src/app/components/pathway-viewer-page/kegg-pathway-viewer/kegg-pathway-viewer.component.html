@@ -11,7 +11,7 @@
           [matTooltip]="'Enter uniprot id to search. Click this icon for an example.'"
           (click)="setDefaultSearch()">help</mat-icon>
       </span>
-      <mat-form-field appearance="fill" style="margin-left: 5%; width: 200px">
+      <mat-form-field appearance="fill" style="margin-left: 2%; width: 200px">
         <!--<mat-label>Species</mat-label>-->
         <mat-select [value]="selectedSpecies" (selectionChange)="changeSpecies($event)">
           <mat-option *ngFor="let s of species" [value]="s.value">
