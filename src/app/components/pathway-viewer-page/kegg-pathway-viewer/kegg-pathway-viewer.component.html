@@ -1,18 +1,18 @@
 <mat-card>
   <div>
     <h2>KEGG Pathway Viewer</h2>
-    <p>A tool for viewing KEGG pathway figure.</p>
+    <p style="width: 1000px;">A tool for viewing KEGG pathway figure.</p>
     <div>
       <mat-form-field style="width: 200px">
         <input type="text" matInput class="browser-default" placeholder="Search" [(ngModel)]="query">
-        <span id="help-icon-div">
-          <mat-icon id="help-icon" class="pointer"
-            [matTooltip]="'Enter uniprot id to search. Click this icon for an example.'"
-            (click)="setDefaultSearch()">help</mat-icon>
-        </span>
       </mat-form-field>
+      <span id="help-icon-div">
+        <mat-icon id="help-icon" class="pointer"
+          [matTooltip]="'Enter uniprot id to search. Click this icon for an example.'"
+          (click)="setDefaultSearch()">help</mat-icon>
+      </span>
       <mat-form-field appearance="fill" style="margin-left: 5%; width: 200px">
-        <mat-label>Species</mat-label>
+        <!--<mat-label>Species</mat-label>-->
         <mat-select [value]="selectedSpecies" (selectionChange)="changeSpecies($event)">
           <mat-option *ngFor="let s of species" [value]="s.value">
             {{s.name}}

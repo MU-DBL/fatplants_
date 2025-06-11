@@ -112,6 +112,10 @@ a:visited {
   font-size: 12px;
 }
 
+.mat-mdc-form-field{
+  max-width: 204px;
+}
+
 table.blueTable {
   border: 1px solid $main-green;
   background-color: #EEEEEE;
@@ -386,6 +390,13 @@ mat-cell {
   font-weight: 500;
 }
 
+.mdc-button{
+  max-width: 124px;
+  font-family: Roboto, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 .green-button {
   transition: background-color 0.5s;
 }
@@ -612,10 +623,22 @@ mat-tab-body {
   flex-direction: column;
 }
 
+.mat-mdc-tab-group{
+  flex-grow: 1;
+  display: flex;
+  flex-direction:row;
+
+}
+
 :host ::ng-deep mat-ink-bar {
   display: none;
 }
 
 mat-slider {
   width: 300px;
+}
+
+:host ::ng-deep .mat-mdc-tab-labels {
+  flex-direction: column;
+  align-items: flex-start;
 }

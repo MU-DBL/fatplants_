@@ -7,12 +7,12 @@
     <div style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin: 2%;">
       <mat-form-field style="margin-left: 1%; width: 200px">
         <input matInput type="text" class="browser-default" placeholder="Search" [(ngModel)]="glmolID">
-        <span id="help-icon-div">
-          <mat-icon id="help-icon" class="pointer"
-            [matTooltip]="'Enter any identifier to search. Click this icon for an example.'"
-            (click)="setDefaultSearch()">help</mat-icon>
-        </span>
       </mat-form-field>
+      <span id="help-icon-div">
+        <mat-icon id="help-icon" class="pointer"
+          [matTooltip]="'Enter any identifier to search. Click this icon for an example.'"
+          (click)="setDefaultSearch()">help</mat-icon>
+      </span>
       <mat-form-field style="margin-left: 5%; width: 200px">
         <mat-select [value]="selectedSpecies" (selectionChange)="changeSpecies($event)">
           <mat-option *ngFor="let s of species" [value]="s.value">
