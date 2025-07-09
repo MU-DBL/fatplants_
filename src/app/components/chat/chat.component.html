@@ -1,0 +1,29 @@
+
+    <div class="page-title-bar">
+        <p class="page-title">Chat</p>
+    </div>
+
+
+    <div class="right-content-box">
+        <!-- Chat header -->
+        <div class="chat-header">
+            <h2>Chat with LLM</h2>
+        </div>
+
+        <!-- Messages scroll area -->
+        <div class="chat-body" #chatBody>
+            <div class="message" [ngClass]="msg.sender" *ngFor="let msg of messages">
+                <div class="bubble" [innerHTML]="msg.text"></div>
+            </div>
+        </div>
+
+        <!-- Input area -->
+        <form class="chat-input" (ngSubmit)="send()" autocomplete="off">
+            <textarea name="input" [(ngModel)]="inputText" rows="1" placeholder="Type your message…"
+                (input)="autoResize($event)" required></textarea>
+
+            <button type="submit" [disabled]="!inputText || loading">
+                {{ loading ? '…' : 'Send' }}
+            </button>
+        </form>
+    </div>
