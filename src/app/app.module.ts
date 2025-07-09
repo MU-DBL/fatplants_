@@ -88,6 +88,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AralipDownloadComponent } from './components/aralip/Download/download.component';
 import { CdkDetailRowDirective } from './directives/cdk-detail-row.directive';
 import { ExcludeListItemPipe, ExtendedPathwayComponent } from './components/pathway-viewer-page/extended-pathway/extended-pathway.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -138,7 +139,8 @@ import { ExcludeListItemPipe, ExtendedPathwayComponent } from './components/path
     VisitDashboardComponent,
     CdkDetailRowDirective,
     ExcludeListItemPipe,
-    ExtendedPathwayComponent
+    ExtendedPathwayComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
