@@ -22,6 +22,7 @@ import { DownloadPageComponent } from './components/download-page/download-page.
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { PlantMetabolioNetworkComponent } from './components/plant-metabolio-network-page/plant-metabolio-network.component'
 import { VisitDashboardComponent } from './components/visit-dashboard/visit-dashboard.component'
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [{path: '', redirectTo: '/home', pathMatch: 'full'},
 {path: 'team', component: TeamComponent},
@@ -48,6 +49,7 @@ const routes: Routes = [{path: '', redirectTo: '/home', pathMatch: 'full'},
 {path: 'download', component: DownloadPageComponent},
 {path: 'plmn-pathways', component: PlantMetabolioNetworkComponent},
 {path: 'traffic-dashboard', component: VisitDashboardComponent},
+{path: 'chat', component: ChatComponent},
 {path: '**', pathMatch: 'full',  component: PagenotfoundComponent }]; 
 
 @NgModule({
