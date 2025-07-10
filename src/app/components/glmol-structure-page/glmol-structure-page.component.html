@@ -5,15 +5,15 @@
   <p style="margin: 2%;">GLmol is a 3D molecular viewer based on WebGL and Javascript.</p>
   <div>
     <div style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin: 2%;">
-      <mat-form-field style="margin-left: 1%; width: 200px">
+      <mat-form-field style="margin-left: 1%; width: 200px" appearance="outline">
         <input matInput type="text" class="browser-default" placeholder="Search" [(ngModel)]="glmolID">
       </mat-form-field>
       <span id="help-icon-div">
-        <mat-icon id="help-icon" class="pointer"
+        <mat-icon id="help-icon"
           [matTooltip]="'Enter any identifier to search. Click this icon for an example.'"
           (click)="setDefaultSearch()">help</mat-icon>
       </span>
-      <mat-form-field style="margin-left: 2%; width: 200px">
+      <mat-form-field style="margin-left: 2%; width: 200px" appearance="outline">
         <mat-select [value]="selectedSpecies" (selectionChange)="changeSpecies($event)">
           <mat-option *ngFor="let s of species" [value]="s.value">
             {{s.name}}

@@ -1,0 +1,146 @@
+<div style="width: 100%; height: 750px;">
+  <as-split direction="horizontal" [gutterSize]="3">
+    <as-split-area [size]="15">
+        <div style="margin: 5%;">
+        <div>
+        <h6>Species</h6>
+        <mat-form-field appearance="outline">
+        <mat-select [(value)]="selectedSpecies" #matSelect>
+            <mat-option *ngFor="let species of specieses" [value]="species.id">
+            {{ species.name }}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+        </div>
+        <div>
+        <h6>Pathway</h6>
+        <mat-form-field appearance="outline">
+        <mat-select [(value)]="selectedPathway" #matSelect>
+            <mat-select-trigger>
+            {{ selectedPathway ? selectedPathway.source + '_' + selectedPathway.name  : 'Select Pathway' }}
+            </mat-select-trigger>
+                <mat-option class="custom-search-option">
+                    <div class="search-input-wrapper">
+                        <mat-icon class="search-icon">search</mat-icon> <input
+                        #searchInput
+                        matInput
+                        placeholder="Search Pathway"
+                        [(ngModel)]="searchPathwayTerm"
+                        (input)="filterPathways()"
+                        (keydown)="$event.stopPropagation()"
+                        (click)="$event.stopPropagation()"
+                        />
+                    </div>
+                </mat-option>
+            <mat-option
+                *ngFor="let pathway of filteredPathways"
+                [value]="pathway"
+                (onSelectionChange)="onOptionSelected($event, matSelect)"
+                >
+            {{ pathway.source }}_{{ pathway.name }}
+            </mat-option>
+
+            <mat-option *ngIf="filterPathways.length === 0 && searchPathwayTerm" disabled>
+            No matching pathway found
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+        </div>
+        </div>
+    </as-split-area>
+    <as-split-area [size]="70" class="split-container">
+        <mat-tab-group>
+            <mat-tab label="Network Visualization" class="tab-container">
+                <div class="graph-container" #graphContainer></div>
+                <app-zoom-control></app-zoom-control>
+                <app-force-layout
+                [sigmaInstance]="sigmaInstance"
+                [settings]="forceSettings"
+                [defaultNodeSize]="nodeSize"
+                ></app-force-layout>
+            </mat-tab>
+            <mat-tab label="Pathway" class="tab-container">
+            </mat-tab>
+        </mat-tab-group>
+        <div *ngIf="!isMinimized" class="chat-container">
+            <div class="chat-header">
+                <span class="chat-title">Chat with LLM</span>
+                <div class="chat-actions">
+                    <button (click)="clearChat()"class="delete-btn">
+                    <mat-icon>delete</mat-icon>
+                    </button>
+                    <button class="dropdown-btn" (click)="setIsMinimized()">
+                    <mat-icon>arrow_drop_down</mat-icon>
+                    </button>
+                </div>
+                </div>
+
+            <!-- Chat Messages -->
+            <div #chatContaine #messagesList class="messages-list">
+                <div *ngFor="let message of messages" class="message" [ngClass]="{'user-message': message.sender === 'user', 'llm-message': message.sender === 'llm'}">
+                    <div class="message-text">{{ message.content }}</div>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div *ngIf="isDisclaimerVisible" class="disclaimer-container">
+                <div class="disclaimer-header">
+                    <mat-icon class="warning-icon">warning</mat-icon>
+                    <span class="disclaimer-title">Disclaimer</span>
+                    <button mat-icon-button class="close-button" (click)="closeDisclaimerDiv()">
+                    <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+                <div class="disclaimer-content">
+                    <p>This AI assistant may occasionally generate incorrect or misleading information.
+                    We are not responsible for any decisions made based on the generated content.
+                    By using this service, you agree to our
+                    <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <textarea [(ngModel)]="messageText"
+                    placeholder="To chat with LLM, Type your message..."></textarea>
+            <button
+                    mat-icon-button
+                    class="send-button"
+                    (click)="handleSendMessage()"
+                    [disabled]="!messageText.trim()">
+                    <mat-icon>send</mat-icon>
+            </button>
+        </div>
+    </as-split-area>
+    <as-split-area [size]="15">
+      <div class="network-style-container">
+  <div class="header">
+    <h3>Network Style</h3>
+  </div>
+
+  <div class="setting-row">
+    <label for="nodeSizeSlider">Node Size</label>
+    <input type="range" min="2" max="50" [(ngModel)]="nodeSize" (input)="updateNodeSize(nodeSize)" />
+    <span>{{ nodeSize }}</span>
+  </div>
+
+  <div class="setting-row">
+    <label for="nodeLabelSizeSlider">Node Label Size</label>
+    <input type="range" min="2" max="50" [(ngModel)]="nodeLabelSize" (input)="updateNodeSize(nodeLabelSize)" />
+    <span>{{ nodeLabelSize }}</span>
+  </div>
+
+  <div class="setting-row">
+    <label for="labelDensitySlider">
+      Label Density
+      <button mat-icon-button class="info-icon" matTooltip="Adjust the density of displayed labels.">
+        <mat-icon>info_outline</mat-icon>
+      </button>
+    </label>
+    <input type="range" min="2" max="50" [(ngModel)]="labelDensity" (input)="updateNodeSize(labelDensity)" />
+    <span>{{ labelDensity }}</span>
+  </div>
+</div>
+    </as-split-area>
+  </as-split>
+</div>

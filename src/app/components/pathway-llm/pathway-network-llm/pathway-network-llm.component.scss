@@ -1,0 +1,324 @@
+// Make sure you import Material Icons in your index.html or global styles
+// <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+.custom-search-option {
+  height: auto !important;
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+  .search-input-wrapper {
+    position: relative; // Establish a positioning context for the icon
+    display: flex; // Use flexbox to align items if needed
+    align-items: center; // Vertically center the icon and input
+    width: 100%; // Ensure the wrapper takes full width
+  }
+
+  .search-icon {
+    position: absolute; // Position the icon absolutely within the wrapper
+    left: 8px; // Adjust this value to control icon's distance from left edge
+    color: rgba(0, 0, 0, 0.54); // Standard Material text secondary color
+    font-size: 20px; // Adjust icon size if needed
+    margin-right:5px
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 16px 0 38px; // Crucial: Add left padding to make space for the icon
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    border-bottom: 1px solid #03aa3b;
+    line-height: 1.125; // Adjust line-height to vertically align text
+  }
+}
+
+
+::ng-deep .mat-mdc-form-field-infix {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    min-height: unset !important; 
+}
+
+.graph-container {
+  width: 100%;
+  height: 600px; 
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f7f7f7;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.chat-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-btn, .dropdown-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.chat-input-container {
+  display: flex;
+  align-items: flex-end; /* Align items to the bottom, useful for multi-line textareas */
+  border: 1px solid #00796b; /* Green border color from image */
+  border-radius: 8px; /* Slightly rounded corners */
+  padding: 8px;
+  background-color: #fff; /* White background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin: 10px; /* Example margin, adjust as needed */
+}
+
+.chat-input-container textarea {
+  flex-grow: 1; /* Allows textarea to take up available space */
+  border: none; /* Remove default textarea border */
+  outline: none; /* Remove outline on focus */
+  resize: none; /* Disable manual resizing by user */
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 5px; /* Padding inside the textarea */
+  min-height: 24px; /* Adjust based on your font-size and line-height for a single line */
+  max-height: 150px; /* Max height before scrolling, adjust as needed */
+  overflow-y: auto; /* Enable vertical scrolling when content exceeds max-height */
+  background-color: transparent; /* Ensure transparent background */
+  color: #333; /* Text color */
+}
+
+.chat-input-container textarea::placeholder {
+  color: #888; /* Placeholder text color */
+}
+
+.send-button {
+  min-width: 40px; /* Ensure button doesn't shrink too much */
+  height: 40px; /* Make it square */
+  border-radius: 50%; /* Make it circular if you prefer */
+  background-color: transparent; /* No background color */
+  color: #007bff; /* Blue color for the icon, matching the image */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Remove default padding */
+  margin-left: 8px; /* Space between textarea and button */
+}
+
+.send-button mat-icon {
+  font-size: 24px; /* Adjust icon size */
+  width: 24px;
+  height: 24px;
+}
+
+.send-button:disabled {
+  color: #ccc; /* Gray out icon when disabled */
+  cursor: not-allowed;
+}
+
+.disclaimer-container {
+  background-color: #f0f8ff; /* Light blueish background */
+  border: 1px solid #add8e6; /* Light blue border */
+  border-radius: 4px;
+  padding: 16px;
+  margin: 16px; /* Adjust margin as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.disclaimer-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.warning-icon {
+  color: #ffc107; /* Amber/yellow color for warning */
+  margin-right: 8px;
+}
+
+.disclaimer-title {
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+.close-button {
+  margin-left: auto;
+}
+
+.disclaimer-content {
+  font-size: 0.9em;
+  color: #333;
+  line-height: 1.5;
+}
+
+.disclaimer-content a {
+  color: #007bff; /* Blue color for links */
+  text-decoration: underline;
+}
+
+.split-container {
+    position: relative;     /* Set position relative to make it a reference for absolute positioning */
+    width: 100%;            /* Ensure the parent takes up the full width */
+    height: 100%;           /* Ensure the parent takes up the full height of its container */
+}
+
+.chat-container {
+    position: absolute;         /* Position relative to the nearest positioned ancestor */                  
+    top:10px;
+    bottom: 100px;           
+    z-index: 1000;              /* Ensure it appears above other elements */
+    background-color: white;    /* Set the background color of the chat container */
+    border-radius: 8px;         /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Subtle shadow for the floating effect */
+    width: 100%;               /* Set the width of the chat container */
+    max-height: 80vh;           /* Maximum height of 80% of the viewport */
+    overflow-y: auto;           /* Enable vertical scrolling if content overflows */
+    transition: all 0.3s ease-in-out; /* Smooth transition when minimizing/maximizing */
+}
+
+.messages-list {
+  flex-grow: 1; /* This makes it take up all available vertical space */
+  overflow-y: auto; /* KEY: Adds scrollbar when content overflows vertically */
+  padding: 10px;
+  background-color: white;
+  display: flex; /* Use flexbox for messages to push content to top/bottom */
+  flex-direction: column; /* Stack messages vertically */
+  /* align-items: flex-start; /* Messages start from the left by default (LLM) */
+  justify-content: flex-end; 
+}
+
+.message {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.message-text {
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  justify-content: flex-start;
+}
+
+.llm-message {
+  justify-content: flex-end;
+}
+
+.user-message .message-text {
+  background-color: #c0c0c0; /* Light green for user messages */
+}
+
+.llm-message .message-text {
+  background-color: #b9ebb9; /* Light red for response messages */
+}
+
+.network-style-container {
+  font-family: sans-serif;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  width: 350px; // Adjust as needed
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h3 {
+      margin: 0;
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .arrows {
+      button {
+        min-width: 30px;
+        height: 30px;
+        padding: 0;
+        line-height: 30px;
+        color: #666;
+        &:first-child {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .setting-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px; // Space between elements
+
+    label {
+      flex-basis: 120px; // Adjust width for labels
+      font-size: 0.9em;
+      color: #555;
+      display: flex;
+      align-items: center;
+
+      .info-icon {
+        margin-left: 5px;
+        font-size: 18px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        color: #888;
+      }
+    }
+
+    mat-slider {
+      flex-grow: 1;
+      width: auto; // Allow slider to take available space
+      .mat-slider-track-fill {
+        background-color: #00796b; // Teal color for filled track
+      }
+      .mat-slider-thumb {
+        background-color: #00796b; // Teal color for thumb
+      }
+    }
+
+    .input-field {
+      width: 70px; // Fixed width for the number input
+      margin-left: 10px; // Space after slider
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+      }
+      .mat-form-field-flex {
+        align-items: center;
+      }
+      input {
+        text-align: center;
+        padding: 8px 5px;
+        height: auto;
+      }
+    }
+  }
+}

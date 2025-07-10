@@ -233,13 +233,23 @@ h3{
   font-weight: bold;
 }
 
-.button_search {
-  height:35px;
-  background-color:rgba(124, 179, 66, 0.85);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  text-align: center; 
+.search-button {
+    background-color: #629B07;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 120%;
+    text-align: center;
+    width: 80px;
+    font-family: "PT Sans", sans-serif;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    min-height: 30px !important;
+    padding-top: 0.4%;
+    padding-bottom: 0.4%;
+    border: 10px;
+    border-radius: 3px;
+    box-shadow: -10px 0px 10px -5px rgba(128, 128, 128, 0.5), 10px 0px 10px -5px rgba(128, 128, 128, 0.5);
 }
 
 .button_search:disabled {

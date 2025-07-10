@@ -171,7 +171,6 @@ input.mat-input-element {
 .search-button {
     background-color: #629B07;
     justify-content: center;
-    margin-top: 2px;
     align-items: center;
     color: white;
     font-size: 120%;
@@ -180,7 +179,9 @@ input.mat-input-element {
     font-family: "PT Sans", sans-serif;
     box-sizing: border-box;
     border: 3px solid #ccc;
-    height: 44px;
+    min-height: 30px !important;
+    padding-top: 0.4%;
+    padding-bottom: 0.4%;
     border: 10px;
     border-radius: 3px;
     box-shadow: -10px 0px 10px -5px rgba(128, 128, 128, 0.5), 10px 0px 10px -5px rgba(128, 128, 128, 0.5);
@@ -195,4 +196,10 @@ mat-card::ng-deep .mat-form-field-underline {
     align-items: center;
     width: 60%;
     margin-left: 6px;
+}
+
+::ng-deep .mat-mdc-form-field-infix {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    min-height: unset !important; 
 }

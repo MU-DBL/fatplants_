@@ -16,7 +16,7 @@
     </div>
     <div class="right-content-box">
         <div class="filter">
-        <mat-form-field id="filter" >
+        <mat-form-field id="filter" appearance="outline">
             <input type="search" matInput [value]="searchQuery" (keyup)="onSearchChange($event)" placeholder="Enter your search query"/>
         </mat-form-field>
         <button (click)='applySearchQuery()' class="search-button" matTooltip="Search">Search</button>

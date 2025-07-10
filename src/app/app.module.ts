@@ -88,6 +88,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AralipDownloadComponent } from './components/aralip/Download/download.component';
 import { CdkDetailRowDirective } from './directives/cdk-detail-row.directive';
 import { ExcludeListItemPipe, ExtendedPathwayComponent } from './components/pathway-viewer-page/extended-pathway/extended-pathway.component';
+import { PathwayNetworkLlmComponent } from './components/pathway-llm/pathway-network-llm/pathway-network-llm.component';
+import { AngularSplitModule } from 'angular-split';
+import { ForceLayoutComponent } from './components/pathway-llm/force-layout.component';
+import { ZoomControlComponent } from './components/pathway-llm/zoom-control/zoom-control.component';
 
 @NgModule({
   declarations: [
@@ -138,9 +142,12 @@ import { ExcludeListItemPipe, ExtendedPathwayComponent } from './components/path
     VisitDashboardComponent,
     CdkDetailRowDirective,
     ExcludeListItemPipe,
-    ExtendedPathwayComponent
+    ExtendedPathwayComponent,
+    PathwayNetworkLlmComponent,
+    ZoomControlComponent
   ],
   imports: [
+    AngularSplitModule,
     BrowserModule,
     AppRoutingModule,
     MatTableModule,
@@ -158,7 +165,6 @@ import { ExcludeListItemPipe, ExtendedPathwayComponent } from './components/path
     MatTooltipModule,
     CdkTableModule,
     HttpClientModule,
-    FormsModule,
     CommonModule,
     // CytoscapeModule,
     ReactiveFormsModule,
@@ -195,6 +201,8 @@ import { ExcludeListItemPipe, ExtendedPathwayComponent } from './components/path
     NgxMatomoRouterModule,
     LeafletModule,
     NgxChartsModule,
+    MatSliderModule,
+    ForceLayoutComponent,
     MatSliderModule 
   ],
   providers: [],
