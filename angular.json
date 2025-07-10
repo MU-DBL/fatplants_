@@ -90,15 +90,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "fatplant:build",
-            "proxyConfig": "proxy.conf.json"
+            "proxyConfig": "proxy.conf.json",
+            "buildTarget": "fatplant:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "fatplants:build:production"
+              "buildTarget": "fatplants:build:production"
             },
             "development": {
-              "browserTarget": "fatplants:build:development"
+              "buildTarget": "fatplants:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -106,7 +106,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fatplants:build"
+            "buildTarget": "fatplants:build"
           }
         },
         "test": {
