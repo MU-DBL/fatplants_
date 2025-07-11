@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
 import {MatTableDataSource} from "@angular/material/table";
 import {animate, state, style, transition, trigger} from '@angular/animations';

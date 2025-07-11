@@ -53,11 +53,6 @@
             <mat-tab label="Network Visualization" class="tab-container">
                 <div class="graph-container" #graphContainer></div>
                 <app-zoom-control></app-zoom-control>
-                <app-force-layout
-                [sigmaInstance]="sigmaInstance"
-                [settings]="forceSettings"
-                [defaultNodeSize]="nodeSize"
-                ></app-force-layout>
             </mat-tab>
             <mat-tab label="Pathway" class="tab-container">
             </mat-tab>

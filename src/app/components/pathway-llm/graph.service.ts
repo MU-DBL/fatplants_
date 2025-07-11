@@ -41,6 +41,11 @@ export class GraphService {
     }
   }
 
+  private getGraph(): Graph | null {
+    const sigma = this._sigmaInstance.getValue();
+    return sigma ? sigma.getGraph() : null;
+  }
+
    updateNodeSize(newSize: number): void {
     const graph = this.getGraph();
     if (graph) {
@@ -59,21 +64,5 @@ export class GraphService {
       });
       this.refreshSigma(); 
     } 
-  }
-
-  private getGraph(): Graph | null {
-    const sigma = this._sigmaInstance.getValue();
-    return sigma ? sigma.getGraph() : null;
-  }
-
-  updateSingleNodeAttribute(nodeId: string, key: string, value: any): void {
-    const graph = this.getGraph();
-    if (graph && graph.hasNode(nodeId)) {
-      graph.setNodeAttribute(nodeId, key, value);
-      this._sigmaInstance.getValue()?.refresh(); // Refresh to show changes
-      console.log(`Updated node ${nodeId} attribute ${key} to: ${value}`);
-    } else {
-      console.warn(`Graph or node ${nodeId} not available for updateSingleNodeAttribute.`);
-    }
   }
 }

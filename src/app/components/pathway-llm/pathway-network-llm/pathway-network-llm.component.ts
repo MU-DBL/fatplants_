@@ -4,16 +4,10 @@ import Sigma from 'sigma';
 import { ForceLayoutService } from '../force-layout.service'; 
 import Graph from 'graphology'; 
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import {ForceSettings, ForceWorker,Species, Pathway, NodeAttributes, EdgeAttributes } from '../data-interface';
+import {ForceSetting, Species, Pathway, NodeAttributes, EdgeAttributes, Message } from '../data-interface';
 import { AsyncPipe } from '@angular/common';
 import { GraphService } from '../graph.service';
-
-interface Message {
-  id: number;
-  type: 'info' | 'user' | 'assistant';
-  content: string ;
-  sender: string;
-}
+import { LLMService } from '../../../services/llm/llm.service';
 
 @Component({
   selector: 'app-pathway-network-llm',
@@ -37,25 +31,26 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
 
   @ViewChild('graphContainer') graphContainer!: ElementRef<HTMLDivElement>;
   sigmaInstance: Sigma<NodeAttributes, EdgeAttributes> | undefined;
-  forceSettings: ForceSettings = { linkDistance: 50, chargeStrength: -200, collideRadiusFactor: 8 };
+  forceSettings: ForceSetting = { linkDistance: 50 };
   
   nodeSize: number = 5;
   nodeLabelSize: number = 8;
   labelDensity: number = 3.9;
 
-  forceWorker: ForceWorker | null = null;
-
   isDisclaimerVisible: boolean = true;
   messageText = '';
   isMinimized = true;
+
   @ViewChild('messagesList') private messagesListRef!: ElementRef;
   messages: Message[] = [];
   private graph: Graph | undefined;
 
-  constructor(private forceLayoutService: ForceLayoutService, private graphService: GraphService) {
-     this.forceLayoutService.forceWorker$.subscribe(worker => {
-      this.forceWorker = worker;
-    });
+  apiResponse: any;
+
+  constructor(private forceLayoutService: ForceLayoutService, 
+    private graphService: GraphService, 
+    private llmService: LLMService) {
+
   }
 
   ngAfterViewInit(): void {
@@ -150,23 +145,33 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
       this.isMinimized = false;
       const newMessage: Message = {
         id: this.messages.length + 1,
-        type: 'user',
         content: currentMessage,
         sender:'user'
       };
       this.messages = [...this.messages, newMessage];
-      this.simulateLlmResponse(currentMessage);
+
+      this.getLlmResponse(currentMessage);
       this.messageText = '';
       this.scrollToBottom();
     }
   }
 
-  private simulateLlmResponse(currentMessage: string): void {
-    let llmResponse: Message = {
+  private getLlmResponse(currentMessage: string): void {
+    this.llmService.ask(currentMessage).subscribe({
+        next: (response) => {
+          this.apiResponse = response;
+          console.log('API Response:', response);
+        },
+        error: (error) => {
+          console.error('API Error:', error);
+        }
+    });
+
+    const llmResponse: Message = {
         id: this.messages.length + 1,
-        type: 'user',
-        content: currentMessage,
+        content: this.apiResponse,
         sender:'llm'};
+
     setTimeout(() => {
       this.messages.push(llmResponse);
     }, 500);

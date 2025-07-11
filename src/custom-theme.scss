@@ -1,24 +1,151 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@import '@angular/material/theming';
-// Plus imports for other components in your app.
+// Note: This theme uses Material 2 (M2) theming on Angular Material 18.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
+// Use the new @use syntax to import Angular Material's theming functions.
+@use '@angular/material' as mat;
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$fatplant-primary: mat-palette($mat-green);
-$fatplant-accent: mat-palette($mat-light-green, A200, A100, A400);
-$fatplant-warn: mat-palette($mat-red);
-$fatplant-theme: mat-light-theme($fatplant-primary, $fatplant-accent, $fatplant-warn);
+// Include the common styles for Angular Material.
+@include mat.core();
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($fatplant-theme);
+// Define custom palettes based on Material Design color values
+// You need to define the full set of hues (0-100) for each palette
+// and their corresponding contrast colors (0 for light text, 100 for dark text).
+// This is the Material 3 way of defining palettes, which `m2-define-palette` can then consume.
 
+// Green Palette (Primary)
+$fatplant-green-palette: (
+  0: #e8f5e9,  // 50
+  10: #d0f8d0, // Approx. 100
+  20: #a9eaac, // Approx. 200
+  25: #92e095, // Approx. 300
+  30: #7bda7e, // Approx. 400
+  35: #64d467, // Approx. 500
+  40: #4dcfa4, // Approx. 600
+  50: #4CAF50, // This is your main green (old 500)
+  60: #388e3c, // Approx. 700
+  70: #2e7d32, // Approx. 800
+  80: #1b5e20, // Approx. 900
+  90: #0d4b12, // Approx. A700
+  95: #053b0c,
+  98: #022b07,
+  99: #011a04,
+  100: #000000, // For contrast text
+  contrast: (
+    0: #101010, // Dark text on light background
+    10: #101010,
+    20: #101010,
+    25: #101010,
+    30: #101010,
+    35: #101010,
+    40: #101010,
+    50: #ffffff, // White text on default green
+    60: #ffffff,
+    70: #ffffff,
+    80: #ffffff,
+    90: #ffffff,
+    95: #ffffff,
+    98: #ffffff,
+    99: #ffffff,
+    100: #ffffff,
+  )
+);
+
+// Light Green Palette (Accent)
+$fatplant-light-green-palette: (
+  0: #f1f8e9,
+  10: #e3f2fd, // Approx. 50
+  20: #dcedc8, // Approx. 100
+  25: #d0e0b7,
+  30: #c4d4a6,
+  35: #b8c995,
+  40: #adbd84, // Approx. 200 (your old A200)
+  50: #9ccc65, // Approx. 400
+  60: #8bc34a, // Approx. 700
+  70: #7cb342,
+  80: #689f38,
+  90: #558b2f,
+  95: #427521,
+  98: #2f5f14,
+  99: #1c490a,
+  100: #0a3301,
+  contrast: (
+    0: #101010,
+    10: #101010,
+    20: #101010,
+    25: #101010,
+    30: #101010,
+    35: #101010,
+    40: #101010, // Dark text on accent default
+    50: #101010,
+    60: #101010,
+    70: #ffffff,
+    80: #ffffff,
+    90: #ffffff,
+    95: #ffffff,
+    98: #ffffff,
+    99: #ffffff,
+    100: #ffffff,
+  )
+);
+
+// Red Palette (Warn)
+$fatplant-red-palette: (
+  0: #ffebee, // 50
+  10: #ffcdd2,
+  20: #ef9a9a, // 100
+  25: #e57373,
+  30: #ef5350,
+  35: #f44336, // 500
+  40: #e53935,
+  50: #d32f2f, // Your main red (old 500)
+  60: #c62828,
+  70: #b71c1c, // 700
+  80: #a50000,
+  90: #880e0e,
+  95: #6a0d0d,
+  98: #4b0c0c,
+  99: #2a0b0b,
+  100: #000000,
+  contrast: (
+    0: #101010,
+    10: #101010,
+    20: #101010,
+    25: #101010,
+    30: #101010,
+    35: #101010,
+    40: #101010,
+    50: #ffffff, // White text on default red
+    60: #ffffff,
+    70: #ffffff,
+    80: #ffffff,
+    90: #ffffff,
+    95: #ffffff,
+    98: #ffffff,
+    99: #ffffff,
+    100: #ffffff,
+  )
+);
+
+
+// Now use these explicitly defined palettes with `mat.m2-define-palette`.
+// The values here refer to the 'keys' within your custom palette maps (e.g., 50, 20, 70).
+$fatplant-primary: mat.m2-define-palette($fatplant-green-palette, 50, 20, 70);
+$fatplant-accent: mat.m2-define-palette($fatplant-light-green-palette, 40, 20, 70); // Adjust accent if needed
+$fatplant-warn: mat.m2-define-palette($fatplant-red-palette, 50, 20, 70);
+
+// Create the theme object.
+$fatplant-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $fatplant-primary,
+    accent: $fatplant-accent,
+    warn: $fatplant-warn,
+  ),
+  // typography: mat.m2-define-typography-config(), // Uncomment if you have custom typography
+  // density: 0,
+));
+
+// Include theme styles for all components.
+@include mat.all-component-themes($fatplant-theme);
+
+// Custom app styles

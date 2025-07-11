@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import * as node_Data from '../../assets/cyto_node.json';
 import * as edge_Data from '../../assets/cyto_edge.json';
 

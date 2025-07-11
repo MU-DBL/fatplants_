@@ -1,3 +1,13 @@
+import type { SimulationNodeDatum } from 'd3-force';
+import type { Attributes } from 'graphology-types';
+
+
+export interface Message {
+  id: number;
+  content: string ;
+  sender: string;
+}
+
 export interface Species {
   id: number;
   name: string;
@@ -5,40 +15,40 @@ export interface Species {
 
 export interface Pathway {
   id: number;
+  species: string;
   name: string;
   source: string;
 }
 
-export interface ForceSettings {
+export interface ForceSetting {
   linkDistance: number;
-  chargeStrength?: number;
-  collideRadiusFactor?: number;
 }
 
-export interface ForceWorker {
-  start: () => void;
-  stop: () => void;
-}
-
-export interface NodeAttributes {
+export interface NodeAttributes extends Attributes, SimulationNodeDatum {
   x: number;
   y: number;
-  size: number;
+  size?: number;
   label?: string;
-  color: string;
-  ID: string;
-  labelProp?: NodeLabelProperties; // Custom property for label size
+  color?: string;
+  ID?: string;
+  description?: string;
+  hidden?: boolean;
+  type?: 'circle' | 'border' | 'highlight' | 'normal';
+  highlighted?: boolean;
+  borderColor?: string;
+  borderSize?: number;
+  zIndex?: number;
+  clicked?: boolean;
 }
 
 export interface EdgeAttributes {
   size: number;
   color: string;
-}
-
-export interface NodeLabelProperties {
-  size?: number; // Font size of the label
-  color?: string; // Color of the label text
-  [key: string]: any; // Allow for other custom label attributes
+  score?: number;
+  altColor?: string;
+  forceLabel?: boolean;
+  hidden?: boolean;
+  zIndex?: number;
 }
 
 
