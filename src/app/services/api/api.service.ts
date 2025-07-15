@@ -103,6 +103,8 @@ export class APIService {
     return this.http.get(environment.BASE_API_URL+"chatgpt/?content=" + encodeURIComponent(query));
   }
 
+  //#region Aralip
+
   searchEnzyme(query: string) {
     return this.http.get(environment.BASE_API_URL+"enzyme_search/?query="+ query).pipe(
       map((res: any) => Array.isArray(res) ? res : (res.result || res.data || Object.values(res) || []))
@@ -181,4 +183,12 @@ export class APIService {
       map((res: any) => Array.isArray(res) ? res : (res.result || res.data || Object.values(res) || []))
     );
   }
+  // #endregion
+
+
+  //# region neo4j
+  getCypherResult(query: string) {
+    return this.http.get(environment.BASE_API_URL+"cypher/?query=" + encodeURIComponent(query));
+  }
+  //# endregion
 }

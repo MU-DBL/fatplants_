@@ -37,6 +37,7 @@
     "graphology": "^0.26.0",
     "jspdf": "^3.0.1",
     "leaflet": "^1.9.4",
+    "neovis.js": "^2.1.0",
     "ng-circle-progress": "^1.7.1",
     "ngx-clipboard": "^16.0.0",
     "ngx-matomo-client": "^6.2.0",

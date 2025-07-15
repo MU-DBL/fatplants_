@@ -322,3 +322,44 @@ button {
     }
   }
 }
+
+.page-title-bar {
+  background-color: #629B07;
+  color: rgb(255, 255, 255);
+  padding: 0.1rem;
+}
+
+.page-title {
+  font-size: 1.5vw;
+  font-weight: 500;
+  padding-left: 2%;
+  margin-block-end: 0.2rem;
+  margin-block-start: 0.2rem;
+}
+
+.network-summary {
+  background: #ffffff;    /* white background */
+  border: 1px solid #ddd; /* light gray border */
+  border-radius: 6px;     /* rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle drop shadow */
+  padding: 12px 16px;      /* inner spacing */
+  font-size: 0.9rem;      /* slightly smaller text */
+  color: #333;            /* dark text */
+  z-index: 1000;          /* ensure it floats above the graph */
+}
+
+.network-summary h4 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: #222;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+
+.network-summary div {
+  margin-bottom: 4px;
+}
+
+.network-summary strong {
+  color: #111;
+}

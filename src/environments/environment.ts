@@ -7,7 +7,10 @@ export const environment = {
   BASE_API_URL:"http://localhost:5004/api/",
   matomo_token_auth: "b692903b1cb149d0c36302c1db938db6",  //644555354f45610fa23a7e69c86b4bad
   matomo_url: "/matomo/",
-  matomo_site_id: 1
+  matomo_site_id: 1,
+  neo4j_url:"bolt://localhost:7687",
+  neo4j_username:"neo4j",
+  neo4j_password:"ath00062fatplants"
 };
 
 /*

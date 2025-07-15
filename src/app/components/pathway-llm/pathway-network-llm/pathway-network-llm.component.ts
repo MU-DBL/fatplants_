@@ -1,19 +1,14 @@
 // pathway-network-llm.component.ts
 import { MatSelect } from '@angular/material/select';
-import Sigma from 'sigma'; 
-import { ForceLayoutService } from '../force-layout.service'; 
-import Graph from 'graphology'; 
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import {ForceSetting, Species, Pathway, NodeAttributes, EdgeAttributes, Message } from '../data-interface';
-import { AsyncPipe } from '@angular/common';
-import { GraphService } from '../graph.service';
+import {Species, PathwayDropdown, Message } from '../data-interface';
 import { LLMService } from '../../../services/llm/llm.service';
+import { NetworkSummary } from '../network-visualization/network-visualization.component';
 
 @Component({
   selector: 'app-pathway-network-llm',
   templateUrl: './pathway-network-llm.component.html',
-  styleUrls: ['./pathway-network-llm.component.scss'],
-  providers: [AsyncPipe],
+  styleUrls: ['./pathway-network-llm.component.scss']
 })
 
 export class PathwayNetworkLlmComponent implements AfterViewInit {
@@ -21,18 +16,15 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
   specieses: Species[] = [];
   selectedSpecies: Species | null = null;
 
-  pathways: Pathway[] = [];
-  filteredPathways: Pathway[] = [];
-  selectedPathway: Pathway | null = null;
+  pathwayDropdowns: PathwayDropdown[] = [];
+  filteredPathwayDropdowns: PathwayDropdown[] = [];
+  selectedPathwayDropdown: PathwayDropdown | null = null;
   searchPathwayTerm: string = '';
 
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
   @ViewChild('matSelect') matSelect!: MatSelect;
-
   @ViewChild('graphContainer') graphContainer!: ElementRef<HTMLDivElement>;
-  sigmaInstance: Sigma<NodeAttributes, EdgeAttributes> | undefined;
-  forceSettings: ForceSetting = { linkDistance: 50 };
-  
+
   nodeSize: number = 5;
   nodeLabelSize: number = 8;
   labelDensity: number = 3.9;
@@ -43,77 +35,51 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
 
   @ViewChild('messagesList') private messagesListRef!: ElementRef;
   messages: Message[] = [];
-  private graph: Graph | undefined;
 
-  apiResponse: any;
+  summary?: NetworkSummary;
+  onSummaryChange(summary: NetworkSummary) {
+    this.summary = summary;
+  }
+  getKeys = Object.keys;
 
-  constructor(private forceLayoutService: ForceLayoutService, 
-    private graphService: GraphService, 
-    private llmService: LLMService) {
-
+  constructor(private llmService: LLMService) {
   }
 
   ngAfterViewInit(): void {
-
-    const graph = new Graph<NodeAttributes, EdgeAttributes>();
-    graph.addNode('n1', { x: 0, y: 0, size: 10, label: 'Node 1', color: '#FF0000', ID: '1', labelProp:{size:12}  });
-    graph.addNode('n2', { x: 1, y: 1, size: 8, label: 'Node 2', color: '#00FF00', ID: '2', labelProp:{size:12}  });
-    graph.addNode('n3', { x: 2, y: 0, size: 12, label: 'Node 3', color: '#0000FF', ID: '3', labelProp:{size:12}  });
-    graph.addNode('n4', { x: 0.5, y: -0.5, size: 7, label: 'Node 4', color: '#FFFF00', ID: '4', labelProp:{size:12}  });
-    graph.addNode('n5', { x: -1, y: 0.5, size: 9, label: 'Node 5', color: '#00FFFF', ID: '5', labelProp:{size:12}  });
-    graph.addEdge('n1', 'n2', { size: 2, color: '#CCC' });
-    graph.addEdge('n2', 'n3', { size: 2, color: '#CCC' });
-    graph.addEdge('n3', 'n1', { size: 2, color: '#CCC' });
-    graph.addEdge('n1', 'n4', { size: 2, color: '#CCC' });
-    graph.addEdge('n4', 'n5', { size: 2, color: '#CCC' });
-    graph.addEdge('n5', 'n2', { size: 2, color: '#CCC' });
-
-    this.sigmaInstance = new Sigma(graph, this.graphContainer.nativeElement, {
-              defaultNodeColor: '#999',
-              labelFont: 'Inter',
-            });
-
-    
-    this.graphService.setSigmaInstance(this.sigmaInstance as any); 
-    this.graph = this.sigmaInstance.getGraph();
-  }
-
-
-  ngOnDestroy(): void {
-    this.sigmaInstance?.kill();
-  }
-
-
-  changeLinkDistance(): void {
-    this.forceSettings = { ...this.forceSettings, linkDistance: this.forceSettings.linkDistance === 50 ? 150 : 50 };
   }
 
   ngOnInit() {
     this.loadPathways();
-    this.loadSpecies(); 
+    this.loadSpecies();
   }
 
   loadSpecies() {
     this.specieses = [
-      { id: 1, name: 'Arabidopsis' },
-      { id: 2, name: 'Soybean' },
+      { id: "1", name: 'Arabidopsis' },
+      { id: "2", name: 'Soybean' },
     ];
   }
 
   loadPathways() {
-    this.pathways = [
-      { id: 1, name: 'test', source:'KEGG' },
-      { id: 2, name: 'test' , source:'ARALIP' },
+    this.pathwayDropdowns = [
+      {
+        id: "path:ath00062", name: 'path:ath00062', source: 'KEGG',
+        species: 'Arabidopsis'
+      },
+      {
+        id: "path:ath00061", name: 'path:ath00061', source: 'ARALIP',
+        species: 'Arabidopsis'
+      },
     ];
-    this.filteredPathways = [...this.pathways];
+    this.filteredPathwayDropdowns = [...this.pathwayDropdowns];
   }
 
   filterPathways() {
     if (!this.searchPathwayTerm) {
-      this.filteredPathways = [...this.pathways]; // Show all if search term is empty
+      this.filteredPathwayDropdowns = [...this.pathwayDropdowns]; // Show all if search term is empty
     } else {
       const lowerCaseSearchTerm = this.searchPathwayTerm.toLowerCase();
-      this.filteredPathways = this.pathways.filter(pathway =>
+      this.filteredPathwayDropdowns = this.pathwayDropdowns.filter(pathway =>
         pathway.name.toLowerCase().includes(lowerCaseSearchTerm) ||
         pathway.source.toLowerCase().includes(lowerCaseSearchTerm)
       );
@@ -125,7 +91,7 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
 
   onOptionSelected(event: any, matSelect: MatSelect) {
     if (event.isUserInput) { // Ensure it's a user selection, not programmatic
-      this.selectedPathway = event.source.value;
+      this.selectedPathwayDropdown = event.source.value;
       this.searchPathwayTerm = ''; // Clear search term on selection
       this.filterPathways(); // Reset filtered list
       matSelect.close(); // Programmatically close the select
@@ -148,33 +114,79 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
         content: currentMessage,
         sender:'user'
       };
+      // Add user message immediately to the chat
       this.messages = [...this.messages, newMessage];
 
+      // Call the LLM service
       this.getLlmResponse(currentMessage);
+
+      // Clear input and scroll to bottom
       this.messageText = '';
       this.scrollToBottom();
     }
   }
 
-  private getLlmResponse(currentMessage: string): void {
-    this.llmService.ask(currentMessage).subscribe({
-        next: (response) => {
-          this.apiResponse = response;
-          console.log('API Response:', response);
-        },
-        error: (error) => {
-          console.error('API Error:', error);
+  private getLlmResponse(userMessage: string): void {
+    // Add a placeholder message for the LLM response while waiting
+    const loadingMessage: Message = {
+      id: this.messages.length + 1,
+      content: 'Thinking...', // Or a spinner/loading indicator
+      sender: 'llm',
+      isLoading: true // Custom property to indicate loading state
+    };
+    this.messages = [...this.messages, loadingMessage];
+    this.scrollToBottom(); // Scroll to show the loading message
+
+    this.llmService.ask(userMessage).subscribe({
+      next: (response) => {
+        // Find the loading message and update it
+        const index = this.messages.findIndex(msg => msg.id === loadingMessage.id && msg.isLoading);
+        if (index !== -1) {
+          this.messages[index] = {
+            ...this.messages[index],
+            content: response.toString(), // Convert response to string if it's not already
+            isLoading: false
+          };
+          // Create a new array reference to trigger change detection if needed (especially with OnPush strategy)
+          this.messages = [...this.messages];
+        } else {
+          // If for some reason the loading message wasn't found, just add a new one
+          const llmResponse: Message = {
+            id: this.messages.length + 1,
+            content: response.toString(), // Convert response to string
+            sender: 'llm'
+          };
+          this.messages = [...this.messages, llmResponse];
         }
+        console.log('API Response:', response);
+        this.scrollToBottom(); // Scroll after response is loaded
+      },
+      error: (error) => {
+        console.error('API Error:', error);
+        // Find the loading message and update it with an error message
+        const index = this.messages.findIndex(msg => msg.id === loadingMessage.id && msg.isLoading);
+        if (index !== -1) {
+          this.messages[index] = {
+            ...this.messages[index],
+            content: 'Error: Could not get a response from LLM. Please try again.',
+            sender: 'llm', // Assign sender for error too
+            isError: true, // Custom property for error state
+            isLoading: false
+          };
+          this.messages = [...this.messages];
+        } else {
+          // If loading message not found, add a new error message
+          this.messages = [...this.messages, {
+            id: this.messages.length + 1,
+            content: 'Error: Could not get a response from LLM. Please try again.',
+            sender: 'llm',
+            isError: true
+          }];
+        }
+        this.scrollToBottom(); // Scroll to show the error message
+      }
     });
-
-    const llmResponse: Message = {
-        id: this.messages.length + 1,
-        content: this.apiResponse,
-        sender:'llm'};
-
-    setTimeout(() => {
-      this.messages.push(llmResponse);
-    }, 500);
+    // Removed the setTimeout and direct push here, as it's handled in the subscribe's next/error blocks
   }
 
   clearChat() {
@@ -198,16 +210,6 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
         element.scrollTop = element.scrollHeight;
       }
     }, 0);
-  }
-
-  updateNodeSize(size: number): void {
-    this.nodeSize = Number(size);
-    this.graphService.updateNodeSize(this.nodeSize);
-  }
-
-  updateLabelSize(size: number): void {
-    this.nodeLabelSize = Number(size);
-    this.graphService.updateLabelSize(this.nodeLabelSize);
   }
 
   formatLabel(value: number): string {

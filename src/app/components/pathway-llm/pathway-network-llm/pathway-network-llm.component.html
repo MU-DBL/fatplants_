@@ -1,3 +1,6 @@
+<div class="page-title-bar">
+  <p class="page-title"> FatPlants AI</p>
+</div>
 <div style="width: 100%; height: 750px;">
   <as-split direction="horizontal" [gutterSize]="3">
     <as-split-area [size]="15">
@@ -15,9 +18,9 @@
         <div>
         <h6>Pathway</h6>
         <mat-form-field appearance="outline">
-        <mat-select [(value)]="selectedPathway" #matSelect>
+        <mat-select [(value)]="selectedPathwayDropdown" #matSelect>
             <mat-select-trigger>
-            {{ selectedPathway ? selectedPathway.source + '_' + selectedPathway.name  : 'Select Pathway' }}
+            {{ selectedPathwayDropdown ? selectedPathwayDropdown.source + '_' + selectedPathwayDropdown.name  : 'Select Pathway' }}
             </mat-select-trigger>
                 <mat-option class="custom-search-option">
                     <div class="search-input-wrapper">
@@ -33,7 +36,7 @@
                     </div>
                 </mat-option>
             <mat-option
-                *ngFor="let pathway of filteredPathways"
+                *ngFor="let pathway of filteredPathwayDropdowns"
                 [value]="pathway"
                 (onSelectionChange)="onOptionSelected($event, matSelect)"
                 >
@@ -51,10 +54,14 @@
     <as-split-area [size]="70" class="split-container">
         <mat-tab-group>
             <mat-tab label="Network Visualization" class="tab-container">
-                <div class="graph-container" #graphContainer></div>
-                <app-zoom-control></app-zoom-control>
+                <div>
+                    <app-network-visualization *ngIf="selectedPathwayDropdown"
+                        [pathwayId]="selectedPathwayDropdown.id.toString()"
+                        (networkSummary)="onSummaryChange($event)"></app-network-visualization>
+                </div>
             </mat-tab>
             <mat-tab label="Pathway" class="tab-container">
+                <div></div>
             </mat-tab>
         </mat-tab-group>
         <div *ngIf="!isMinimized" class="chat-container">
@@ -108,34 +115,29 @@
         </div>
     </as-split-area>
     <as-split-area [size]="15">
-      <div class="network-style-container">
-  <div class="header">
-    <h3>Network Style</h3>
-  </div>
+        <div>
+           <div class="network-summary">
+                <h4>Relationships</h4>
+                <div class="legend-item">
+                    <strong>c: </strong><span>CONTAIN</span>
+                </div>
+                <div class="legend-item">
+                    <strong>i: </strong><span>INTERACT_WITH</span>
+                </div>
+                <div class="legend-item">
+                    <strong>b: </strong><span>BELONG_TO</span>
+                </div>
+            </div>
 
-  <div class="setting-row">
-    <label for="nodeSizeSlider">Node Size</label>
-    <input type="range" min="2" max="50" [(ngModel)]="nodeSize" (input)="updateNodeSize(nodeSize)" />
-    <span>{{ nodeSize }}</span>
-  </div>
-
-  <div class="setting-row">
-    <label for="nodeLabelSizeSlider">Node Label Size</label>
-    <input type="range" min="2" max="50" [(ngModel)]="nodeLabelSize" (input)="updateNodeSize(nodeLabelSize)" />
-    <span>{{ nodeLabelSize }}</span>
-  </div>
-
-  <div class="setting-row">
-    <label for="labelDensitySlider">
-      Label Density
-      <button mat-icon-button class="info-icon" matTooltip="Adjust the density of displayed labels.">
-        <mat-icon>info_outline</mat-icon>
-      </button>
-    </label>
-    <input type="range" min="2" max="50" [(ngModel)]="labelDensity" (input)="updateNodeSize(labelDensity)" />
-    <span>{{ labelDensity }}</span>
-  </div>
-</div>
+            <div class="network-summary" *ngIf="summary">
+                <h4>Network Summary</h4>
+                <div><strong>Total Nodes:</strong> {{ summary.totalNodes }}</div>
+                <div><strong>Total Edges:</strong> {{ summary.totalEdges }}</div>
+                <div *ngFor="let grp of getKeys(summary.groupCounts)">
+                    <strong>{{ grp }}:</strong> {{ summary.groupCounts[grp] }}
+                </div>
+            </div>
+        </div>
     </as-split-area>
   </as-split>
 </div>

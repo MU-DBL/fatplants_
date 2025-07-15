@@ -45,7 +45,8 @@
               "node_modules/webcola/WebCola/cola.min.js",
               "node_modules/webcola/WebCola/cola.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "src/static/js/logojs.js"
+              "src/static/js/logojs.js",
+              "node_modules/neovis.js/dist/neovis.js"
             ]
           },
           "configurations": {

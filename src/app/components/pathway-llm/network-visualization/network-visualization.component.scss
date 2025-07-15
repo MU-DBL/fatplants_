@@ -1,0 +1,23 @@
+:host {
+  position: relative;  /* make this component the positioning context */
+}
+
+// the details box
+.node-details {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  z-index: 1000;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+// optional: headers a bit bolder
+.node-details strong {
+  color: #222;
+}
