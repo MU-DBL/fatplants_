@@ -1,5 +1,5 @@
 
-import { Component, AfterViewInit,ViewChild, ElementRef, Output, EventEmitter, NgZone, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, AfterViewInit,ViewChild, ElementRef, Output, EventEmitter, NgZone, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import NeoVis, { NeovisConfig, NeoVisEvents } from 'neovis.js';
 import { environment } from 'src/environments/environment';
 import type { Edge as VisEdge } from 'vis-network/standalone';
@@ -9,21 +9,68 @@ export interface NetworkSummary {
   totalEdges: number;
   groupCounts: Record<string, number>;
 }
+export interface NodeStyleConfig {
+  color?: string; 
+  size?: number;  
+}
+export interface GraphConfig {
+  edgeLabelFontSize?: number; 
+  nodeLabelFontSize?: number; 
+  nodeSize?: number;
+  nodeStyles: {
+    Reaction?: NodeStyleConfig;
+    Gene?: NodeStyleConfig;
+    Compound?: NodeStyleConfig;
+    Ortholog?: NodeStyleConfig;
+    EC?: NodeStyleConfig;
+  };
+}
 
 @Component({
   selector: 'app-network-visualization',
   templateUrl: './network-visualization.component.html',
   styleUrl: './network-visualization.component.scss'
 })
-export class NetworkVisualizationComponent implements AfterViewInit, OnChanges {
+export class NetworkVisualizationComponent implements OnInit, AfterViewInit, OnChanges {
 
   @ViewChild('vizContainer', { static: true }) vizContainer!: ElementRef<HTMLDivElement>;
   @Output() networkSummary = new EventEmitter<NetworkSummary>();
   @Input() pathwayId!: string;
 
+  private pathwayGradient: string = '';
+  private pathwayEntryGradient: string = '';
+  private reactionGradient: string = '';
+  private geneGradient: string = '';
+  private compoundGradient: string = '';
+  private orthologGradient: string = '';
+  private ecGradient: string = '';
+
+  private gradientMap: Record<string, string> = {};
+
   constructor(private ngZone: NgZone) { }
-  
+
+  private viz: any; 
   selectedNode: any = null;
+
+  ngOnInit(){
+    this.pathwayGradient = this.createGradientImage(['#FFFFFF', '#ff7b00']);
+    this.pathwayEntryGradient = this.createGradientImage(['#FFFFFF', '#2d00f7']);
+    this.reactionGradient = this.createGradientImage(['#FFFFFF', '#a1ff0a']);
+    this.geneGradient = this.createGradientImage(['#FFFFFF', '#0aefff']);
+    this.compoundGradient = this.createGradientImage(['#FFFFFF', '#c200fb']);
+    this.orthologGradient = this.createGradientImage(['#FFFFFF', '#04e762']);
+    this.ecGradient = this.createGradientImage(['#FFFFFF', '#ee1ebaff']);
+
+    this.gradientMap = {
+      'Pathway': this.pathwayGradient,
+      'PathwayEntry': this.pathwayEntryGradient,
+      'Reaction': this.reactionGradient,
+      'Gene': this.geneGradient,
+      'Compound': this.compoundGradient,
+      'Ortholog': this.orthologGradient,
+      'EC': this.ecGradient
+    };
+  }
 
   ngAfterViewInit() {
     if (this.pathwayId) {
@@ -38,37 +85,30 @@ export class NetworkVisualizationComponent implements AfterViewInit, OnChanges {
   }
 
   private renderGraph() {
-    const pathwayGradient = this.createGradientImage(['#F0F0F0', '#ff7b00']);
-    const pathwayEntryGradient = this.createGradientImage(['#F0F0F0', '#2d00f7']);
-    const reactionGradient = this.createGradientImage(['#F0F0F0', '#a1ff0a']);
-    const geneGradient = this.createGradientImage(['#F0F0F0', '#0aefff']);
-    const compoundGradient = this.createGradientImage(['#F0F0F0', '#c200fb']);
-    const orthologGradient = this.createGradientImage(['#F0F0F0', '#04e762']);
 
+    if (this.viz && this.viz.network) {
+      this.viz.network.destroy(); // Destroy the existing network to prevent memory leaks
+    }
     const config: NeovisConfig = {
       containerId: this.vizContainer.nativeElement.id,
       neo4j: {
        	serverUrl: environment.neo4j_url,
        	serverUser: environment.neo4j_username,
        	serverPassword: environment.neo4j_password,
-        // driverConfig: { 
-        //   encrypted: "ENCRYPTION_ON",
-        //   trust: "TRUST_SYSTEM_CA_SIGNED_CERTIFICATES"
-        // }	
        },
 
       labels: {
           Pathway:{ label: 'title', value: "pagerank", 
-          [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
-             function: {
-              image: () => pathwayGradient,
-              shape: () => 'image'
-            }
-          }},
+            [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+              function: {
+                image: () => this.pathwayGradient,
+                shape: () => 'image'
+              }
+            }},
           PathwayEntry: { label: 'id', value: "pagerank",  
             [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
               function: {
-                image: () => pathwayEntryGradient,
+                image: () => this.pathwayEntryGradient,
                 shape: () => 'image',
                 label: (neo4jNode) => {
                   const rawId = neo4jNode.properties.id as string;  
@@ -79,25 +119,31 @@ export class NetworkVisualizationComponent implements AfterViewInit, OnChanges {
             }},
           Reaction: { label: 'id', value: "pagerank",[NeoVis.NEOVIS_ADVANCED_CONFIG]: {
              function: {
-              image: () => reactionGradient,
+              image: () => this.reactionGradient,
               shape: () => 'image'
             }
           }},
           Gene: { label: 'id', value: "pagerank",[NeoVis.NEOVIS_ADVANCED_CONFIG]: {
              function: {
-              image: () => geneGradient,
+              image: () => this.geneGradient,
               shape: () => 'image'
             }
           }},
           Compound: { label: 'id', value: "pagerank",[NeoVis.NEOVIS_ADVANCED_CONFIG]: {
              function: {
-              image: () => compoundGradient,
+              image: () => this.compoundGradient,
               shape: () => 'image'
             }
           }},
           Ortholog: { label: 'id', value: "pagerank",[NeoVis.NEOVIS_ADVANCED_CONFIG]: {
              function: {
-              image: () => orthologGradient,
+              image: () => this.orthologGradient,
+              shape: () => 'image'
+            }
+          }},
+          EC: { label: 'id', value: "pagerank",[NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+             function: {
+              image: () => this.ecGradient,
               shape: () => 'image'
             }
           }},
@@ -107,42 +153,65 @@ export class NetworkVisualizationComponent implements AfterViewInit, OnChanges {
           CONTAINS: {[NeoVis.NEOVIS_ADVANCED_CONFIG]: {
             function: {
               label: () => {
-                return 'c';            // show the relationship TYPE
+                return 'ct';            // show the relationship TYPE
               },
             }
             }},
-          INCLUDES:       {[NeoVis.NEOVIS_ADVANCED_CONFIG]: {
-            function: {
-              label: () => {
-                return 'c';            // show the relationship TYPE
-              },
-            }
-            }},
-          BELONGS_TO:     { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
-            function: {
-              label: () => {
-                return 'b';            // show the relationship TYPE
-              },
-            }
-            }},
-          INTERACTS_WITH: { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+          INVOLVES:       {[NeoVis.NEOVIS_ADVANCED_CONFIG]: {
             function: {
               label: () => {
                 return 'i';            // show the relationship TYPE
               },
             }
             }},
+          CATALYZES:     { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+            function: {
+              label: () => {
+                return 'c';            // show the relationship TYPE
+              },
+            }
+            }},
+          SUBSTRATE_OF: { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+            function: {
+              label: () => {
+                return 's';            // show the relationship TYPE
+              },
+            }
+            }},
+          PRODUCES: { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+            function: {
+              label: () => {
+                return 'p';            // show the relationship TYPE
+              },
+            }
+            }},
+          ENCODES: { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+            function: {
+              label: () => {
+                return 'e';            // show the relationship TYPE
+              },
+            }
+            }},
+          PART_OF: { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+            function: {
+              label: () => {
+                return 'p';            // show the relationship TYPE
+              },
+            }
+            }},
       },
 
       initialCypher: `
-        MATCH (p:Pathway {id:'${this.pathwayId}'}) 
+        MATCH (p:Pathway {id:'path:ath00600'}) 
         OPTIONAL MATCH (p)-[con:CONTAINS]->(pe:PathwayEntry)
-        OPTIONAL MATCH (p)-[inc:INCLUDES]->(r:Reaction)
-        OPTIONAL MATCH (g:Gene)-[gen_bel:BELONGS_TO]->(pe)
-        OPTIONAL MATCH (c:Compound)-[com_bel:BELONGS_TO]->(pe)
-        OPTIONAL MATCH (o:Ortholog)-[ort_bel:BELONGS_TO]->(pe)
-        OPTIONAL MATCH (pe)-[int:INTERACTS_WITH]-(pe2:PathwayEntry)
-        RETURN p, pe, pe2, r, g, c, o, con, inc, gen_bel, com_bel, ort_bel, int
+        OPTIONAL MATCH (p)-[inv:INVOLVES]->(r:Reaction)
+        OPTIONAL MATCH (ec:EC)-[gen_bel:CATALYZES]->(r)
+        OPTIONAL MATCH (o:Ortholog)-[orth_bel:CATALYZES]->(r)
+        OPTIONAL MATCH (c1:Compound)-[com_sub_bel:SUBSTRATE_OF]->(r)
+        OPTIONAL MATCH (r)-[com_prod_bel:PRODUCES]->(c2:Compound)
+        OPTIONAL MATCH (g1:Gene)-[gene_ec_bel:ENCODES]->(ec)
+        OPTIONAL MATCH (g2:Gene)-[gene_orth_bel:PART_OF]->(o)
+        RETURN p, pe, r, ec, o, g1, g2, c1, c2, con, inv, gen_bel, orth_bel, com_sub_bel, com_prod_bel, gene_ec_bel, gene_orth_bel
       `,
 
       visConfig: {
@@ -153,7 +222,7 @@ export class NetworkVisualizationComponent implements AfterViewInit, OnChanges {
 						shape: 'dot',
             chosen: true,
             borderWidth:3,
-            size:15,
+            size: 15,
             shadow: {
               enabled:true,    
               color: 'rgba(0,0,0,0.3)', 
@@ -176,15 +245,14 @@ export class NetworkVisualizationComponent implements AfterViewInit, OnChanges {
         }
     };
 
-    
-      const viz = new NeoVis(config);
-      viz.render();
-      viz.registerOnEvent(NeoVisEvents.ClickNodeEvent, () => {
-        if (viz.network) {
-          viz.network.on('click', (params: any) => {
+      this.viz = new NeoVis(config);
+      this.viz.render();
+      this.viz.registerOnEvent(NeoVisEvents.ClickNodeEvent, () => {
+        if (this.viz.network) {
+          this.viz.network.on('click', (params: any) => {
             if (params.nodes.length > 0) {
               const nodeId = params.nodes[0];
-              const nodeData = viz.nodes.get(nodeId);
+              const nodeData = this.viz.nodes.get(nodeId);
               const node = Array.isArray(nodeData) ? nodeData[0] : nodeData;
               this.selectedNode = {
                 id: nodeId,
@@ -198,10 +266,10 @@ export class NetworkVisualizationComponent implements AfterViewInit, OnChanges {
         }
       });
 
-      viz.registerOnEvent(NeoVisEvents.CompletionEvent, () => {
+      this.viz.registerOnEvent(NeoVisEvents.CompletionEvent, () => {
      
-        const nodes = viz.nodes.get();
-        const edges = viz.edges.get();
+        const nodes = this.viz.nodes.get();
+        const edges = this.viz.edges.get();
         const groupCounts = nodes.reduce((acc, n) => {
           const g = n.group || 'unknown';
           acc[g] = (acc[g] || 0) + 1;
@@ -214,7 +282,6 @@ export class NetworkVisualizationComponent implements AfterViewInit, OnChanges {
         });
       });
   }
-
   
   getKeys(obj: any): string[] {
     return obj ? Object.keys(obj) : [];
@@ -243,5 +310,83 @@ export class NetworkVisualizationComponent implements AfterViewInit, OnChanges {
     ctx.fill();
     
     return canvas.toDataURL();
+  }
+
+  public updateEdgeNodeLabelSize(graphConfig: GraphConfig){
+    if (!this.viz || !this.viz.network ) {
+        return;
+    }
+
+    const newOptions: any = {
+    edges: {
+        font: {
+          size: graphConfig.edgeLabelFontSize || 14 
+        }
+    },
+    nodes: {
+        font: {
+          size: graphConfig.nodeLabelFontSize || 14
+        },
+      }
+    };
+
+    this.viz.network.setOptions(newOptions);
+
+  }
+
+  public updateGlobalNodeSize(graphConfig: GraphConfig){
+    if (!this.viz || !this.viz.network ) {
+        return;
+    }
+    const nodesToUpdate: any[] = [];
+    const currentNodes = this.viz.nodes.get();
+    for (const node of currentNodes) {
+      const updatedNodeProps: any = { id: node.id };
+      updatedNodeProps.size =  graphConfig.nodeSize || 15; 
+      nodesToUpdate.push(updatedNodeProps);
+    }
+
+    if (nodesToUpdate.length > 0) {
+      this.viz.nodes.update(nodesToUpdate);
+    }
+  }
+
+  public updateNodeGroup(graphConfig:GraphConfig) {
+
+    if (!this.viz || !this.viz.network ) {
+        return;
+    }
+    const nodesToUpdate: any[] = [];
+    const currentNodes = this.viz.nodes.get();
+    for (const node of currentNodes) {
+      const nodeGroup = node.group;
+      const nodeStyleConfig = this.getNodeStyle(nodeGroup, graphConfig);
+      const updatedNodeProps: any = { id: node.id };
+      
+      if (nodeStyleConfig?.color) {
+          updatedNodeProps.shape = 'image';
+          updatedNodeProps.image = this.createGradientImage(['#FFFFFF', nodeStyleConfig.color]); // Ensure no image if color is set
+      } else {
+          updatedNodeProps.image = this.gradientMap[nodeGroup];
+          updatedNodeProps.shape = 'image';
+      }
+
+      if (nodeStyleConfig?.size) {
+        updatedNodeProps.size = nodeStyleConfig.size;
+      } else {
+        updatedNodeProps.size =  graphConfig.nodeSize || 15; 
+      }  
+
+      nodesToUpdate.push(updatedNodeProps);
+    }
+
+    // Batch update the nodes
+    if (nodesToUpdate.length > 0) {
+      this.viz.nodes.update(nodesToUpdate);
+    }
+  }
+
+  private getNodeStyle(label: string, graphConfig: GraphConfig) {
+    return graphConfig?.nodeStyles?.[label as keyof GraphConfig['nodeStyles']];
   }
 }

@@ -3,7 +3,8 @@ import { MatSelect } from '@angular/material/select';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import {Species, PathwayDropdown, Message } from '../data-interface';
 import { LLMService } from '../../../services/llm/llm.service';
-import { NetworkSummary } from '../network-visualization/network-visualization.component';
+import { GraphConfig, NetworkSummary } from '../network-visualization/network-visualization.component';
+import { NetworkVisualizationComponent } from '../network-visualization/network-visualization.component';
 
 @Component({
   selector: 'app-pathway-network-llm',
@@ -23,11 +24,7 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
 
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
   @ViewChild('matSelect') matSelect!: MatSelect;
-  @ViewChild('graphContainer') graphContainer!: ElementRef<HTMLDivElement>;
-
-  nodeSize: number = 5;
-  nodeLabelSize: number = 8;
-  labelDensity: number = 3.9;
+  @ViewChild('networkVisualizationComponent') networkVisualizationComponent!: NetworkVisualizationComponent;
 
   isDisclaimerVisible: boolean = true;
   messageText = '';
@@ -41,6 +38,19 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
     this.summary = summary;
   }
   getKeys = Object.keys;
+
+  graphConfig: GraphConfig = {
+    edgeLabelFontSize: 20,
+    nodeLabelFontSize: 20,
+    nodeSize: 16,
+    nodeStyles: {
+      Reaction: { color: '#a1ff0a', size: 16 },
+      Gene: { color: '#0aefff', size: 16 },
+      Compound: { color: '#c200fb', size: 16 },
+      Ortholog: { color: '#04e762', size: 16 },
+      EC: { color: '#e44413ff', size: 16 }
+    }
+  };
 
   constructor(private llmService: LLMService) {
   }
@@ -212,7 +222,67 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
     }, 0);
   }
 
-  formatLabel(value: number): string {
-    return `${value}`;
+
+  updateNodeColor(nodeType: string, event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    if (this.graphConfig.nodeStyles[nodeType]) {
+      this.graphConfig = {
+        ...this.graphConfig,
+        nodeStyles: {
+          ...this.graphConfig.nodeStyles,
+          [nodeType]: {
+            ...this.graphConfig.nodeStyles[nodeType],
+            color: inputElement.value
+          }
+        }
+      };
+      this.networkVisualizationComponent.updateNodeGroup(this.graphConfig);
+    }
+  }
+
+
+  updateNodeSize(nodeType: string, event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    if (this.graphConfig.nodeStyles[nodeType]) {
+      this.graphConfig = {
+        ...this.graphConfig,
+        nodeStyles: {
+          ...this.graphConfig.nodeStyles,
+          [nodeType]: {
+            ...this.graphConfig.nodeStyles[nodeType],
+            size: parseInt(inputElement.value, 10)
+          }
+        }
+      };
+      this.networkVisualizationComponent.updateNodeGroup(this.graphConfig);
+    }
+  }
+
+  updateGlobalEdgeLabelFontSize(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.graphConfig = {
+      ...this.graphConfig,
+      edgeLabelFontSize: parseInt(inputElement.value, 10)
+    };
+
+    this.networkVisualizationComponent.updateEdgeNodeLabelSize(this.graphConfig);
+  }
+
+  updateGlobalNodeLabelFontSize(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.graphConfig = {
+      ...this.graphConfig,
+      nodeLabelFontSize: parseInt(inputElement.value, 10)
+    };
+    this.networkVisualizationComponent.updateEdgeNodeLabelSize(this.graphConfig);
+  }
+
+  updateGlobalNodeSize(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.graphConfig = {
+      ...this.graphConfig,
+      nodeSize: parseInt(inputElement.value, 10)
+    };
+    this.networkVisualizationComponent.updateGlobalNodeSize(this.graphConfig);
   }
 }
