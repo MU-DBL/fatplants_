@@ -3,8 +3,7 @@ import { MatSelect } from '@angular/material/select';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import {Species, PathwayDropdown, Message } from '../data-interface';
 import { LLMService } from '../../../services/llm/llm.service';
-import { GraphConfig, NetworkSummary } from '../network-visualization/network-visualization.component';
-import { NetworkVisualizationComponent } from '../network-visualization/network-visualization.component';
+import { NetworkSummary } from '../network-visualization/network-visualization.component';
 
 @Component({
   selector: 'app-pathway-network-llm',
@@ -22,9 +21,15 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
   selectedPathwayDropdown: PathwayDropdown | null = null;
   searchPathwayTerm: string = '';
 
+  imageURL="";
+
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
   @ViewChild('matSelect') matSelect!: MatSelect;
-  @ViewChild('networkVisualizationComponent') networkVisualizationComponent!: NetworkVisualizationComponent;
+  @ViewChild('graphContainer') graphContainer!: ElementRef<HTMLDivElement>;
+
+  nodeSize: number = 5;
+  nodeLabelSize: number = 8;
+  labelDensity: number = 3.9;
 
   isDisclaimerVisible: boolean = true;
   messageText = '';
@@ -38,19 +43,6 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
     this.summary = summary;
   }
   getKeys = Object.keys;
-
-  graphConfig: GraphConfig = {
-    edgeLabelFontSize: 20,
-    nodeLabelFontSize: 20,
-    nodeSize: 16,
-    nodeStyles: {
-      Reaction: { color: '#a1ff0a', size: 16 },
-      Gene: { color: '#0aefff', size: 16 },
-      Compound: { color: '#c200fb', size: 16 },
-      Ortholog: { color: '#04e762', size: 16 },
-      EC: { color: '#e44413ff', size: 16 }
-    }
-  };
 
   constructor(private llmService: LLMService) {
   }
@@ -73,11 +65,19 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
   loadPathways() {
     this.pathwayDropdowns = [
       {
+        id: "path:ath00510", name: 'path:ath00510', source: 'KEGG',
+        species: 'Arabidopsis'
+      },
+      {
         id: "path:ath00062", name: 'path:ath00062', source: 'KEGG',
         species: 'Arabidopsis'
       },
       {
-        id: "path:ath00061", name: 'path:ath00061', source: 'ARALIP',
+        id: "path:triacylglycerol_biosynthesis", name: 'Triacylglycerol Biosynthesis', source: 'ARALIP',
+        species: 'Arabidopsis'
+      },
+      {
+        id: "path:triacylglycerol_fatty_acid_degradation", name: 'Triacylglycerol & Fatty Acid Degradation', source: 'ARALIP',
         species: 'Arabidopsis'
       },
     ];
@@ -101,6 +101,13 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
 
   onOptionSelected(event: any, matSelect: MatSelect) {
     if (event.isUserInput) { // Ensure it's a user selection, not programmatic
+      var str = event.source.value.id.split(':').slice(1);
+      if (str[0].includes("ath")) {//note: "console.log(str)"->['ath00062'], "console.log(str[0])"->ath00062
+        this.imageURL = "http://rest.kegg.jp/get/" + str + "/image";
+      } else {
+        this.imageURL = "https://fatplants.net/static/aralip/" + str + ".GIF";
+      }
+      //console.log('img: ',"http://rest.kegg.jp/get/"+event.source.value.name.split(':').slice(1)+"/image");
       this.selectedPathwayDropdown = event.source.value;
       this.searchPathwayTerm = ''; // Clear search term on selection
       this.filterPathways(); // Reset filtered list
@@ -222,67 +229,7 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
     }, 0);
   }
 
-
-  updateNodeColor(nodeType: string, event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    if (this.graphConfig.nodeStyles[nodeType]) {
-      this.graphConfig = {
-        ...this.graphConfig,
-        nodeStyles: {
-          ...this.graphConfig.nodeStyles,
-          [nodeType]: {
-            ...this.graphConfig.nodeStyles[nodeType],
-            color: inputElement.value
-          }
-        }
-      };
-      this.networkVisualizationComponent.updateNodeGroup(this.graphConfig);
-    }
-  }
-
-
-  updateNodeSize(nodeType: string, event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    if (this.graphConfig.nodeStyles[nodeType]) {
-      this.graphConfig = {
-        ...this.graphConfig,
-        nodeStyles: {
-          ...this.graphConfig.nodeStyles,
-          [nodeType]: {
-            ...this.graphConfig.nodeStyles[nodeType],
-            size: parseInt(inputElement.value, 10)
-          }
-        }
-      };
-      this.networkVisualizationComponent.updateNodeGroup(this.graphConfig);
-    }
-  }
-
-  updateGlobalEdgeLabelFontSize(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.graphConfig = {
-      ...this.graphConfig,
-      edgeLabelFontSize: parseInt(inputElement.value, 10)
-    };
-
-    this.networkVisualizationComponent.updateEdgeNodeLabelSize(this.graphConfig);
-  }
-
-  updateGlobalNodeLabelFontSize(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.graphConfig = {
-      ...this.graphConfig,
-      nodeLabelFontSize: parseInt(inputElement.value, 10)
-    };
-    this.networkVisualizationComponent.updateEdgeNodeLabelSize(this.graphConfig);
-  }
-
-  updateGlobalNodeSize(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.graphConfig = {
-      ...this.graphConfig,
-      nodeSize: parseInt(inputElement.value, 10)
-    };
-    this.networkVisualizationComponent.updateGlobalNodeSize(this.graphConfig);
+  formatLabel(value: number): string {
+    return `${value}`;
   }
 }
