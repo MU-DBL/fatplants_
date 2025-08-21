@@ -1,5 +1,32 @@
 // Make sure you import Material Icons in your index.html or global styles
 // <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+input[type='range'] {
+  -webkit-appearance: none; /* Override default look */
+  accent-color: lightgrey;
+  height: 10px; /* Specified height */
+  border-radius: 5px;  
+  opacity: 0.7;
+  background-color: #248f8f; 
+  --range-color: #a8739d;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; 
+  outline: 3px solid #98c2c2;
+  background: white;
+  cursor: pointer;
+}
+
+.control-section {
+  border: 2px solid #98c2c2; /* Defines the outline: 2px wide, solid, dark gray */
+  border-radius: 6px; /* Rounds the corners with a 15px radius */
+  padding: 6px; /* Adds space between the content and the outline */
+  margin: 6px; /* Adds space around the entire section */
+}
 
 .custom-search-option {
   height: auto !important;

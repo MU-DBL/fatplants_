@@ -5,48 +5,42 @@
   <as-split direction="horizontal" [gutterSize]="3">
     <as-split-area [size]="15">
         <div style="margin: 5%;">
-        <div>
-            <h6>Species</h6>
-            <mat-form-field appearance="outline">
-            <mat-select [(value)]="selectedSpecies" #matSelect>
-                <mat-option *ngFor="let species of specieses" [value]="species.id">
-                {{ species.name }}
-                </mat-option>
-            </mat-select>
-            </mat-form-field>
-        </div>
-        <div>
-            <h6>Pathway</h6>
-            <mat-form-field appearance="outline">
-            <mat-select [(value)]="selectedPathwayDropdown" #matSelect>
-                <mat-select-trigger>
-                {{ selectedPathwayDropdown ? selectedPathwayDropdown.source + '_' + selectedPathwayDropdown.name  : 'Select Pathway' }}
-                </mat-select-trigger>
-                    <mat-option class="custom-search-option">
-                        <div class="search-input-wrapper">
-                            <mat-icon class="search-icon">search</mat-icon> <input
-                            #searchInput
-                            matInput
-                            placeholder="Search Pathway"
-                            [(ngModel)]="searchPathwayTerm"
-                            (input)="filterPathways()"
-                            (keydown)="$event.stopPropagation()"
-                            (click)="$event.stopPropagation()"
-                            />
-                        </div>
-                    </mat-option>
-                <mat-option
-                    *ngFor="let pathway of filteredPathwayDropdowns"
-                    [value]="pathway"
-                    (onSelectionChange)="onOptionSelected($event, matSelect)"
-                    >
-                {{ pathway.source }}_{{ pathway.name }}
-                </mat-option>
-                <mat-option *ngIf="filterPathways.length === 0 && searchPathwayTerm" disabled>
-                No matching pathway found
-                </mat-option>
-            </mat-select>
-            </mat-form-field>
+            <div class="control-section">
+                <div>
+                    <h6>Species</h6>
+                    <mat-form-field appearance="outline">
+                        <mat-select [(value)]="selectedSpecies" #matSelect>
+                            <mat-option *ngFor="let species of specieses" [value]="species.id">
+                                {{ species.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <h6>Pathway</h6>
+                    <mat-form-field appearance="outline">
+                        <mat-select [(value)]="selectedPathwayDropdown" #matSelect>
+                            <mat-select-trigger>
+                                {{ selectedPathwayDropdown ? selectedPathwayDropdown.source + '_' + selectedPathwayDropdown.name :
+                                'Select Pathway' }}
+                            </mat-select-trigger>
+                            <mat-option class="custom-search-option">
+                                <div class="search-input-wrapper">
+                                    <mat-icon class="search-icon">search</mat-icon> <input #searchInput matInput
+                                        placeholder="Search Pathway" [(ngModel)]="searchPathwayTerm" (input)="filterPathways()"
+                                        (keydown)="$event.stopPropagation()" (click)="$event.stopPropagation()" />
+                                </div>
+                            </mat-option>
+                            <mat-option *ngFor="let pathway of filteredPathwayDropdowns" [value]="pathway"
+                                (onSelectionChange)="onOptionSelected($event, matSelect)">
+                                {{ pathway.source }}_{{ pathway.name }}
+                            </mat-option>
+                            <mat-option *ngIf="filterPathways.length === 0 && searchPathwayTerm" disabled>
+                                No matching pathway found
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
             <div class="control-section">
                 <div class="controls-section">
@@ -61,6 +55,8 @@
                 <h4>nodeSize</h4>
                 <input type="range" [value]="graphConfig.nodeSize" (input)="updateGlobalNodeSize($event)"  min="8" max="30" step="1"/>
                 </div>
+            </div>
+            <div class="control-section">
                 <h3>Node Type Styling</h3>
                 <div *ngFor="let nodeType of ['Reaction', 'Gene', 'Compound', 'Ortholog', 'EC']">
                     <h4>{{ nodeType }}</h4>
