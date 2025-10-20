@@ -7,3 +7,8 @@
 
 # FatPlant Deployment
 ng build --configuration production
+
+
+# Get chatbot dropdown list
+MATCH (p:Pathway)
+RETURN properties(p) AS pathway_properties

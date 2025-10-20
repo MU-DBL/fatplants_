@@ -1,15 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { forkJoin, Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
+
+
 export class LLMService {
-  private readonly URL = 'http://digbio-xugpu-3.missouri.edu:8000/'; 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  ask(prompt: string): Observable<any> {
-    const params = new HttpParams().set('prompt', prompt);
-    return this.http.get<any>(this.URL+"ask", { params });
+  queryPathway(query: string) {
+    const url = environment.PATHBOT_BASE_API_URL + 'ask';
+    const body = { query: query };
+    const headers = { 'Content-Type': 'application/json' };
+
+    return this.http.post(url, body, { headers });
+  }
+
+  searchMulti(query: string, top_k: number = 10) {
+    const url = environment.RAGBOT_BASE_API_URL + 'search_multi';
+    const body = {
+      query: query,
+      top_k: top_k
+    };
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.post(url, body, { headers });
   }
 }

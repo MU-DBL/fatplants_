@@ -1,10 +1,14 @@
 // pathway-network-llm.component.ts
 import { MatSelect } from '@angular/material/select';
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import {Species, PathwayDropdown, Message } from '../data-interface';
+import { AfterViewInit, Component, ElementRef, ViewChild, HostListener  } from '@angular/core';
+import {Species, PathwayDropdown, Message, Relationship, Literature } from '../data-interface';
 import { LLMService } from '../../../services/llm/llm.service';
-import { GraphConfig, NetworkSummary } from '../network-visualization/network-visualization.component';
-import { NetworkVisualizationComponent } from '../network-visualization/network-visualization.component';
+import { NetworkVisualizationComponent,GraphConfig, NetworkSummary } from '../network-visualization/network-visualization.component';
+import panzoom, { PanZoom } from 'panzoom';
+import * as pathway_dropdown from '../../../assets/records.json';
+import { Observable } from 'rxjs';
+
+type View = 'a' | 'b';
 
 @Component({
   selector: 'app-pathway-network-llm',
@@ -13,9 +17,25 @@ import { NetworkVisualizationComponent } from '../network-visualization/network-
 })
 
 export class PathwayNetworkLlmComponent implements AfterViewInit {
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault(); // block newline
+      if (this.messageText.trim()) {
+        this.handleSendMessage();
+      }
+    }
+    // If Shift+Enter → do nothing, textarea will insert newline normally
+  }
 
+
+  view: View = 'a';
+  set(v: View) { this.view = v; }
+
+  slider_min = 5;
+  slider_max = 50;
+
+  selectedSpecies: Species | undefined;
   specieses: Species[] = [];
-  selectedSpecies: Species | null = null;
 
   pathwayDropdowns: PathwayDropdown[] = [];
   filteredPathwayDropdowns: PathwayDropdown[] = [];
@@ -25,6 +45,8 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
   @ViewChild('matSelect') matSelect!: MatSelect;
   @ViewChild('networkVisualizationComponent') networkVisualizationComponent!: NetworkVisualizationComponent;
+  @ViewChild('imageContainer', { static: true }) imageContainer!: ElementRef;
+  @ViewChild('imageRef', { static: true }) imageRef!: ElementRef;
 
   isDisclaimerVisible: boolean = true;
   messageText = '';
@@ -33,7 +55,33 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
   @ViewChild('messagesList') private messagesListRef!: ElementRef;
   messages: Message[] = [];
 
-  summary?: NetworkSummary;
+  imageURL="";
+  llmQueryTypeOptions = ['QueryLiterature', 'QueryPathway'];
+  selectedOption = this.llmQueryTypeOptions[0];
+
+  summary: NetworkSummary = {
+    totalNodes: 0,
+    totalEdges: 0,
+    groupCounts: {
+      'Pathway': 0,
+      'Reaction': 0,
+      'EC': 0,
+      'Compound': 0,
+      'Gene': 0,
+      'Ortholog': 0
+    }
+  };
+
+  relationships:Relationship[] = [
+    { id: 'c', name: 'CONTAINS' },
+    { id: 'cat', name: 'CATALYZES' },
+    { id: 's', name: 'SUBSTRATE_OF' },
+    { id: 'p', name: 'PRODUCES' },
+    { id: 'e', name: 'ENCODES' },
+    { id: 'm', name: 'MEMBER_OF' },
+    { id: 'b', name: 'BELONGS_TO' }
+  ]
+
   onSummaryChange(summary: NetworkSummary) {
     this.summary = summary;
   }
@@ -50,12 +98,23 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
       Ortholog: { color: '#04e762', size: 16 },
       EC: { color: '#e44413ff', size: 16 }
     }
-  };
+  }
 
   constructor(private llmService: LLMService) {
   }
 
-  ngAfterViewInit(): void {
+
+ ngAfterViewInit() {
+    const image = this.imageRef.nativeElement;
+
+    panzoom(image, {
+      smoothScroll: false,
+      zoomSpeed: 0.065,
+      bounds: true,
+      boundsPadding: 0.1,
+      maxZoom: 5, 
+      minZoom: 0.5 
+    });
   }
 
   ngOnInit() {
@@ -63,50 +122,78 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
     this.loadSpecies();
   }
 
-  loadSpecies() {
-    this.specieses = [
-      { id: "1", name: 'Arabidopsis' },
-      { id: "2", name: 'Soybean' },
-    ];
+ loadSpecies() {
+  this.specieses = [
+    { id: 'ATH', name: 'Arabidopsis' },
+    { id: 'GMX', name: 'Soybean' },
+    { id: 'CSAT', name: 'Cameline' }
+  ];
+  
+  // Auto-select the first species
+  this.selectedSpecies = this.specieses[0];
+ }
+
+  onSpeciesSelected(event: any, matSelect: MatSelect) {
+    this.selectedSpecies = event.value;
+    this.searchPathwayTerm = "";
+    this.selectedPathwayDropdown = null;
+    this.filterPathways();
+    matSelect.close();
   }
 
   loadPathways() {
-    this.pathwayDropdowns = [
-      {
-        id: "path:ath00062", name: 'path:ath00062', source: 'KEGG',
-        species: 'Arabidopsis'
-      },
-      {
-        id: "path:ath00061", name: 'path:ath00061', source: 'ARALIP',
-        species: 'Arabidopsis'
-      },
-    ];
-    this.filteredPathwayDropdowns = [...this.pathwayDropdowns];
+    const rawData = (pathway_dropdown as any).default;
+    
+    this.pathwayDropdowns = rawData
+      .filter((item: any) => item.pathway_properties.title.toLowerCase() !== 'unknown')
+      .map((item: any) => ({
+        id: item.pathway_properties.id,
+        title: item.pathway_properties.title,
+        species: item.pathway_properties.species,
+        source: item.pathway_properties.source,
+        link: item.pathway_properties.link,
+        image: item.pathway_properties.image
+      }));
+
+    console.log(this.pathwayDropdowns)
+    this.filterPathways();
   }
 
   filterPathways() {
-    if (!this.searchPathwayTerm) {
-      this.filteredPathwayDropdowns = [...this.pathwayDropdowns]; // Show all if search term is empty
-    } else {
+    let tempPathways = [...this.pathwayDropdowns];
+
+    if (this.selectedSpecies) {
+      tempPathways = tempPathways.filter(pathway => pathway.species === this.selectedSpecies?.id);
+    }
+
+    if (this.searchPathwayTerm != "") {
       const lowerCaseSearchTerm = this.searchPathwayTerm.toLowerCase();
-      this.filteredPathwayDropdowns = this.pathwayDropdowns.filter(pathway =>
-        pathway.name.toLowerCase().includes(lowerCaseSearchTerm) ||
+      tempPathways = tempPathways.filter(pathway =>
+        pathway.title.toLowerCase().includes(lowerCaseSearchTerm) ||
         pathway.source.toLowerCase().includes(lowerCaseSearchTerm)
       );
     }
+
+    this.filteredPathwayDropdowns = tempPathways;
     setTimeout(() => {
       this.searchInput.nativeElement.focus();
     }, 0);
   }
 
   onOptionSelected(event: any, matSelect: MatSelect) {
-    if (event.isUserInput) { // Ensure it's a user selection, not programmatic
+    if (event.isUserInput) { 
+      if(event.source.value.source === "KEGG"){
+        var id = event.source.value.id.replace("path:", "");
+        this.imageURL = "http://rest.kegg.jp/get/" + id + "/image";
+      } else if (event.source.value.source === "ARALIP"){
+        var image = event.source.value.image;
+        this.imageURL = "/static/aralip/" + image + ".GIF";
+      }
       this.selectedPathwayDropdown = event.source.value;
-      this.searchPathwayTerm = ''; // Clear search term on selection
-      this.filterPathways(); // Reset filtered list
-      matSelect.close(); // Programmatically close the select
-    }
+      this.searchPathwayTerm = ''; 
+      matSelect.close(); 
   }
+}
 
   onOpenedChange(opened: boolean) {
     if (!opened) {
@@ -121,14 +208,14 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
       this.isMinimized = false;
       const newMessage: Message = {
         id: this.messages.length + 1,
-        content: currentMessage,
+        answer: currentMessage,
         sender:'user'
       };
       // Add user message immediately to the chat
       this.messages = [...this.messages, newMessage];
 
       // Call the LLM service
-      this.getLlmResponse(currentMessage);
+      this.getLlmResponse(currentMessage, this.selectedOption);
 
       // Clear input and scroll to bottom
       this.messageText = '';
@@ -136,67 +223,72 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
     }
   }
 
-  private getLlmResponse(userMessage: string): void {
+  private getLlmResponse(userMessage: string, queryType: string): void {
     // Add a placeholder message for the LLM response while waiting
     const loadingMessage: Message = {
       id: this.messages.length + 1,
-      content: 'Thinking...', // Or a spinner/loading indicator
+      answer: 'Thinking...', // Or a spinner/loading indicator
       sender: 'llm',
       isLoading: true // Custom property to indicate loading state
     };
     this.messages = [...this.messages, loadingMessage];
     this.scrollToBottom(); // Scroll to show the loading message
+    if (queryType === this.llmQueryTypeOptions[1]) {
+      this.handleLLMQuery(this.llmService.queryPathway(userMessage), loadingMessage);
+    } else {
+      this.handleLLMQuery(this.llmService.searchMulti(userMessage), loadingMessage);
+    }
+  }
 
-    this.llmService.ask(userMessage).subscribe({
+  private handleLLMQuery(observable: Observable<any>, loadingMessage: Message): void {
+    observable.subscribe({
       next: (response) => {
-        // Find the loading message and update it
+        const answer = JSON.stringify(response, null, 2); ;
+        // console.log(answer)
         const index = this.messages.findIndex(msg => msg.id === loadingMessage.id && msg.isLoading);
+
         if (index !== -1) {
           this.messages[index] = {
             ...this.messages[index],
-            content: response.toString(), // Convert response to string if it's not already
+            answer: answer,
             isLoading: false
           };
-          // Create a new array reference to trigger change detection if needed (especially with OnPush strategy)
           this.messages = [...this.messages];
         } else {
-          // If for some reason the loading message wasn't found, just add a new one
           const llmResponse: Message = {
             id: this.messages.length + 1,
-            content: response.toString(), // Convert response to string
+            answer: answer,
             sender: 'llm'
           };
           this.messages = [...this.messages, llmResponse];
         }
-        console.log('API Response:', response);
-        this.scrollToBottom(); // Scroll after response is loaded
+        // console.log('API Response:', response);
+        this.scrollToBottom();
       },
       error: (error) => {
         console.error('API Error:', error);
-        // Find the loading message and update it with an error message
         const index = this.messages.findIndex(msg => msg.id === loadingMessage.id && msg.isLoading);
+        
         if (index !== -1) {
           this.messages[index] = {
             ...this.messages[index],
-            content: 'Error: Could not get a response from LLM. Please try again.',
-            sender: 'llm', // Assign sender for error too
-            isError: true, // Custom property for error state
+            answer: 'Error: Could not get a response from LLM. Please try again.',
+            sender: 'llm',
+            isError: true,
             isLoading: false
           };
           this.messages = [...this.messages];
         } else {
-          // If loading message not found, add a new error message
           this.messages = [...this.messages, {
             id: this.messages.length + 1,
-            content: 'Error: Could not get a response from LLM. Please try again.',
+            answer: 'Error: Could not get a response from LLM. Please try again.',
             sender: 'llm',
             isError: true
           }];
         }
-        this.scrollToBottom(); // Scroll to show the error message
+        this.scrollToBottom();
       }
     });
-    // Removed the setTimeout and direct push here, as it's handled in the subscribe's next/error blocks
   }
 
   clearChat() {

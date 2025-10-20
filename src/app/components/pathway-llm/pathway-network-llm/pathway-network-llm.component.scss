@@ -21,12 +21,6 @@ input[type='range']::-webkit-slider-thumb {
   cursor: pointer;
 }
 
-.control-section {
-  border: 2px solid #98c2c2; /* Defines the outline: 2px wide, solid, dark gray */
-  border-radius: 6px; /* Rounds the corners with a 15px radius */
-  padding: 6px; /* Adds space between the content and the outline */
-  margin: 6px; /* Adds space around the entire section */
-}
 
 .custom-search-option {
   height: auto !important;
@@ -69,7 +63,7 @@ input[type='range']::-webkit-slider-thumb {
 
 .graph-container {
   width: 100%;
-  height: 600px; 
+  height: 580px; 
 }
 
 button {
@@ -143,7 +137,7 @@ button {
   height: 40px; /* Make it square */
   border-radius: 50%; /* Make it circular if you prefer */
   background-color: transparent; /* No background color */
-  color: #007bff; /* Blue color for the icon, matching the image */
+  color: #629B07; /* Blue color for the icon, matching the image */
   border: none;
   cursor: pointer;
   display: flex;
@@ -200,7 +194,7 @@ button {
 }
 
 .disclaimer-content a {
-  color: #007bff; /* Blue color for links */
+  color: #629B07; /* Blue color for links */
   text-decoration: underline;
 }
 
@@ -256,137 +250,132 @@ button {
 }
 
 .user-message .message-text {
-  background-color: #c0c0c0; /* Light green for user messages */
+  background-color: #e6e5e5; /* Light green for user messages */
 }
 
 .llm-message .message-text {
-  background-color: #b9ebb9; /* Light red for response messages */
+  background-color: #cef5ce; /* Light red for response messages */
 }
 
-.network-style-container {
-  font-family: sans-serif;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 15px;
-  width: 350px; // Adjust as needed
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
 
-  .header {
+.pan-container {
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pan-container img {
+  display: block;
+  max-width: none;
+  max-height: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.range-container{
+  display:grid;
+  grid-template-columns: 1fr auto; /* 滑杆占满，数值贴右侧 */
+  column-gap:8px; row-gap:4px; align-items:center;
+}
+.range-container input[type=range]{ width:100%; }
+.range-value{ white-space:nowrap; }
+
+.node-inline{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;}
+.node-title{margin:0;line-height:1;}
+.color-swatch{width:22px;height:22px;border-radius:50%;display:inline-block;position:relative;box-shadow:0 0 0 1px rgba(0,0,0,.25);}
+.color-swatch input[type=color]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+
+.node-header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-
-    h3 {
-      margin: 0;
-      font-size: 1.1em;
-      color: #333;
-    }
-
-    .arrows {
-      button {
-        min-width: 30px;
-        height: 30px;
-        padding: 0;
-        line-height: 30px;
-        color: #666;
-        &:first-child {
-          margin-right: 5px;
-        }
-      }
-    }
-  }
-
-  .setting-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    gap: 10px; // Space between elements
-
-    label {
-      flex-basis: 120px; // Adjust width for labels
-      font-size: 0.9em;
-      color: #555;
-      display: flex;
-      align-items: center;
-
-      .info-icon {
-        margin-left: 5px;
-        font-size: 18px;
-        width: 20px;
-        height: 20px;
-        line-height: 20px;
-        color: #888;
-      }
-    }
-
-    mat-slider {
-      flex-grow: 1;
-      width: auto; // Allow slider to take available space
-      .mat-slider-track-fill {
-        background-color: #00796b; // Teal color for filled track
-      }
-      .mat-slider-thumb {
-        background-color: #00796b; // Teal color for thumb
-      }
-    }
-
-    .input-field {
-      width: 70px; // Fixed width for the number input
-      margin-left: 10px; // Space after slider
-      .mat-form-field-wrapper {
-        padding-bottom: 0;
-      }
-      .mat-form-field-flex {
-        align-items: center;
-      }
-      input {
-        text-align: center;
-        padding: 8px 5px;
-        height: auto;
-      }
-    }
-  }
+    margin-bottom: 2%;
+    margin-top: 6%;
 }
 
-.page-title-bar {
-  background-color: #629B07;
-  color: rgb(255, 255, 255);
-  padding: 0.1rem;
+.range-value {
+    width: 60px;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
 }
 
-.page-title {
-  font-size: 1.5vw;
+.tab-header {
+  background: #629B07;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Tab Navigation */
+.tab-nav {
+  display: flex;
+}
+
+.tab-button {
+  width: 300px;
+  padding: 3px;
+  border: none;
+  background: transparent;
+  border-radius: 7px;
+  cursor: pointer;
   font-weight: 500;
-  padding-left: 2%;
-  margin-block-end: 0.2rem;
-  margin-block-start: 0.2rem;
+  font-size: 15px;
+  color: #000000;
+  transition: all 0.3s ease;
+  min-width: 140px;
 }
 
-.network-summary {
-  background: #ffffff;    /* white background */
-  border: 1px solid #ddd; /* light gray border */
-  border-radius: 6px;     /* rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle drop shadow */
-  padding: 12px 16px;      /* inner spacing */
-  font-size: 0.9rem;      /* slightly smaller text */
-  color: #333;            /* dark text */
-  z-index: 1000;          /* ensure it floats above the graph */
+.tab-button.active {
+  background: #efefef;
+  color: #000000;
 }
 
-.network-summary h4 {
-  margin: 0 0 8px;
-  font-size: 1rem;
-  color: #222;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 4px;
+.center-empty{
+  display:flex;
+  align-items:center;   /* 垂直居中 */
+  justify-content:center; /* 水平居中 */
+}
+.empty-text{ margin:0; text-align:center; }
+
+.box{
+  margin: 2%;
+  border:1px solid #d8d8d8;
+  border-radius:5px;
+  padding:12px 14px;
 }
 
-.network-summary div {
-  margin-bottom: 4px;
+.box-name{
+  font-weight: 700;
+  font-size: 1.0em;
+  color: #444444;
+  margin-bottom: 0.2rem  !important;
 }
 
-.network-summary strong {
-  color: #111;
+.box-subname{
+  font-weight: 600;
+  font-size: 0.9em;
+  color: #444444;
+  margin-bottom: 0rem  !important;
+}
+
+.click-node-message {
+  padding: 2px 5px;
+  background: #f5f5f5;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+  color: #666;
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+  margin: 2px 0;
 }

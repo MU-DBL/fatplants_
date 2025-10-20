@@ -85,10 +85,57 @@ export class NetworkVisualizationComponent implements OnInit, AfterViewInit, OnC
   }
 
   private renderGraph() {
+    var cypher = ""
+    // console.log(this.pathwayId)
+    if (this.pathwayId.includes('path:')) {
+      cypher = `
+        MATCH (p:Pathway {id:'${this.pathwayId}'}) 
+        OPTIONAL MATCH (p:Pathway)-[p_pe_rel:CONTAINS]->(pe:FunctionalUnit)
+        OPTIONAL MATCH (p:Pathway)-[p_r_rel:CONTAINS]->(r:Reaction)
+        OPTIONAL MATCH (o1:Ortholog)-[o_pe_rel:MEMBER_OF]->(pe:FunctionalUnit)
+        OPTIONAL MATCH (g3:Gene)-[g_pe_rel:MEMBER_OF]->(pe:FunctionalUnit)
+        RETURN p,pe,p_pe_rel,o1,o_pe_rel,g3,g_pe_rel,r,p_r_rel
+      `
+      } else {
+        cypher = `
+          MATCH (p:Pathway {id:'${this.pathwayId}'}) 
+          OPTIONAL MATCH (p:Pathway)-[p_r_rel:CONTAINS]->(r:Reaction)
+          RETURN p,r,p_r_rel
+        `
+      }
 
-    if (this.viz && this.viz.network) {
-      this.viz.network.destroy(); // Destroy the existing network to prevent memory leaks
-    }
+      if (this.viz && this.viz.network) {
+        this.viz.network.destroy();
+      }
+
+
+    //   cypher = `
+    //     MATCH (p:Pathway {id:'${this.pathwayId}'}) 
+    //     OPTIONAL MATCH (p:Pathway)-[p_pe_rel:CONTAINS]->(pe:PathwayEntry)
+    //     OPTIONAL MATCH (p:Pathway)-[p_r_rel:CONTAINS]->(r:Reaction)
+    //     OPTIONAL MATCH (ec:EC)-[ec_r_rel:CATALYZES]->(r:Reaction)
+    //     OPTIONAL MATCH (o2:Ortholog)-[or_r_rel:CATALYZES]->(r:Reaction)
+    //     OPTIONAL MATCH (c1:Compound)-[c_r_rel:SUBSTRATE_OF]->(r:Reaction)
+    //     OPTIONAL MATCH (r:Reaction)-[r_c_rel:PRODUCES]->(c2:Compound)
+    //     OPTIONAL MATCH (g1:Gene)-[g_ec_rel:ENCODES]->(ec:EC)
+    //     OPTIONAL MATCH (g2:Gene)-[g_o_rel:BELONGS_TO]->(o2:Ortholog)
+    //     OPTIONAL MATCH (o1:Ortholog)-[o_pe_rel:MEMBER_OF]->(pe:PathwayEntry)
+    //     OPTIONAL MATCH (g3:Gene)-[g_pe_rel:MEMBER_OF]->(pe:PathwayEntry)
+    //     RETURN p,pe,p_pe_rel,o1,o_pe_rel,g3,g_pe_rel,r,p_r_rel,ec,ec_r_rel,o2,or_r_rel,c1,c_r_rel,c2,r_c_rel,g1,g_ec_rel,g2,g_o_rel
+    //   `
+    // }else{
+    //     cypher = `
+    //       MATCH (p:Pathway {id:'${this.pathwayId}'}) 
+    //       OPTIONAL MATCH (p:Pathway)-[p_r_rel:CONTAINS]->(r:Reaction)
+    //       OPTIONAL MATCH (ec:EC)-[ec_r_rel:CATALYZES]->(r:Reaction)
+    //       OPTIONAL MATCH (o2:Ortholog)-[or_r_rel:CATALYZES]->(r:Reaction)
+    //       OPTIONAL MATCH (c1:Compound)-[c_r_rel:SUBSTRATE_OF]->(r:Reaction)
+    //       OPTIONAL MATCH (r:Reaction)-[r_c_rel:PRODUCES]->(c2:Compound)
+    //       OPTIONAL MATCH (g1:Gene)-[g_ec_rel:ENCODES]->(ec:EC)
+    //       OPTIONAL MATCH (g2:Gene)-[g_o_rel:BELONGS_TO]->(o2:Ortholog)
+    //       RETURN p,r,p_r_rel,ec,ec_r_rel,o2,or_r_rel,c1,c_r_rel,c2,r_c_rel,g1,g_ec_rel,g2,g_o_rel
+    //     `
+    // }
     const config: NeovisConfig = {
       containerId: this.vizContainer.nativeElement.id,
       neo4j: {
@@ -105,7 +152,7 @@ export class NetworkVisualizationComponent implements OnInit, AfterViewInit, OnC
                 shape: () => 'image'
               }
             }},
-          PathwayEntry: { label: 'id', value: "pagerank",  
+      FunctionalUnit: { label: 'id', value: "pagerank",  
             [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
               function: {
                 image: () => this.pathwayEntryGradient,
@@ -153,21 +200,21 @@ export class NetworkVisualizationComponent implements OnInit, AfterViewInit, OnC
           CONTAINS: {[NeoVis.NEOVIS_ADVANCED_CONFIG]: {
             function: {
               label: () => {
-                return 'ct';            // show the relationship TYPE
-              },
-            }
-            }},
-          INVOLVES:       {[NeoVis.NEOVIS_ADVANCED_CONFIG]: {
-            function: {
-              label: () => {
-                return 'i';            // show the relationship TYPE
+                return 'c';            // show the relationship TYPE
               },
             }
             }},
           CATALYZES:     { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
             function: {
               label: () => {
-                return 'c';            // show the relationship TYPE
+                return 'cat';            // show the relationship TYPE
+              },
+            }
+            }},
+          HAS_ENZYME_FUNCTION:     { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+            function: {
+              label: () => {
+                return 'h';            // show the relationship TYPE
               },
             }
             }},
@@ -192,27 +239,23 @@ export class NetworkVisualizationComponent implements OnInit, AfterViewInit, OnC
               },
             }
             }},
-          PART_OF: { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+          MEMBER_OF: { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
             function: {
               label: () => {
-                return 'p';            // show the relationship TYPE
+                return 'm';            // show the relationship TYPE
               },
             }
-            }},
+          }},
+          BELONGS_TO: { [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+            function: {
+              label: () => {
+                return 'b';            // show the relationship TYPE
+              },
+            }
+          }},
       },
 
-      initialCypher: `
-        MATCH (p:Pathway {id:'path:ath00600'}) 
-        OPTIONAL MATCH (p)-[con:CONTAINS]->(pe:PathwayEntry)
-        OPTIONAL MATCH (p)-[inv:INVOLVES]->(r:Reaction)
-        OPTIONAL MATCH (ec:EC)-[gen_bel:CATALYZES]->(r)
-        OPTIONAL MATCH (o:Ortholog)-[orth_bel:CATALYZES]->(r)
-        OPTIONAL MATCH (c1:Compound)-[com_sub_bel:SUBSTRATE_OF]->(r)
-        OPTIONAL MATCH (r)-[com_prod_bel:PRODUCES]->(c2:Compound)
-        OPTIONAL MATCH (g1:Gene)-[gene_ec_bel:ENCODES]->(ec)
-        OPTIONAL MATCH (g2:Gene)-[gene_orth_bel:PART_OF]->(o)
-        RETURN p, pe, r, ec, o, g1, g2, c1, c2, con, inv, gen_bel, orth_bel, com_sub_bel, com_prod_bel, gene_ec_bel, gene_orth_bel
-      `,
+      initialCypher: cypher,
 
       visConfig: {
          interaction: {
@@ -247,9 +290,13 @@ export class NetworkVisualizationComponent implements OnInit, AfterViewInit, OnC
 
       this.viz = new NeoVis(config);
       this.viz.render();
+      
+      // Track which reactions have been expanded
+      const expandedReactions = new Set<string>() 
+
       this.viz.registerOnEvent(NeoVisEvents.ClickNodeEvent, () => {
         if (this.viz.network) {
-          this.viz.network.on('click', (params: any) => {
+          this.viz.network.on('click', async (params: any) => {
             if (params.nodes.length > 0) {
               const nodeId = params.nodes[0];
               const nodeData = this.viz.nodes.get(nodeId);
@@ -259,6 +306,15 @@ export class NetworkVisualizationComponent implements OnInit, AfterViewInit, OnC
                 group: node.group,
                 properties: node?.raw.properties || {}
               };
+              // If clicked node is a Reaction and hasn't been expanded yet
+              if (node.group === 'Reaction' && !expandedReactions.has(nodeId)) {
+                const reactionId = node?.raw.properties?.id;
+                if (reactionId) {
+                  await this.loadReactionDetails(reactionId);
+                  expandedReactions.add(nodeId);
+                }
+              }
+
             } else {
               this.selectedNode = null;
             }
@@ -281,6 +337,42 @@ export class NetworkVisualizationComponent implements OnInit, AfterViewInit, OnC
           groupCounts
         });
       });
+  }
+
+  // New method to load reaction details on demand
+  private async loadReactionDetails(reactionId: string) {
+    const detailCypher = `
+      MATCH (r:Reaction {id:'${reactionId}'})
+      OPTIONAL MATCH (ec:EC)-[ec_r_rel:CATALYZES]->(r)
+      OPTIONAL MATCH (o2:Ortholog)-[or_r_rel:CATALYZES]->(r)
+      OPTIONAL MATCH (c1:Compound)-[c_r_rel:SUBSTRATE_OF]->(r)
+      OPTIONAL MATCH (r)-[r_c_rel:PRODUCES]->(c2:Compound)
+      OPTIONAL MATCH (g1:Gene)-[g_ec_rel:ENCODES]->(ec)
+      OPTIONAL MATCH (g2:Gene)-[g_o_rel:BELONGS_TO]->(o2)
+      RETURN ec,ec_r_rel,o2,or_r_rel,c1,c_r_rel,c2,r_c_rel,g1,g_ec_rel,g2,g_o_rel
+    `;
+
+    try {
+      // Update the graph with new data
+      await this.viz.updateWithCypher(detailCypher);
+      
+      // Update network summary after loading new nodes
+      const nodes = this.viz.nodes.get();
+      const edges = this.viz.edges.get();
+      const groupCounts = nodes.reduce((acc, n) => {
+        const g = n.group || 'unknown';
+        acc[g] = (acc[g] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+      
+      this.networkSummary.emit({
+        totalNodes: nodes.length,
+        totalEdges: edges.length,
+        groupCounts
+      });
+    } catch (error) {
+      console.error('Error loading reaction details:', error);
+    }
   }
   
   getKeys(obj: any): string[] {

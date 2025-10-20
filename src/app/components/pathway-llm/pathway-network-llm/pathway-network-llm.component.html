@@ -1,27 +1,39 @@
-<div class="page-title-bar">
-  <p class="page-title"> FatPlants AI</p>
+<div class="tab-header">
+    <div class="tab-nav">
+       <button class="tab-button" role="tab"
+          [attr.aria-selected]="view==='a'"
+          [class.active]="view==='a'"
+          (click)="set('a')">Network Visualization</button>
+
+        <button class="tab-button" role="tab"
+          [attr.aria-selected]="view==='b'"
+          [class.active]="view==='b'"
+          (click)="set('b')">Pathway</button>
+    </div>
 </div>
-<div style="width: 100%; height: 750px;">
+<div style="width: 100%; height: 700px; background-color:#fbfdfa;">
   <as-split direction="horizontal" [gutterSize]="3">
     <as-split-area [size]="15">
-        <div style="margin: 5%;">
-            <div class="control-section">
+        <div>
+            <div class="box">
+                <p class="box-name">Select a Pathway</p>
                 <div>
-                    <h6>Species</h6>
+                    <p class="box-subname">Species</p>
                     <mat-form-field appearance="outline">
-                        <mat-select [(value)]="selectedSpecies" #matSelect>
-                            <mat-option *ngFor="let species of specieses" [value]="species.id">
-                                {{ species.name }}
+                        <mat-select [(ngModel)]="selectedSpecies"  
+                            (selectionChange)="onSpeciesSelected($event, matSelect)" #matSelect>
+                            <mat-option *ngFor="let species of specieses" [value]="species" >
+                            {{ species.name }}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
                 <div>
-                    <h6>Pathway</h6>
+                    <p class="box-subname">Pathway Name</p>
                     <mat-form-field appearance="outline">
-                        <mat-select [(value)]="selectedPathwayDropdown" #matSelect>
+                        <mat-select [(value)]="selectedPathwayDropdown" #matSelect [panelClass]="'fit-width-select-panel'">
                             <mat-select-trigger>
-                                {{ selectedPathwayDropdown ? selectedPathwayDropdown.source + '_' + selectedPathwayDropdown.name :
+                                {{ selectedPathwayDropdown ? selectedPathwayDropdown.source + ': ' + selectedPathwayDropdown.title :
                                 'Select Pathway' }}
                             </mat-select-trigger>
                             <mat-option class="custom-search-option">
@@ -33,7 +45,7 @@
                             </mat-option>
                             <mat-option *ngFor="let pathway of filteredPathwayDropdowns" [value]="pathway"
                                 (onSelectionChange)="onOptionSelected($event, matSelect)">
-                                {{ pathway.source }}_{{ pathway.name }}
+                                {{ pathway.source }}: {{ pathway.title }}
                             </mat-option>
                             <mat-option *ngIf="filterPathways.length === 0 && searchPathwayTerm" disabled>
                                 No matching pathway found
@@ -41,56 +53,51 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+                <div class="click-node-message">Click node to show the details</div>
             </div>
-            <div class="control-section">
-                <div class="controls-section">
-                <h4>Edge Label Font Size</h4>
-                <input type="range" [value]="graphConfig.edgeLabelFontSize" (input)="updateGlobalEdgeLabelFontSize($event)" min="8" max="30" step="1">
-                <p>Current Edge Label Size: {{ graphConfig.edgeLabelFontSize }}</p>
-
-                <h4>Node Label Font Size</h4>
-                <input type="range" [value]="graphConfig.nodeLabelFontSize" (input)="updateGlobalNodeLabelFontSize($event)" min="8" max="30" step="1">
-                <p>Current Node Label Font Size: {{ graphConfig.nodeLabelFontSize }}</p>
-
-                <h4>nodeSize</h4>
-                <input type="range" [value]="graphConfig.nodeSize" (input)="updateGlobalNodeSize($event)"  min="8" max="30" step="1"/>
+            <div class="box">
+                    <p class="box-name">Relationships</p>
+                    <div *ngFor="let item of relationships" class="box-subname">
+                        <span>{{ item.id }}: </span> {{ item.name }}
+                    </div>    
+            </div>
+             
+            <div class="box">
+                <div>
+                    <p class="box-name">Network Summary</p>
+                    <div class="box-subname"><span>Total Nodes:</span> {{ summary.totalNodes || 0 }}</div>
+                    <div class="box-subname"><span>Total Edges:</span> {{ summary.totalEdges || 0 }}</div>
+                    <div *ngFor="let grp of getKeys(summary.groupCounts)" class="box-subname">
+                        <span>{{ grp }}: </span> {{ summary.groupCounts[grp] || 0 }}
                 </div>
             </div>
-            <div class="control-section">
-                <h3>Node Type Styling</h3>
-                <div *ngFor="let nodeType of ['Reaction', 'Gene', 'Compound', 'Ortholog', 'EC']">
-                    <h4>{{ nodeType }}</h4>
-                    <div>
-                        <label for="{{ nodeType }}Color">Color:</label>
-                        <input type="color" id="{{ nodeType }}Color"
-                            [value]="graphConfig.nodeStyles[nodeType]?.color || '#000000'"
-                            (input)="updateNodeColor(nodeType, $event)">
-                    </div>
-                    <div>
-                        <label for="{{ nodeType }}Size">Size:</label>
-                        <input type="range" id="{{ nodeType }}Size" min="5" max="50" step="1"
-                            [value]="graphConfig.nodeStyles[nodeType]?.size || 15"
-                            (input)="updateNodeSize(nodeType, $event)">
-                        <span>{{ graphConfig.nodeStyles[nodeType]?.size || 15 }}</span>
-                    </div>
-                </div>
             </div>
+           
         </div>
     </as-split-area>
     <as-split-area [size]="70" class="split-container">
-        <mat-tab-group>
-            <mat-tab label="Network Visualization" class="tab-container">
+        <section [hidden]="view!=='a'">
+            <div [ngClass]="{ 'center-empty': !selectedPathwayDropdown }" style="width:100%; height:600px;">
+                <h6 *ngIf="!selectedPathwayDropdown" class="empty-text">
+                    Select a pathway to visualize the network
+                </h6>
+
+                <app-network-visualization
+                    *ngIf="selectedPathwayDropdown"
+                    [pathwayId]="selectedPathwayDropdown.id.toString()"
+                    (networkSummary)="onSummaryChange($event)">
+                </app-network-visualization>
+            </div>
+        </section>
+        <section [hidden]="view!=='b'">
+            <div style="width:100%; height:600px;">
                 <div>
-                    <app-network-visualization #networkVisualizationComponent
-                        *ngIf="selectedPathwayDropdown"
-                        [pathwayId]="selectedPathwayDropdown.id.toString()"
-                        (networkSummary)="onSummaryChange($event)"></app-network-visualization>
+                    <div #imageContainer class="pan-container">
+                        <img #imageRef src="{{imageURL}}" alt="zoomable" draggable="false" />
+                    </div>
                 </div>
-            </mat-tab>
-            <mat-tab label="Pathway" class="tab-container">
-                <div></div>
-            </mat-tab>
-        </mat-tab-group>
+            </div>
+        </section>
         <div *ngIf="!isMinimized" class="chat-container">
             <div class="chat-header">
                 <span class="chat-title">Chat with LLM</span>
@@ -107,7 +114,30 @@
             <!-- Chat Messages -->
             <div #chatContaine #messagesList class="messages-list">
                 <div *ngFor="let message of messages" class="message" [ngClass]="{'user-message': message.sender === 'user', 'llm-message': message.sender === 'llm'}">
-                    <div class="message-text">{{ message.content }}</div>
+                    <div class="message-text">
+                        <pre>{{ message.answer | json }}</pre>
+                        <div *ngIf= "message.sources">
+                            <p>Sources</p>
+                            <ul>
+                                <li *ngFor="let source of message.sources">
+                                    <div *ngIf="source.symbol"><strong>Symbol:</strong> {{ source.symbol }}</div>
+                                    <div *ngIf="source.name"><strong>Name:</strong> {{ source.name }}</div>
+                                    <div *ngIf="source.link"><strong>Link:</strong> <a [href]="source.link" target="_blank">{{ source.link }}</a></div>
+                                    <!-- <div *ngIf="source.id"><strong>ID:</strong> {{ source.id }}</div> -->
+                                </li>
+                            </ul>
+                        </div>
+                        <div *ngIf= "message.literatures">
+                            <p>Supported Literatures</p>
+                            <div *ngFor="let literature of message.literatures">
+                                <span> ---------------------- </span>
+                                <div *ngIf="literature.title"><strong>Title:</strong> {{ literature.title }}</div>
+                                <div *ngIf="literature.authors"><strong>Authors:</strong> {{ literature.authors }}</div>
+                                <div *ngIf="literature.journal"><strong>Journal:</strong> {{ literature.journal }}</div>
+                                <!-- <div *ngIf="literature.link"><strong>Link:</strong> {{ literature.link }}</div> -->
+                            </div>                           
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -129,9 +159,12 @@
                 </div>
             </div>
         </div>
-        <div class="chat-input-container">
-            <textarea [(ngModel)]="messageText"
-                    placeholder="To chat with LLM, Type your message..."></textarea>
+        <div>
+            <!-- <select class="chat-select" [(ngModel)]="selectedOption">
+                <option *ngFor="let opt of llmQueryTypeOptions" [value]="opt">{{ opt }}</option>
+            </select> -->
+            <div class="chat-input-container">  
+            <textarea [(ngModel)]="messageText" placeholder="Independent Chat Assistant — Type your message..."  (keydown)="onKeyDown($event)">></textarea>           
             <button
                     mat-icon-button
                     class="send-button"
@@ -140,28 +173,67 @@
                     <mat-icon>send</mat-icon>
             </button>
         </div>
+        </div>   
     </as-split-area>
     <as-split-area [size]="15">
         <div>
-           <div class="network-summary">
-                <h4>Relationships</h4>
-                <div class="legend-item">
-                    <strong>c: </strong><span>CONTAIN</span>
+            <div class="box">
+                <p class="box-name">Network Style</p>
+                <p class="box-subname">Edge Label Font Size</p>
+                <div class="range-container">
+                    <input type="range" [value]="graphConfig.edgeLabelFontSize" (input)="updateGlobalNodeSize($event)"  min="5" max="50" step="1"/>
+                    <input type="number" 
+                        class="range-value"
+                        min="5" 
+                        max="50"
+                        [value]="graphConfig.edgeLabelFontSize"
+                        (input)="updateGlobalEdgeLabelFontSize($event)">
                 </div>
-                <div class="legend-item">
-                    <strong>i: </strong><span>INTERACT_WITH</span>
+                <p class="box-subname">Node Label Font Size</p>
+                <div class="range-container">
+                    <input type="range" [value]="graphConfig.nodeLabelFontSize" (input)="updateGlobalNodeSize($event)"  min="5" max="50" step="1"/>
+                    <input type="number" 
+                        class="range-value"
+                        min="5" 
+                        max="50"
+                        [value]="graphConfig.nodeLabelFontSize"
+                        (input)="updateGlobalNodeLabelFontSize($event)">
                 </div>
-                <div class="legend-item">
-                    <strong>b: </strong><span>BELONG_TO</span>
+                <p class="box-subname">Node Size</p>
+                <div class="range-container">
+                    <input type="range" [value]="graphConfig.nodeSize" (input)="updateGlobalNodeSize($event)"  min="5" max="50" step="1"/>
+                    <input type="number" 
+                        class="range-value"
+                        min="5" 
+                        max="50"
+                        [value]="graphConfig.nodeSize"
+                        (input)="updateGlobalNodeSize($event)">
                 </div>
             </div>
-
-            <div class="network-summary" *ngIf="summary">
-                <h4>Network Summary</h4>
-                <div><strong>Total Nodes:</strong> {{ summary.totalNodes }}</div>
-                <div><strong>Total Edges:</strong> {{ summary.totalEdges }}</div>
-                <div *ngFor="let grp of getKeys(summary.groupCounts)">
-                    <strong>{{ grp }}:</strong> {{ summary.groupCounts[grp] }}
+            <div class="box">
+                <p class="box-name">Node Color & Node Size</p>
+                <div *ngFor="let nodeType of ['Reaction', 'Gene', 'Compound', 'Ortholog', 'EC']">
+                   <div class="node-header">
+                        <p class="box-subname">{{ nodeType }}</p>
+                        <label class="color-swatch" [style.background]="graphConfig.nodeStyles[nodeType]?.color || '#000'">
+                            <input
+                            type="color"
+                            [value]="graphConfig.nodeStyles[nodeType]?.color || '#000000'"
+                            (input)="updateNodeColor(nodeType, $event)"
+                            />
+                        </label>
+                    </div>
+                   <div class="range-container">
+                    <input type="range" min="5" max="50" step="1"
+                            [value]="graphConfig.nodeStyles[nodeType]?.size || 15"
+                            (input)="updateNodeSize(nodeType, $event)">
+                    <input type="number" 
+                        class="range-value"
+                        min="5" 
+                        max="50"
+                        [value]="graphConfig.nodeStyles[nodeType]?.size || 15"
+                        (input)="updateNodeSize(nodeType, $event)">
+                    </div>
                 </div>
             </div>
         </div>

@@ -3,7 +3,9 @@ import type { Attributes } from 'graphology-types';
 
 export interface Message {
   id: number;
-  content: string ;
+  answer: string;
+  sources?: Source[];
+  literatures?: Literature[];
   sender: string;
   isError?: boolean,
   isLoading?: boolean;
@@ -16,7 +18,29 @@ export interface Species {
 
 export interface PathwayDropdown {
   id: string;
-  species: string;
-  name: string;
+  image:string;
   source: string;
+  species: string;
+  title: string;
+}
+
+export interface Relationship {
+  id: string;
+  name: string;
+}
+
+export interface Source {
+  preview: string;
+  name?: string;
+  symbol?: string;
+  position?: string;
+  link: string;
+  id: string;
+}
+
+export interface Literature {
+  title: string;
+  authors: string;
+  journal: string;
+  link: string| null;
 }

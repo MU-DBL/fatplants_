@@ -49,7 +49,7 @@ const routes: Routes = [{path: '', redirectTo: '/home', pathMatch: 'full'},
 {path: 'download', component: DownloadPageComponent},
 {path: 'plmn-pathways', component: PlantMetabolioNetworkComponent},
 {path: 'traffic-dashboard', component: VisitDashboardComponent},
-{path: 'pathway-ai', component: PathwayNetworkLlmComponent},
+{path: 'lipidbot', component: PathwayNetworkLlmComponent},
 {path: '**', pathMatch: 'full',  component: PagenotfoundComponent }]; 
 
 @NgModule({

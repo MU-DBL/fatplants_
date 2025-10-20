@@ -41,6 +41,7 @@
     "ng-circle-progress": "^1.7.1",
     "ngx-clipboard": "^16.0.0",
     "ngx-matomo-client": "^6.2.0",
+    "panzoom": "^9.4.3",
     "rxjs": "~7.8.0",
     "sigma": "^3.0.2",
     "tslib": "^2.3.0",
