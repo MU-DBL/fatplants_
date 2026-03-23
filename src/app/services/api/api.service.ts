@@ -188,7 +188,7 @@ export class APIService {
 
   //# region neo4j
   getCypherResult(query: string) {
-    return this.http.get(environment.BASE_API_URL+"cypher/?query=" + encodeURIComponent(query));
+    return this.http.get(environment.CHATBOT_BASE_API_URL+"cypher/?query=" + encodeURIComponent(query));
   }
   //# endregion
 }

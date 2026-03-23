@@ -54,29 +54,29 @@ a:hover {
 }
 
 .icon1 {
-  background-image: url("../../../assets/homepageAssets/blast-protien.png");
-  background-size: contain;
+  background-image: url("../../../assets/homepageAssets/blast-protein.png");
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .icon2 {
-  background-image: url("../../../assets/homepageAssets/3d-structure.jpg");
-  background-size: contain;
+  background-image: url("../../../assets/homepageAssets/3d-structure.png");
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .icon3 {
   background-image: url("../../../assets/homepageAssets/pathway.png");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .icon4 {
-  background-image: url("../../../assets/homepageAssets/enrichment-network.jpg");
-  background-size: contain;
+  background-image: url("../../../assets/homepageAssets/enrichment-network.png");
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -87,6 +87,6 @@ a:hover {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 180px;
+  height: 120px;
 }
 

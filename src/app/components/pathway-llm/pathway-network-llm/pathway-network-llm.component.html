@@ -77,7 +77,7 @@
     </as-split-area>
     <as-split-area [size]="70" class="split-container">
         <section [hidden]="view!=='a'">
-            <div [ngClass]="{ 'center-empty': !selectedPathwayDropdown }" style="width:100%; height:600px;">
+            <div [ngClass]="{ 'center-empty': !selectedPathwayDropdown }" style="width:100%; height:570px;">
                 <h6 *ngIf="!selectedPathwayDropdown" class="empty-text">
                     Select a pathway to visualize the network
                 </h6>
@@ -85,12 +85,13 @@
                 <app-network-visualization
                     *ngIf="selectedPathwayDropdown"
                     [pathwayId]="selectedPathwayDropdown.id.toString()"
+                    [species]="selectedPathwayDropdown.species.toString()"
                     (networkSummary)="onSummaryChange($event)">
                 </app-network-visualization>
             </div>
         </section>
         <section [hidden]="view!=='b'">
-            <div style="width:100%; height:600px;">
+            <div style="width:100%; height:570px;">
                 <div>
                     <div #imageContainer class="pan-container">
                         <img #imageRef src="{{imageURL}}" alt="zoomable" draggable="false" />
@@ -98,10 +99,13 @@
                 </div>
             </div>
         </section>
-        <div *ngIf="!isMinimized" class="chat-container">
+        <div *ngIf="!isMinimized" class="chat-container"> 
             <div class="chat-header">
                 <span class="chat-title">Chat with LLM</span>
                 <div class="chat-actions">
+                    <button (click)="saveConversation()" class="save-btn" title="Save conversation" [disabled]="messages.length === 0">
+                    <mat-icon>save</mat-icon>
+                    </button>
                     <button (click)="clearChat()"class="delete-btn">
                     <mat-icon>delete</mat-icon>
                     </button>
@@ -109,34 +113,18 @@
                     <mat-icon>arrow_drop_down</mat-icon>
                     </button>
                 </div>
-                </div>
+            </div>
 
             <!-- Chat Messages -->
             <div #chatContaine #messagesList class="messages-list">
                 <div *ngFor="let message of messages" class="message" [ngClass]="{'user-message': message.sender === 'user', 'llm-message': message.sender === 'llm'}">
                     <div class="message-text">
-                        <pre>{{ message.answer | json }}</pre>
-                        <div *ngIf= "message.sources">
-                            <p>Sources</p>
-                            <ul>
-                                <li *ngFor="let source of message.sources">
-                                    <div *ngIf="source.symbol"><strong>Symbol:</strong> {{ source.symbol }}</div>
-                                    <div *ngIf="source.name"><strong>Name:</strong> {{ source.name }}</div>
-                                    <div *ngIf="source.link"><strong>Link:</strong> <a [href]="source.link" target="_blank">{{ source.link }}</a></div>
-                                    <!-- <div *ngIf="source.id"><strong>ID:</strong> {{ source.id }}</div> -->
-                                </li>
-                            </ul>
-                        </div>
-                        <div *ngIf= "message.literatures">
-                            <p>Supported Literatures</p>
-                            <div *ngFor="let literature of message.literatures">
-                                <span> ---------------------- </span>
-                                <div *ngIf="literature.title"><strong>Title:</strong> {{ literature.title }}</div>
-                                <div *ngIf="literature.authors"><strong>Authors:</strong> {{ literature.authors }}</div>
-                                <div *ngIf="literature.journal"><strong>Journal:</strong> {{ literature.journal }}</div>
-                                <!-- <div *ngIf="literature.link"><strong>Link:</strong> {{ literature.link }}</div> -->
-                            </div>                           
-                        </div>
+                        <ng-container *ngIf="message.isLoading; else rendered">
+                            <pre class="streaming-text">{{ message.answer || 'Thinking...' }}<span class="cursor">▊</span></pre>
+                        </ng-container>
+                        <ng-template #rendered>
+                            <markdown katex [data]="formatAnswer(message.answer)"></markdown>
+                        </ng-template>
                     </div>
                 </div>
             </div>
@@ -160,11 +148,13 @@
             </div>
         </div>
         <div>
-            <!-- <select class="chat-select" [(ngModel)]="selectedOption">
-                <option *ngFor="let opt of llmQueryTypeOptions" [value]="opt">{{ opt }}</option>
-            </select> -->
+            <div class="right-align">
+                <select class="chat-model-select" [(ngModel)]="selectedLLMModelOption">
+                                <option *ngFor="let opt of llmModelOptions" [value]="opt">{{ opt }}</option>
+                            </select>
+            </div>
             <div class="chat-input-container">  
-            <textarea [(ngModel)]="messageText" placeholder="Independent Chat Assistant — Type your message..."  (keydown)="onKeyDown($event)">></textarea>           
+            <textarea [(ngModel)]="messageText" placeholder="Independent Chat Assistant — Type your message..." (focus)="onStartTypeLLMMessage()" (keydown)="onKeyDown($event)">></textarea>           
             <button
                     mat-icon-button
                     class="send-button"

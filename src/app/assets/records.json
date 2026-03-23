@@ -1,6 +1,196 @@
 ﻿[
   {
     "pathway_properties": {
+      "id": "path:ats00061",
+      "title": "Fatty acid biosynthesis",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00061",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00061.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00062",
+      "title": "Fatty acid elongation",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00062",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00062.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00071",
+      "title": "Fatty acid degradation",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00071",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00071.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00100",
+      "title": "Steroid biosynthesis",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00100",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00100.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00280",
+      "title": "Valine, leucine and isoleucine degradation",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00280",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00280.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00310",
+      "title": "Lysine degradation",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00310",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00310.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00511",
+      "title": "Other glycan degradation",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00511",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00511.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00561",
+      "title": "Glycerolipid metabolism",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00561",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00561.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00564",
+      "title": "Glycerophospholipid metabolism",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00564",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00564.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00565",
+      "title": "Ether lipid metabolism",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00565",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00565.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00590",
+      "title": "Arachidonic acid metabolism",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00590",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00590.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00591",
+      "title": "Linoleic acid metabolism",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00591",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00591.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00592",
+      "title": "alpha-Linolenic acid metabolism",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00592",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00592.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00600",
+      "title": "Sphingolipid metabolism",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00600",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00600.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00603",
+      "title": "Glycosphingolipid biosynthesis - globo and isoglobo series",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00603",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00603.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats00905",
+      "title": "Brassinosteroid biosynthesis",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats00905",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats00905.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats01040",
+      "title": "Biosynthesis of unsaturated fatty acids",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats01040",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats01040.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats01212",
+      "title": "Fatty acid metabolism",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats01212",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats01212.png"
+    }
+  },
+  {
+    "pathway_properties": {
+      "id": "path:ats03018",
+      "title": "RNA degradation",
+      "species": "ATS",
+      "source": "KEGG",
+      "link": "https://www.kegg.jp/kegg-bin/show_pathway?ats03018",
+      "image": "https://www.kegg.jp/kegg/pathway/ats/ats03018.png"
+    }
+  },
+  {
+    "pathway_properties": {
       "id": "path:gmx00061",
       "title": "Fatty acid biosynthesis",
       "species": "GMX",
@@ -435,7 +625,8 @@
       "title": "Unknown",
       "species": "ATH",
       "source": "ARALIP",
-      "link": "https://fatplants.net/aralip-menu/pathway/32"
+      "link": "https://fatplants.net/aralip-menu/pathway/32",
+      "image": null
     }
   },
   {

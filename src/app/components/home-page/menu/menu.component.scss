@@ -10,8 +10,12 @@
   cursor: pointer;
 }
 
-.nav-item a.nav-link:hover {
+.nav-item 
+
+a.nav-link:hover {
   cursor: pointer;
+  font-weight: bold;
+  color: black;
 }
 
 .bg {

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,24 +19,24 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
 import { CdkTableModule } from '@angular/cdk/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatSliderModule } from '@angular/material/slider'; 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { TeamComponent } from './components/team-page/team.component';
-import {MatTabsModule} from "@angular/material/tabs";
-import {MatRadioModule} from "@angular/material/radio";
-import {MatDividerModule} from "@angular/material/divider";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatRadioModule } from "@angular/material/radio";
+import { MatDividerModule } from "@angular/material/divider";
 
-import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatExpansionModule} from "@angular/material/expansion";
-import {DataService} from 'src/app/services/blast_data/data.service';
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { DataService } from 'src/app/services/blast_data/data.service';
 import { StructureViewerComponent } from './components/commons/structure-viewer/structure-viewer.component';
 import { UserModalComponent } from './components/commons/user-modal/user-modal.component';
 import { ProteinDetailComponent } from './components/protein-details-summary-page/protein-detail.component';
@@ -66,10 +66,10 @@ import { LatestNewsPageComponent } from './components/latest-news-page/latest-ne
 import { EnzymePageComponent } from './components/aralip/enzyme-list-page/enzyme-page.component';
 import { LipidPageComponent } from './components/aralip/lipid-page/lipid-page.component';
 import { AralipMenuComponent } from './components/aralip/aralip-menu/aralip-menu.component';
-import { ContributorsComponent } from './components/aralip/about/contributors/contributors.component'; 
+import { ContributorsComponent } from './components/aralip/about/contributors/contributors.component';
 import { AralipSiteComponent } from './components/aralip/about/aralip-site/aralip-site.component';
 import { AralipPathwayComponent } from './components/aralip/aralip-pathway/aralip-pathway.component';
-import{ MutantsComponent } from './components/aralip/mutant/mutant.component';
+import { MutantsComponent } from './components/aralip/mutant/mutant.component';
 import { EnzymesComponent } from './components/aralip/enzyme-details-page/enzymes.component';
 import { CommentsComponent } from './components/aralip/comments/comments.component';
 import { LociSummaryComponent } from './components/aralip/loci-list-page/loci-summary.component';
@@ -90,8 +90,10 @@ import { PathwayNetworkLlmComponent } from './components/pathway-llm/pathway-net
 import { AngularSplitModule } from 'angular-split';
 import { MatomoModule, MatomoRouterModule } from 'ngx-matomo-client';
 import { NetworkVisualizationComponent } from "./components/pathway-llm/network-visualization/network-visualization.component";
+import { MarkdownModule } from 'ngx-markdown';
 
-@NgModule({ declarations: [
+@NgModule({
+    declarations: [
         AppComponent,
         TeamComponent,
         StructureViewerComponent,
@@ -143,60 +145,62 @@ import { NetworkVisualizationComponent } from "./components/pathway-llm/network-
         PathwayNetworkLlmComponent,
         NetworkVisualizationComponent
     ],
-    bootstrap: [AppComponent], 
+    bootstrap: [AppComponent],
     imports: [AngularSplitModule,
-    BrowserModule,
-    AppRoutingModule,
-    MatTableModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatListModule,
-    MatIconModule,
-    MatPaginatorModule,
-    MatSelectModule,
-    MatMenuModule,
-    MatTooltipModule,
-    CdkTableModule,
-    CommonModule,
-    // CytoscapeModule,
-    ReactiveFormsModule,
-    MatTabsModule,
-    MatRadioModule,
-    MatDividerModule,
-    MatProgressBarModule,
-    MatListModule,
-    FormsModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatSlideToggleModule,
-    MatGridListModule,
-    MatStepperModule,
-    MatProgressSpinnerModule,
-    NgCircleProgressModule.forRoot({
-        radius: 100,
-        outerStrokeWidth: 16,
-        innerStrokeWidth: 8,
-        outerStrokeColor: "#78C000",
-        innerStrokeColor: "#C7E596",
-        animationDuration: 300,
-    }),
-    MatExpansionModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    ClipboardModule,
-    MatomoModule.forRoot({
-        trackerUrl: environment.matomo_url,
-        siteId: environment.matomo_site_id
-    }),
-    MatomoRouterModule,
-    LeafletModule,
-    NgxChartsModule,
-    MatSliderModule,
-    MatSliderModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        BrowserModule,
+        AppRoutingModule,
+        MatTableModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatListModule,
+        MatIconModule,
+        MatPaginatorModule,
+        MatSelectModule,
+        MatMenuModule,
+        MatTooltipModule,
+        CdkTableModule,
+        CommonModule,
+        // CytoscapeModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        MatRadioModule,
+        MatDividerModule,
+        MatProgressBarModule,
+        MatListModule,
+        FormsModule,
+        MatMenuModule,
+        MatSidenavModule,
+        MatButtonModule,
+        MatSlideToggleModule,
+        MatGridListModule,
+        MatStepperModule,
+        MatProgressSpinnerModule,
+        NgCircleProgressModule.forRoot({
+            radius: 100,
+            outerStrokeWidth: 16,
+            innerStrokeWidth: 8,
+            outerStrokeColor: "#78C000",
+            innerStrokeColor: "#C7E596",
+            animationDuration: 300,
+        }),
+        MatExpansionModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        ClipboardModule,
+        MatomoModule.forRoot({
+            trackerUrl: environment.matomo_url,
+            siteId: environment.matomo_site_id
+        }),
+        MatomoRouterModule,
+        LeafletModule,
+        NgxChartsModule,
+        MatSliderModule,
+        MatSliderModule,
+        MarkdownModule.forRoot()], providers: [provideHttpClient(withInterceptorsFromDi())]
+})
 
 export class AppModule { }

@@ -1,12 +1,12 @@
 // pathway-network-llm.component.ts
 import { MatSelect } from '@angular/material/select';
-import { AfterViewInit, Component, ElementRef, ViewChild, HostListener  } from '@angular/core';
-import {Species, PathwayDropdown, Message, Relationship, Literature } from '../data-interface';
+import { AfterViewInit, Component, ElementRef, ViewChild, HostListener } from '@angular/core';
+import { Species, PathwayDropdown, Message, Relationship, Literature } from '../data-interface';
 import { LLMService } from '../../../services/llm/llm.service';
-import { NetworkVisualizationComponent,GraphConfig, NetworkSummary } from '../network-visualization/network-visualization.component';
+import { RateLimitService } from '../../../services/rate-limit/rate-limit.service';
+import { NetworkVisualizationComponent, GraphConfig, NetworkSummary } from '../network-visualization/network-visualization.component';
 import panzoom, { PanZoom } from 'panzoom';
 import * as pathway_dropdown from '../../../assets/records.json';
-import { Observable } from 'rxjs';
 
 type View = 'a' | 'b';
 
@@ -55,9 +55,9 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
   @ViewChild('messagesList') private messagesListRef!: ElementRef;
   messages: Message[] = [];
 
-  imageURL="";
-  llmQueryTypeOptions = ['QueryLiterature', 'QueryPathway'];
-  selectedOption = this.llmQueryTypeOptions[0];
+  imageURL = "";
+  llmModelOptions = ['gpt-oss: 20B', 'llama: 8B'];
+  selectedLLMModelOption = this.llmModelOptions[0];
 
   summary: NetworkSummary = {
     totalNodes: 0,
@@ -72,7 +72,7 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
     }
   };
 
-  relationships:Relationship[] = [
+  relationships: Relationship[] = [
     { id: 'c', name: 'CONTAINS' },
     { id: 'cat', name: 'CATALYZES' },
     { id: 's', name: 'SUBSTRATE_OF' },
@@ -100,11 +100,11 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
     }
   }
 
-  constructor(private llmService: LLMService) {
+  constructor(private llmService: LLMService, private rateLimitService: RateLimitService) {
   }
 
 
- ngAfterViewInit() {
+  ngAfterViewInit() {
     const image = this.imageRef.nativeElement;
 
     panzoom(image, {
@@ -112,26 +112,31 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
       zoomSpeed: 0.065,
       bounds: true,
       boundsPadding: 0.1,
-      maxZoom: 5, 
-      minZoom: 0.5 
+      maxZoom: 5,
+      minZoom: 0.5
     });
   }
 
   ngOnInit() {
-    this.loadPathways();
     this.loadSpecies();
+    this.loadPathways();
   }
 
- loadSpecies() {
-  this.specieses = [
-    { id: 'ATH', name: 'Arabidopsis' },
-    { id: 'GMX', name: 'Soybean' },
-    { id: 'CSAT', name: 'Cameline' }
-  ];
-  
-  // Auto-select the first species
-  this.selectedSpecies = this.specieses[0];
- }
+  formatAnswer(text: string): string {
+    return text.replace(/\\n/g, '\n');
+  }
+
+  loadSpecies() {
+    this.specieses = [
+      { id: 'ATH', name: 'Arabidopsis' },
+      { id: 'GMX', name: 'Soybean' },
+      { id: 'CSAT', name: 'Cameline' },
+      { id: 'ATS', name: 'Aegilops tauschii' }
+    ];
+
+    // Auto-select the first species
+    this.selectedSpecies = this.specieses[0];
+  }
 
   onSpeciesSelected(event: any, matSelect: MatSelect) {
     this.selectedSpecies = event.value;
@@ -143,7 +148,7 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
 
   loadPathways() {
     const rawData = (pathway_dropdown as any).default;
-    
+
     this.pathwayDropdowns = rawData
       .filter((item: any) => item.pathway_properties.title.toLowerCase() !== 'unknown')
       .map((item: any) => ({
@@ -155,13 +160,13 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
         image: item.pathway_properties.image
       }));
 
-    console.log(this.pathwayDropdowns)
+    // console.log(this.pathwayDropdowns)
     this.filterPathways();
   }
 
   filterPathways() {
     let tempPathways = [...this.pathwayDropdowns];
-
+    console.log(this.selectedSpecies)
     if (this.selectedSpecies) {
       tempPathways = tempPathways.filter(pathway => pathway.species === this.selectedSpecies?.id);
     }
@@ -181,19 +186,19 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
   }
 
   onOptionSelected(event: any, matSelect: MatSelect) {
-    if (event.isUserInput) { 
-      if(event.source.value.source === "KEGG"){
+    if (event.isUserInput) {
+      if (event.source.value.source === "KEGG") {
         var id = event.source.value.id.replace("path:", "");
         this.imageURL = "http://rest.kegg.jp/get/" + id + "/image";
-      } else if (event.source.value.source === "ARALIP"){
+      } else if (event.source.value.source === "ARALIP") {
         var image = event.source.value.image;
         this.imageURL = "/static/aralip/" + image + ".GIF";
       }
       this.selectedPathwayDropdown = event.source.value;
-      this.searchPathwayTerm = ''; 
-      matSelect.close(); 
+      this.searchPathwayTerm = '';
+      matSelect.close();
+    }
   }
-}
 
   onOpenedChange(opened: boolean) {
     if (!opened) {
@@ -202,93 +207,113 @@ export class PathwayNetworkLlmComponent implements AfterViewInit {
     }
   }
 
-  handleSendMessage() {
-    const currentMessage = this.messageText
-    if (currentMessage.trim()) {
-      this.isMinimized = false;
-      const newMessage: Message = {
-        id: this.messages.length + 1,
-        answer: currentMessage,
-        sender:'user'
-      };
-      // Add user message immediately to the chat
-      this.messages = [...this.messages, newMessage];
-
-      // Call the LLM service
-      this.getLlmResponse(currentMessage, this.selectedOption);
-
-      // Clear input and scroll to bottom
-      this.messageText = '';
-      this.scrollToBottom();
-    }
+  onStartTypeLLMMessage() {
+    this.isMinimized = false;
   }
 
-  private getLlmResponse(userMessage: string, queryType: string): void {
-    // Add a placeholder message for the LLM response while waiting
+  handleSendMessage() {
+    const currentMessage = this.messageText;
+    if (!currentMessage.trim()) return;
+
+    if (this.rateLimitService.isLimited()) {
+      this.isMinimized = false;
+      this.messages = [...this.messages, {
+        id: this.messages.length + 1,
+        answer: 'Daily limit reached (100 queries/day). Please try again tomorrow.',
+        sender: 'llm',
+        isError: true
+      }];
+      this.scrollToBottom();
+      return;
+    }
+
+    this.isMinimized = false;
+    this.messages = [...this.messages, {
+      id: this.messages.length + 1,
+      answer: currentMessage,
+      sender: 'user'
+    }];
+
+    this.getLlmResponse(currentMessage, this.selectedLLMModelOption);
+    this.messageText = '';
+    this.scrollToBottom();
+  }
+
+  private getLlmResponse(userMessage: string, LLMModelType: string): void {
     const loadingMessage: Message = {
       id: this.messages.length + 1,
-      answer: 'Thinking...', // Or a spinner/loading indicator
+      answer: '',
       sender: 'llm',
-      isLoading: true // Custom property to indicate loading state
+      isLoading: true
     };
     this.messages = [...this.messages, loadingMessage];
-    this.scrollToBottom(); // Scroll to show the loading message
-    if (queryType === this.llmQueryTypeOptions[1]) {
-      this.handleLLMQuery(this.llmService.queryPathway(userMessage), loadingMessage);
-    } else {
-      this.handleLLMQuery(this.llmService.searchMulti(userMessage), loadingMessage);
-    }
+    this.scrollToBottom();
+    this.handleStreamingQuery(userMessage, LLMModelType, loadingMessage);
   }
 
-  private handleLLMQuery(observable: Observable<any>, loadingMessage: Message): void {
-    observable.subscribe({
-      next: (response) => {
-        const answer = JSON.stringify(response, null, 2); ;
-        // console.log(answer)
-        const index = this.messages.findIndex(msg => msg.id === loadingMessage.id && msg.isLoading);
+  private handleStreamingQuery(userMessage: string, LLMModelType: string, loadingMessage: Message): void {
 
-        if (index !== -1) {
-          this.messages[index] = {
-            ...this.messages[index],
-            answer: answer,
-            isLoading: false
+    const index = () => this.messages.findIndex(msg => msg.id === loadingMessage.id);
+
+    this.llmService.queryStream(userMessage, LLMModelType).subscribe({
+
+      next: (token: string) => {
+        const i = index();
+        if (i !== -1) {
+          this.messages[i] = {
+            ...this.messages[i],
+            answer: this.messages[i].answer + token
           };
+
           this.messages = [...this.messages];
-        } else {
-          const llmResponse: Message = {
-            id: this.messages.length + 1,
-            answer: answer,
-            sender: 'llm'
-          };
-          this.messages = [...this.messages, llmResponse];
+          this.scrollToBottom();
         }
-        // console.log('API Response:', response);
-        this.scrollToBottom();
       },
+
       error: (error) => {
-        console.error('API Error:', error);
-        const index = this.messages.findIndex(msg => msg.id === loadingMessage.id && msg.isLoading);
-        
-        if (index !== -1) {
-          this.messages[index] = {
-            ...this.messages[index],
+        console.error('Stream error:', error);
+        const i = index();
+        if (i !== -1) {
+          this.messages[i] = {
+            ...this.messages[i],
             answer: 'Error: Could not get a response from LLM. Please try again.',
-            sender: 'llm',
             isError: true,
             isLoading: false
           };
           this.messages = [...this.messages];
-        } else {
-          this.messages = [...this.messages, {
-            id: this.messages.length + 1,
-            answer: 'Error: Could not get a response from LLM. Please try again.',
-            sender: 'llm',
-            isError: true
-          }];
         }
         this.scrollToBottom();
+      },
+
+      complete: () => {
+        const i = index();
+        if (i !== -1) {
+          this.messages[i] = {
+            ...this.messages[i],
+            answer: this.messages[i].answer || '(no response)',
+            isLoading: false
+          };
+          this.messages = [...this.messages];
+          this.scrollToBottom();
+        }
+        this.rateLimitService.consume();
       }
     });
+  }
+
+  saveConversation() {
+    const lines = this.messages.map(msg => {
+      const sender = msg.sender === 'user' ? 'You' : 'LLM';
+      return `[${sender}]\n${msg.answer}`;
+    });
+    const content = lines.join('\n\n---\n\n');
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `conversation-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
   clearChat() {
