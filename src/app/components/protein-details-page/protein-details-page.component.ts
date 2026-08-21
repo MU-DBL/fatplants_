@@ -215,15 +215,12 @@ export class ProteinDetailsPageComponent implements OnInit {
         this.cfg = "summary";
         break;
       case 1:
-        this.cfg = this.isCupheaPennycress(this.database) ? "blast" : "alignments";
+        this.cfg = this.isCupheaPennycress(this.database) ? "blast" : "structure";
         break;
       case 2:
-        this.cfg = this.isCupheaPennycress(this.database) ? "psi_blast" : "structure";
+        this.cfg = this.isCupheaPennycress(this.database) ? "psi_blast" : "blast";
         break;
       case 3:
-        this.cfg = "blast";
-        break;
-      case 4:
         this.cfg = "pathway";
         break;
       default:

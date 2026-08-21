@@ -1,6 +1,6 @@
 <mat-card class="base">
   <div class="page-title-bar">
-    <p class="page-title"> Blast Tools</p>
+    <p class="page-title"> BLAST Tools</p>
   </div>
   <div class="textali">
     <div class="alert" [class.visible]="alertVisible">
@@ -14,7 +14,12 @@
     </div>
     <div style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; padding: 1%;">
       <div class="input-field col s6">
-        <p style="font-weight: bold; margin-bottom: 0;">Sequence</p>
+        <p style="font-weight: bold; margin-bottom: 0;">Sequence
+            <mat-icon class="pointer" style="font-size: small; padding-top: 1%;"
+            [matTooltip]="'Input a fasta sequence to do blast. Click this icon for an example.'"
+            (click)="setDefaultSearch()">help</mat-icon>
+        </p>
+        
         <textarea style="height: 100px; width: 100%;" name="fasta" class="browser-default input-area"
           [(ngModel)]="proteinSeq"></textarea>
       </div>
@@ -30,8 +35,7 @@
     <div>
       <div style="margin-top: 2%;">
         <p style="font-weight: bold; margin-bottom: 0;">E-value threshold
-          <mat-icon style="font-size: small;" matTooltip="E-value, or Expectation value, is a metric that estimates the number of random alignments expected to achieve a particular alignment score by chance when searching a database of a given size.
-                
+          <mat-icon style="font-size: small; padding-top: 1%;" matTooltip="E-value, or Expectation value, is a metric that estimates the number of random alignments expected to achieve a particular alignment score by chance when searching a database of a given size.
                 We recommend using 0.01 or 0.1 as the initial values for the search" matTooltipPosition="after"> help
           </mat-icon>
         </p>
@@ -51,9 +55,8 @@
     <div>
       <div class="col s6" style="margin-top: 2%;">
         <p style="margin-bottom: 0; font-weight: bold;">Scoring Matrix
-          <mat-icon style="font-size: small;"
+          <mat-icon style="font-size: small; padding-top: 1%; "
             matTooltip="Scoring matrix is a table used to determine the score of aligning two amino acids or nucleotides during a sequence alignment.
-                
                 Two matrix, PAM (Point Accepted Mutation) and BLOSUM (Blocks Substitution Matrix) are using for protein sequences, and nucleotide scoring matrices for DNA sequences."
             matTooltipPosition="after"> help
           </mat-icon>
@@ -79,9 +82,6 @@
     <button *ngIf="this.result != undefined" mat-raised-button class="btn clear waves-effect waves-light" type="reset"
       name="action" (click)="clear()">Clear Results
     </button>
-    <mat-icon id="help-icon" class="pointer"
-      [matTooltip]="'Input a fasta sequence to do blast. Click this icon for an example.'"
-      (click)="setDefaultSearch()">help</mat-icon>
   </div>
 
   <div class="row">

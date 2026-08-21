@@ -57,8 +57,8 @@ export class BlastPageComponent implements OnInit {
 
     this.apiService.getblast(this.database.toLowerCase(), this.proteinSeq, `-matrix ${this.matrix} -evalue ${this.evalue}`).subscribe(
       (res: any) => {
-        console.log(this.database.toLowerCase());
         this.SplitRes(res);
+        this.blastError = this.blastRes.length === 0;
         this.loading = false;
       },
       (error) => {
@@ -70,7 +70,46 @@ export class BlastPageComponent implements OnInit {
   }
 
   SplitRes(result: string) {
-    // Same code as in your example, no changes needed
+    this.result = result;
+    this.blastRes = [];
+
+    if (!result) {
+      this.blastDataSource = new MatTableDataSource();
+      return;
+    }
+
+    const entries = result.split('>');
+    entries.shift();
+
+    if (entries.length === 0 || !entries[entries.length - 1]) {
+      this.blastDataSource = new MatTableDataSource();
+      return;
+    }
+
+    const lambdaIndex = entries[entries.length - 1].search('Lambda');
+    if (lambdaIndex !== -1) {
+      entries[entries.length - 1] = entries[entries.length - 1].substring(0, lambdaIndex);
+    }
+
+    this.blastRes = entries.map(entry => {
+      const scoreMatch = entry.match(/Score\s*=\s*([^,]+)/i);
+      const evalueMatch = entry.match(/Expect\s*=\s*([^,\s]+)/i);
+      const identitiesMatch = entry.match(/Identities\s*=\s*(\d+\/\d+\s*\(\d+%\))/i);
+      const positivesMatch = entry.match(/Positives\s*=\s*(\d+\/\d+\s*\(\d+%\))/i);
+      const gapsMatch = entry.match(/Gaps\s*=\s*(\d+\/\d+\s*\(\d+%\))/i);
+
+      return {
+        sequences: entry.split(/\r?\n/)[0].trim(),
+        score: scoreMatch ? scoreMatch[1].trim() : '',
+        evalue: evalueMatch ? evalueMatch[1].trim() : '',
+        identities: identitiesMatch ? identitiesMatch[1] : '',
+        positives: positivesMatch ? positivesMatch[1] : '',
+        gaps: gapsMatch ? gapsMatch[1] : '',
+        expand: entry.trim(),
+      };
+    });
+
+    this.blastDataSource = new MatTableDataSource(this.blastRes);
   }
 
   changeDatabase(newDatabase: string) {

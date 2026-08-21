@@ -35,9 +35,10 @@ export class GptDialogComponent implements OnInit {
       this.display_name = this.data.identifier;
     }
 
-    this.apiService.askChatGPT("As a biology researcher, I'm interested in understanding the molecular mechanism and functional significance of the gene " + this.data.identifier + ". Could you provide me with detailed information about how " + this.data.identifier + " is activated, its downstream signaling pathways, and its roles in cellular processes such as cell growth, differentiation, and response to stress? Please include any relevant research findings or insights in your response.").subscribe((data:any) => {
-      if (data.choices && data.choices.length > 0) {
-        this.gpt_output = data.choices[0].message.content;
+    this.apiService.askChatGPT("As a biology researcher, I'm interested in understanding the molecular mechanism and functional significance of the gene " + this.data.identifier + ". Could you provide me with detailed information about how " + this.data.identifier + " is activated, its downstream signaling pathways, and its roles in cellular processes such as cell growth, differentiation, and response to stress? Please include any relevant research findings or insights in your response.").subscribe((data: any) => {
+      if (typeof data === 'string' && data.length > 0) {
+        this.gpt_output = data;
+        console.log("GPT output: " + this.gpt_output);
       }
       else {
         this.gpt_output = "Could not access the ChatGPT service. Please try again later.";

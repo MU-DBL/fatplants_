@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Ask ChatGPT</h1>
 <mat-dialog-content class="mat-typography">
     <h3>Information about {{display_name}} from ChatGPT</h3>
-    <p *ngIf="gpt_output">{{gpt_output}}</p>
+    <markdown *ngIf="gpt_output" [data]="gpt_output"></markdown>
     <mat-progress-bar id="loading-bar" style="margin-top: 20px;" mode="indeterminate" *ngIf="!gpt_output"></mat-progress-bar>
 </mat-dialog-content>
 <mat-dialog-actions>

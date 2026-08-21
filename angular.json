@@ -39,7 +39,6 @@
               "src/custom-theme.scss"
             ],
             "scripts": [
-              "node_modules/katex/dist/katex.min.js",
               "node_modules/cytoscape/dist/cytoscape.min.js",
               "node_modules/dagre/dist/dagre.min.js",
               "node_modules/cytoscape-dagre/cytoscape-dagre.js",

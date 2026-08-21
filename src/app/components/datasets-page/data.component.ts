@@ -84,6 +84,7 @@ export class DataComponent implements OnInit {
 
   changeDataset(newDataset: string) {
     this.router.navigate(["datasets/" + newDataset]);
+    this.searchQuery = this.searchQuery.trim();
     const encodedQuery = encodeURIComponent(this.searchQuery);
 
     switch (newDataset) {
@@ -344,6 +345,7 @@ export class DataComponent implements OnInit {
   applySearchQuery() {
     this.loading = true;
     this.showingSearch = true;
+    this.searchQuery = this.searchQuery.trim();
     const encodedQuery = encodeURIComponent(this.searchQuery);
 
     switch (this.dataset) {

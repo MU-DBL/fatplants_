@@ -166,14 +166,14 @@
                     </mat-card>
                     <br>
                 </mat-tab>
-                <mat-tab *ngIf="showAligmentsTab">
+                <mat-tab *ngIf="false">
                     <ng-template mat-tab-label>
                         3D Model
                     </ng-template>
                     <!-- 3d structure-->
                     <div *ngIf="is3DStructure && (this.speciesName)">
                         <div class="column middleright" id="mainContainer">
-                            <h2>3D Model</h2>
+                            <h2>3D Structure</h2>
                             <div class="row">
                                 <mat-progress-bar id="pdb-loading-bar" mode="indeterminate"
                                     *ngIf="g2sLoading"></mat-progress-bar>
@@ -200,7 +200,7 @@
                 </mat-tab>
                 <mat-tab *ngIf="showStructrueTab">
                     <ng-template mat-tab-label>
-                        Structure
+                        3D Structure
                     </ng-template>
                     <!--Structure-->
                     <div class="column middleright" *ngIf="isStructure" id="mainContainer">
@@ -250,7 +250,7 @@
                 </mat-tab>
                 <mat-tab>
                     <ng-template mat-tab-label>
-                        Blast
+                        BLAST
                     </ng-template>
                     <!--Blast-->
                     <div class="column middleright" *ngIf="isBlast" id="mainContainer">
@@ -264,8 +264,8 @@
                             There was a problem loading the BLAST results.
                         </div>
                         <div *ngIf="!showProgress && showBlastResList.length !== 0">
-                            <p>Blast against Arabidopsis, Camelina and Soybean databse.</p>
-                            <p>Filter Blast Result by Percent Identity. Current Value: {{BlastFilterValue}}%</p>
+                            <p>BLAST against Arabidopsis, Camelina and Soybean databse.</p>
+                            <p>Filter BLAST Result by Percent Identity. Current Value: {{BlastFilterValue}}%</p>
                             <mat-slider *ngIf="BlastFilterValue !== null" min="1" max="100" step="5" discrete>
                                 <input matSliderThumb [(ngModel)]="BlastFilterValue"
                                     (valueChange)="onBlastFilterValueChange($event)">
@@ -288,9 +288,9 @@
                 </mat-tab>
                 <mat-tab *ngIf="showPsiBlastTab">
                     <ng-template mat-tab-label>
-                        PSI-Blast
+                        PSI-BLAST
                     </ng-template>
-                    <!--Blast-->
+                    <!--BLAST-->
                     <div class="column middleright" id="mainContainer">
                         <div class="row centered" *ngIf="showProgress">
                             <circle-progress [percent]="percent" [radius]="100" [outerStrokeWidth]="16"
@@ -302,8 +302,8 @@
                             There was a problem loading the PSI BLAST results.
                         </div>
                         <div *ngIf="!showProgress && showPSIBlastResList.length !== 0">
-                            <p>PSI Blast against Arabidopsis, Camelina and Soybean databse.</p>
-                            <p>Filter Blast Result by Percent Identity. Current Value: {{PSIBlastFilterValue}}%</p>
+                            <p>PSI BLAST against Arabidopsis, Camelina and Soybean databse.</p>
+                            <p>Filter BLAST Result by Percent Identity. Current Value: {{PSIBlastFilterValue}}%</p>
                             <mat-slider *ngIf="PSIBlastFilterValue !== null" min="1" max="100" step="5" discrete>
                                 <input matSliderThumb [(ngModel)]="PSIBlastFilterValue"
                                     (valueChange)="onPSIBlastFilterValueChange($event)">
